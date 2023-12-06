@@ -1,0 +1,28 @@
+mixin blog-social(mods)
+  -
+    const baseName = 'blog-social'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const blogSocial =[
+      { icon: 'fb', text: 'Поделиться в Facebook' },
+      { icon: 'inst', text: 'Поделиться в Instagram' },
+      { icon: 'odnoklassniki', text: 'Поделиться в Одноклассниках' },
+      { icon: 'vk', text: 'Поделиться в ВК' },
+      { icon: 'tw', text: 'Поделиться в Twitter' },
+    ]
+
+  .blog-social(class=allMods)&attributes(attributes)
+    each item in blogSocial
+      a.blog-social__item(href='#')
+        .blog-social__icon
+          +icon(`icon_${item.icon}`)
+        .blog-social__text=item.text
+    block

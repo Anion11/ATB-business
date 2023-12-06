@@ -1,0 +1,38 @@
+mixin service-fea-list(mods)
+  -
+    const baseName = 'service-fea-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .service-fea-list(class=allMods)&attributes(attributes)
+    block
+
+mixin service-fea-list__point(title, desc, mods)
+  -
+    const baseName = 'service-fea-list__point'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .service-fea-list__point(class=allMods)&attributes(attributes)
+    .service-fea-list__head
+      .service-fea-list__title !{title}
+      if desc
+        .service-fea-list__desc !{desc}
+    block
+
+mixin service-fea-list__subtitle(title)
+
+  .service-fea-list__subtitle !{title}
+    block

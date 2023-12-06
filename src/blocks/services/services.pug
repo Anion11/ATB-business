@@ -1,0 +1,37 @@
+mixin services(servicesItems, mods)
+  -
+    const baseName = 'services'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .services(class=allMods)&attributes(attributes)
+    each item in servicesItems
+      +services__item(item.icon, item.title, item.descr)
+    block
+
+mixin services__item(icon, title, descr, mods)
+  -
+    const baseName = 'services__item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.services__item(class=allMods href='#')&attributes(attributes)
+    .services__icon
+      img(src=icon, alt='')
+    .services__content
+      .services__title !{title}
+      .services__descr !{descr}
+      .services__foot
+        +ui-button('подробнее', '--link-next').text-orange

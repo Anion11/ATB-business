@@ -1,0 +1,40 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'concessional-lending-inner'
+  -const pageTitle ='Стимулирование предпринимательства | Программа кредитования МСП от АТБ'
+
+  -
+    const termsItems =[
+      { name: 'Сумма', descr: 'До 300 млн. руб. для микро/малого бизнеса <br>До 1 млрд. для среднего бизнеса' },
+      { name: 'Срок', descr: 'до 3 лет, но срок льготной ставки не более 1 года  ' },
+      { name: 'Ставка', descr: 'до 15% годовых для микро/малого бизнеса и 13,5 % для среднего бизнеса' },
+      { name: 'Срок Программы', descr: 'до 31.12.2022' },
+    ]
+
+block content
+  main
+    +banner()
+      +banner__item('--programm-supported-cb')
+        +banner__wrapper('img/banner_programm_supported_cb.jpg')
+          +banner__h1('Льготная программа кредитования субъектов МСП при поддержке ЦБ РФ', '--size-s')
+          +banner__descr('ставка  от 13,5%', '--fw300').text-orange
+    .page-content
+      +section('--mt0')
+        .inner
+          +about-programm('img/about_programm_supported_cb.png', 'Программа предусматривает льготное кредитование субъектов МСП, осуществляющих деятельность&nbsp;в любой отрасли (за исключением субъектов МСП, указанных в ч.3,4 ст.14 ФЗ от 24.07.2007г. «209-ФЗ)', '--supported-cb')
+
+      +section()
+        .inner
+          +section-head()
+            +ui-h2('Цель кредитования', 'section-head')
+            .section-head__descr Пополнение оборотных средств/Рефинансирование, кроме Кредита на строительство (создание) многоквартирного дома и (или) иного объекта недвижимости в рамках 214-ФЗ «Об участие в долевом строительстве»
+          +terms(termsItems)

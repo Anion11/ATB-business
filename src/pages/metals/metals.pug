@@ -1,0 +1,34 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'metals'
+    const pageTitle ='Операции с драгоценными металлами'
+
+block content
+  main
+    +banner
+      +banner__item('--metals')
+        +banner__wrapper('img/banner_metals.jpg')
+          +banner__h1('Операции с&nbsp;драгоценными металлами')
+          +banner__foot
+            +ui-button('оставить заявку', 'banner')(href='#form-section')
+    .page-content
+      +section('--mt0')
+        .inner
+          +metals-merit
+      +section
+        .inner
+          +metals-benefits
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оставить заявку', 'section-head')

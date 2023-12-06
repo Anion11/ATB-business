@@ -1,0 +1,59 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'documents-tariffs'
+    const pageTitle ='Документы и тарифы'
+
+    const docName = 'Общие условия банковского обслуживания юридических лиц и индивидуальных предпринимателей в «Азиатско-Тихоокеанский Банк» (АО) с 15.11.2022'
+    const docInfo = '(pdf, 354.58 КБ)'
+
+block content
+  main
+    +breadcrumbs
+      +breadcrumbs-item('Главная', '/')
+      +breadcrumbs-item('Бизнесу', '#')
+      +breadcrumbs-item(pageTitle)
+    +banner
+      +banner__item('--text-old')
+        +banner__wrapper('/img/banner_gradient.jpg')
+          +banner__h1('Документы и тарифы для бизнеса')
+    .page-content
+      +section('--mt0')
+        .inner
+          +accordion
+            +accordion-item('Документы')
+              +documents('', '', 'getOnlyWrapper')
+                +documents-item(docName, docInfo)
+                +documents-item(docName, docInfo)
+                +documents-item(docName, docInfo)
+                +ui-button('Перейти в раздел открытие и ведение счета', 'documents, --link-next')(href='#')
+                +documents-item(docName, docInfo)
+                +ui-button('Перейти в раздел открытие и ведение счета', 'documents, --link-next')(href='#')
+            +accordion-item('Архив документов')
+              +accordion
+                +accordion-item('Архив документов за 2022 г.')
+                  +accordion
+                    +accordion-item('Общие условия (редакция 35)')
+                      +documents('', '', 'getOnlyWrapper')
+                        +documents-item(docName, docInfo)
+                        +documents-item(docName, docInfo)
+                        +ui-button('Перейти в раздел открытие и ведение счета', 'documents, --link-next')(href='#')
+                    +accordion-item('Общие условия (редакция 34)')
+                      +documents('', '', 'getOnlyWrapper')
+                        +documents-item(docName, docInfo)
+                        +documents-item(docName, docInfo)
+                        +ui-button('Перейти в раздел открытие и ведение счета', 'documents, --link-next')(href='#')
+                +accordion-item('Архив документов за 2021 г.')
+                  +accordion
+                    +accordion-item('Общие условия (редакция 35)')
+                      +documents('', '', 'getOnlyWrapper')
+                        +documents-item(docName, docInfo)
+                        +documents-item(docName, docInfo)
+                        +ui-button('Перейти в раздел открытие и ведение счета', 'documents, --link-next')(href='#')

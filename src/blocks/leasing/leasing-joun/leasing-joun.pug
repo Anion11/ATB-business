@@ -1,0 +1,43 @@
+mixin leasing-joun(mods)
+  -
+    const baseName = 'leasing-joun'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const leasingJoinItems =[
+      {
+        img: 'leasing_joun_laptop.png',
+        title: 'Преимущества для вас',
+        list: [
+          'Честные и понятные ставки агентского вознаграждения',
+          'Возможность оперативно реализовать произведенные вами транспорт, технику и оборудование',
+        ]
+      },
+      {
+        img: 'leasing_joun_man.png',
+        title: 'Кто может стать партнером АТБ ЛК',
+        list: [
+          'Компании, продающие транспорт, технику, оборудование',
+          'Профессиональные брокеры и консалтинговые компании',
+          'Компании, осуществляющие аутсорсинг бухгалтерских услуг',
+        ]
+      },
+    ]
+
+  .leasing-joun(class=allMods)&attributes(attributes)
+    .leasing-joun__wrapper
+      each item in leasingJoinItems
+        .leasing-joun__box
+          .leasing-joun__title !{item.title}
+          +ui-ul(item.list, 'leasing-joun')
+          img(src=`img/${item.img}` alt='')
+    .leasing-joun__foot
+      +ui-button('Стать партнером', 'leasing-joun').js-popup-open(href='#p-leasing-partner')
+    block

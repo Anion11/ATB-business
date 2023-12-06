@@ -1,0 +1,359 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'service-fea'
+    const pageTitle ='Обслуживание ВЭД'
+
+    const benefitsItems = [
+      //- { icon: 'img/ved-benefit_5.svg', title: '<a href="#" class="text-orange">Бесплатная экспертиза контракта</a> по линии финансового мониторинга и&nbsp;валютного контроля', btn: 'Оформить заявку', modClass: 'benefits__item--col100 benefits__item--fea-btn' },
+      { icon: 'img/ved-benefit_5.svg', title: '<a href="#" class="text-orange">Бесплатная экспертиза контракта</a> по&nbsp;линии финансового мониторинга и&nbsp;валютного контроля', modClass: 'benefits__item--col100' },
+      { icon: 'img/ved-benefit_1.svg', title: 'Уникальный <span class="text-orange">опыт работы с&nbsp;Китаем, Казахстаном и&nbsp;другими странами Азии</span>' },
+      { icon: 'img/ved-benefit_2.svg', title: '<span class="text-orange">Онлайн доступ</span> к&nbsp;лучшим рыночным котировкам валют' },
+      { icon: 'img/ved-benefit_3.svg', title: '<span class="text-orange">Персональный эксперт</span> по&nbsp;любым вопросам ВЭД <span class="text-orange">бесплатно</span>' },
+      { icon: 'img/ved-benefit_4.svg', title: '<a href="#" class="text-orange">Льготные программы кредитования</a> для&nbsp;клиентов&nbsp;ВЭД' },
+    ]
+
+    const tabsHeadItems = [
+      //- { text: 'Пакеты ВЭД' },
+      { text: 'Валютный контроль', id: 'currency-control' },
+      { text: 'Конверсионные операции', id: 'conversion-operations' },
+      { text: 'Международные расчеты', id: 'international-payments' },
+      { text: 'Аккредитивы и гарантии', id: 'credit-guarantees' },
+      { text: 'Хеджирование валютных рисков', id: 'currency-risks' },
+      { text: 'Финансирование ВЭД' },
+    ]
+
+    const aboutBlockInTabs = {
+      packages: {
+        title: 'Пакеты ВЭД',
+        list: [
+          'Открытие и ведение счетов в инвалюте',
+          'Бесплатные платежи в инвалюте',
+          'Гибкий курс обмена валюты',
+        ],
+        link: {
+          text: 'Подробнее',
+          href: '#'
+        }
+      },
+      currencyControl: {
+        title: 'Валютный контроль',
+        list: [
+          'Персональный валютный контролер',
+          'Удобный интернет-банк',
+        ],
+        subtitle: 'Бесплатно',
+        list2: [
+          'Комплексный консалтинг',
+        ]
+      },
+      currencyControl2: {
+        title: 'Бесплатно',
+        list: [
+          'Экспертиза контракта ВЭД',
+        ],
+      },
+      conversionOperations: {
+        title: 'Конверсионные операции',
+        list: [
+          'Без комиссий по курсу банка',
+          'Индивидуальный курс',
+          'Онлайн платформа для сделок по биржевым курсам',
+        ],
+      },
+      internationalPayments: {
+        title: 'Международные расчеты',
+        list: [
+          'Исполнение платежа день в день',
+          'Маршрутизация платежей через прямые счета с иностранными банками Китая, Казахстана, Японии, Кореи и другие',
+          'Отслеживание статуса платежа через GPI-трекер',
+        ],
+      },
+      guarantees: {
+        title: 'Аккредитивы и гарантии',
+        list: [
+          'Все виды международных аккредитивов и гарантий',
+          'Экспертная помощь на всех этапах сделки бесплатно',
+          'Финансирование под уступку денежного требования',
+        ],
+      },
+      hedging: {
+        title: 'Хеджирование валютных рисков',
+        list: [
+          'Фиксация курса на будущую дату',
+          'Валютный форвард и опцион на различные пары валют',
+          'Структурирование сделки индивидуально',
+        ],
+      },
+      financing: {
+        title: 'Финансирование ВЭД',
+        list: [
+          'Льготная процентная ставка',
+          'Дисконтирование экспортных аккредитивов',
+          'Бесплатные консультации и сопровождение сделок',
+        ],
+        link: {
+          text: 'Подробнее',
+          href: '#'
+        }
+      },
+    }
+
+    const smallBannerPackagesFea = {
+      title: 'Пакеты услуг для ВЭД',
+      btn: 'Подключить',
+      link: 'подробнее',
+      img: 'img/service-fea-ban.png',
+    }
+
+    const smallBannerFinancing = {
+      title: 'Финансирование ВЭД',
+      descr: 'Всё для&nbsp;работы с&nbsp;иностранными партнерами',
+      btn: 'Подробнее',
+      img: 'img/promo-financing.png',
+      imgMob: 'img/promo-financing-mobile.png'
+    }
+
+    const smallBannerProblems = {
+      title: 'Не нашли решения?',
+      descr: 'Напишите нам, если у&nbsp;Вас остались вопросы по&nbsp;ВЭД',
+      btn: 'ПРОБЛЕМА',
+      btnHref: '#p-problems-form',
+      btnClass: 'js-popup-open',
+      img: 'img/banner-problems.png'
+    }
+
+    const usefulGoods =[
+      {
+        title: 'Сервисы ВЭД',
+        btn: 'Подробнее',
+        img: 'usf_deposit.png',
+        list: [
+          { title: 'Поиск зарубежных контрагентов или&nbsp;партнеров' },
+          { title: 'Бизнес-справка о&nbsp;контрагенте' },
+          { title: 'Мониторинг и&nbsp;проверка потенциальных <br>контрагентов' },
+        ]
+      },
+      {
+        title: 'Финансирование ВЭД',
+        btn: 'Подробнее',
+        img: 'usf_fin.png',
+        p2: 'Всё для работы <br>с иностранными партнерами',
+      },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--v-inner-pt-xxl, --service-fea')
+        +banner__wrapper('img/banner_service-fea.png', true)
+          +banner__h1('ВЭД', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('Всё для экспорта и&nbsp;импорта')
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--items2, --title-normal, --title-mob-xs')
+      +section
+        .inner
+          +attention
+      +section
+        +tabs-head(tabsHeadItems, '', '--round')
+        +tabs-main
+          //- +tabs-main__item(true)
+          //-   +section('--mt0')
+          //-     .inner
+          //-       +service-fea-offers
+          //-         +service-fea-offers__col
+          //-           +service-fea-about(aboutBlockInTabs.packages, 'service-fea-offers')
+          //-           +service-fea-offers__pic
+          //-         +service-fea-offers__col
+          //-           +fea-tariffs
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.currencyControl, 'service-fea-offers')
+                    +service-fea-about(aboutBlockInTabs.currencyControl2, 'service-fea-offers')
+                    +accordion('service-fea-offers')
+                      +accordion-item('Полезная информация')
+                        +documents
+                      +accordion-item('Документы валютного контроля (бланки)')
+                        +documents
+                      +accordion-item('Нормативные документы')
+                        +documents
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__point('Профессиональное обслуживание опытных и начинающих клиентов ВЭД')
+                        ul.ui-ul
+                          li Постановка на учёт и сопровождение контрактов
+                          li Оформление документов валютного контроля
+                          li Подготовка внешнеторговых контрактов
+                          li Мониторинг сроков по контрактам
+                          li Предотвращение нарушений валютного законодательства
+                      +service-fea-list__point('Бесплатный комплексный консалтинг')
+                        ul.ui-ul
+                          li Персональный эксперт в сфере ВЭД
+                          li Помощь в поиске иностранных партнеров и заключении контракта
+                          li Поддержка на английском и китайском языках
+                      +service-fea-list__point('Экспертиза контракта по линии финансового мониторинга и&nbsp;валютного контроля')
+                        ul.ui-ul
+                          li Исключение риска нарушения валютного законодательства
+                          li Предупреждение риска блокировки операций и нарушений требований 115-ФЗ
+                          li Гарантия принятия контракта на обслуживание в банк
+                      +service-fea-list__point('Без визита в банк')
+                        ul.ui-ul
+                          li Все операции и документы в интернет-банке
+                          li Сервис автоматического оформления документов
+                          li Обновление контрактов в режиме онлайн
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.conversionOperations, 'service-fea-offers')
+                    +accordion('service-fea-offers')
+                      +accordion-item('Документы')
+                        +documents
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__point('Онлайн система для конверсионных операций:')
+                        ul.ui-ul
+                          li Доступ к котировкам в режиме онлайн
+                          li Выгодный курс с учетом изменений рынка
+                          li Скорость расчетов
+                          li Сделки на любую сумму
+                      +service-fea-list__point('Удобный сервис:')
+                        ul.ui-ul
+                          li Самостоятельные операции
+                          li Автоматическая обработка заявки
+                          li Отсутствие комиссии на пользование системой
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col
+                    +service-fea-about(aboutBlockInTabs.internationalPayments, 'service-fea-offers')
+                    +service-fea-offers__pic
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__point('Переводы в Китай через CIPS', 'Национальная китайская система банковских переводов')
+                        +ui-p1('Как направить платеж в банки КНР через систему CIPS?')
+                        ul.ui-ul
+                          li Указать СВИФТ код банка-получателя в поле платежного сообщения, который является его кодом в CIPS
+                          li Если банк-получатель не является участником CIPS, необходимо указать реквизиты промежуточных банков, которые являются участниками CIPS
+                      +service-fea-list__point('Особые условия для Казахстана', 'Льготные условия - ВК за 0,1% от суммы операции')
+                        ul.ui-ul
+                          li Самостоятельные операции
+                          li Автоматическая обработка заявки
+                          li Отсутствие комиссии на пользование системой
+                      +service-fea-list__point('Сервис SWIFT GPI', 'Отслеживание переводов по всей цепочке банков-корреспондентов')
+                        +ui-p1('Функции:', 'service-fea-list')
+                        ul.ui-ul
+                          li Повышение качества международных расчетов
+                          li Обеспечение прозрачности платежа: статусы перевода, банки, комиссии
+                          li Повышение скорости прохождения платежей в валюте
+                    +accordion('service-fea-offers')
+                      +accordion-item('Документы')
+                        +documents
+                      +accordion-item('Выходные и праздники в иностранных банках')
+                        +documents
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col
+                    +service-fea-about(aboutBlockInTabs.guarantees, 'service-fea-offers')
+                    +service-fea-offers__pic
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__point('Комплекс услуг по аккредитивам:')
+                        ul.ui-ul
+                          li Открытие с покрытием за счет средств клиента или без покрытия за счет кредитного лимита
+                          li Авизование поступивших в пользу клиентов аккредитивов без подтверждения и с добавлением подтверждения АТБ
+                          li Консультации по оформлению платежных условий контрактов
+                          li Экспертиза условий при заключении внешнеторговых сделок
+                          li Помощь в подготовке документов
+                          li Финансирование под уступку денежного требования по экспортному аккредитиву
+                      +service-fea-list__point('Все виды международных банковских гарантий:')
+                        ul.ui-ul
+                          li Гарантия платежа
+                          li Гарантия возврата аванса
+                          li Гарантия надлежащего исполнения контракта
+                          li Гарантия исполнения обязательств в гарантийный период
+                          li Тендерная гарантия (гарантия участия в конкурсе)
+                        +ui-p1('Функции:', 'service-fea-list')
+                        ul.ui-ul
+                          li Обеспечение обязательства перед контрагентом
+                          li Покрытие контрактных рисков на всех этапах внешнеторговой сделки
+                          li Получение более выгодных цен на товар и условия расчетов
+                    +accordion('service-fea-offers')
+                      +accordion-item('Тарифы и документы')
+                        +documents
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.hedging, 'service-fea-offers')
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__subtitle('Функции:')
+                      +service-fea-list__point('Фиксация курса валюты и драгоценных металлов по дате')
+                      +service-fea-list__point('Избегание убытков в связи с изменением курса')
+                      +service-fea-list__point('Прогноз бюджета и результатов')
+                      +service-fea-list__point('Финансирование под залог валюты')
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.financing, 'service-fea-offers')
+                    +accordion('service-fea-offers')
+                      +accordion-item('Тарифы и документы')
+                        +documents
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__subtitle('Как получить финансирование ВЭД в&nbsp;АТБ?')
+                      +service-fea-list__point('Согласовать с контрагентом форму расчетов и/или обеспечения обязательств по контракту')
+                      +service-fea-list__point('Предоставить в банк проект внешнеторгового контракта')
+                      +service-fea-list__point('Предоставить пакет документов для получения кредита')
+      //- +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оставить заявку', 'section-head')
+      //- +section
+        .inner
+          +small-banner(smallBannerPackagesFea, '--packages-fea')
+      +section
+        .inner
+          +small-banner(smallBannerFinancing, '--to-east')
+      +section('--mt-xs')
+        .inner
+          +small-banner(smallBannerProblems, '--problems')
+      +section('--ov-hidden')
+        .inner
+          +section-head
+            +ui-h2('Вас также могут заинтересовать')
+          +useful-goods(usefulGoods)
+  +seo('Обслуживание внешнеэкономической деятельности')
+    p Азиатско-Тихоокеанский Банк предлагает предпринимателям и юридическим лицами, работающим или начинающим сотрудничество за границей, банковское обслуживание внешнеэкономической деятельности. Мы оказываем полный комплекс услуг в сфере валютного контроля сделок на зарубежном рынке.
+    p Профессиональное банковское обслуживание внешнеэкономической деятельности подразумевает:
+    ul
+      li оформление документов в соответствии с требованиями международного таможенного и валютного законодательства;
+      li помощь экспертов в выборе оптимальных средств расчета с иностранными партнерами;
+      li ведение счетов и быстрое выполнение валютных операций;
+      li контроль соблюдения договорных обязательств.
+    p Вместе с банковским обслуживанием внешнеэкономической деятельности Вы получите грамотное ведение дел на международном уровне, удобную систему конвертации валюты и быстрый оборот средств. Наши услуги станут одной из основ процветания Вашего бизнеса.
+  +popup__wrapper('--mw-s')#p-problems-form
+    +section-head.text-center
+      +ui-h2('Прием обращений, жалоб, претензий')

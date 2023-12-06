@@ -1,0 +1,62 @@
+.service-fea-list {
+  position: relative;
+  &__point {
+    position: relative;
+    padding-left: 50px;
+    @include media-tablet {
+      padding-left: 45px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='16' cy='16' r='15' stroke='%237F94A8' stroke-width='2'/%3E%3Cpath d='M9 15L14 20L23 11.5' stroke='%237F94A8' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+  &__head {
+    margin-bottom: 15px;
+    @include media-tablet {
+      margin-bottom: 10px;
+    }
+  }
+  &__title {
+    font: 400 20px/1.3 $font;
+    @include media-tablet {
+      font-size: 18px;
+    }
+  }
+  &__desc {
+    font: 400 16px/1.4 $font;
+    color: $grey80;
+    @include media-tablet {
+      font-size: 14px;
+    }
+  }
+  &__subtitle {
+    font: 700 20px/1.4 $font;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  &__ui {
+    &-ul {
+      font-size: 16px;
+      @include media-tablet {
+        font-size: 14px;
+      }
+    }
+    &-p1 {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

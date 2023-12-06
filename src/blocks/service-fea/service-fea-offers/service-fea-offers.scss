@@ -1,0 +1,128 @@
+.service-fea-offers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+  }
+  @include media-tablet {
+    gap: 25px;
+  }
+  &__col {
+    &:first-child {
+      @include media-laptop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      @include media-tablet {
+        display: block;
+      }
+    }
+    &--no-pic {
+      &:first-child {
+        @include media-laptop {
+          flex-wrap: wrap;
+          align-items: flex-start;
+          column-gap: 20px;
+        }
+      }
+      .service-fea-about {
+        @include media-laptop {
+          width: calc((100% - 20px) / 2);
+        }
+        @include media-tablet {
+          width: auto;
+        }
+      }
+    }
+  }
+  &__pic {
+    position: relative;
+    margin-top: 50px;
+    width: 540px;
+    @include media-laptop {
+      width: 335px;
+      margin-top: 0;
+      margin-left: 20px;
+      flex-shrink: 0;
+    }
+    @include media-tablet {
+      margin: 25px auto 0;
+    }
+    &-static {
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    &-anim {
+      position: absolute;
+      z-index: 5;
+      animation: float 3s ease-in-out infinite;
+      &--coin-1 {
+        right: 20%;
+        bottom: 20%;
+        max-width: 128px;
+        @include media-laptop {
+          max-width: 75px;
+        }
+      }
+      &--coin-2 {
+        right: 39%;
+        bottom: 29%;
+        max-width: 60px;
+        animation-delay: 0.5s;
+        @include media-laptop {
+          max-width: 35px;
+        }
+      }
+      &--currency {
+        top: 16%;
+        left: 9%;
+        max-width: 174px;
+        animation-delay: 0.3s;
+        @include media-laptop {
+          max-width: 100px;
+        }
+      }
+      &--arrows {
+        bottom: 1%;
+        left: 21%;
+        max-width: 120px;
+        animation-delay: 0.7s;
+        @include media-laptop {
+          max-width: 80px;
+        }
+      }
+    }
+  }
+  &__accordion {
+    width: 100%;
+    &:not(:first-child) {
+      margin-top: 25px;
+      @include media-tablet {
+        margin-top: 20px;
+      }
+    }
+  }
+  &__service-fea-about {
+    &:not(:first-child) {
+      margin-top: 25px;
+      @include media-laptop {
+        margin-top: 0;
+      }
+      @include media-tablet {
+        margin-top: 20px;
+      }
+    }
+  }
+}
+.bvi-body {
+  .service-fea-offers {
+    display: block;
+    &__pic {
+      display: none;
+    }
+  }
+}

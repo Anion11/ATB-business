@@ -1,0 +1,210 @@
+mixin banner(mods)
+  -
+    const baseName = 'banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        block
+    .banner__nav
+      .banner__nav-btn-prev
+      .banner__nav-pagination
+        .banner__nav-count
+        svg.banner__nav-progress.bvi-no-styles(width='50' height='50' viewbox='0 0 50 50')
+          circle.bvi-no-styles(cx='25' cy='25' r='24' fill='none' stroke='#fe5000' stroke-width='2')
+      .banner__nav-btn-next
+
+mixin banner__item(mods)
+  -
+    const baseName = 'banner__item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__item.swiper-slide(class=allMods)&attributes(attributes)
+    block
+
+mixin banner__wrapper(img, imgSmall, imgsData, mods)
+  -
+    const baseName = 'banner__wrapper'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__wrapper(class=allMods)&attributes(attributes)
+    .inner
+      block
+    .banner__img(class = (imgSmall ? 'banner__img--s' : ''))
+      if imgsData
+        each itemImg in imgsData
+          img.banner__img-item(class=itemImg.mods src=itemImg.src data-tab-img=itemImg.data alt='')
+      else
+        img(src=img, alt='')
+
+mixin banner__h1(text, mods, h1)
+  -
+    const baseName = 'banner__h1'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  if h1 === false
+    .banner__h1(class=allMods)&attributes(attributes) !{text}
+      block
+  else
+    h1.banner__h1(class=allMods)&attributes(attributes) !{text}
+      block
+
+mixin banner__subtitle(text, mods)
+  -
+    const baseName = 'banner__subtitle'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__subtitle(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin banner__descr(text, mods)
+  -
+    const baseName = 'banner__descr'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__descr(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin banner__text(text, mods)
+  -
+    const baseName = 'banner__text'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__text(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin banner__slogan(text, mods)
+  -
+    const baseName = 'banner__slogan'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__slogan(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin banner__foot(mods)
+  -
+    const baseName = 'banner__foot'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__foot(class=allMods)&attributes(attributes)
+    block
+
+mixin banner__mobile(text, mods)
+  -
+    const baseName = 'banner__mobile'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner__mobile(class=allMods)&attributes(attributes) !{text}
+    .inner
+      block
+
+mixin banner-sapid(sapidData, mods)
+  -
+    const baseName = 'banner-sapid'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner-sapid(class=allMods)&attributes(attributes)
+    each box in sapidData
+      .banner-sapid__box
+        +banner-sapid__button()(href=box.link class=box.class class=box.content ? 'js-open-content' : '')
+          .banner-sapid__button-img
+            img(src=box.img alt='')
+          .banner-sapid__button-txt !{box.txt}
+        if box.content
+          .banner-sapid__main
+            .banner-sapid__main-close
+            .banner-sapid__main-content
+              each item in box.content
+                a.banner-sapid__main-item(href=item.link target='_blank' class=item.mods)
+                  .banner-sapid__main-icon
+                    img(src=item.img alt='')
+                  .banner-sapid__main-txt !{item.txt}
+    block
+
+mixin banner-sapid__button()
+
+  if (attributes.href)
+    a.banner-sapid__button&attributes(attributes)
+      block
+
+  else
+    .banner-sapid__button&attributes(attributes)
+      block

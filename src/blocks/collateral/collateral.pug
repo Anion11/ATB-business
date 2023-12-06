@@ -1,0 +1,30 @@
+mixin collateral(items, mods)
+  -
+    const baseName = 'collateral'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .collateral(class=allMods)&attributes(attributes)
+    each item in items
+      .collateral__item(class=item.mods)
+        .collateral__text
+          if item.title
+            .collateral__title !{item.title}
+              if item.titleTooltip
+                if item.titleNowrap
+                  =' '
+                  span.text-nowrap !{item.titleNowrap}
+                    +ui-tooltip(item.titleTooltip)
+                else
+                  +ui-tooltip(item.titleTooltip)
+          if item.descr
+            .collateral__descr !{item.descr}
+        .collateral__img
+          img(src=item.img, alt='')
+    block

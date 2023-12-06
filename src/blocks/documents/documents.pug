@@ -1,0 +1,41 @@
+mixin documents(documentsItems, mods, getOnlyWrapper)
+  -
+    const baseName = 'documents'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .documents(class=allMods)&attributes(attributes)
+    if !getOnlyWrapper
+      if documentsItems
+        each item in documentsItems
+          +documents-item(item.name, item.info, item.mods)
+      else
+        -for (documentsItems = 0; documentsItems < 5; documentsItems++)
+          +documents-item('Базовый стандарт защиты прав и интересов физических и юридических лиц — получателейфинансовых услуг, оказываемых членами саморегулируемых организаций, объединяющих страховые организации', '(pdf, 354.58 КБ)')
+    block
+
+mixin documents-item(name, info, mods)
+  -
+    const baseName = 'documents-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.documents-item(class=allMods href='#')&attributes(attributes)
+    .documents-item__icon
+      +icon('icon_document')
+    .documents-item__content
+      .documents-item__name !{name}
+      if info
+        .documents-item__info !{info}

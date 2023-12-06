@@ -1,0 +1,45 @@
+mixin leasing-reference(mods)
+  -
+    const baseName = 'leasing-reference'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .leasing-reference(class=allMods)&attributes(attributes)
+    .leasing-reference__column
+      .leasing-reference__block
+        .leasing-reference__subtitle Общество с ограниченной ответственностью «Лизинговая компания АТБ»
+        +ui-ul('')
+          li ООО «АТБ ЛК»
+          li ИНН 7703363177
+          li ОГРН 1027703024733
+          li КПП 770901001
+      .leasing-reference__block
+        .leasing-reference__subtitle Адрес:
+        .leasing-reference__txt 101000, город Москва, Подсосенский переулок, дом 30, строение 1, помещение 2
+      .leasing-reference__block
+        .leasing-reference__subtitle Телефон:
+        .leasing-reference__txt + 7 (499) 110-72-71
+    .leasing-reference__column
+      .leasing-reference__block
+        .leasing-reference__subtitle Эл. почта:
+        .leasing-reference__txt info@atblk.ru
+      .leasing-reference__block
+        .leasing-reference__subtitle Генеральный директор:
+        .leasing-reference__txt Гуцуляк Алексей Васильевич
+      .leasing-reference__block
+        .leasing-reference__subtitle Реквизиты:
+        +ui-ul('')
+          li Наименование банка: Филиал «АТБ» (АО) в г. Москва
+          li Расчетный счет: 40701810619000000009
+          li Корреспондентский счет: 30101810145250000754
+          li БИК 044525754
+          li ОКПО 13529038
+          li ОКВЭД 64.91
+          li ОКТМО 45375000
+    block

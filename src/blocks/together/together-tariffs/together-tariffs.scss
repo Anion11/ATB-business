@@ -1,0 +1,92 @@
+.together-tariffs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+  }
+  &__box {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    @include media-laptop {
+      display: block;
+    }
+  }
+  &__head {
+    position: relative;
+    min-height: 140px;
+    padding: 30px 105px 30px 45px;
+    border-radius: 8px 8px 0 0;
+    background-color: $grey20;
+    @include media-laptop {
+      min-height: auto;
+    }
+    @include media-tablet {
+      padding: 20px 54px 20px 20px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100px;
+      height: 100px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      @include media-tablet {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    &--green {
+      &::before {
+        background-image: url('img/lemon--green.png');
+      }
+    }
+    &--yellow {
+      &::before {
+        background-image: url('img/lemon--yellow.png');
+      }
+    }
+  }
+  &__name {
+    margin-bottom: 10px;
+    font: 700 28px/1.5 $font;
+    @include media-tablet {
+      font-size: 22px;
+    }
+  }
+  &__main {
+    padding: 25px 45px 45px;
+    flex: auto;
+    border: 1px solid $grey40;
+    border-top: 0;
+    border-radius: 0 0 8px 8px;
+    @include media-tablet {
+      padding: 20px 20px 25px;
+    }
+  }
+  &__descr {
+    padding: 20px 0;
+    border-bottom: 1px solid $grey40;
+    @include media-tablet {
+      padding: 10px 0;
+    }
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
+.bvi-body {
+  .together-tariffs {
+    &__head {
+      border: 1px solid $grey40;
+      border-radius: 8px 8px 0 0;
+    }
+  }
+}

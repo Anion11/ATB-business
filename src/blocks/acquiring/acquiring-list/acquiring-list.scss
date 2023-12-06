@@ -1,0 +1,19 @@
+.acquiring-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  @include media-tablet {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  &__logo {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 55px;
+    max-height: 25px;
+    margin: 3px;
+    &:first-child {
+      margin-left: 10px;
+    }
+  }
+}

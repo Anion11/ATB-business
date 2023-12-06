@@ -1,0 +1,52 @@
+.bus-prot-steps {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 60px;
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+  }
+  &__item {
+    display: flex;
+  }
+  &__icon {
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  &__title {
+    margin-bottom: 5px;
+    font: 700 17px/1.3 $font;
+  }
+  &__text {
+    font: 15px/1.3 $font;
+  }
+  &__bottom {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid $grey50;
+  }
+  &__bot-txt {
+    font: 17px/1.3 $font;
+  }
+  &__ui-ul {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    @include media-tablet {
+      flex-direction: column;
+    }
+    li {
+      &:not(:last-child) {
+        margin-right: 30px;
+        @include media-tablet {
+          margin-right: 0;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

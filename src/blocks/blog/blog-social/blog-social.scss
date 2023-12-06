@@ -1,0 +1,45 @@
+.blog-social {
+  @include media-laptop {
+    display: flex;
+  }
+  &__item {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    @include media-laptop {
+      margin: 0 15px 0 0;
+    }
+    &:last-child {
+      margin: 0;
+    }
+    &:hover {
+      .blog-social__text {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  &__icon {
+    width: 24px;
+    height: 24px;
+    transition: 0.3s;
+  }
+  &__text {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    padding: 5px 10px;
+    font: 300 14px/1.5 $font;
+    white-space: nowrap;
+    color: $grey80;
+    background: $grey20;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    pointer-events: none;
+    @include media-laptop {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'factoring'
+    const pageTitle ='Присоединяйтесь к команде партнеров АТБ'
+
+  -
+    const tabsHeadItems =[
+      { text: 'Для поставщика' },
+      { text: 'Для дебитора' },
+    ]
+
+  -
+    const benefitsItems1 =[
+      { icon: 'img/icon_cash.svg',
+        title: 'Финансирование без залога до&nbsp;90% от&nbsp;суммы поставки сразу после отгрузки товара или оказания услуг дебитору',
+      },
+      { icon: 'img/icon_calendar.svg',
+        title: 'Отсрочка платежа без риска неоплаты со&nbsp;стороны дебитора',
+      },
+      { icon: 'img/icon_person.svg',
+        title: 'Передача управления дебиторской задолженностью Фактору',
+      },
+      { icon: 'img/icon_business.svg',
+        title: 'Увеличение продаж за&nbsp;счет предоставления отсрочки платежа',
+      },
+      { icon: 'img/icon_file.svg',
+        title: 'Минимальный пакет документов, лимит устанавливается на&nbsp;дебитора',
+      },
+      { icon: 'img/icon_laptop.svg',
+        title: 'Не&nbsp;требуется открытие расчётного счета в&nbsp;АТБ',
+      },
+    ]
+
+  -
+    const benefitsItems2 =[
+      { icon: 'img/icon_calendar.svg',
+        title: 'Отсрочка платежа до&nbsp;180 календарных дней',
+      },
+      { icon: 'img/icon_cash.svg',
+        title: 'Лимит финансирования от&nbsp;5&nbsp;млн рублей',
+      },
+      { icon: 'img/icon_person.svg',
+        title: 'Не&nbsp;требуется заключать договор факторинга с&nbsp;Фактором',
+      },
+      { icon: 'img/icon_wallet.svg',
+        title: 'Комиссия за&nbsp;факторинг оплачивается поставщиком',
+      },
+      { icon: 'img/icon_money.svg',
+        title: 'Увеличение объема закупок за&nbsp;счет получения/увеличения отсрочки платежа',
+      },
+      { icon: 'img/icon_interface.svg',
+        title: 'Факторинг не&nbsp;учитывается в&nbsp;долговой нагрузке дебитора в&nbsp;отличии от&nbsp;кредита или гарантий',
+      },
+    ]
+
+block content
+  main
+    +banner
+      +banner__item('--factoring')
+        +banner__wrapper('img/banner_factoring.jpg')
+          +banner__h1('Факторинг')
+          +banner__descr('От ', '--size-s').text-orange
+            span.banner__descr.text-nowrap 5 млн ₽
+            br
+            | Финансируем до&nbsp;90% от&nbsp;суммы поставки
+          +banner__foot
+            +ui-button('Оставить заявку', 'banner')(href='#section-form')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +factoring-services
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('Преимущества факторинга без&nbsp;регресса', 'section-head')
+        +tabs-head(tabsHeadItems, '', '--round')
+        +tabs-main
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +benefits(benefitsItems1, '--items2, --title-normal')
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +benefits(benefitsItems2, '--items2, --title-normal')
+
+      +section('--bg-grey')
+        .inner
+          +section-head
+            +ui-h2('Как работает факторинг')
+          +factoring-work
+
+      +section#form-section
+        .inner
+          +section-head('--max-w800, --center').text-center
+            +ui-h2('Оставьте заявку на&nbsp;консультацию по&nbsp;факторингу', 'section-head')

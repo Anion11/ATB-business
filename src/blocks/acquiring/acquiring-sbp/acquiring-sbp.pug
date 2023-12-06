@@ -1,0 +1,66 @@
+mixin acquiring-sbp(mods)
+  -
+    const baseName = 'acquiring-sbp'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const benefits = [
+      {
+        percent: '0',
+        descr: 'для госучреждений',
+      },
+      {
+        percent: '0,4',
+        descr: 'для льготных видов деятельности',
+        tooltip: {
+          list: [
+            'Потребительские товары и товары повседневного спроса;',
+            'Лекарства и товары медицинского назначения, БАДы;',
+            'Медицинские учреждения;',
+            'Образовательные учреждения;',
+            'Страховые компании;',
+            'Телекоммуникационные, информационные и почтовые услуги;',
+            'Управляющие компании, ПИФы и Инвестиционные фонды;',
+            'Пенсионные фонды;',
+            'Транспорт;',
+            'Благотворительные организации;',
+            'ЖКУ'
+          ],
+        },
+      },
+      {
+        percent: '0,7',
+        descr: 'для остальных',
+      },
+    ]
+
+  .acquiring-sbp(class=allMods)&attributes(attributes)
+    .acquiring-sbp__img
+      +icon('icon_sbp').bvi-svg
+    .acquiring-sbp__info
+      h4.acquiring-sbp__title Платежи до&nbsp;1&nbsp;млн&nbsp;рублей по&nbsp;QR-коду
+      .acquiring-sbp__text Мгновенное зачисление на&nbsp;расчетный счет. Подключение
+        =' '
+        a.text-orange(href='#') в&nbsp;любом офисе банка
+        br
+        | Размер комиссии зависит от&nbsp;вида деятельности, но&nbsp;не&nbsp;более
+        =' '
+        span.text-nowrap 1 500 ₽
+          +ui-tooltip('подробнее <a class="text-orange" href="#documnets-section">здесь</a>')
+      .acquiring-sbp__benefits
+        each item in benefits
+          .acquiring-sbp__benefit
+            .acquiring-sbp__percent !{item.percent}
+              =' '
+              span.acquiring-sbp__percent-xs %
+            .acquiring-sbp__descr !{item.descr}
+              if item.tooltip
+                +ui-tooltip
+                  +ui-ul(item.tooltip.list, '--tooltip')
+    block

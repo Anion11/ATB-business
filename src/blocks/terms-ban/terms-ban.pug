@@ -1,0 +1,25 @@
+mixin terms-ban(data, mods)
+  -
+    const baseName = 'terms-ban'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .terms-ban(class=allMods)&attributes(attributes)
+    .terms-ban__container
+      each item in data.list
+        .terms-ban__item
+          .terms-ban__top
+            if item.title
+              span.terms-ban__title !{item.title}
+            if item.titleBig
+              span.terms-ban__title-big !{item.titleBig}
+          .terms-ban__desc !{item.desc}
+    if data.footnote
+      .terms-ban__footnote !{data.footnote}
+    block

@@ -1,0 +1,68 @@
+mixin calc-loan(type, mods)
+  -
+    const baseName = 'calc-loan'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -const dataCalcName = `data-loan_${type}`
+
+  .calc-loan(class=allMods)&attributes(attributes)
+    .calc-loan__params
+      +calc-loan__line
+        -const rangeAmountTitle = type === 'microlite' ? 'Желаемая сумма кредита' : 'Cумма кредита'
+        +ui-range(rangeAmountTitle, '  ₽')(data-min='500000' data-max='10000000')&attributes({[`${dataCalcName}-range-amount`]: ''})
+      +calc-loan__line
+        +ui-range('Срок кредита', '  мес')(data-min='6' data-max='60')&attributes({[`${dataCalcName}-range-term`]: ''})
+      if type === 'microlite'
+        +calc-loan__options
+          +ui-radio('calcLoanOption1', 'без обеспечения')(name='calcLoanOption')&attributes({[`${dataCalcName}-radio-type`]: ''})
+          +ui-radio('calcLoanOption2', 'залог иного имущества на всю сумму кредита')(name='calcLoanOption')&attributes({[`${dataCalcName}-radio-type`]: ''})
+          +ui-radio('calcLoanOption3', 'залог недвижимого имущества на всю сумму кредита')(name='calcLoanOption')&attributes({[`${dataCalcName}-radio-type`]: ''})
+
+    .calc-loan__result
+      .calc-loan__result-main
+        .calc-loan__result-title Ежемесячный платеж
+        .calc-loan__result-num&attributes({[`${dataCalcName}-text-monthly_pay`]: ''}) 25 092 ₽
+      .calc-loan__result-btn
+        +ui-button('оставить заявку')(href='#')
+      .calc-loan__result-foot Расчет калькулятора является предварительным. Не является публичной офертой. Процентная ставка по кредиту определяется исходя из анализа кредитной истории и финансового состояния заемщика.
+
+    block
+
+mixin calc-loan__line(mods)
+  -
+    const baseName = 'calc-loan__line'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .calc-loan__line(class=allMods)&attributes(attributes)
+    block
+
+mixin calc-loan__options(mods)
+  -
+    const baseName = 'calc-loan__options'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .calc-loan__options(class=allMods)&attributes(attributes)
+    .calc-loan__options-title Выберите вид обеспечения по&nbsp;кредиту:
+    .calc-loan__options-block
+      block

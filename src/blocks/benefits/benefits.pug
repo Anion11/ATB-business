@@ -1,0 +1,35 @@
+mixin benefits(benefitsItems, mods)
+  -
+    const baseName = 'benefits'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .benefits(class=allMods)&attributes(attributes)
+    each item in benefitsItems
+      .benefits__item(class=item.modClass)
+        if item.icon
+          .benefits__icon
+            img(src=item.icon, alt='')
+        .benefits__text
+          if item.nums
+            .benefits__nums !{item.nums}
+          if item.title
+            .benefits__title(class=item.titleModClass) !{item.title}
+              if item.titleTooltip
+                +ui-tooltip(item.titleTooltip)
+          if item.descr
+            .benefits__descr !{item.descr}
+              if item.descrTooltip
+                +ui-tooltip(item.descrTooltip)
+          if item.subtitle
+            .benefits__subtitle !{item.subtitle}
+        //- используется только для страницы service-fea
+        if item.btn
+          +ui-button(item.btn, 'benefits, --link-next').text-orange(href='#')
+    block

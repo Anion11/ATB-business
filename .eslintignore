@@ -1,0 +1,6 @@
+/build
+/gulp-tasks
+src/pages/**/*-amp.js
+
+gulpfile.mjs
+webpack.config.mjs

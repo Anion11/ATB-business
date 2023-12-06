@@ -1,0 +1,28 @@
+mixin factoring-services(mods)
+  -
+    const baseName = 'factoring-services'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const factoringServicesUl =[
+      'Финансирование под уступку денежного требования к&nbsp;дебиторам',
+      'Управление дебиторской задолженностью',
+      'Администрирование документооборота',
+      'Всесторонний анализ потенциальных и&nbsp;действующих контрагентов',
+    ]
+
+  .factoring-services(class=allMods)&attributes(attributes)
+    .factoring-services__content
+      h3.factoring-services__h3 Факторинг — комплекс финансовых услуг:
+      +ui-p1('', '--light')
+        +ui-ul(factoringServicesUl)
+    .factoring-services__img
+      img(src='img/factoring_services_img.png', alt='')
+    block

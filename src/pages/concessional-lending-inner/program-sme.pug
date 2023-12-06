@@ -1,0 +1,187 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'concessional-lending-inner'
+  -const pageTitle ='Кредитование МСП | Программа банка АТБ'
+
+  -
+    const tabsHeadItems = [
+      { text: 'На инвестиционные цели' },
+      { text: 'На пополнение оборотных средств' },
+      { text: 'На развитие предпринимательской деятельности*' },
+      { text: 'На рефинансирование' },
+    ]
+
+  -
+    const termsItems =[
+      { name: 'Сумма', descr: 'до 10 млн руб.' },
+      { name: 'Срок', descr: 'до 3 лет' },
+      { name: 'Ставка', descr: 'Не&nbsp;более: ключевая ставка Банка России +&nbsp;3,5%' },
+    ]
+
+  -
+    const tableItems1 ={
+      thead: [
+        {
+          th: [
+            { text: 'Ставка', mods: 'ui-table__tr-title' },
+            { text: 'Срок', mods: 'ui-table__tr-title' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: `Не&nbsp;более: ключевая ставка Банка России +&nbsp;2,75%` },
+            { text: 'До&nbsp;10&nbsp;лет' },
+          ]
+        },
+      ]
+    }
+
+  -
+    const tableItems2 ={
+      thead: [
+        {
+          th: [
+            { text: 'Ставка', mods: 'ui-table__tr-title' },
+            { text: 'Срок', mods: 'ui-table__tr-title' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: `Не&nbsp;более: ключевая ставка Банка России +&nbsp;2,75%` },
+            { text: 'До&nbsp;3&nbsp;лет*' },
+          ]
+        },
+      ]
+    }
+
+  -
+    const prioritySectorsList =[
+      'Сельское хозяйство, включая производство сельскохозяйственной продукции, а&nbsp;также предоставление услуг в&nbsp;сельском хозяйстве, в&nbsp;том числе в&nbsp;целях обеспечения импортозамещения и&nbsp;развития несырьевого экспорта;',
+      'Обрабатывающее производство, в&nbsp;том числе производство пищевых продуктов, первичная и&nbsp;последующая (промышленная) переработка сельскохозяйственной продукции, в&nbsp;том числе в&nbsp;целях обеспечения импортозамещения и&nbsp;развития несырьевого экспорта;',
+      'Производство и&nbsp;распределение электроэнергии, газа и&nbsp;воды;',
+      'Строительство;',
+      'Туристская деятельность и&nbsp;деятельность в&nbsp;области туристской индустрии в&nbsp;целях развития внутреннего и&nbsp;въездного туризма;',
+      'Деятельность в&nbsp;области информации и&nbsp;связи;',
+      'Транспортировка и&nbsp;хранение;',
+      'Деятельность в&nbsp;области здравоохранения;',
+      'Деятельность в&nbsp;области образования;',
+      'Водоснабжение, водоотведение, организация сбора, обработки и&nbsp;утилизации отходов, в&nbsp;том числе отсортированных материалов, а&nbsp;также переработка металлических и&nbsp;неметаллических отходов, мусора и&nbsp;прочих предметов во&nbsp;вторичное сырье, деятельность по&nbsp;ликвидации загрязнений;'
+    ]
+
+    const prioritySectorsListHidden = [
+      'Деятельность гостиниц и&nbsp;предприятий общественного питания;',
+      'Деятельность в&nbsp;области культуры, спорта;',
+      'Деятельность профессиональная, научная и&nbsp;техническая;',
+      'Деятельность в&nbsp;сфере бытовых услуг;',
+      'Предоставление в&nbsp;аренду (сдача внаем), за&nbsp;исключением предоставления подоговорам финансовой аренды (лизинга), собственного недвижимого имущества (за&nbsp;исключением земельных участков, многоквартирных домов, жилых домов, квартир и&nbsp;иных жилых помещений) и&nbsp;собственного движимого имущества;',
+    ]
+
+    const smallBanner = {
+      title: 'Бизнес-оборот',
+      descr: 'до&nbsp;<span class="small-banner__descr-l">30</span>&nbsp;млн рублей',
+      p2: 'На пополнение оборотных средств, оплату текущих расходов',
+      btn: 'Подробнее',
+      img: 'img/small-banner_business-turnover.png',
+    }
+
+block content
+  main
+    +breadcrumbs
+      +breadcrumbs-item('Кредиты с господдержкой', '#')
+      +breadcrumbs-item('Кредитование субъектов МСП')
+    +banner('--m-vertically')
+      +banner__item('--programm-sme')
+        +banner__wrapper('img/banner_programm_sme.png', true)
+          +banner__h1('Кредитование субъектов МСП', '--mob-size-l, --mob-mb-l', false)
+          +banner__text('Льготная программа, реализуемая в&nbsp;рамках Постановления Правительства РФ &#8470;&nbsp;1764 от&nbsp;30.12.2018')
+    .page-content
+      +section('--mt0')
+        .inner
+          +about-programm('img/about_programm_sme.png', '&laquo;Азиатско-Тихоокеанский Банк&raquo; (АО) является уполномоченным банком Минэкономразвития России и&nbsp;реализует программу льготного кредитования субъектов малого и&nbsp;среднего предпринимательства (МСП), утвержденную Постановлением Правительства РФ &#8470;&nbsp;1764 от&nbsp;30.12.2018', '--sme')
+
+      +section()
+        .inner
+          +section-head('--max-w')
+            +ui-h4('Программа кредитования предусматривает предоставление банком  кредита субъектам МСП,  осуществляющим деятельность в <b>приоритетных отраслях</b>, на следующих льготных условиях:')
+        +tabs-head(tabsHeadItems, '', '--grey')
+        +tabs-main
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +ui-table(tableItems1)
+                +section-footnote('*Льготная ставка действует только в&nbsp;течение первых 5&nbsp;лет')
+            +section()
+              .inner
+                +section-head()
+                  +ui-h2('Перечень приоритетных отраслей (видов деятельности)', 'section-head')
+                  +ui-p1('', '--light')
+                    +ui-ol(prioritySectorsList)
+                      div(style='display: none;' data-expand-block='priority_sectors_list1')
+                        each item in prioritySectorsListHidden
+                          li !{item}
+                  +section-footnote('', '--fz12')
+                    b
+                      span.text-grey-blue.text-pointer(data-expand-btn='priority_sectors_list1' data-start-text='Ещё 5' data-end-text='Свернуть') Ещё 5
+                  +section-footnote('*Кредит на&nbsp;развитие предпринимательской деятельности предоставляется микропредприятиям всех отраслей, за&nbsp;исключением деятельности в&nbsp;сфере розничной&nbsp;и (или) оптовой торговли')
+          +tabs-main__item()
+            +section('--mt0')
+              .inner
+                +ui-table(tableItems2)
+                +section-footnote('*Льготная ставка действует только в&nbsp;течение первых 12&nbsp;мес.')
+            +section('--mt-s')
+              .inner
+                +small-banner(smallBanner, '--business-turnover')
+            +section()
+              .inner
+                +section-head()
+                  +ui-h2('Перечень приоритетных отраслей (видов деятельности)', 'section-head')
+                  +ui-p1('', '--light')
+                    +ui-ol(prioritySectorsList)
+                      div(style='display: none;' data-expand-block='priority_sectors_list2')
+                        each item in prioritySectorsListHidden
+                          li !{item}
+                  +section-footnote('', '--fz12')
+                    b
+                      span.text-grey-blue.text-pointer(data-expand-btn='priority_sectors_list2' data-start-text='Ещё 5' data-end-text='Свернуть') Ещё 5
+                  +section-footnote('*Кредит на&nbsp;развитие предпринимательской деятельности предоставляется микропредприятиям всех отраслей, за&nbsp;исключением деятельности в&nbsp;сфере розничной&nbsp;и (или) оптовой торговли')
+          +tabs-main__item()
+            +section('--mt0')
+              .inner
+                +terms(termsItems)
+                +section-footnote('*Кредит на&nbsp;развитие предпринимательской деятельности предоставляется микропредприятиям всех отраслей, за&nbsp;исключением деятельности в&nbsp;сфере розничной&nbsp;и (или) оптовой торговли')
+          +tabs-main__item()
+            +section('--mt0')
+              .inner
+                +ui-p1('Сумма, срок и&nbsp;ставка (оборотная или инвестиционная) определяются в&nbsp;зависимости от&nbsp;цели первоначального кредита.')
+            +section()
+              .inner
+                +section-head()
+                  +ui-h2('Перечень приоритетных отраслей (видов деятельности)', 'section-head')
+                  +ui-p1('', '--light')
+                    +ui-ol(prioritySectorsList)
+                      div(style='display: none;' data-expand-block='priority_sectors_list4')
+                        each item in prioritySectorsListHidden
+                          li !{item}
+                  +section-footnote('', '--fz12')
+                    b
+                      span.text-grey-blue.text-pointer(data-expand-btn='priority_sectors_list4' data-start-text='Ещё 5' data-end-text='Свернуть') Ещё 5
+                  +section-footnote('*Кредит на&nbsp;развитие предпринимательской деятельности предоставляется микропредприятиям всех отраслей, за&nbsp;исключением деятельности в&nbsp;сфере розничной&nbsp;и (или) оптовой торговли')
+
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Оставить заявку', 'section-head')

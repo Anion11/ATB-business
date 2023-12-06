@@ -1,0 +1,19 @@
+mixin main-info(mods)
+  -
+    const baseName = 'main-info'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .main-info(class=allMods)&attributes(attributes)
+    +currency('main-info')
+    a.main-info-requisites(href='#')
+      .main-info-requisites__title Реквизиты и филиалы банка
+      .main-info-requisites__descr Адреса отделений и банкоматов банка, график работы и телефоны.
+      +ui-button('подробнее', 'main-info-requisites')
+    block

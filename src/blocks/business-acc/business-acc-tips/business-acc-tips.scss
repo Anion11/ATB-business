@@ -1,0 +1,58 @@
+.business-acc-tips {
+  position: relative;
+  min-height: 335px;
+  padding: 40px;
+  background: linear-gradient(90deg, $grey20 0%, #edf3f7 100%);
+  border-radius: 6px;
+  overflow: hidden;
+  @include media-laptop {
+    padding: 40px 20px;
+  }
+  @include media-tablet {
+    min-height: auto;
+    padding: 40px 25px 30px;
+  }
+  &__ui-h2 {
+    margin-bottom: 25px;
+    @include media-tablet {
+      margin-bottom: 15px;
+    }
+  }
+  &__txt {
+    margin-bottom: 35px;
+    font: 300 18px/1.4 $font;
+    @include media-tablet {
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+  }
+  &__ui-h2,
+  &__txt {
+    padding-right: 320px;
+    @include media-laptop {
+      padding-right: 105px;
+    }
+    @include media-tablet {
+      padding-right: 0;
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 260px;
+    @include media-laptop {
+      right: -110px;
+    }
+    @include media-tablet {
+      display: none;
+    }
+  }
+  &__hidden {
+    display: none;
+    margin-top: 45px;
+    @include media-tablet {
+      margin-top: 30px;
+    }
+  }
+}

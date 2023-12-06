@@ -1,0 +1,128 @@
+mixin mobile-about(mods)
+  -
+    const baseName = 'mobile-about'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        navTitle: 'Удобство',
+        text: {
+          title: 'Все в одном приложении',
+          list: [
+            'Принцип «одного окна» - управление несколькими счетами в разных филиалах и организациях' ,
+            'Подтверждение документов по «правилу двух рук» с возможностью установить дополнительную «контролирующую» подпись' ,
+          ],
+        },
+        images: {
+          mod: 'comfortable',
+          screen: 'img/about_screen1.png',
+          decor: 'img/about_decor1.png',
+          anim: [
+            {
+              src: 'img/about_moneta1-1.png',
+              mod: 'moneta1',
+            },
+            {
+              src: 'img/about_moneta1-2.png',
+              mod: 'moneta2',
+            },
+          ],
+        },
+      },
+      {
+        navTitle: 'Контроль',
+        text: {
+          title: 'Широкий функционал',
+          list: [
+            'Сервис «Светофор» - удобная проверка контрагентов',
+            'Управление корпоративной картой в реальном времени – остаток по счету, блокировка, история заявлений',
+            'Выписки и реквизиты счетов',
+            'Операции с валютой по выгодным курсам и многое другое',
+          ],
+        },
+        images: {
+          mod: 'control',
+          screen: 'img/about_screen2.png',
+          decor: 'img/about_decor2.png',
+          anim: [
+            {
+              src: 'img/about_moneta2-1.png',
+              mod: 'moneta1',
+            },
+            {
+              src: 'img/about_card.png',
+              mod: 'decor-card',
+            },
+          ],
+        },
+      },
+      {
+        navTitle: 'Скорость',
+        text: {
+          title: 'Всегда на связи',
+          desc: 'Дашборд - важные события для клиента, требующие реакции:',
+          list: [
+            'новые возвращенные документы' ,
+            'ближайшие события из календаря бухгалтера' ,
+            'количество документов на подпись' ,
+          ],
+        },
+        images: {
+          mod: 'speed',
+          screen: 'img/about_screen3.png',
+          decor: 'img/about_decor3.png',
+          anim: [
+            {
+              src: 'img/about_moneta3-1.png',
+              mod: 'moneta1',
+            },
+            {
+              src: 'img/about_calendar.png',
+              mod: 'calendar',
+            },
+          ],
+        },
+      },
+    ]
+
+  .mobile-about(class=allMods)&attributes(attributes)
+    .mobile-about__wrapper
+      .mobile-about__content
+        +ui-h2('Преимущества АТБ Бизнес', 'mobile-about')
+        .mobile-about__nav
+          each item, index in data
+            .mobile-about__link(class=index===0 ? 'mobile-about__link--active' : '') !{item.navTitle}
+        .mobile-about__txt
+          .swiper-container
+            .swiper-wrapper
+              each item in data
+                .mobile-about__item.swiper-slide
+                  .mobile-about__title !{item.text.title}
+                  if item.text.desc
+                    .mobile-about__descr !{item.text.desc}
+                  +ui-ul(item.text.list, 'mobile-about')
+        .mobile-about__btns
+          .mobile-about__btn.mobile-about__btn--prev
+          .mobile-about__btn.mobile-about__btn--next
+      .mobile-about__images
+        .swiper-container
+          .swiper-wrapper
+            each item in data
+              .mobile-about__img.swiper-slide(class=`mobile-about__img--${item.images.mod}`)
+                .mobile-about__screen
+                  img(src=item.images.screen, alt='')
+                .mobile-about__decor
+                  img(src=item.images.decor, alt='')
+                .mobile-about__anim
+                  each animItem in item.images.anim
+                    .mobile-about__anim-item(class=`mobile-about__anim-item--${animItem.mod}`)
+                      img(src=animItem.src, alt='')
+    .mobile-about__scrollbar
+    block

@@ -1,0 +1,25 @@
+mixin cards-offers(data, mods)
+  -
+    const baseName = 'cards-offers'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .cards-offers(class=allMods)&attributes(attributes)
+    each item in data
+      .cards-offers__item
+        .cards-offers__img(class=item.imgMod ? `cards-offers__img--${item.imgMod}` : '')
+          img(src=item.img, alt='')
+        .cards-offers__info
+          if item.icon
+            .cards-offers__icon
+              img(src=item.icon, alt='')
+          .cards-offers__title !{item.title}
+          .cards-offers__desc !{item.desc}
+          +ui-button(item.link.txt, 'cards-offers, --link-next').text-orange(href=item.link.href)
+    block

@@ -1,0 +1,45 @@
+@import '/node_modules/normalize.css/normalize.css';
+@import '/node_modules/bvi/dist/css/bvi.min.css';
+@import '/node_modules/@fancyapps/ui/dist/fancybox.css';
+@import '/node_modules/flatpickr/dist/flatpickr.min.css';
+@import '/node_modules/nouislider/dist/nouislider.min.css';
+@import '/node_modules/select2/dist/css/select2.min.css';
+@import '/node_modules/swiper/swiper-bundle.min.css';
+@import '/node_modules/tippy.js/dist/tippy.css';
+@import 'utils/variables';
+@import 'utils/media';
+@import 'utils/fonts';
+@import 'utils/keyframes';
+@import '../layouts/layout';
+@import '../layouts/layout-bvi';
+
+
+// BLOCKS
+
+@import '../blocks/_ui/**';
+@import '../blocks/about-programm/about-programm';
+@import '../blocks/accordion/accordion';
+@import '../blocks/banner/banner';
+@import '../blocks/benefits/benefits';
+@import '../blocks/cookies-banner/cookies-banner';
+@import '../blocks/documents/documents';
+@import '../blocks/breadcrumbs/breadcrumbs';
+@import '../blocks/header/header';
+@import '../blocks/how-get/how-get';
+@import '../blocks/features/features';
+@import '../blocks/footer/footer';
+@import '../blocks/pic-tabs/pic-tabs';
+@import '../blocks/popup/popup';
+@import '../blocks/requirements/requirements';
+@import '../blocks/section/section';
+@import '../blocks/small-banner/small-banner';
+@import '../blocks/svg-icon/svg-icon';
+@import '../blocks/tabs/tabs';
+@import '../blocks/terms/terms';
+@import '../blocks/terms-ban/term-ban';
+@import '../blocks/seo/seo';
+@import '../blocks/services/services';
+@import '../blocks/steps/steps';
+@import '../blocks/switch/switch';
+@import '../blocks/useful-goods/useful-goods';
+@import '../blocks/info-block/info-block';

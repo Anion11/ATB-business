@@ -1,0 +1,144 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'construction'
+    const pageTitle ='Кредитование проектов строительства'
+
+    const benefitsItems = [
+      { icon: 'img/benefit_1.svg', title: 'Срок кредитования до 7&nbsp;лет' },
+      { icon: 'img/benefit_2.svg', title: 'Гибкий график погашения' },
+      { icon: 'img/benefit_3.svg', title: 'Снижение ставки по&nbsp;кредиту при&nbsp;наполнении эскроу счетов дольщиков' },
+      { icon: 'img/benefit_4.svg', title: 'Сумма кредита не&nbsp;ограничена' },
+    ]
+
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте заявку <a href="#" class="text-orange">онлайн</a> или&nbsp;по&nbsp;телефону <a href="tel:88007758080" class="text-orange text-nowrap">8 800 775-80-80</a>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Предоставьте документы и&nbsp;дождитесь решения по&nbsp;заявке'
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите кредит <br> для&nbsp;вашего бизнеса'
+      },
+    ]
+
+    const tabsHeadItems = [
+      { text: 'Условия кредитования' },
+      { text: 'Схема проектного финансирования' },
+      { text: 'Как управлять процентной ставкой' },
+      { text: 'Обеспечение' },
+      { text: 'Документы' },
+    ]
+
+    const termsItems = [
+      {
+        name: 'Цель кредита',
+        descr: 'финансирование затрат по&nbsp;строительству одного или нескольких многоквартирных домов или&nbsp;иных объектов недвижимости, строительство которых осуществляется в&nbsp;соответствии с&nbsp;214-ФЗ',
+      },
+      {
+        name: 'Срок кредита',
+        descr: 'до 7&nbsp;лет',
+      },
+      {
+        name: 'Сумма кредита',
+        descr: 'не ограничена',
+      },
+      {
+        name: 'Процентная ставка',
+        descr: 'средневзвешенная, пересматривается ежемесячно в&nbsp;зависимости от&nbsp;объема средств участников долевого строительства на&nbsp;счетах эскроу (возможно снижение до&nbsp;0,01%)',
+      },
+    ]
+
+    const requirementsItems = [
+      { icon: 'img/icon_document.svg', text: 'Анкета-заявление, согласие' },
+      { icon: 'img/icon_document.svg', text: 'Паспорта участников сделки' },
+      { icon: 'img/icon_document.svg', text: 'Официальная отчётность' },
+      { icon: 'img/icon_document.svg', text: 'Карточка сч.&nbsp;51&nbsp;и&nbsp;анализ субконто-контрагенты из&nbsp;1С&nbsp;или выписка из&nbsp;Интернет-Банка по&nbsp;всем расчетным/валютным счетам за&nbsp;полный закрытый год и&nbsp;прошедшие месяцы текущего года' },
+      { icon: 'img/icon_document.svg', text: 'Перечень имущества, предлагаемое в&nbsp;качестве залога' }
+    ]
+
+    const collateralItems = [
+      { mods: 'collateral__item--colspan2',
+        title: 'Земельные',
+        titleNowrap: 'участки',
+        titleTooltip: 'в&nbsp;том числе прав аренды/субаренды земельных участков, на&nbsp;которых осуществляется строительство в&nbsp;рамках реализации проекта, за&nbsp;исключением объектов инфраструктуры, подлежащих передаче в&nbsp;муниципальную или&nbsp;общедолевую собственность',
+        img: 'img/collateral_img_pin.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Акции либо доли застройщика',
+        img: 'img/collateral_img_securities.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Площади жилых и&nbsp;нежилых помещений',
+        img: 'img/collateral_img_house.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Залог прав требований по&nbsp;договору банковского',
+        titleNowrap: 'счета',
+        titleTooltip: 'если&nbsp;обеспечено размещение средств, покрывающих процентные выплаты на&nbsp;инвестиционной фазе, на&nbsp;залоговом счете в&nbsp;Банке',
+        img: 'img/collateral_img_bank_agreement.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Поручительства собственников бизнеса и&nbsp;компаний группы',
+        img: 'img/collateral_img_guarantees.png',
+      },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--construction, --v-inner-pt-xxl')
+        +banner__wrapper('img/banner_construction.png', true)
+          +banner__h1('Кредит для&nbsp;застройщиков', '--mob-size-l, --mob-mb-l')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оставить заявку', 'banner, --m-size-l')(href='#form-section')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +section-head('--max-w')
+            +ui-h4('Застройщики, использующие счета эскроу для&nbsp;оплаты по&nbsp;договорам долевого участия, могут получить кредит в&nbsp;&laquo;Азиатско-Тихоокеанский Банке&raquo; (АО), достаточный для&nbsp;завершения строительства и&nbsp;ввода объекта в&nbsp;эксплуатацию.', 'section-head')
+          +benefits(benefitsItems, '--items2, --title-normal')
+      +section
+        .inner
+          +tabs-head(tabsHeadItems, '', '--fw-light, --orange, --no-item-border')
+          +tabs-main
+            +tabs-main__item(true)
+              +section('--mt0')
+                +terms(termsItems, '--col-xs')
+            +tabs-main__item
+              +section('--mt0')
+                +construction-scheme
+            +tabs-main__item
+              +section('--mt0')
+                +construction-rate
+              +section
+                +section-head
+                  +ui-h2('Рассчитайте ставку', 'section-head')
+                +construction-calc
+            +tabs-main__item
+              +section('--mt0')
+                +collateral(collateralItems)
+            +tabs-main__item
+              +section('--mt0')
+                +requirements(requirementsItems)
+                +section-footnote('Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию решения о&nbsp;предоставлении кредита.')
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+      +section#form-section
+        .inner
+          +section-head.text-center
+            +ui-h2('Оставить заявку', 'section-head')

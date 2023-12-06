@@ -1,0 +1,33 @@
+mixin online-accounting-questions(mods)
+  -
+    const baseName = 'online-accounting-questions'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        title: 'Что это такое?',
+        desc: 'Бесплатный и удобный сервис расчета налогов и взносов для ИП',
+        img: 'img/online-accounting-questions_1.png',
+      },
+      {
+        title: 'Кому подходит?',
+        desc: 'ИП на УСН «Доходы», без сотрудников и без кассы',
+        img: 'img/online-accounting-questions_2.png',
+      },
+    ]
+
+  .online-accounting-questions(class=allMods)&attributes(attributes)
+    each item in data
+      .online-accounting-questions__item
+        .online-accounting-questions__title !{item.title}
+        .online-accounting-questions__desc !{item.desc}
+        .online-accounting-questions__img
+          img(src=item.img, alt='')
+    block

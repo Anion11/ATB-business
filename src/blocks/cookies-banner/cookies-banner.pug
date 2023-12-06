@@ -1,0 +1,18 @@
+mixin cookies-banner(mods)
+  -
+    const baseName = 'cookies-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .cookies-banner(class=allMods)&attributes(attributes)
+    .cookies-banner__text АТБ защищает персональные данные пользователей и обрабатывает Cookies только для персонализации сервисов. Запретить обработку Cookies можно в настройках Вашего браузера. Пожалуйста, ознакомьтесь с
+      =' '
+      a.text-orange(href='#' target='_blank') Условиями обработки персональных данных и Cookies.
+    +ui-button('Спасибо, понятно', 'cookies-banner, --size-s, --empty')
+    block

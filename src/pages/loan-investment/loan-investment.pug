@@ -1,0 +1,153 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'loan-investment'
+    const pageTitle ='Инвестиционный кредит'
+
+    const tabs = [
+      { text: 'Условия' },
+      { text: 'Обеспечение' },
+      { text: 'Документы' },
+    ]
+
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a href="#" class="text-orange">заявку онлайн</a> или по&nbsp;телефону <a href="tel:88007758080" class="text-nowrap text-orange">8-800-775-80-80</a>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Предоставьте документы и&nbsp;дождитесь решения по&nbsp;заявке',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите кредит <br>для&nbsp;вашего бизнеса',
+      },
+    ]
+
+    const benefitsItems = [
+      { icon: 'img/icon_benefits1.svg', descr: 'Гибкие условия по&nbsp;обеспечению, товары в&nbsp;обороте подходят для&nbsp;залога' },
+      { icon: 'img/icon_benefits2.svg', descr: 'Валюта кредита: рубли или&nbsp;юани' },
+      { icon: 'img/icon_benefits3.svg', descr: 'Отсрочка по&nbsp;погашению <br> основного долга до&nbsp;6&nbsp;месяцев' },
+    ]
+
+    const termsTable =[
+      { name: 'Цель кредита', sections: [
+          { title: '<b>Инвестиционные цели:</b>' },
+          { title: '<p>приобретение транспортных средств, оборудования, недвижимости и&nbsp;прочих основных средств, используемых для&nbsp;бизнеса;</p><p>оплата расходов на&nbsp;ремонт основных средств.</p>' },
+      ]},
+      { name: 'Сумма кредита', descr: 'От&nbsp;500&nbsp;000 (₽)' },
+      { name: 'Валюта кредита', sections: [
+        { title: 'Рубли&nbsp;РФ' },
+        { title: 'Юани (&yen;)' },
+      ]},
+      { name: 'Срок кредитования', sections: [
+        { title: 'До&nbsp;60&nbsp;месяцев для&nbsp;кредитов в&nbsp;рублях' },
+        { title: 'До&nbsp;12&nbsp;месяцев для&nbsp;кредитов в&nbsp;юанях' },
+      ]},
+      { name: 'Отсрочка платежа при дифференцированных платежах', sections: [
+        { title: 'До&nbsp;6&nbsp;месяцев для&nbsp;кредитов в&nbsp;рублях' },
+        { title: 'До&nbsp;3&nbsp;месяцев для&nbsp;кредитов в&nbsp;юанях' },
+      ]},
+      { name: 'Процентная ставка', descr: 'От&nbsp;8,35%* годовых (определяется индивидуально)', footnote: '*ставка при сроке кредитования до&nbsp;90&nbsp;дней и&nbsp;сумме кредитования от&nbsp;100&nbsp;млн. руб.' },
+      { name: 'Комиссия за&nbsp;выдачу', descr: '1%&nbsp;от&nbsp;суммы кредита' },
+      { name: 'Форма кредитования', sections: [
+        { title: 'Кредит' },
+        { title: 'Невозобновляемая кредитная линия' },
+      ]},
+    ]
+
+    const collateralItems = [
+      { mods: 'collateral__item--colspan2',
+        title: 'Недвижимое <br>имущество',
+        titleTooltip: 'в&nbsp;том числе объекты незавершенного строительства и&nbsp;морские, речные, воздушные суда',
+        img: 'img/collateral_img_real_estate.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Движимое <br>имущество',
+        img: 'img/collateral_img_movables.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Ценные бумаги',
+        img: 'img/collateral_img_securities.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Залог товаров в&nbsp;обороте',
+        descr: 'До&nbsp;50% (включительно) от&nbsp;суммарной залоговой стоимости обеспечения, но&nbsp;не&nbsp;более 10&nbsp;млн&nbsp;₽',
+        img: 'img/collateral_img_pledge.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Поручительства собственников бизнеса и&nbsp;компаний группы',
+        img: 'img/collateral_img_guarantees.png',
+      },
+    ]
+
+    const requirementsItems = [
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Анкета-заявление, согласие',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Паспорта участников сделки',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Официальная отчётность',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Карточка сч.&nbsp;51&nbsp;и&nbsp;анализ субконто-контрагенты из&nbsp;1С&nbsp;или выписка из&nbsp;Интернет-Банка по&nbsp;всем расчетным/валютным счетам за&nbsp;полный закрытый год и&nbsp;прошедшие месяцы текущего года',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Перечень имущества, предлагаемое в&nbspкачестве залога',
+      }
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--loan-investment')
+        +banner__wrapper('img/banner_loan_investment.png', true)
+          +banner__h1('Бизнес-актив', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('до ')
+            span.banner__subtitle-accent 20
+            |  млн рублей
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оставить Заявку', 'banner, --m-size-l')(href='#form-section')
+            +banner__slogan('На приобретение недвижимости, транспорта и&nbsp;оборудования')
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--pd-y20')
+
+      +section
+        .inner
+          +tabs-head(tabs, '', '--orange, --fw-light, --no-item-border')
+          +tabs-main
+            +tabs-main__item(true)
+              +terms(termsTable, '--m-td-w165')
+            +tabs-main__item
+              +collateral(collateralItems)
+            +tabs-main__item
+              +requirements(requirementsItems)
+              +section-footnote('', '--max-w990')
+                +ui-p1('Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию решения о&nbsp;предоставлении кредита.', '--m-fz14')
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section#form-section
+        .inner
+          p форма

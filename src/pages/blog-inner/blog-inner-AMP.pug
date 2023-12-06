@@ -1,0 +1,18 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='canonical', href='blog-inner-amp.html')
+  link(rel='stylesheet' href='blog-inner-amp.min.css')
+
+block variables
+  -const fileName = 'blog-inner'
+  -const pageTitle ='ATB'
+  -const isAMP =  true
+  -const ampScriptLink = 'https://atb-b.dev.dterra.eu/pages/blog-inner/blog-inner-amp.js'
+
+block content
+  main
+    .page-content
+      +section('--mt0')
+        .inner
+          +blog-inner

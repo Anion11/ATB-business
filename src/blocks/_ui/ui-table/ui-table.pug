@@ -1,0 +1,64 @@
+mixin ui-table(tableItems, mods, type, additionSetting)
+  -
+    const baseName = 'ui-table'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  case type
+    when 'mobileAccordions'
+      .ui-table.ui-table--accordions.js-table(class=allMods)&attributes(attributes)
+        .ui-table__column.js-column
+          .ui-table__th.js-ceil(class=tableItems.thead[0].th[0].mods) !{tableItems.thead[0].th[0].text}
+          .ui-table__main
+            each row in tableItems.tbody
+              .ui-table__td.js-ceil !{row.td[0].text}
+                if row.td[0].textTooltip
+                  +ui-tooltip(row.td[0].textTooltip)
+        each column, index in tableItems.thead[0].th
+          if index!==0
+            .ui-table__column.js-column
+              .ui-table__th.js-ceil.js-accordion-head(class=column.mods) !{column.text}
+                if column.textTooltip
+                  +ui-tooltip(column.textTooltip)
+              .ui-table__main
+                if additionSetting && !additionSetting.notNameInMain
+                  .ui-table__name !{tableItems.thead[0].th[0].text}
+                each row, rowIndex in tableItems.tbody
+                  .ui-table__td.js-ceil(class=row.td[index].mods)
+                    .ui-table__td-name !{row.td[0].text}
+                    .ui-table__td-val !{row.td[index].text}
+                      if row.td[index].ul
+                        +ui-ul(row.td[index].ul, row.td[index].ulMods)
+
+    default
+      .ui-table(class=allMods)&attributes(attributes)
+        table(style=tableItems.style)
+          if tableItems.thead
+            thead
+              each itemTr in tableItems.thead
+                tr
+                  each itemTh in itemTr.th
+                    th.ui-table__th(colspan = itemTh.colspan rowspan = itemTh.rowspan class = itemTh.mods) !{itemTh.text}
+                      if itemTh.textNowrap
+                        =' '
+                        span.text-nowrap !{itemTh.textNowrap}
+                          if itemTh.textTooltip
+                            +ui-tooltip(itemTh.textTooltip)
+                      else
+                        if itemTh.textTooltip
+                          +ui-tooltip(itemTh.textTooltip)
+          tbody
+            each itemTr in tableItems.tbody
+              tr(class=itemTr.title ? 'ui-table__tr-title' : '')
+                each itemTd in itemTr.td
+                  td.ui-table__td(colspan = itemTd.colspan rowspan = itemTd.rowspan  class = itemTd.mods) !{itemTd.text}
+                    if itemTd.textTooltip
+                      +ui-tooltip(itemTd.textTooltip)
+                    if itemTd.ul
+                      +ui-ul(itemTd.ul, itemTd.ulMods)

@@ -1,0 +1,819 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  //- link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'blocks'
+  -const pageTitle ='Repository blocks'
+
+  -
+    const lisiItems =[
+      'li 1',
+      'li 2',
+    ]
+
+  -
+    const tabs = [
+      { text: 'Текущая ситуация', isAttention: true },
+      { text: 'Вклады' },
+      { text: 'Кредит наличными' },
+      { text: 'Карты' },
+      { text: 'Кредит наличными' },
+      { text: 'Кредит наличными' },
+      { text: 'Кредит наличными' },
+      { text: 'Кредит наличными' },
+      { text: 'Кредит наличными' },
+    ]
+
+  -
+    const tabsLinks = [
+      { text: '<a class="tabs-head__link">Текущая ситуация</a>', isAttention: true },
+      { text: '<a class="tabs-head__link">Вклады</a>' },
+      { text: '<a class="tabs-head__link">Кредит наличными</a>' },
+      { text: '<a class="tabs-head__link">Карты</a>' },
+      { text: '<a class="tabs-head__link">Кредит наличными</a>' },
+      { text: '<a class="tabs-head__link">Кредит наличными</a>' },
+      { text: '<a class="tabs-head__link">Кредит наличными</a>' },
+      { text: '<a class="tabs-head__link">Кредит наличными</a>' },
+      { text: '<a class="tabs-head__link">Кредит наличными</a>' },
+    ]
+
+  -
+    const picTabs = [
+      {
+        text: 'Подключение АТБ Бизнес',
+        img: 'phone'
+      },
+      {
+        text: 'Безопасность',
+        img: 'keyboard'
+      },
+      {
+        text: 'Вопросы и ответы',
+        img: 'doc'
+      },
+    ]
+
+  -
+    const termsTable =[
+      { name: 'Минимальный первоначальный взнос', descr: 'не менее 50 000 руб.' },
+      { name: 'Минимальный первоначальный взнос',
+        list: [
+          'не менее 50 000 руб.',
+          'не менее 50 000 руб.',
+        ]
+      },
+      { name: 'Валюта', descr: 'Рубль РФ' },
+      { name: 'Срок', descr: 'До момента расторжения по инициативе Вкладчика или иным основаниям, предусмотренным договором' },
+    ]
+
+  -
+    const termBanItems = {
+      list: [
+        {
+          title: '<span class="terms-ban__title-big">0,07</span> %',
+          desc: 'от&nbsp;суммы операции за&nbsp;валютный контроль (мин.&nbsp;200&nbsp;₽, макс.&nbsp;40&nbsp;000&nbsp;₽)',
+        },
+        {
+          title: '<span class="terms-ban__title-big">0,07</span> %',
+          desc: 'от&nbsp;суммы операции за&nbsp;перевод в&nbsp;иностранной валюте* (мин.&nbsp;25&nbsp;$ США, макс.&nbsp;120&nbsp;$ США)',
+        },
+        {
+          title: '<span class="terms-ban__title-big">0,1</span> %',
+          desc: 'индивидуальный курс по&nbsp;конверсионным операциям&nbsp;&mdash; 0,1% от&nbsp;суммы операции (с&nbsp;использованием системы онлайн-конверсии «АТБ-Форекс»)',
+        },
+      ],
+      footnote: '*за исключением переводов в Евро'
+    }
+
+  -
+    const requirementsItems =[
+      { icon: 'img/icon_requirement.svg', text: 'Залог прав требований по договору банковского счета (залоговый счет)' },
+      { icon: 'img/icon_requirement.svg', text: 'Залог прав выручки по финансируемому ГК' },
+      { icon: 'img/icon_requirement.svg', text: 'Залог имущества' },
+      { icon: 'img/icon_requirement.svg', text: 'Также возможно предоставление кредита без обеспечения' },
+    ]
+
+  -
+    const tableItems = {
+      thead: [
+        {
+          th: [
+            { text: 'Услуга', mods: 'ui-table__tr-title' },
+            { text: 'Max', mods: 'ui-table__tr-title' },
+            { text: 'Ультра', mods: 'ui-table__tr-title' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'Дистанционные устные консультации по медицинским вопросам (24/7)' },
+            { text: '8&nbsp;раз в&nbsp;год' },
+            { text: '12&nbsp;раз в&nbsp;год' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Личный кабинет' },
+            { text: 'Включено' },
+            { text: 'Включено' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Бесплатные звонки' },
+            { text: 'Включено' },
+            { text: 'Включено' },
+          ]
+        },
+      ]
+    }
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_benefit.svg',
+        title: 'Скидка по кредиту или по кредиту для юридического лица/ ИП или по банковской гарантии',
+        descr: 'Бесплатное РКО в первый год обслуживания',
+        titleTooltip: 'text'
+      },
+      { icon: 'img/icon_benefit.svg',
+        title: 'Бесплатное РКО в первый год обслуживания',
+        titleModClass: 'benefits__title--size-l',
+        descr: 'Бесплатное РКО в первый год обслуживания' },
+      { icon: 'img/icon_benefit.svg',
+        title: 'Фиксированная стоимость затрат на РКО',
+        titleModClass: 'benefits__title--normal',
+        descr: 'Бесплатное РКО в первый год обслуживания',
+        descrTooltip: 'text'
+      },
+      {
+        nums:
+          `<span class="text-grey-blue">
+            до <span class="benefits__nums-xl">40</span>
+          </span>
+          <span class="benefits__nums-l">млн ₽</span>`,
+        subtitle: 'Сумма кредита'
+      },
+      {
+        nums:
+          `<span class="text-grey-blue">
+            до <span class="benefits__nums-xl">790</span>
+          </span>
+          <span class="benefits__nums-l">дней</span>`,
+        subtitle: 'Срок кредитования'
+      },
+      { icon: 'img/icon_benefit.svg', nums: 'Кредит, невозобновляемая кредитная линия', subtitle: 'Форма кредитования' },
+    ]
+
+  -
+    const servicesItems =[
+      { icon: 'img/icon_service.svg', title: 'Специальный счет застройщика (в&nbsp;рамках 214-ФЗ)', descr: 'Контроль целевого расходования денежных средств в&nbsp;области долевого строительства' },
+      { icon: 'img/icon_service.svg', title: 'Счет эскроу', descr: 'Современный инструмент для защиты интересов обеих сторон при расчетах по сделке' },
+      { icon: 'img/icon_service.svg', title: 'Кредитование проектов строительства', descr: 'Для завершения строительства и ввода объекта в&nbsp;эксплуатацию' },
+      { icon: 'img/icon_service.svg', title: 'Ипотека от 1,6% годовых', descr: 'Ключ к сердцу вашего дома' },
+    ]
+
+  -
+    const featuresItems = [
+      { icon: 'img/icon_feature.svg', title: 'Бесплатные платежи внутри банка 24/7', descr: 'осуществляющий внесение денежных средств на счет эскроу в счет уплаты цены приобретаемого объекта2' },
+      { icon: 'img/icon_feature.svg', title: 'Внешние платежи по ДБО 19/5', descr: 'владелец долевого строительства, осуществляющий внесение денежных средств на счет эскроу в счет уплаты цены приобретаемого объекта2' },
+      { icon: 'img/icon_feature.svg', title: 'Бесплатная проверка контрагентов', descr: 'владелец счета эскроу участник долевого строительства, осуществляющий внесение денежных средств на счет эскроу в счет уплаты цены приобретаемого объекта2' },
+      { icon: 'img/icon_feature.svg', title: 'Удобная карта для бизнеса в подарок', descr: 'внесение денежных средств на счет эскроу в счет уплаты цены приобретаемого объекта2' },
+      { icon: 'img/icon_feature.svg', title: 'Внешние платежи по ДБО 19/5', descr: 'владелец строительства, осуществляющий внесение денежных средств на счет эскроу в счет уплаты цены приобретаемого объекта2' },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Оставьте <a href="#" class="text-orange">заявку</a>',
+        descr: 'Оставьте <a href="#" class="text-orange">заявку</a>',
+        titleTooltip: 'text'
+      },
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Заполните анкету и&nbsp;предоставьте документы',
+        descr: 'Оставьте <a href="#" class="text-orange">заявку</a>',
+        descrTooltip: 'text'
+      },
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Узнайте решение в&nbsp;течение дня',
+        descr: 'Оставьте <a href="#" class="text-orange">заявку</a>',
+      },
+    ]
+
+  -
+    const howGetItems_5 = [
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Оставьте <a href="#" class="text-orange">заявку</a>',
+      },
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Заполните анкету и&nbsp;предоставьте документы',
+      },
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Узнайте решение в&nbsp;течение дня',
+      },
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Получите кредит',
+      },
+      {
+        icon: 'img/icon_how_get.svg',
+        title: 'Отправляйте контрагентам',
+      },
+    ]
+
+  -
+    const stepsItems = [
+      { icon: 'img/icon_steps.svg', title: 'Заключите договор', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+      { icon: 'img/icon_steps.svg', title: 'Получите терминал', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+      { icon: 'img/icon_steps.svg', title: 'Начинайте принимать платежи', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+    ]
+
+  -
+    const stepsItems_4 = [
+      { icon: 'img/icon_steps.svg', title: 'Заключите договор', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+      { icon: 'img/icon_steps.svg', title: 'Получите терминал', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+      { icon: 'img/icon_steps.svg', title: 'Начинайте принимать платежи', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+      { icon: 'img/icon_steps.svg', title: 'Начинайте принимать платежи', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка' },
+    ]
+
+    const usefulGoods =[
+      {
+        mod: 'orange30',
+        title: '«АТБ. Ваше слово»',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_you-word.png',
+        p2: 'Расскажите, что&nbsp;понравилось в АТБ, и&nbsp;выиграйте набор для&nbsp;путешествий',
+      },
+      {
+        mod: 'orange40',
+        title: '«АТБ. Ваше слово»',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_you-word.png',
+        p2: 'Расскажите, что&nbsp;понравилось в АТБ, и&nbsp;выиграйте набор для&nbsp;путешествий',
+      },
+      {
+        mod: 'orange50',
+        title: '«АТБ. Ваше слово»',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_you-word.png',
+        p2: 'Расскажите, что&nbsp;понравилось в АТБ, и&nbsp;выиграйте набор для&nbsp;путешествий',
+      },
+      {
+        mod: 'grey30',
+        title: 'Кредитная карта «Универсальная»',
+        btn: 'Оставить заявку',
+        img: 'useful_goods_img_uc.png',
+        list: [
+          { title: 'До 120 дней', descr: 'беспроцентный период' },
+          { title: 'Кэшбэк 10&nbsp%', descr: 'в семейных категориях' },
+          { title: '0 рублей', descr: 'обслуживание карты' },
+        ]
+      },
+      {
+        mod: 'grey35',
+        title: 'Кредитная карта «Универсальная»',
+        btn: 'Оставить заявку',
+        img: 'useful_goods_img_uc.png',
+        list: [
+          { title: 'До 120 дней', descr: 'беспроцентный период' },
+          { title: 'Кэшбэк 10&nbsp%', descr: 'в семейных категориях' },
+          { title: '0 рублей', descr: 'обслуживание карты' },
+        ]
+      },
+      {
+        mod: 'green20',
+        title: 'Платежная система Мир',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_sbp.png',
+        list: [
+          { title: '0 рублей', descr: 'обслуживание карты, переводы в любые банки по номеру телефона, выдача наличных в банкоматах любых банков' },
+          { title: 'Скидки и акции', descr: 'от «Привет, Мир»' },
+        ]
+      },
+      {
+        mod: 'green30',
+        title: 'Платежная система Мир',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_sbp.png',
+        list: [
+          { title: '0 рублей', descr: 'обслуживание карты, переводы в любые банки по номеру телефона, выдача наличных в банкоматах любых банков' },
+          { title: 'Скидки и акции', descr: 'от «Привет, Мир»' },
+        ]
+      },
+      {
+        mod: 'blue10',
+        title: 'Цифровая карта',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_sbp.png',
+        list: [
+          { title: '0 рублей', descr: 'оформление и обслуживание карты' },
+          { title: 'Быстро и удобно', descr: 'оформите в Мобильном приложении и&nbsp;сразу пользуйтесь' },
+        ]
+      },
+      {
+        mod: 'blue20',
+        title: 'Цифровая карта',
+        btn: 'Подробнее',
+        img: 'useful_goods_img_sbp.png',
+        list: [
+          { title: '0 рублей', descr: 'оформление и обслуживание карты' },
+          { title: 'Быстро и удобно', descr: 'оформите в Мобильном приложении и&nbsp;сразу пользуйтесь' },
+        ]
+      },
+    ]
+
+block content
+  main
+    +banner()
+      +banner__item('--class')
+        +banner__wrapper('/img/banner_gradient.jpg')
+          +banner__h1('h1', '', false)
+          +banner__descr('descr mobile none').text-orange.banner__mob-none
+          +banner__descr('descr --fw400 ', '--fw400').banner__mob-none
+          +banner__descr('descr --fw300 ', '--fw300').banner__mob-none
+          +banner__foot
+            +ui-button('button', 'banner')(href='#')
+            +ui-button('button', 'banner')(href='#')
+        +banner__mobile.text-orange
+          p
+            b text
+              span.banner__mobile-text-xxl  text xxl
+          p text
+      +banner__item('')
+        +banner__wrapper('/img/banner_gradient.jpg')
+          +banner__subtitle('subtitle')
+          +banner__h1('h1 --size-s', '--size-s', false)
+          +banner__descr('descr --size-s ', '--size-s').banner__mob-none
+          +banner__descr('descr --size-xs ', '--size-xs').banner__mob-none
+          +banner__descr('descr --size-xxs ', '--size-xxs').banner__mob-none
+        +banner__mobile
+          b text
+      +banner__item('--class')
+        +banner__wrapper('/img/banner_gradient.jpg')
+          +ui-ul(lisiItems, 'banner')
+          +banner__foot('--mob-row')
+            +ui-button('button', 'banner')(href='#')
+            +ui-button('button', 'banner')(href='#')
+        +banner__mobile.text-orange
+          p text
+
+    .page-content
+      .inner
+        +ui-h1(pageTitle)
+        +section()
+          +section-head
+            +ui-h2('section-head h2', 'section-head')
+            +ui-h3('section-head h3', 'section-head')
+            +ui-h4('section-head h4', 'section-head')
+            .section-head__descr section-head descr
+          div
+            +ui-p1()
+              p -- end section-head ( расстояние от section-head до блока - 40px )
+              p
+                b p1 and text classes
+              p item -laptop-none
+                span.text-laptop-none
+                  b item
+              p
+                a.text-inline(href='#') item inline
+              p
+                a.text-link-underline(href='#') link-underline inline
+              p
+                span.text-nowrap text-nowrap
+              p
+                .text-center text-center
+              p
+                span.text-orange text-orange
+              p
+                span.text-green text-green
+              p text-white
+                span.text-white  text-white
+              p
+                span.text-grey60 text-grey60 #999
+              p
+                span.text-grey80 text-grey80 #6e6e6e
+              p
+                span.text-grey-blue text-grey-blue #7f94a8
+              p
+                span.text-pointer item pointer
+              p ui-ul
+              +ui-ul(lisiItems)
+                li
+                  p ui-ul --child
+                  +ui-ul(lisiItems, '--child')
+              br
+              p ui-ul --li-mb10
+              +ui-ul(lisiItems, '--li-mb10')
+              br
+              p ui-ul --dash
+              +ui-ul(lisiItems, '--dash')
+              br
+              p ui-ul --black
+              +ui-ul(lisiItems, '--black')
+              br
+              p ui-ul --grey-blue
+              +ui-ul(lisiItems, '--grey-blue')
+              br
+              p ui-ol
+              +ui-ol(lisiItems)
+
+      +section('--mt-s, --bg-grey, --ov-hidden')
+        .inner
+          +section-head('--max-w')
+            .section-head__descr
+              p section margin-top: 60px
+              p section --ov-hidden
+              p section --bg-grey  $grey20  #f8f8f8
+              p section-head max-width: 1080px
+              p text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text
+
+          div
+            +section-box()
+              p section-box
+            +section-box()
+              p section-box margin-top: 40px
+
+          +section-footnote
+            p section-footnote font-size: 14px;
+
+      +section('--inner-grey-deskt, --mob-ov-hidden')
+        .inner
+          .section__bg
+            +section-head('--max-w900, --center')
+              .section-head__descr
+                p section --inner-grey-deskt  #f8f8f8
+                p section --mob-ov-hidden
+                p section-head max-width: 900px block center
+                p text text text text text text text text text text text text text text text text text text text text text text text text text text text
+            +section-footnote('--fz12')
+              p section-footnote font-size: fz12
+
+      .inner
+        +section('--bg-grey')
+          +section-head('--max-w600')
+            .section-head__descr
+              p section-head max-width: 600px
+              p text text text text text text text text text text text text text text text text text text text text text text text text text text text
+
+        +section('--bg-grey, --ov-hidden')
+          .inner
+            +section-head('--with-all')
+              +ui-h2('section-head --with-all')
+              +ui-button('все статьи', '--link-next')(href='#')
+
+        +section()
+          +section-head
+            +ui-h2('UI Tooltip', 'section-head')
+          +ui-p1
+            span.text-nowrap text
+              +ui-tooltip('Tooltip text')
+
+        +section()
+          +section-head
+            +ui-h2('UI Buttons', 'section-head')
+          +ui-button('Кнопка-ссылка')(href='/')
+          +ui-button('Кнопка-submit', '', true)
+          +ui-button('Кнопка-button')
+          br
+          br
+          +ui-button('button --empty', '--empty')(href='/')
+          +ui-button('button --white', '--white', true)
+          +ui-button('button --white-shadow', '--white-shadow', true)
+          +ui-button('button --outline', '--outline', true)
+          br
+          br
+          +ui-button('button --size-s', '--size-s')(href='/')
+          =' '
+          +ui-button('button --ph-s', '--ph-s')(href='/')
+          br
+          br
+          +ui-button('button --link-next', '--link-next')(href='/')
+
+        +section()
+          +section-head
+            +ui-h2('UI Checkbox', 'section-head')
+          +ui-checkbox('idCheckbox', 'UI Checkbox ')
+            a(href='#') link
+
+        +section()
+          +section-head
+            +ui-h2('UI Radio', 'section-head')
+          +ui-radio('idRadio', 'UI radio ')
+            a(href='#') link
+
+        +section()
+          +section-head
+            +ui-h2('UI Input', 'section-head')
+          +ui-form-name('ui-form-name')
+          +ui-input('inputID')(placeholder='placeholder')
+
+        +section()
+          +section-head
+            +ui-h2('UI Range', 'section-head')
+          +ui-range('tet', ' ₽')(data-min='1000000' data-max='60000000')
+
+        +section()
+          +section-head
+            +ui-h2('UI Select', 'section-head')
+          +ui-form-name('ui-form-name')
+          +ui-select('')
+            option(value='first') Option 1
+            option(value='second') Option 2
+
+        +section()
+          +section-head
+            +ui-h2('UI Select multiple', 'section-head')
+          +ui-form-name('ui-form-name')
+          +ui-select('', '', 'Option 1', 'Option 2', 'Option 3', 'Option 4')(data-placeholder='multiple placeholder' multiple)
+
+        +section()
+          +ui-h2('UI pagination', 'section')
+          +ui-pagination()
+
+        +section()
+          +section-head
+            +ui-h2('documents, accordion', 'section-head')
+          +documents
+          +accordion
+            +accordion-item('item 1')
+              +documents
+            +accordion-item('item 2 accordion inner')
+              +accordion('--inner')
+                +accordion-item('inner item 1')
+                  +documents
+                +accordion-item('inner item 2')
+                  +documents
+                .accordion-item
+                  .accordion-item__head.accordion-item__head--link
+                    a(href='#') accordion link
+
+        +section()
+          +section-head
+            +ui-h2('terms', 'section-head')
+          +terms(termsTable)
+
+        +section()
+          +section-head
+            +ui-h2('terms --col-xs', 'section-head')
+          +terms(termsTable, '--col-xs')
+
+        +section()
+          +section-head
+            +ui-h2('terms-ban', 'section-head')
+          +terms-ban(termBanItems)
+
+        +section()
+          +section-head
+            +ui-h2('requirements', 'section-head')
+          +requirements(requirementsItems)
+
+        +section()
+          +section-head
+            +ui-h2('ui-table', 'section-head')
+          +ui-table(tableItems)
+
+        +section()
+          +section-head
+            +ui-h2('ui-table --mob-scroll', 'section-head')
+          +ui-table(tableItems, '--mob-scroll')
+
+        +section()
+          +section-head
+            +ui-h2('ui-table mobile accordions', 'section-head')
+          +ui-table(tableItems, '', 'mobileAccordions')(data-media='767')
+
+        +section
+          +section-head
+            +switch('switch', 'item1', 'item1', 'switch1')
+          +switch-group('switch1')
+            +switch-content(true)
+              p 1
+            +switch-content()
+              p 2
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs', 'section-head')
+        +tabs-head(tabs)
+        +tabs-main
+          -for (tabsMainItems = 0; tabsMainItems < 9; tabsMainItems++)
+            +tabs-main__item((tabsMainItems===0 ? true : ''))
+              .inner
+                p text
+                  =(tabsMainItems+1)
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs --grey', 'section-head')
+        +tabs-head(tabs, '', '--grey')
+        +tabs-main
+          -for (tabsMainItems = 0; tabsMainItems < 9; tabsMainItems++)
+            +tabs-main__item((tabsMainItems===0 ? true : ''))
+              .inner
+                p text
+                  =(tabsMainItems+1)
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs --orange', 'section-head')
+        +tabs-head(tabs, '', '--orange')
+        +tabs-main
+          -for (tabsMainItems = 0; tabsMainItems < 9; tabsMainItems++)
+            +tabs-main__item((tabsMainItems===0 ? true : ''))
+              .inner
+                p text
+                  =(tabsMainItems+1)
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs --outside', 'section-head')
+        +tabs-head(tabs, '', '--outside')
+        +tabs-main
+          -for (tabsMainItems = 0; tabsMainItems < 9; tabsMainItems++)
+            +tabs-main__item((tabsMainItems===0 ? true : ''))
+              .inner
+                p text
+                  =(tabsMainItems+1)
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs --round', 'section-head')
+        +tabs-head(tabs, '', '--round')
+        +tabs-main
+          -for (tabsMainItems = 0; tabsMainItems < 9; tabsMainItems++)
+            +tabs-main__item((tabsMainItems===0 ? true : ''))
+              .inner
+                p text
+                  =(tabsMainItems+1)
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs --simple', 'section-head')
+        +tabs-head(tabs, '', '--simple')
+        +tabs-main
+          -for (tabsMainItems = 0; tabsMainItems < 9; tabsMainItems++)
+            +tabs-main__item((tabsMainItems===0 ? true : ''))
+              .inner
+                p text
+                  =(tabsMainItems+1)
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('tabs links', 'section-head')
+        +tabs-head(tabsLinks)
+        +tabs-main
+          .inner
+            p text 1
+
+      +section('--ov-hidden')#interesting
+        .inner
+          +section-head
+            +ui-h2('Вас также могут заинтересовать', 'section-head').text-center.text-center--mob-left
+          +useful-goods(usefulGoods)
+
+      .inner
+        +section
+          +pic-tabs(picTabs)
+            +pic-tabs__item(picTabs[0])
+              +ui-p1
+                p Для первого входа в АТБ Бизнес необходимо:
+                ul.ui-ul
+                  li Установить приложение на смартфон
+                  li Установить /ввести логин и пароль (как в интернет-банке)
+            +pic-tabs__item(picTabs[1])
+              +ui-p1
+                p Мы стремимся к созданию безопасного пространства, в котором клиенты не переживают за свои сбережения.
+                p Вся работа нового сервиса производится исключительно по защищённым протоколам передачи информации, которая соответствует международным стандартам кибербезопасности.
+                p Несмотря на совершенствование систем безопасности необходимо соблюдать простые правила:
+            +pic-tabs__item(picTabs[2])
+              +accordion
+                +accordion-item('Как получить доступ в личный кабинет?')
+                  p Сервис автоматически доступен Клиентам Банка, подключенным к Системе «Интернет-Банкинг» со способом доступа с помощью Логина и Пароля. Клиенту достаточно установить Сервис на мобильный телефон и ввести Логин и Пароль, которые используются для доступа в Систему «Интернет-Банкинг».
+                  p Если у вас подключена Система «Интернет-Банкинг» со способом доступа с помощью Секретного ключа, то для доступа к Сервису вам необходимо получить в Банке Логин и Пароль. Для получения Логина и Пароля Клиенту необходимо предоставить в Банк Заявление о подключении услуги «Мобильное приложение» (в офис или по системе «Интернет-Банкинг»).
+                +accordion-item('Почему личный кабинет заблокирован?')
+                  p Причин может быть несколько, но в большинстве случаев это делается ради безопасности ваших средств.
+
+        +section
+          +section-head
+            +ui-h2('benefits', 'section-head')
+          +benefits(benefitsItems)
+
+        +section
+          +section-head
+            +ui-h2('benefits --title-normal', 'section-head')
+          +benefits(benefitsItems, '--title-normal')
+
+        +section
+          +section-head
+            +ui-h2('benefits --items2', 'section-head')
+          +benefits(benefitsItems, '--items2')
+
+        +section
+          +section-head
+            +ui-h2('benefits --ai-start', 'section-head')
+          +benefits(benefitsItems, '--ai-start')
+
+        +section
+          +section-head
+            +ui-h2('services', 'section-head')
+          +services(servicesItems)
+
+        +section
+          .inner
+            +section-head().text-center
+              +ui-h3('features', 'section-head')
+            +features(featuresItems)
+
+        +section
+          +section-head().text-center
+            +ui-h3('features --3items', 'section-head')
+          +features(featuresItems, '--3items')
+
+        +section
+          +section-head().text-center
+            +ui-h3('features --5items', 'section-head')
+          +features(featuresItems, '--5items')
+
+        +section
+          +section-head().text-center
+            +ui-h3('steps', 'section-head')
+          +steps(stepsItems)
+
+        +section
+          +section-head().text-center
+            +ui-h3('steps --items4', 'section-head')
+          +steps(stepsItems_4, '--items4')
+
+        +section('--bg-grey')
+          +how-get('Как получить кредит', howGetItems)
+
+        +section('--bg-grey')
+          +how-get('Как получить кредит --only-title, --5items', howGetItems_5, '', '--only-title, --5items')
+
+        +section
+          +about-programm()
+            p «Азиатско-Тихоокеанский Банк» (АО) аккредитован Акционерным обществом «Федеральная корпорация по развитию малого и среднего предпринимательства» (Корпорация МСП) в качестве уполномоченного банка для участия в Программе стимулирования кредитования субъектов малого и среднего предпринимательства (Программа).
+            p  Программа является государственным механизмом  финансовой поддержки субъектов малого и среднего предпринимательства  (субъекты МСП) и реализуется Корпорацией МСП в рамках взаимодействия с Банком России.
+
+        +section
+          +about-programm('img/about_programm.png', '«Азиатско-Тихоокеанский Банк» (АО) является уполномоченным банком Департамента предпринимательства и инновационного развития г. Москвы и реализует программу льготного кредитования субъектов МСП, зарегистрированных на территории г. Москвы', '--sme-moscow')
+
+        +section
+          +section-head
+            +ui-h2('seo-menu', 'section-head')
+          +seo-menu
+            a(href='#') Дебетовая карта МИР
+            a(href='#') Visa Infinite
+
+        +section()
+          +ui-h2('Lazy load test', 'section')
+          img.lazyload(src='img/header_ban-6.jpg' data-src='img/fancy_img1.png' alt='')
+        +section()
+          +ui-h2('Lazy load test', 'section')
+          img.lazyload(src='img/header_ban-6.jpg' data-src='img/fancy_img2.png' alt='')
+        +section()
+          +ui-h2('Lazy load test', 'section')
+          img.lazyload(src='img/header_ban-6.jpg' data-src='img/fancy_img3.png' alt='')
+
+    +seo('seo')
+      +seo-accordion
+        +seo-accordion-item('seo-accordion')
+          p Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+          p Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+          p Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+        +seo-accordion-item('seo-accordion')
+          p Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+          p Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+          p Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+      p Вас интересуют кредитные карты по паспорту? Рассмотрите возможность получения подобной в Азиатско-Тихоокеанском банке. На сайте банка есть почти вся нужная информация. Оформить кредитную карту по паспорту в АТБ можно всего в несколько шагов:
+      ul
+        li Рассмотрите варианты, представленные на сайте банка, выбрав наиболее подходящее предложение под Ваши цели.
+        li Заполните анкету за несколько минут.
+        li Дождитесь приглашения из банка для получения продукта.
+        li Приходите в ближайшее отделение с минимальным набором документов и начинайте использовать карту.&nbsp;
+      p Как видите, оформить кредитную карту онлайн по паспорту в АТБ очень просто. Еще проще ее использовать. Механизм бесконтактной оплаты по кредитной карте по паспорту от Азиатско-Тихоокеанского банка делает расчеты по карте АТБ простыми и быстрыми, но при этом, безопасными.
+      +seo-menu('seo')
+        a(href='#') Моментальная кредитная карта
+        a(href='#') Экспресс кредитная карта
+        a(href='#') Кредитная карта без справок и поручителей
+        a(href='#') Кредитная карта с льготным периодом

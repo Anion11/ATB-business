@@ -1,0 +1,27 @@
+mixin partners(mods)
+  -
+    const baseName = 'partners'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .partners(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        -for (partnersItems = 0; partnersItems < 3; partnersItems++)
+          .partners__box.swiper-slide
+            .partners__img
+              img(src='img/mspmo_logo_vector.jpg' alt='')
+          .partners__box.swiper-slide
+            a.partners__img(href='#' target='_blank')
+              img(src='img/logo-mbm.svg' alt='')
+
+    .swiper-button-prev
+    .swiper-button-next
+
+    block

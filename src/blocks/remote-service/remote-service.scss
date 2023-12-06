@@ -1,0 +1,67 @@
+.remote-service {
+  position: relative;
+  padding: 55px 620px 55px 100px;
+  background: linear-gradient(90deg, $grey20 0%, #edf3f7 100%);
+  border-radius: 8px;
+  @include media-laptop {
+    padding: 45px 90px 45px 40px;
+  }
+  @include media-tablet {
+    padding: 30px 0 0;
+    background: transparent;
+    border-radius: 0;
+  }
+  &__title {
+    margin-bottom: 15px;
+    font: 700 32px/1.2 $font;
+    @include media-tablet {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+  &__ui {
+    &-p1 {
+      margin-bottom: 40px;
+      @include media-laptop {
+        max-width: 450px;
+      }
+      @include media-tablet {
+        width: 240px;
+        margin: 0 auto 25px;
+      }
+    }
+    &-ul {
+      li {
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &-button {
+      @include media-tablet {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+      }
+    }
+  }
+  &__img {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    @include media-laptop {
+      width: 280px;
+    }
+    @include media-tablet {
+      position: relative;
+      right: auto;
+      width: 320px;
+      height: 165px;
+      margin: 20px auto 0;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+}

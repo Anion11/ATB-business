@@ -1,0 +1,51 @@
+mixin p-all-inclusive(mods)
+  -
+    const baseName = 'p-all-inclusive'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const list = [
+      'Открытие и&nbsp;ведение расчетного счета',
+      'Услуги «Интернет-Банкинг», «СМС-Сервис»',
+      'От&nbsp;10&nbsp;до&nbsp;30&nbsp;платежных поручений в&nbsp;месяц через систему &laquo;Интернет-Банкинг&raquo; в&nbsp;зависимости от&nbsp;выбранного тарифного плана',
+      'Прием и&nbsp;зачисление наличных денег от&nbsp;100 до&nbsp;300&nbsp;тыс. руб.&nbsp;в&nbsp;месяц в&nbsp;зависимости от&nbsp;выбранного тарифного плана',
+    ]
+
+    const benefitsItems = [
+      { icon: 'img/inclusive-benefit-1.png', title: 'Скидка по&nbsp;кредиту&quot;Микро-лайт&quot; или по&nbsp;кредиту для юридического лица/&nbsp;ИП или по&nbsp;банковской гарантии' },
+      { icon: 'img/inclusive-benefit-2.png', title: 'Бесплатное РКО в&nbsp;первый год обслуживания' },
+      { icon: 'img/inclusive-benefit-3.png', title: 'Фиксированная стоимость затрат на&nbsp;РКО' },
+      { icon: 'img/inclusive-benefit-4.png', title: 'Пакетное РКО дешевле стоимости набора отдельных услуг и&nbsp;операций РКО' },
+      { icon: 'img/inclusive-benefit-5.png', title: 'Бесплатный зарплатный проект' },
+    ]
+
+  .p-all-inclusive(class=allMods)&attributes(attributes)
+    h3.p-all-inclusive__title Для получения скидки по кредиту откройте расчетный счёт в&nbsp;АТБ и&nbsp;подключите тарифный план
+      br
+      b «Всё включено»
+      | .
+    .p-all-inclusive__wrapp
+      .p-all-inclusive__about
+        .p-all-inclusive__img: img(src='img/p-all-inclusive.png' alt='')
+        .p-all-inclusive__name «Все включено»
+        .p-all-inclusive__descr Система «Все включено» — это три пакета для простого, удобного и&nbsp;выгодного сотрудничества.
+      .p-all-inclusive__package
+        .p-all-inclusive__subtitle В&nbsp;состав пакета входит:
+        +ui-p1('')
+          +ui-ul(list, 'p-all-inclusive, --grey-blue')
+    h3.p-all-inclusive__title
+      b Ваши преимущества:
+    +benefits(benefitsItems, 'p-all-inclusive, --title-normal, --items2')
+    .p-all-inclusive__foot
+      +ui-button('ОТПРАВИТЬ ЗАЯВКУ <br> НА КРЕДИТОВАНИЕ', 'p-all-inclusive, --size-s, --empty').js-close-popup(href='#form-section')
+      .p-all-inclusive__contact
+        .p-all-inclusive__tel-text Закажите обратный звонок или заполните заявку на&nbsp;кредитование, с&nbsp;вами свяжутся в&nbsp;течение одного дня.
+        a.p-all-inclusive__tel-link(href='tel:+78807758888') 8-800-775-88-88
+        a.p-all-inclusive__tel-order(href='tel:+78807758888') Заказать звонок
+    block

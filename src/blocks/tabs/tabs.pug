@@ -1,0 +1,60 @@
+
+mixin tabs-head(tabsHeadItems, innerBlock, mods, activeIndex)
+  -
+    const baseName = 'tabs-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    if (typeof activeIndex == 'undefined') {
+      activeIndex = 0
+    }
+
+  .tabs-head(class=allMods)&attributes(attributes)
+    if innerBlock === true
+      .swiper
+        .swiper-wrapper
+          each item, index in tabsHeadItems
+            .swiper-slide.tabs-head__item(id=item.id class = index===activeIndex ? 'tabs-head__item--active' : '' data-banner-img=item.dataBannerImg data-tab=item.dataTab) !{item.text}
+    else
+      .inner
+        .swiper
+          .swiper-wrapper
+            each item, index in tabsHeadItems
+              .swiper-slide.tabs-head__item(id=item.id class = index===activeIndex ? 'tabs-head__item--active' : '' data-banner-img=item.dataBannerImg) !{item.text}
+    block
+
+mixin tabs-main(mods)
+  -
+    const baseName = 'tabs-main'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs-main(class=allMods)&attributes(attributes)
+    block
+
+mixin tabs-main__item(isActive, mods)
+  -
+    const baseName = 'tabs-main__item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs-main__item(class=allMods + (isActive ? 'tabs-main__item--active' : ''))&attributes(attributes)
+    block

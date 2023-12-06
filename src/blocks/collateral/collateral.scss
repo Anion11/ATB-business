@@ -1,0 +1,79 @@
+.collateral {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    padding: 35px 25px 35px 30px;
+    background: $grey20;
+    border-radius: 8px;
+    @include media-laptop {
+      padding: 22px 20px;
+      gap: 0;
+    }
+    &--colspan2 {
+      grid-column: span 2;
+      @include media-laptop {
+        grid-column: unset;
+      }
+    }
+    &--colspan3 {
+      grid-column: span 3;
+      @include media-laptop {
+        grid-column: unset;
+      }
+    }
+  }
+  &__text {
+    position: relative;
+    z-index: 1;
+    max-width: 370px;
+    @include media-laptop {
+      max-width: unset;
+    }
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.25;
+    @include media-laptop {
+      font-size: 22px;
+    }
+    @include media-tablet {
+      font-size: 18px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  &__descr {
+    font-size: 16px;
+    line-height: 1.375;
+    @include media-tablet {
+      font-size: 14px;
+    }
+  }
+  &__img {
+    flex-shrink: 0;
+    width: 140px;
+    @include media-tablet {
+      width: 100px;
+      margin-left: -10px;
+    }
+  }
+}
+.bvi-body {
+  .collateral {
+    grid-template-columns: 1fr;
+    &__item {
+      grid-column: unset;
+    }
+  }
+}

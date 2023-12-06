@@ -1,0 +1,30 @@
+mixin bus-prot-insurance(mods)
+  -
+    const baseName = 'bus-prot-insurance'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        txt: 'Комплексная защита по основным направлениям бизнеса (имущество, персонал, производственная деятельность) по оптимальной цене',
+        img: 'img/bus-prot-insurance_1.png',
+      },
+      {
+        txt: 'Оформление и оплата в Банке в момент обращения без заявлений и&nbsp;документов',
+        img: 'img/bus-prot-insurance_2.png',
+      },
+    ]
+
+  .bus-prot-insurance(class=allMods)&attributes(attributes)
+    .bus-prot-insurance__wrapper
+      each item in data
+        .bus-prot-insurance__item !{item.txt}
+          .bus-prot-insurance__img
+            img(src=item.img, alt='')
+    block

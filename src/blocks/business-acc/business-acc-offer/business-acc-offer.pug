@@ -1,0 +1,19 @@
+mixin business-acc-offer(data, mods)
+  -
+    const baseName = 'business-acc-offer'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .business-acc-offer(class=allMods)&attributes(attributes)
+    .business-acc-offer__info
+      .business-acc-offer__txt !{data.title}
+      +ui-ul(data.list, 'business-acc-offer, --black')
+    .business-acc-offer__img
+      img(src=data.img, alt='')
+    block

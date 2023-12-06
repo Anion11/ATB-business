@@ -1,0 +1,16 @@
+mixin fea-float-btn(text, img, mods)
+  -
+    const baseName = 'fea-float-btn'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.fea-float-btn(class=allMods)&attributes(attributes) !{text}
+    .fea-float-btn__img
+      img(src=img, alt='')
+    block

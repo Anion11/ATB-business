@@ -1,0 +1,70 @@
+.together-offer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+  }
+  &__item {
+    position: relative;
+    min-height: 192px;
+    padding: 60px 195px 60px 40px;
+    background: linear-gradient(90deg, #f8f8f8 0%, #edf3f7 100%);
+    border-radius: 6px;
+    overflow: hidden;
+    @include media-laptop {
+      min-height: 110px;
+      padding: 60px 90px 60px 40px;
+    }
+    @include media-tablet {
+      padding: 50px 85px 50px 15px;
+    }
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    height: 192px;
+    @include media-laptop {
+      width: 113px;
+      height: 108px;
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    &--certificate {
+      right: -200px;
+      bottom: -95px;
+      width: 388px;
+      height: 355px;
+      @include media-laptop {
+        right: -112px;
+        bottom: -55px;
+        width: 221px;
+        height: 215px;
+      }
+    }
+  }
+  &__descr {
+    position: relative;
+    padding-left: 52px;
+    font: 400 20px/1.3 $font;
+    @include media-tablet {
+      padding-left: 45px;
+      font-size: 18px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='15' stroke='%237F94A8' stroke-width='2'/%3E%3Cpath d='M9 15l5 5 9-8.5' stroke='%237F94A8' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}

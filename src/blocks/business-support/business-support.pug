@@ -1,0 +1,52 @@
+mixin business-support(mods)
+  -
+    const baseName = 'business-support'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        title: 'Стартап-школа МБМ',
+        img: 'img/business-support_1.png',
+        text: 'Бесплатный пятидневный интенсив пошагового создания собственного бизнеса от&nbsp;поиска идеи до&nbsp;реализации. Потоки стартуют каждый понедельник. Обновленная программа содержит больше практических навыков, а&nbsp;работа в&nbsp;кругу единомышленников поможет протестировать бизнес-идею и&nbsp;доработать&nbsp;ее.',
+        link: {
+          text: 'Подробнее',
+          href: '#'
+        },
+      },
+      {
+        title: 'Онлайн-академия МБМ',
+        img: 'img/business-support_2.png',
+        text: 'Дистанционный образовательный проект, который будет полезен бизнесменам, которые находятся на&nbsp;начальном или продвинутом уровне профильного обучению развития. &laquo;Онлайн-Академия МБМ&raquo; предлагает 3&nbsp;обучающих программы&nbsp;&mdash; START (для начинающих бизнесменов), PROGRESS (для опытных предпринимателей), а&nbsp;также PRO-курсы. &laquo;Онлайн-Академия МБМ&raquo; предлагает слушателям 29&nbsp;курсов, 56&nbsp;модулей и&nbsp;158&nbsp;видеоуроков, основанных на&nbsp;лучших бизнес-практиках. &laquo;Онлайн-Академия МБМ&raquo; помогают изучать предпринимательское дело в&nbsp;любом месте в&nbsp;любое удобное время.',
+        link: {
+          text: 'Подробнее',
+          href: '#'
+        },
+      },
+      {
+        title: 'Вебинары, семинары, мастер-классы конференции и&nbsp;форумы',
+        img: 'img/business-support_3.png',
+        text: 'Десятки мероприятий в&nbsp;неделю, самые актуальные бизнес-тематики, топовые спикеры-эксперты.',
+        link: {
+          text: 'Подробнее',
+          href: '#'
+        },
+      },
+    ]
+
+  .business-support(class=allMods)&attributes(attributes)
+    each item in data
+      .business-support__item
+        .business-support__text
+          .business-support__title !{item.title}
+          .business-support__desc !{item.text}
+          +ui-button(item.link.text, 'business-support, --link-next').text-orange(href=item.href target='_blank')
+        .business-support__img
+          img(src=item.img, alt='')
+    block

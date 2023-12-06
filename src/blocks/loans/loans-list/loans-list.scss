@@ -1,0 +1,138 @@
+.loans-list {
+  display: flex;
+  @include media-laptop {
+    flex-direction: column;
+  }
+  &__box {
+    width: calc((100% - 40px) / 2);
+    padding: 25px 60px 40px;
+    background: #fff;
+    box-shadow: $bigShadow;
+    border-radius: 8px;
+    @include media-laptop {
+      width: 100%;
+      padding: 20px 60px 30px;
+    }
+    @include media-tablet {
+      padding: 20px 30px 30px;
+    }
+    &:first-child {
+      margin-right: 40px;
+      @include media-laptop {
+        margin-right: 0;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &__head {
+    position: relative;
+    padding-bottom: 5px;
+    font: 700 28px/1.5 $font;
+    text-align: center;
+    border-bottom: 1px solid rgb(200 200 200 / 0.3);
+    @include media-tablet {
+      font-size: 24px;
+      line-height: 1.4;
+    }
+  }
+  &__features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 45px;
+    @include media-laptop {
+      margin-top: 30px;
+    }
+    @include media-tablet {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 26px;
+    }
+  }
+  &__feature {
+    width: 184px;
+    text-align: center;
+    margin-top: 12px;
+    @include media-laptop {
+      flex-basis: auto;
+      width: auto;
+      margin-top: 0;
+    }
+    @include media-tablet {
+      margin-top: 26px;
+    }
+    &:nth-child(-n+2) {
+      margin-top: 0;
+      @include media-tablet {
+        margin-top: 26px;
+      }
+    }
+    &:nth-child(1) {
+      @include media-tablet {
+        margin-top: 0;
+      }
+    }
+    &-top {
+      font: 400 48px/1.4 $font;
+      @include media-laptop {
+        font-size: 32px;
+      }
+    }
+    &-xs {
+      font: 400 24px/1.4 $font;
+      @include media-laptop {
+        font-size: 20px;
+      }
+    }
+    &-s {
+      font: 400 36px/1.4 $font;
+      @include media-laptop {
+        font-size: 28px;
+      }
+    }
+    &-bot {
+      min-height: 36px;
+      font: 400 11px/1.5 $font;
+      text-align: center;
+      text-transform: uppercase;
+      color: $grey80;
+      @include media-laptop {
+        margin-top: 5px;
+      }
+      @include media-tablet {
+        margin-top: 3px;
+        min-height: auto;
+      }
+      br {
+        @include media-tablet {
+          display: none;
+        }
+      }
+    }
+  }
+  &__ui-button {
+    display: block;
+    width: fit-content;
+    margin: 15px auto 0;
+    @include media-tablet {
+      margin-top: 30px;
+    }
+  }
+}
+.bvi-body {
+  .loans-list {
+    display: block;
+    &__box {
+      width: 100%;
+      margin: 0 0 50px;
+    }
+    &__features {
+      display: grid;
+      gap: 45px;
+    }
+    &__feature {
+      width: auto;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+mixin cards-cashback(mods)
+  -
+    const baseName = 'cards-cashback'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const cashback = [
+      [
+        {
+          icon: 'img/cards-cashback_icon-1.svg',
+          name: 'Заправка',
+          price: '10 000 ₽/',
+          period: 'мес',
+        },
+        {
+          icon: 'img/cards-cashback_icon-3.svg',
+          name: 'Кэшбэк',
+          price: '100 ₽/',
+          period: 'мес (1%)',
+        },
+      ],
+      [
+        {
+          icon: 'img/cards-cashback_icon-2.svg',
+          name: 'Кафе',
+          price: '5 000 ₽/',
+          period: 'мес',
+        },
+        {
+          icon: 'img/cards-cashback_icon-3.svg',
+          name: 'Кэшбэк',
+          price: '50 ₽/',
+          period: 'мес (1%)',
+        },
+      ],
+    ]
+
+  .cards-cashback(class=allMods)&attributes(attributes)
+    .cards-cashback__container
+      .cards-cashback__head
+        .cards-cashback__head-item
+          .cards-cashback__title Потратил
+          .cards-cashback__img
+            img(src='img/cards-cashback_img-1.png', alt='')
+        .cards-cashback__head-item
+          .cards-cashback__title Банк вернул
+          .cards-cashback__img
+            img(src='img/cards-cashback_img-2.png', alt='')
+      .cards-cashback__wrapper
+        each line in cashback
+          .cards-cashback__line
+            each item in line
+              .cards-cashback__item
+                .cards-cashback__icon
+                  img(src=item.icon, alt='')
+                .cards-cashback__text
+                  .cards-cashback__desc !{item.name}
+                  .cards-cashback__price !{item.price}
+                    span.cards-cashback__desc !{item.period}
+    block

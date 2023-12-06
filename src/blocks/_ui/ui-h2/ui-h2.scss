@@ -1,0 +1,12 @@
+.ui-h2 {
+  font: 700 40px/1.3 $font;
+  @include media-laptop {
+    font-size: 34px;
+  }
+  @include media-tablet {
+    font-size: 26px;
+  }
+  &--normal {
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,119 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  //- link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'express-loan'
+    const pageTitle ='Экспресс-гарантии онлайн'
+
+    const benefitsItems = [
+      { icon: 'img/icon_benefits1.svg', title: 'Без залога и документов' },
+      { icon: 'img/icon_benefits2.svg', title: 'Решение по&nbsp;<a class="text-orange js-open-accordion" href="#questionnaire">анкете</a> ' },
+      { icon: 'img/icon_benefits3.svg', title: 'Подача заявки <a class="text-orange" href="#section-form">онлайн</a>' },
+    ]
+
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a class="text-orange" href="#section-form">заявку</a>',
+        descr: 'на&nbsp;сайте',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Дождитесь одобрения банком',
+        descr: 'Мы сообщим о&nbsp;принятом решении',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите деньги на&nbsp;счет в&nbsp;АТБ',
+        descr: 'после подписания договора',
+      },
+    ]
+
+    const termsItems = [
+      { name: 'Цель кредита', descr: 'пополнение оборотных средств (оплата контрагентам за&nbsp;товары, работы, услуги, выплата заработной платы и&nbsp;прочие расходы, связанные с&nbsp;текущей деятельностью компании)' },
+      { name: 'Сумма кредита', descr: 'от&nbsp;500&nbsp;000&nbsp;₽ до&nbsp;3&nbsp;000&nbsp;000&nbsp;₽' },
+      { name: 'Валюта кредита', descr: 'рубли&nbsp;РФ (₽)' },
+      { name: 'Срок кредитования', descr: 'до&nbsp;36&nbsp;месяцев' },
+      {
+        name: 'Процентная ставка',
+        sections: [
+          { title: '<b>15%</b> при заключении кредитного договора на&nbsp;12&nbsp;месяцев', },
+          { title: '<b>17%</b> при заключении кредитного договора на&nbsp;24&nbsp;месяца', },
+          { title: '<b>18%</b> при заключении кредитного договора на&nbsp;36&nbsp;месяца', },
+        ]
+      },
+      { name: 'Комиссия за выдачу', descr: '1%&nbsp;от&nbsp;суммы кредита' },
+      { name: 'Форма кредитования', descr: 'кредит' },
+      { name: 'Порядок погашения', descr: 'аннуитетные платежи' },
+    ]
+
+    const requirementsItems1 =[
+      { icon: 'img/requirement1.svg', text: 'Поручительство физического лица' },
+    ]
+
+    const requirementsItems2 =[
+      { icon: 'img/requirement3.svg', text: 'Анкета-заявка на&nbsp;получение кредита' },
+    ]
+
+    const requirementsItems3 =[
+      { icon: 'img/requirement2.svg', text: 'Срок регистрации бизнеса — не&nbsp;менее 12&nbsp;месяцев' },
+      { icon: 'img/requirement3.svg', text: 'Организационно-правовая форма: ИП, ООО' },
+      { icon: 'img/requirement4.svg', text: 'В&nbsp;составе учредителей юридического лица нет другого юридического лица' },
+      { icon: 'img/requirement5.svg', text: 'Процедура банкротства отсутствует' },
+      { icon: 'img/requirement6.svg', text: 'Годовая выручка не&nbsp;превышает 2&nbsp;млрд рублей' },
+      { icon: 'img/requirement7.svg', text: 'Резидент РФ' },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--v-inner-pt-xxl, --express-loan')
+        +banner__wrapper('img/banner_express-loan.png', true)
+          +banner__h1('Бизнес-экспресс', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('Без залога за ')
+            span.banner__subtitle-accent 15
+            |  минут
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--title-normal')
+
+      +section
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section#section-form
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Заявка на&nbsp;получение кредита', 'section-head')
+
+      +section
+        .inner
+          +accordion
+            +accordion-item('Условия')
+              +terms(termsItems)
+            +accordion-item('Обеспечение')
+              +requirements(requirementsItems1)
+            +accordion-item('Документы')#questionnaire
+              +ui-p2
+                a.text-grey-blue(href='#') Общие условия кредитования по&nbsp;продукту «Бизнес-экспресс»
+                br
+                a.text-grey-blue(href='#') Общие условия договора поручительства
+              br
+              +requirements(requirementsItems2)
+              +section-footnote
+                p Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию положительного решения о&nbsp;предоставлении кредита
+            +accordion-item('Требования')
+              +requirements(requirementsItems3)

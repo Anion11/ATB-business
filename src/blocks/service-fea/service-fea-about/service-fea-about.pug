@@ -1,0 +1,26 @@
+mixin service-fea-about(data, mods)
+  -
+    const baseName = 'service-fea-about'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .service-fea-about(class=allMods)&attributes(attributes)
+    h3.service-fea-about__title !{data.title}
+    if data.list
+      +ui-ul(data.list, 'service-fea-about')
+    if data.subtitle
+      .service-fea-about__subtitle !{data.subtitle}
+    if data.list2
+      +ui-ul(data.list2, 'service-fea-about')
+    if data.link
+      .service-fea-about__btns
+        //- +ui-button(data.btn ? data.btn.text : 'Оформить заявку', 'service-fea-about, --empty')(href='#form-section')
+        //- if data.link
+        +ui-button(data.link.text, 'service-fea-about, --link-next')(href=data.link.href)
+    block

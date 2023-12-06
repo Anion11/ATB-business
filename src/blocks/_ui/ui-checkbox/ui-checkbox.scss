@@ -1,0 +1,88 @@
+.ui-checkbox {
+  position: relative;
+  label {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding-left: 35px;
+    font: 400 16px/1.375 $font;
+    cursor: pointer;
+    @include media-laptop {
+      font-size: 14px;
+      line-height: 1.43;
+    }
+  }
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    &:checked + label {
+      .ui-checkbox__icon {
+        background: $orange;
+        border-color: $orange;
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+    &:disabled {
+      + label {
+        color: $grey60;
+        pointer-events: none;
+      }
+      &:checked {
+        + label {
+          .ui-checkbox__icon {
+            background: $grey50;
+            border-color: $grey50;
+          }
+        }
+      }
+    }
+  }
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid $grey50;
+    border-radius: 6px;
+    transition: 0.3s;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 3px;
+      transform: rotate(-45deg);
+      width: 13px;
+      height: 7px;
+      border: solid currentcolor;
+      color: #fff;
+      border-width: 0 0 2.5px 2.5px;
+      opacity: 0;
+      transition: 0.3s;
+    }
+  }
+}
+body .bvi-body {
+  .ui-checkbox {
+    &__icon {
+      &::before {
+        color: var(--bvi-contrast-color);
+      }
+    }
+    &--switch {
+      .ui-checkbox__icon {
+        background: var(--bvi-contrast-color) !important;
+        &::before {
+          background: var(--bvi-bg-color);
+        }
+      }
+    }
+  }
+}

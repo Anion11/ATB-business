@@ -1,0 +1,154 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'overdraft-simple'
+    const pageTitle ='Овердрафт'
+
+  -
+    const benefitsItems = [
+      { icon: 'img/benefit_1.svg',
+        descr: 'Сумма лимита <br>до&nbsp;50&nbsp;млн рублей',
+        descrTooltip: 'Индивидуально сумма может быть выше, исходя из&nbsp;чистых кредитовых оборотов'
+      },
+      { icon: 'img/benefit_2.svg', descr: 'Поэтапный перевод оборотов из&nbsp;других банков' },
+      { icon: 'img/benefit_3.svg', descr: 'Проценты только за&nbsp;время фактического пользования средствами' },
+    ]
+
+  -
+    const collateralItems = [
+      { mods: 'collateral__item--colspan2',
+        title: 'Недвижимое <br>имущество',
+        titleTooltip: 'в&nbsp;том числе объекты незавершенного строительства и&nbsp;морские, речные, воздушные суда',
+        img: 'img/collateral_img_real_estate.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Движимое <br>имущество',
+        img: 'img/collateral_img_movables.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Ценные бумаги',
+        img: 'img/collateral_img_securities.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Залог товаров в&nbsp;обороте',
+        descr: 'До&nbsp;50% (включительно) от&nbsp;суммарной залоговой стоимости обеспечения, но&nbsp;не&nbsp;более 10&nbsp;млн&nbsp;₽',
+        img: 'img/collateral_img_pledge.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Поручительства собственников бизнеса и&nbsp;компаний группы',
+        img: 'img/collateral_img_guarantees.png',
+      },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/how-get_1.svg',
+        title: `
+          Оставьте <a href="#" class="text-orange">заявку онлайн</a> или&nbsp;по&nbsp;телефону
+          <a class="text-orange text-nowrap" href="tel:88007758080">8 800 775-80-80</a>`,
+      },
+      {
+        icon: 'img/how-get_2.svg',
+        title: 'Предоставьте документы и&nbsp;дождитесь одобрения по&nbsp;заявке',
+      },
+      {
+        icon: 'img/how-get_3.svg',
+        title: 'Получите кредит <br>для&nbsp;вашего бизнеса',
+      },
+    ]
+
+  -
+    const tabsHeadItems = [
+      { text: 'Условия' },
+      { text: 'Обеспечение' },
+      { text: 'Документы' }
+    ]
+
+  -
+    const termsItems =[
+      { name: 'Цель кредита', descr: 'Покрытие кассового разрыва', },
+      { name: 'Сумма кредита', descr: 'До 50&nbsp;000&nbsp;000&nbsp;₽' },
+      { name: 'Валюта кредита', descr: 'Рубли РФ (₽)' },
+      { name: 'Срок кредитования', descr: 'До 12 месяцев', },
+      { name: 'Срок транша', descr: 'До 60 дней' },
+      { name: 'Процентная ставка',
+        descr: `<p>От&nbsp;8,35%* годовых (определяется индивидуально)</p>
+        <div class="ui-p3 text-grey60">*ставка при&nbsp;сроке кредитования до&nbsp;90&nbsp;дней и&nbsp;сумме кредитования от&nbsp;100&nbsp;млн руб.</div>`
+      },
+      { name: 'Комиссия за выдачу', descr: '1% от суммы кредита' },
+    ]
+
+  -
+    const requirementsItems = [
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Анкета-заявление, согласие',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Паспорта участников сделки',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Официальная отчётность',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Карточка сч.&nbsp;51&nbsp;и&nbsp;анализ субконто-контрагенты из&nbsp;1С&nbsp;или выписка из&nbsp;Интернет-Банка по&nbsp;всем расчетным/валютным счетам за&nbsp;полный закрытый год и&nbsp;прошедшие месяцы текущего года',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Перечень имущества, предлагаемое в&nbspкачестве залога',
+      }
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--v-inner-pt-xxl, --overdraft-simple')
+        +banner__wrapper('img/banner_overdraft.png', true)
+          +banner__h1('Овердрафт', '--mob-size-l, --mob-mb-l')
+          +banner__text('Кредит для&nbsp;оплаты срочных платежей при&nbsp;недостатке средств на&nbsp;счёте')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оставить заявку', 'banner, --m-size-l')(href='#form-section')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--title-normal')
+
+      +section
+        .inner
+          +tabs-head(tabsHeadItems, true, '--fw-light, --orange, --no-item-border')(data-tabs-group='main-tabs')
+        +tabs-main(data-tabs-group='main-tabs')
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +terms(termsItems, '--mob-1col-xl')
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +collateral(collateralItems)
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +requirements(requirementsItems)
+                +section-footnote('Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию решения о&nbsp;предоставлении кредита.', '--mw-xxl, --normal, --fz18')
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section#form-section
+        .inner
+          +section-head.text-center
+            +ui-h2('Заявка на&nbsp;получение овердрафта', 'section-head')

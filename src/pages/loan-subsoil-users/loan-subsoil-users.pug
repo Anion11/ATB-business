@@ -1,0 +1,191 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'loan-subsoil-users'
+  -const pageTitle ='Кредитование недропользователей'
+
+  -
+    const termsItems =[
+      {
+        name: 'Цель кредита',
+        sections: [
+          { title: 'Пополнение оборотных средств;' },
+          { title: 'Модернизация, ремонт и&nbsp;приобретение основных средств.' },
+          { title: 'Оплата лизинговых платежей и&nbsp;авансов по&nbsp;договорам лизинга (в&nbsp;общем совокупном объеме не&nbsp;более 25&nbsp;% от&nbsp;суммы кредита&nbsp;/ лимита кредитной линии);' },
+          { title: 'Финансирование геологоразведочных работ в&nbsp;размере не&nbsp;более&nbsp;25% от&nbsp;суммы кредита/ лимита кредитной линии;' },
+          { title: 'Приобретение спецтехники и&nbsp;оборудования;' },
+          { title: 'Приобретение лицензий.' },
+        ]
+      },
+      {
+        name: 'Валюта кредита',
+        sections: [
+          { title: 'Рубли РФ (₽)' },
+          { title: 'Золото (А 98)' },
+        ]
+      },
+      {
+        name: 'Сумма кредита',
+        sections: [
+          { title: `от&nbsp;500&nbsp;000 рублей (вкл.) <div class="ui-p3 text-grey60">для кредитов в&nbsp;рублях</div>` },
+          { title: `от&nbsp;1000 грамм <div class="ui-p3 text-grey60">для займов в&nbsp;золоте</div>` },
+        ]
+      },
+      {
+        name: 'Срок кредитования',
+        sections: [
+          { title: `до&nbsp;12 месяцев <div class="ui-p3 text-grey60">для займов в&nbsp;золоте</div>` },
+          { title: `до&nbsp;36 месяцев <div class="ui-p3 text-grey60">на&nbsp;пополнение оборотных средств</div>` },
+          { title: `до&nbsp;48 месяцев <div class="ui-p3 text-grey60">на&nbsp;приобретение спецтехники и&nbsp;оборудования</div>` },
+        ]
+      },
+      {
+        name: 'Процентная ставка',
+        sections: [
+          { title: '4,9% годовых для&nbsp;займов в&nbsp;золоте;' },
+          { title: 'от&nbsp;11%* годовых (определяется индивидуально).' },
+        ],
+        footnote: '*ставка для&nbsp;клиентов&nbsp;&mdash; недропользователей с&nbsp;годовой выручкой до&nbsp;3,5 млрд рублей, при&nbsp;сроке кредитования до&nbsp;180&nbsp;дней и&nbsp;сумме кредитования менее 10&nbsp;млн рублей'
+      },
+      {
+        name: 'Комиссия за&nbsp;выдачу',
+        descr: '1%&nbsp;от&nbsp;суммы кредита',
+      },
+      {
+        name: 'Форма кредитования',
+        sections: [
+          { title: 'Кредит;' },
+          { title: 'Невозобновляемая кредитная линия;' },
+          { title: 'Заём;' },
+          { title: 'Заём с&nbsp;лимитом выдачи;' },
+          { title: 'Возобновляемая кредитная линия –&nbsp;на&nbsp;цели пополнения оборотных средств' },
+        ]
+      },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a href="#form-section" class="text-orange">заявку онлайн</a> или&nbsp;по&nbsp;телефону <a href="tel:88007758080" class="text-orange text-nowrap">8-800-775-80-80</a>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Предоставьте документы и&nbsp;дождитесь решения по&nbsp;заявке',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите кредит <br>для&nbsp;вашего бизнеса',
+      },
+    ]
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_benefits1.svg', descr: 'Гибкий график погашения' },
+      { icon: 'img/icon_benefits2.svg', descr: 'Оплата лизинговых платежей и&nbsp;авансов по&nbsp;договорам лизинга за&nbsp;счет кредитных средств' },
+      { icon: 'img/icon_benefits3.svg', descr: 'Возможность получения кредита без&nbsp;обеспечения' }
+    ]
+
+  -
+    const tabsHeadItems = [
+      { text: 'Условия' },
+      { text: 'Обеспечение' },
+      { text: 'Документы' }
+    ]
+
+  -
+    const collateralItems = [
+      { mods: 'collateral__item--colspan3',
+        title: 'Недвижимое',
+        titleNowrap: 'имущество',
+        titleTooltip: 'в&nbsp;том&nbsp;числе объекты незавершенного строительства и&nbsp;морские, речные, воздушные суда',
+        img: 'img/collateral_img_real_estate.png'
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Движимое имущество',
+        img: 'img/collateral_img_movables.png'
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Ценные бумаги',
+        img: 'img/collateral_img_securities.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Поручительства собственников бизнеса и&nbsp;компаний группы',
+        img: 'img/collateral_img_guarantees.png',
+      },
+    ]
+
+  -
+    const requirementsItems = [
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Анкета-заявление, согласие',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Паспорта участников сделки',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Официальная отчётность',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Карточка сч.&nbsp;51&nbsp;и&nbsp;анализ субконто-контрагенты из&nbsp;1С&nbsp;или выписка из&nbsp;Интернет-Банка по&nbsp;всем расчетным/валютным счетам за&nbsp;полный закрытый год и&nbsp;прошедшие месяцы текущего года',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Перечень имущества, предлагаемое в&nbspкачестве залога',
+      }
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--loan-subsoil-users')
+        +banner__wrapper('img/banner_loan-subsoil-users.png', true)
+          +banner__h1('Кредитование недропользователей', '--mob-size-l, --mob-mb-l')
+          +banner__text('На подготовку к&nbsp;сезону добычи, покупку основных средств и&nbsp;приобретение лицензий')
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#form-section')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems)
+
+      +section
+        .inner
+          +tabs-head(tabsHeadItems, true, '--fw-light, --orange, --no-item-border')(data-tabs-group='main-tabs')
+        +tabs-main(data-tabs-group='main-tabs')
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +terms(termsItems, '--mob-1col-xl')
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +collateral(collateralItems)
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +section-box('--max-w1055')
+                  +requirements(requirementsItems)
+                +section-footnote('Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию решения о&nbsp;предоставлении кредита.')
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section()#form-section
+        .inner
+          +section-head().text-center
+            +ui-h2('Заявка на&nbsp;получение кредита', 'section-head')

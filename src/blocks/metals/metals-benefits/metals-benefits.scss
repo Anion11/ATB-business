@@ -1,0 +1,36 @@
+.metals-benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  @include media-laptop {
+    gap: 50px 40px;
+  }
+  @include media-tablet {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  &__item {
+    display: flex;
+  }
+  &__icon {
+    width: 56px;
+    height: 56px;
+    margin-right: 25px;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__title {
+    font: 700 20px/1.3 $font;
+    @include media-laptop {
+      font-size: 18px;
+    }
+  }
+  &__desc {
+    margin-top: 15px;
+    font: 16px/1.3 $font;
+  }
+}

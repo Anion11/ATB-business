@@ -1,0 +1,70 @@
+mixin small-banner(smallBannerData, mods)
+  -
+    const baseName = 'small-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  case mods
+    when '--fea-discount'
+      .small-banner.small-banner--fea-discount(class=allMods)&attributes(attributes)
+        .small-banner__head
+          .small-banner__title Получите скидку
+        .small-banner__wrapper
+          .small-banner__item
+            .small-banner__top 10%
+            .small-banner__bot при оплате пакета на 12 месяцев
+          .small-banner__item
+            .small-banner__top 5%
+            .small-banner__bot при оплате пакета на 6 месяцев
+        .small-banner__img
+          img(src='img/fea-packages-ban.png', alt='')
+
+    when '--loan-goskontract'
+      .small-banner.small-banner--loan-goskontract(class=allMods)&attributes(attributes)
+        .small-banner__head
+          .small-banner__title Цель кредитования
+          .small-banner__descr Кредитование расходов, связанных с исполнением клиентами обязательств по государственному и/или муниципальному контракту, в соответствии с:
+        +ui-p1('', '--light')
+          +ui-ul('')
+            li Федеральным законом от 05.04.2013 № 44-ФЗ «О контрактной системе в сфере закупок товаров, работ, услуг для обеспечения государственных и муниципальных нужд»
+            li Федеральным законом от 18.07.2011 № 223-ФЗ «О закупках товаров, работ, услуг отдельными видами юридических лиц»
+        .small-banner__img
+          img(src='img/loan-goskontract-ban.png', alt='')
+
+    when 'partner-team'
+      .small-banner.small-banner--partner-team(class=allMods)&attributes(attributes)
+        .small-banner__head
+          .small-banner__title Присоединяйтесь к&nbsp;команде партнеров&nbsp;АТБ
+          .small-banner__descr Открывайте счет своим клиентам и&nbsp;зарабатывайте
+        .small-banner__btns
+          +ui-button('Стать партнером', 'small-banner')(href='#')
+        .small-banner__img
+          img(src='img/partner-team-ban.png', alt='')
+
+    default
+      .small-banner(class=allMods)&attributes(attributes)
+        .small-banner__head
+          .small-banner__title !{smallBannerData.title}
+          if smallBannerData.descr
+            .small-banner__descr !{smallBannerData.descr}
+          if smallBannerData.p2
+            +ui-p2(smallBannerData.p2, 'small-banner')
+        .small-banner__btns
+          +ui-button(smallBannerData.btn, 'small-banner')(href=(smallBannerData.btnHref || '#') class=smallBannerData.btnClass)
+          if smallBannerData.link
+            +ui-button(smallBannerData.link, 'small-banner, --link-next').text-orange(href='#')
+        if smallBannerData.imgMob
+          .small-banner__img.small-banner__img--desktop
+            img(src=smallBannerData.img, alt='')
+          .small-banner__img.small-banner__img--mobile
+            img(src=smallBannerData.imgMob, alt='')
+        else
+          .small-banner__img
+            img(src=smallBannerData.img, alt='')
+        block

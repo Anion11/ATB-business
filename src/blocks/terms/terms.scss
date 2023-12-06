@@ -1,0 +1,145 @@
+.terms {
+  &__tr {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #e9e9e9;
+    font: 400 18px/1.5 $font;
+    color: $grey80;
+    @include media-tablet {
+      padding: 15px 0;
+      font-size: 16px;
+      line-height: 22px;
+    }
+    p:not(:last-child) {
+      margin-bottom: 10px;
+    }
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+    &--mob-block {
+      @include media-tablet {
+        display: block;
+      }
+      .terms {
+        &__td {
+          &:first-child {
+            @include media-tablet {
+              width: auto;
+              margin: 0 0 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__td {
+    &:first-child {
+      width: 29.5%;
+      flex-shrink: 0;
+      margin-right: 60px;
+      color: $black;
+      @include media-laptop {
+        width: 240px;
+        margin-right: 40px;
+      }
+      @include media-tablet {
+        width: 120px;
+        margin-right: 20px;
+      }
+    }
+    &-xl {
+      font-size: 1.3em;
+    }
+  }
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+      @include media-tablet {
+        margin-bottom: 10px;
+      }
+    }
+    &-descr {
+      font: 300 16px/1.4 $font;
+      @include media-tablet {
+        font-size: 14px;
+      }
+      &:not(:first-child) {
+        margin-top: 2px;
+      }
+    }
+    &-ul {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  &__fn {
+    margin-top: 10px;
+    font: 300 14px/1.4 $font;
+    color: $grey60;
+    @include media-tablet {
+      font-size: 12px;
+    }
+  }
+  &--col-xs {
+    .terms {
+      &__td {
+        &:first-child {
+          width: 20%;
+          max-width: unset;
+          @include media-laptop {
+            width: 240px;
+          }
+          @include media-tablet {
+            width: 120px;
+          }
+        }
+      }
+    }
+  }
+  &--mob-1col-xl {
+    .terms {
+      &__td {
+        &:first-child {
+          @include media-tablet {
+            width: 165px;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+  &--mob-block {
+    .terms {
+      &__tr {
+        @include media-tablet {
+          display: block;
+        }
+      }
+      &__td {
+        &:first-child {
+          @include media-tablet {
+            width: auto;
+            max-width: unset;
+            margin: 0 0 10px;
+          }
+        }
+      }
+    }
+  }
+  &--m-td-w165 {
+    .terms {
+      &__td {
+        &:first-child {
+          @include media-tablet {
+            width: 165px;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+}

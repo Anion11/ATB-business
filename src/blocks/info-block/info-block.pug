@@ -1,0 +1,89 @@
+mixin info-block(page, mods)
+  -
+    const baseName = 'info-block'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .info-block(class=allMods)&attributes(attributes)
+    block
+
+mixin info-block__line(mods)
+  -
+    const baseName = 'info-block__line'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .info-block__line(class=allMods)&attributes(attributes)
+    block
+
+mixin info-block__head(text, mods)
+  -
+    const baseName = 'info-block__head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .info-block__head(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin info-block__title(text, mods)
+  -
+    const baseName = 'info-block__title'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .info-block__title(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin info-block__box(text, mods)
+  -
+    const baseName = 'info-block__box'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .info-block__box(class=allMods)&attributes(attributes) !{text}
+    block
+
+mixin info-block__footnote(text, mods)
+  -
+    const baseName = 'info-block__footnote'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .info-block__footnote(class=allMods)&attributes(attributes) !{text}
+    block

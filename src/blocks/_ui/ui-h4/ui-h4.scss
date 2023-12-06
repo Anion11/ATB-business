@@ -1,0 +1,21 @@
+.ui-h4 {
+  font: 24px/1.3 $font;
+  @include media-laptop {
+    font-size: 22px;
+  }
+  @include media-tablet {
+    font-size: 20px;
+  }
+  &--bold {
+    font-weight: 700;
+  }
+  &--light {
+    font-weight: 300;
+  }
+  &--mb {
+    margin-bottom: 25px;
+    @include media-laptop {
+      margin-bottom: 20px;
+    }
+  }
+}

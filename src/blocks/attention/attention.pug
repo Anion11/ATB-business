@@ -1,0 +1,18 @@
+mixin attention(mods)
+  -
+    const baseName = 'attention'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .attention(class=allMods)&attributes(attributes)
+    .attention__txt
+      .attention__title Внимание!
+      .attention__desc Информация по текущей ситуации
+    +ui-button('Подробнее', 'attention')(href='#')
+    block

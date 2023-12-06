@@ -1,0 +1,201 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'loan-agricultural-producers'
+  -const pageTitle ='Кредит для сельхозпроизводителей'
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a href="#form-section" class="text-orange">заявку онлайн</a> или&nbsp;по&nbsp;телефону <a href="tel:88007758080" class="text-orange text-nowrap">8-800-775-80-80</a>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Предоставьте документы и&nbsp;дождитесь решения по&nbsp;заявке',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите кредит <br>для&nbsp;вашего бизнеса',
+      },
+    ]
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_benefits1.svg', descr: 'Срок кредитования до&nbsp;10&nbsp;лет на&nbsp;инвестиционные цели' },
+      { icon: 'img/icon_benefits2.svg', descr: 'Гибкий график <br>погашения' },
+      { icon: 'img/icon_benefits3.svg', descr: 'Возможность предоставить в&nbsp;залог товары в&nbsp;обороте' }
+    ]
+
+  -
+    const tabsHeadItems = [
+      { text: 'Условия' },
+      { text: 'Обеспечение' },
+      { text: 'Документы' }
+    ]
+
+  -
+    const collateralItems = [
+      { mods: 'collateral__item--colspan2',
+        title: 'Недвижимое <br>имущество',
+        titleTooltip: 'в&nbsp;том числе объекты незавершенного строительства и&nbsp;морские, речные, воздушные суда',
+        img: 'img/collateral_img_real_estate.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Движимое <br>имущество',
+        img: 'img/collateral_img_movables.png'
+      },
+      { mods: 'collateral__item--colspan2',
+        title: 'Ценные бумаги',
+        img: 'img/collateral_img_securities.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Залог товаров в&nbsp;обороте',
+        descr: 'До&nbsp;50% (включительно) от&nbsp;суммарной залоговой стоимости обеспечения, но&nbsp;не&nbsp;более 10&nbsp;млн&nbsp;₽',
+        img: 'img/collateral_img_pledge.png',
+      },
+      { mods: 'collateral__item--colspan3',
+        title: 'Поручительства собственников бизнеса и&nbsp;компаний группы',
+        img: 'img/collateral_img_guarantees.png',
+      },
+    ]
+
+  -
+    const requirementsItems = [
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Анкета-заявление, согласие',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Паспорта участников сделки',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Официальная отчётность',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Карточка сч.&nbsp;51&nbsp;и&nbsp;анализ субконто-контрагенты из&nbsp;1С&nbsp;или выписка из&nbsp;Интернет-Банка по&nbsp;всем расчетным/валютным счетам за&nbsp;полный закрытый год и&nbsp;прошедшие месяцы текущего года',
+      },
+      {
+        icon: 'img/icon_document.svg',
+        text: 'Перечень имущества, предлагаемое в&nbspкачестве залога',
+      }
+    ]
+
+  -
+    const tableItems1 ={
+      thead: [
+        {
+          th: [
+            { text: 'Цель кредита', mods: 'text-black ui-table__tr-title-mob', width: '20%' },
+            { text: 'Пополнение оборотных средств', mods: 'text-center text-center--mob-left ui-table__tr-title-mob' },
+            { text: 'Инвестиционные цели', mods: 'text-center text-center--mob-left ui-table__tr-title-mob',
+              textTooltip: 'приобретение транспортных средств, оборудования, недвижимости и&nbsp;прочих основных средств, используемых для&nbsp;бизнеса, оплата расходов на&nbsp;ремонт основных средств'
+            },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'Сумма кредита' },
+            { text: 'От 300 000 ₽', mods: 'ui-table__td--span2 text-center text-center--mob-left' },
+            { text: 'От 300 000 ₽', mods: 'ui-table__td--m-block text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Валюта кредита' },
+            { text: 'Рубли РФ (₽)', mods: 'ui-table__td--span2 text-center text-center--mob-left' },
+            { text: 'Рубли РФ (₽)', mods: 'ui-table__td--m-block text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Срок кредитования' },
+            { text: 'до 12 месяцев', mods: 'text-center text-center--mob-left' },
+            { text: 'до 120 месяцев', mods: 'text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Процентная ставка' },
+            { text: `От 8,35%* годовых (определяется индивидуально) <br>
+              <div class="ui-p3 text-grey60">*ставка при&nbsp;сроке кредитования до&nbsp;90&nbsp;дней и&nbsp;сумме кредитования от&nbsp;100&nbsp;млн&nbsp;руб</div>`,
+              mods: 'ui-table__td--span2 text-center text-center--mob-left'
+            },
+            { text: `От 8,35%* годовых (определяется индивидуально) <br>
+              <div class="ui-p3 text-grey60">*ставка при&nbsp;сроке кредитования до&nbsp;90&nbsp;дней и&nbsp;сумме кредитования от&nbsp;100&nbsp;млн&nbsp;руб</div>`,
+              mods: 'ui-table__td--m-block text-center text-center--mob-left'
+            }
+          ]
+        },
+        {
+          td: [
+            { text: 'Комиссия за&nbsp;выдачу' },
+            { text: '1% от суммы кредита', mods: 'ui-table__td--span2 text-center text-center--mob-left' },
+            { text: '1% от суммы кредита', mods: 'ui-table__td--m-block text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Форма кредитования' },
+            { text: 'Кредит <br> Невозобновляемая кредитная линия <br> Возобновляемая кредитная линия' },
+            { text: 'Кредит <br> Невозобновляемая кредитная линия' },
+          ]
+        },
+      ]
+    }
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--loan-agricultural-producers')
+        +banner__wrapper('img/banner_loan-agricultural-producers.png', true)
+          +banner__h1('Кредитование сельхоз&shy;производителей', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('На пополнение оборотных средств и&nbsp;приобретение активов для&nbsp;бизнеса')
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#form-section')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems)
+
+      +section
+        .inner
+          +tabs-head(tabsHeadItems, true, '--fw-light, --orange, --no-item-border')(data-tabs-group='main-tabs')
+        +tabs-main(data-tabs-group='main-tabs')
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +ui-table(tableItems1, '--all-border, --1col-w25, --m-td-1col-50, --th-fz18, --nfc-grey80, --th-bdrs0, --m-head-greyblue', 'mobileAccordions', { notNameInMain: true })(data-media='767')
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +collateral(collateralItems)
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +section-box('--max-w1055')
+                  +requirements(requirementsItems)
+                +section-footnote('Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию решения о&nbsp;предоставлении кредита.')
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section()#form-section
+        .inner
+          +section-head().text-center
+            +ui-h2('Заявка на&nbsp;получение кредита', 'section-head')

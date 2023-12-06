@@ -1,0 +1,136 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+  @include media-laptop {
+    gap: 25px;
+  }
+  @include media-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 45px;
+  }
+  &__icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    @include media-laptop {
+      width: 80px;
+      height: 80px;
+    }
+    @include media-tablet {
+      width: 60px;
+      height: 60px;
+    }
+    img {
+      max-height: 100%;
+      margin: 0 auto;
+    }
+  }
+  &__text {
+    margin-top: 20px;
+    text-align: center;
+    @include media-tablet {
+      margin-top: 10px;
+    }
+  }
+  &__title {
+    margin-bottom: 10px;
+    font: 20px/1.2 $font;
+    @include media-laptop {
+      font-size: 16px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__descr {
+    font: 300 16px/1.4 $font;
+  }
+  &--3items {
+    grid-template-columns: repeat(3, 320px);
+    justify-content: center;
+    gap: 40px;
+    @include media-laptop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      max-width: 450px;
+      margin: 0 auto;
+      gap: 50px;
+    }
+    .features {
+      &__item {
+        @include media-tablet {
+          display: flex;
+        }
+      }
+      &__icon {
+        @include media-tablet {
+          flex-shrink: 0;
+          margin: 0;
+        }
+      }
+      &__text {
+        @include media-tablet {
+          align-self: center;
+          margin: 0 0 0 20px;
+          text-align: start;
+        }
+      }
+    }
+  }
+  &--5items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    @include media-laptop {
+      flex-wrap: wrap;
+    }
+    @include media-tablet {
+      flex-direction: column;
+    }
+    .features {
+      &__item {
+        width: calc((100% - 30px * 4) / 5);
+        @include media-laptop {
+          width: calc((100% - 30px * 2) / 3);
+        }
+        @include media-tablet {
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+      }
+      &__text {
+        @include media-tablet {
+          margin-top: 0;
+          text-align: start;
+        }
+      }
+      &__icon {
+        @include media-tablet {
+          margin-right: 20px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+.bvi-body {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    @include media-tablet {
+      grid-template-columns: 1fr;
+    }
+    &--5items {
+      display: grid;
+      .features {
+        &__item {
+          width: auto;
+        }
+      }
+    }
+  }
+}

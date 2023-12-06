@@ -1,0 +1,148 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'fea-packages'
+    const pageTitle ='Пакеты ВЭД'
+
+    const featuresItems = [
+      { icon: 'img/features1.svg', title: 'Открытие и&nbsp;ведение счетов в&nbsp;иностранной валюте' },
+      { icon: 'img/features2.svg', title: 'Бесплатные переводы в&nbsp;иностранной валюте' },
+      { icon: 'img/features3.svg', title: 'Гибкий курс обмена валюты' },
+      { icon: 'img/features4.svg', title: 'Льготный валютный контроль' },
+    ]
+
+    const popupTariffsData = {
+      heading: [
+        {
+          title: 'Счет',
+          items: [
+            'Открытие и ведение счета в иностранной валюте',
+            'Заверение карточки с образцами подписи и оттиска печати',
+            'Заверение комплекта документов',
+          ]
+        },
+        {
+          title: 'Платежи',
+          items: [
+            'Переводы в иностранной валюте',
+          ]
+        },
+        {
+          title: 'Валютный контроль',
+          items: [
+            'Осуществление функций агента валютного контроля по валютным операциям.',
+          ]
+        },
+      ],
+      conditions: [
+        {
+          title: 'ВЭД. Тонизирующий',
+          price: '2700 ₽/мес',
+          tooltip: 'при оплате авансом 12 мес.',
+          mod: 'pineapple',
+          infoList: [
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '1 подпись бесплатно при открытии счета',
+            },
+            {
+              top: 'Бесплатно при открытии счета',
+            },
+            {
+              top: '1 млн. ₽',
+              bottom: 'бесплатно далее 0,13% мин. 25 макс. 200 (USD/EUR, для прочих валют эквивалент в USD)'
+            },
+            {
+              top: '0,12%',
+              bottom: '(в т.ч. НДС), мин. 450 макс. 60 000 руб.'
+            },
+          ],
+          btn: {
+            text: 'Подключить',
+            link: '#form-section'
+          }
+        },
+        {
+          title: 'ВЭД. Тонизирующий+',
+          price: '6210 ₽/мес',
+          tooltip: 'при оплате авансом 12 мес.',
+          mod: 'kiwi',
+          infoList: [
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '1 подпись бесплатно при открытии счета',
+            },
+            {
+              top: 'Бесплатно при открытии счета',
+            },
+            {
+              top: '3 млн. ₽',
+              bottom: 'бесплатно далее 0,13% мин. 25 макс. 200 (USD/EUR, для прочих валют эквивалент в USD)'
+            },
+            {
+              top: '3 млн. ₽',
+              bottom: 'бесплатно далее 0,12% (в т.ч. НДС), мин. 450 макс. 60 000 руб.'
+            },
+          ],
+          btn: {
+            text: 'Подключить',
+            link: '#form-section'
+          }
+        },
+      ]
+    }
+
+block content
+  main
+    +banner
+      +banner__item('--fea-packages')
+        +banner__wrapper('img/banner_fea-packages.jpg')
+          +banner__h1('Пакеты ВЭД')
+          +banner__descr('Открытие и введение счета 0₽').text-orange.banner__mob-none
+          +banner__foot
+            +ui-button('Подключить', 'banner')(href='#form-section')
+            +banner__descr('Всё для работы <br> с иностранными партнерами', '--size-xs').text-orange.banner__mob-none
+        +banner__mobile.text-orange
+          p
+            b Открытие и ведение счета 0₽
+          p Всё для работы с иностранными партнерами
+    .page-content
+      +section('--mt0')
+        .inner
+          +features(featuresItems)
+      +section('--bg-grey, --float-btn')
+        .inner
+          +section-head
+            +ui-h2('Пакеты услуг для активной внешнеэкономической деятельности', 'section-head')
+          +fea-tariffs('--rows')
+          +fea-float-btn('Подробнее о тарифах', 'img/fruit_btn.png', '--packages').js-popup-open(href='#rko-tarifs')
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оставить заявку', 'section-head')
+      +section
+        .inner
+          +small-banner('', '--fea-discount')
+      +section
+        .inner
+          +section-head
+            +ui-h2('Документы для скачивания', 'section-head')
+          +accordion
+            +accordion-item('Тарифы')
+              +documents
+  +popup__wrapper('--autowidth, --mob-full')#rko-tarifs
+    +p-tariffs(popupTariffsData, '--packages')

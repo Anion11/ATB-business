@@ -1,0 +1,151 @@
+mixin cards-table(mods)
+  -
+    const baseName = 'cards-table'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const tableData = {
+      names: [
+        'Годовое обслуживание',
+        'Выпуск платежного стикера',
+        'Лимиты на&nbsp;снятие наличных',
+        'Комиссия за&nbsp;снятие наличных',
+        'Внесение наличных в&nbsp;банкоматах и&nbsp;пунктах выдачи наличных банка',
+        'Кэшбэк на&nbsp;расходы по&nbsp;бизнес карте',
+        'Оформление и&nbsp;получение&nbsp;карты',
+        'Возможность привязать к&nbsp;расчётному счёту',
+      ],
+      columns: [
+        {
+          head: {
+            img: 'img/cards_table_mir_momentum.png',
+            name: 'Бизнес-карта <br> Мир',
+          },
+          rows: [
+            { text: '<span class="cards-table__txt-b">0₽ первый год</span>', mods: 'cards-table__ceil--r-span2', tooltip: '2&nbsp;000&nbsp;₽ в&nbsp;год со&nbsp;второго года' },
+            { text: '700 ₽' },
+            { text: 'до&nbsp;300&nbsp;000&nbsp;₽ в&nbsp;день <br> <span class="cards-table__txt-xs">до&nbsp;3&nbsp;млн ₽&nbsp;в&nbsp;месяц</span>', mods: 'cards-table__ceil--r-span2' },
+            { text: 'от 1,8%', mods: 'cards-table__ceil--r-span2', tooltip: 'Минимум 150 ₽' },
+            { text: 'от 0,3%', mods: 'cards-table__ceil--r-span2', tooltip: 'Минимум 100 ₽' },
+            { text: '1%', mods: 'cards-table__ceil--r-span4' },
+            { text: '5&nbsp;минут&nbsp;/ до&nbsp;10&nbsp;дней', mods: 'cards-table__ceil--r-span2', tooltip: '<p>За&nbsp;5&nbsp;минут при открытии счета <br> Бизнес-карты Мир Momentum <br> и&nbsp;Visa Gold Momentum</p> <p> До&nbsp;10&nbsp;дней <br> Бизнес-карта Мир </p>' },
+            { text: 'Да', mods: 'cards-table__ceil--r-span4', tooltip: 'Недоступно для карт Momentum' },
+          ],
+          btn: {
+            txt: 'Открыть',
+            href: '#',
+          },
+          link: {
+            txt: 'Подробнее',
+            href: '#'
+          },
+        },
+        {
+          head: {
+            img: 'img/cards_table_visa_gold.png',
+            name: 'Бизнес-карта <br> Visa Gold Momentum',
+          },
+          rows: [
+            { text: '<span class="cards-table__txt-b">0₽ первый год</span>', mods: 'cards-table__ceil--d-hidden', tooltip: '2&nbsp;000&nbsp;₽ в&nbsp;год со&nbsp;второго года' },
+            { icon: 'no' },
+            { text: 'до&nbsp;300&nbsp;000&nbsp;₽ в&nbsp;день <br> <span class="cards-table__txt-xs">до&nbsp;3&nbsp;млн ₽&nbsp;в&nbsp;месяц</span>', mods: 'cards-table__ceil--d-hidden' },
+            { text: 'от 1,8%', mods: 'cards-table__ceil--d-hidden', tooltip: 'Минимум 150 ₽' },
+            { text: 'от 0,3%', mods: 'cards-table__ceil--d-hidden', tooltip: 'Минимум 100 ₽' },
+            { text: '1%', mods: 'cards-table__ceil--d-hidden' },
+            { text: '5&nbsp;минут&nbsp;/ до&nbsp;10&nbsp;дней', mods: 'cards-table__ceil--d-hidden', tooltip: '<p>За&nbsp;5&nbsp;минут при открытии счета <br> Бизнес-карты Мир Momentum <br> и&nbsp;Visa Gold Momentum</p> <p> До&nbsp;10&nbsp;дней <br> Бизнес-карта Мир </p>' },
+            { text: 'Да', mods: 'cards-table__ceil--d-hidden', tooltip: 'Недоступно для карт Momentum' },
+          ],
+          btn: {
+            txt: 'Открыть',
+            href: '#',
+          },
+          link: {
+            txt: 'Подробнее',
+            href: '#'
+          },
+        },
+        {
+          head: {
+            img: 'img/cards_table_union-pay.png',
+            name: 'Бизнес-карта <br> UnionPay',
+          },
+          rows: [
+            { text: '<span class="cards-table__txt-b">4 000 ₽</span>', mods: 'cards-table__ceil--r-span2' },
+            { icon: 'no' },
+            { text: 'до&nbsp;500&nbsp;000&nbsp;₽ в&nbsp;день <br> <span class="cards-table__txt-xs">до&nbsp;5&nbsp;млн ₽&nbsp;в&nbsp;месяц</span>', mods: 'cards-table__ceil--r-span2' },
+            { text: 'от 1,6%', mods: 'cards-table__ceil--r-span2', tooltip: 'Минимум 150 ₽' },
+            { text: 'от 0,3%', mods: 'cards-table__ceil--r-span2', tooltip: 'Минимум 100 ₽' },
+            { text: '1%', mods: 'cards-table__ceil--d-hidden' },
+            { text: 'до 10 дней', mods: 'cards-table__ceil--r-span2' },
+            { text: 'Да', mods: 'cards-table__ceil--d-hidden', tooltip: 'Недоступно для карт Momentum' },
+          ],
+          btn: {
+            txt: 'Открыть',
+            href: '#',
+          },
+          link: {
+            txt: 'Подробнее',
+            href: '#'
+          },
+        },
+        {
+          head: {
+            img: 'img/cards_table_visa_platium.png',
+            name: 'Бизнес-карта <br> Visa Platinum',
+          },
+          rows: [
+            { text: '<span class="cards-table__txt-b">4 000 ₽</span>', mods: 'cards-table__ceil--d-hidden' },
+            { icon: 'no' },
+            { text: 'до&nbsp;500&nbsp;000&nbsp;₽ в&nbsp;день <br> <span class="cards-table__txt-xs">до&nbsp;5&nbsp;млн ₽&nbsp;в&nbsp;месяц</span>', mods: 'cards-table__ceil--d-hidden' },
+            { text: 'от 1,6%', mods: 'cards-table__ceil--d-hidden', tooltip: 'Минимум 150 ₽' },
+            { text: 'от 0,3%', mods: 'cards-table__ceil--d-hidden', tooltip: 'Минимум 100 ₽' },
+            { text: '1%', mods: 'cards-table__ceil--d-hidden' },
+            { text: 'до 10 дней', mods: 'cards-table__ceil--d-hidden' },
+            { text: 'Да', tooltip: 'Недоступно для карт Momentum', mods: 'cards-table__ceil--d-hidden' },
+          ],
+          btn: {
+            txt: 'Открыть',
+            href: '#',
+          },
+          link: {
+            txt: 'Подробнее',
+            href: '#'
+          },
+        },
+      ]
+    }
+
+  .cards-table.js-table(class=allMods data-media='')&attributes(attributes)
+    .cards-table__names.js-column
+      .cards-table__names-ceil.js-ceil
+      each item in tableData.names
+        .cards-table__names-ceil.js-ceil
+          .cards-table__txt !{item}
+    .cards-table__columns
+      each col in tableData.columns
+        .cards-table__col.js-column
+          .cards-table__head.js-ceil.js-accordion-head
+            .cards-table__img
+              img(src=col.head.img, alt='')
+            .cards-table__title !{col.head.name}
+          .cards-table__main
+            each row, index in col.rows
+              .cards-table__ceil.js-ceil(class=row.mods)
+                .cards-table__txt !{tableData.names[index]}
+                if row.text
+                  .cards-table__txt !{row.text}
+                    if row.tooltip
+                      +ui-tooltip(row.tooltip)
+                if row.icon
+                  .cards-table__icon(class=`cards-table__icon--${row.icon}`)
+                    +icon(`icon_${row.icon}`)
+            .cards-table__bottom
+              +ui-button(col.btn.txt, 'cards-table, --ph-s')(href=col.btn.href)
+              +ui-button(col.link.txt, 'cards-table, --link-next')(href=col.link.href)
+    block

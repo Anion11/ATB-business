@@ -1,0 +1,71 @@
+.service-fea-about {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 35px 35px;
+  background: $grey20;
+  border-radius: 8px;
+  @include media-laptop {
+    flex-grow: 1;
+  }
+  @include media-tablet {
+    padding: 25px 20px;
+  }
+  &__title {
+    margin-bottom: 15px;
+    font: 700 28px/1.3 $font;
+    @include media-laptop {
+      font-size: 26px;
+    }
+    @include media-tablet {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 15px;
+    font: 700 20px/1.3 $font;
+    @include media-tablet {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  }
+  &__ui-ul {
+    font-size: 18px;
+    @include media-laptop {
+      font-size: 16px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    @include media-laptop {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    @include media-tablet {
+      text-align: center;
+    }
+  }
+  &__ui-button {
+    &:not(:last-child) {
+      margin-right: 30px;
+      @include media-laptop {
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
+    }
+    @include media-tablet {
+      width: 100%;
+    }
+    &.ui-button--link-next {
+      @include media-tablet {
+        width: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+}

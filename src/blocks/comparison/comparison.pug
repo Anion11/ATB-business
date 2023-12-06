@@ -1,0 +1,37 @@
+mixin comparison(tableData, mods)
+  -
+    const baseName = 'comparison'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .comparison.js-table(class=allMods data-media='767')&attributes(attributes)
+    .comparison__names.js-column
+      .comparison__names-ceil.js-ceil
+      each item in tableData.names
+        .comparison__names-ceil.js-ceil !{item}
+    .comparison__columns
+      each col in tableData.columns
+        .comparison__col.js-column
+          .comparison__head.js-ceil.js-accordion-head(class=(col.headMods ? `comparison__head--${col.headMods}` : ''))
+            .comparison__head-text
+              .comparison__head-name !{col.name}
+              if col.descr
+                .comparison__head-descr !{col.descr}
+            .comparison__head-img
+              img(src=col.img, alt='')
+          .comparison__main
+            each row, index in col.rows
+              .comparison__ceil.js-ceil
+                .comparison__title !{tableData.names[index]}
+                if row.icon
+                  .comparison__icon(class=`comparison__icon--${row.icon}`)
+                    +icon(`icon_${row.icon}`)
+                if row.text
+                  +ui-p2(row.text, row.textMods)
+    block

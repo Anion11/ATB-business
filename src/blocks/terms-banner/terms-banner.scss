@@ -1,0 +1,85 @@
+.terms-banner {
+  position: relative;
+  min-height: 305px;
+  padding: 50px 450px 50px 50px;
+  background: linear-gradient(90deg, #fff8f2 0%, #ffeedb 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  @include media-laptop {
+    padding: 40px 40px 215px;
+  }
+  @include media-tablet {
+    padding: 30px 20px 165px;
+  }
+  &__img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    max-width: 480px;
+    pointer-events: none;
+    user-select: none;
+    @include media-laptop {
+      top: unset;
+      bottom: -25px;
+      transform: none;
+      max-width: 400px;
+    }
+    @include media-tablet {
+      bottom: -15px;
+      max-width: 300px;
+    }
+  }
+  &__h3 {
+    margin-bottom: 15px;
+    font: 700 36px/1.2 $font;
+    @include media-laptop {
+      font-size: 30px;
+    }
+    @include media-tablet {
+      font-size: 22px;
+    }
+  }
+  &__descr {
+    font: 22px/1.3 $font;
+    @include media-laptop {
+      font-size: 20px;
+    }
+    @include media-tablet {
+      font-size: 16px;
+    }
+  }
+  &__fn {
+    margin-top: 15px;
+    font: 14px/1.4 $font;
+    color: $grey80;
+    @include media-tablet {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  }
+  &__foot {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+    @include media-tablet {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 25px;
+      margin-top: 20px;
+    }
+  }
+  &--support-business {
+    @include media-tablet {
+      padding-bottom: 192px;
+    }
+    .terms-banner {
+      &__img {
+        @include media-tablet {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

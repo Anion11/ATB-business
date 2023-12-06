@@ -1,0 +1,852 @@
+-
+  let headerMenu ={
+    top: [
+      {
+        name: 'Физическим лицам',
+        link: '#'
+      },
+      {
+        name: 'Бизнесу',
+        link: '/business/'
+      },
+      {
+        name: 'Премиальное обслуживание',
+        link: '/status/'
+      },
+      {
+        name: 'Финансовым организациям',
+        link: '/for-financial-organizations/'
+      },
+      {
+        name: 'Инвестиционные услуги',
+        link: 'https://invest.atb.su'
+      },
+      {
+        name: 'О банке',
+        link: '/o-banke/'
+      },
+    ],
+    bottom: [
+      {
+        name: 'Расчетный счет',
+        inner: {
+          columns: [
+            {
+              body: [
+                {
+                  name: 'Открытие счета онлайн',
+                  link: '#'
+                },
+                {
+                  name: 'Пакеты РКО',
+                  link: '#'
+                },
+                {
+                  name: 'Интернет-Банкинг',
+                  link: '#'
+                },
+                {
+                  name: 'Онлайн-сервисы',
+                  isTitle: true
+                },
+                {
+                  name: 'Интернет-банк',
+                  link: '#'
+                },
+                {
+                  name: 'Мобильный банк «АТБ Бизнес»',
+                  link: '#'
+                },
+              ]
+            },
+            {
+              head: {
+                name: 'Обслуживание ВЭД',
+                link: '#'
+              },
+              body: [
+                {
+                  name: 'Пакеты ВЭД',
+                  link: '#'
+                },
+                {
+                  name: 'Валютный контроль',
+                  link: '#'
+                },
+                {
+                  name: 'Конверсионные операции',
+                  link: '#'
+                },
+                {
+                  name: 'Международные расчеты',
+                  link: '#'
+                },
+                {
+                  name: 'Аккредитивы и гарантии',
+                  link: '#'
+                },
+                {
+                  name: 'Хеджирование валютных рисков',
+                  link: '#'
+                },
+                {
+                  name: 'Финансирование ВЭД',
+                  link: '#'
+                },
+              ]
+            },
+            {
+              body: [
+                {
+                  isAttention: true,
+                  name: 'Акция «Вместе выгоднее»',
+                  link: '#'
+                },
+                {
+                  isAttention: true,
+                  name: 'Акция «ВЭД: Курс на Восток!»',
+                  link: '#'
+                },
+              ]
+            },
+          ],
+          ban: {
+            img: 'header_ban-1.jpg',
+            title: 'Пакет РКО «Сочный ноль» <br> 0 ₽/мес.',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+      {
+        name: 'Кредиты',
+        inner: {
+          columns: [
+            {
+              head: {
+                name: 'Все кредиты',
+                link: '#'
+              },
+              body: [
+                {
+                  name: 'Льготные программы кредитования',
+                  link: '#'
+                },
+                {
+                  name: 'Кредиты для собственников бизнеса',
+                  link: '#'
+                },
+                {
+                  name: 'Кредиты для бизнеса',
+                  link: '#'
+                },
+                {
+                  name: 'Овердрафт для бизнеса',
+                  link: '#'
+                },
+                {
+                  name: 'Финансирование ВЭД',
+                  link: '#'
+                },
+              ],
+              button: 'Подобрать кредит'
+            },
+          ],
+          ban: {
+            img: 'header_ban-2.jpg',
+            title: 'Кредиты для бизнеса <br> от 19,1% годовых',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+      {
+        name: 'Бизнес-карты',
+        inner: {
+          columns: [
+            {
+              head: {
+                name: 'Все карты',
+                link: '#'
+              },
+              body: [
+                {
+                  name: 'Дебетовая карта Visa Business Gold',
+                  link: '#'
+                },
+                {
+                  name: 'Премиальная карта Visa Platinum Business',
+                  link: '#'
+                },
+                {
+                  name: 'Моментальная карта Visa Business Momentum',
+                  link: '#'
+                },
+              ]
+            },
+          ],
+          ban: {
+            img: 'header_ban-3.jpg',
+            title: 'Карты для бизнеса <br> 0 ₽/мес.',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+      {
+        name: 'Эквайринг',
+        link: '#'
+      },
+      {
+        name: 'Лизинг',
+        inner: {
+          columns: [
+            {
+              body: [
+                {
+                  name: 'Стандартный лизинг',
+                  link: '#'
+                },
+                {
+                  name: 'Лизинг-лайт',
+                  link: '#'
+                },
+              ]
+            }
+          ],
+          ban: {
+            img: 'header_ban-5.jpg',
+            title: 'Стандартный лизинг <br> Аванс 0%',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+      {
+        name: 'Гарантии',
+        inner: {
+          columns: [
+            {
+              body: [
+                {
+                  name: 'Банковская гарантия',
+                  link: '#'
+                },
+                {
+                  name: 'Экспресс гарантии',
+                  link: '#'
+                },
+              ]
+            },
+          ],
+          ban: {
+            img: 'header_ban-6.jpg',
+            title: 'Экспресс - гарантии <br> до 40 млн ₽',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+      {
+        name: 'Депозиты',
+        inner: {
+          columns: [
+            {
+              body: [
+                {
+                  name: 'Классический',
+                  link: '#'
+                },
+                {
+                  name: 'Пополняемый',
+                  link: '#'
+                },
+                {
+                  name: 'Оперативный',
+                  link: '#'
+                },
+              ]
+            },
+          ],
+          ban: {
+            img: 'header_ban-7.jpg',
+            title: 'Депозит «Классический онлайн» <br> Размещение средств на срок от 1 до 1825 дней с максимальной доходностью',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+      {
+        name: 'Ещё',
+        inner: {
+          columns: [
+            {
+              head: {
+                name: 'Сервисы',
+              },
+              body: [
+                {
+                  name: 'Сервисы защиты бизнеса',
+                  link: '#'
+                },
+                {
+                  name: 'Зарплатный проект',
+                  link: '#'
+                },
+                {
+                  name: 'Бесплатная поддержка малого и среднего бизнеса в Москве',
+                  link: '#'
+                },
+                {
+                  name: 'Стать партнером',
+                  link: '#'
+                },
+                {
+                  name: 'Бесплатная онлайн-бухгалтерия для ИП на УСН 6%',
+                  link: '#'
+                },
+              ]
+            },
+            {
+              head: {
+                name: 'Гос.программы',
+              },
+              body: [
+                {
+                  name: 'Льготные программы кредитования',
+                  link: '#'
+                },
+                {
+                  name: 'Застройщикам',
+                  link: '#'
+                },
+              ]
+            },
+            {
+              head: {
+                name: 'Драг.металлы',
+              },
+              body: [
+                {
+                  name: 'Операции с драгоценными металлами',
+                  link: '#'
+                },
+                {
+                  name: 'Сотрудничество с недропользователями',
+                  link: '#'
+                },
+              ]
+            },
+          ],
+          ban: {
+            img: 'header_ban-8.jpg',
+            title: 'Мобильный банк <br> АТБ Бизнес',
+            btnTxt: 'Подробнее',
+            link: '#'
+          }
+        }
+      },
+    ],
+    geo: [
+      'Алтайский край',
+      'Амурская область',
+      'Еврейская автономная область',
+      'Забайкальский край',
+      'Иркутская область',
+      'Республика Алтай',
+      'Омская область',
+      'Камчатский край',
+      'Кемеровская область',
+      'Красноярский край',
+      'Магаданская область',
+      'Москва и Московская область',
+      'Приморский край',
+      'Республика Бурятия',
+      'Республика Саха (Якутия)',
+      'Республика Хакасия',
+      'Сахалинская область',
+      'Свердловская область',
+      'Хабаровский край',
+      'Чукотский АО',
+    ],
+    burger: [
+      {
+        head: {
+          name: 'Расчетный счет',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Открытие счета онлайн',
+            link: '#'
+          },
+          {
+            name: 'Онлайн обслуживание',
+            link: '#'
+          },
+        ],
+      },
+      {
+        head: {
+          name: 'Онлайн-сервисы'
+        },
+        menu: [
+          {
+            name: 'Интернет-банк',
+            link: '#'
+          },
+          {
+            name: 'Мобильный банк «АТБ Бизнес»',
+            link: '#'
+          },
+        ]
+      },
+      {
+        isMobileLink: true,
+        head: {
+          name: 'Акция «ВЭД: Курс на Восток!»',
+          link: '#',
+          mod: 'text-orange'
+        },
+      },
+      {
+        head: {
+          name: 'Обслуживание ВЭД',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Пакеты ВЭД',
+            link: '#'
+          },
+          {
+            name: 'Валютный контроль',
+            link: '#'
+          },
+          {
+            name: 'Конверсионные операции',
+            link: '#'
+          },
+          {
+            name: 'Международные расчеты',
+            link: '#'
+          },
+          {
+            name: 'Аккредитивы и гарантии',
+            link: '#'
+          },
+          {
+            name: 'Хеджирование валютных рисков',
+            link: '#'
+          },
+          {
+            name: 'Финансирование ВЭД',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Кредиты',
+          link: '#'
+        },
+        sectionPageMobile: {
+          name: 'Все кредиты',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Льготные программы кредитования',
+            link: '#'
+          },
+          {
+            name: 'Кредиты для собственников бизнеса',
+            link: '#'
+          },
+          {
+            name: 'Кредиты для бизнеса',
+            link: '#'
+          },
+          {
+            name: 'Овердрафт для бизнеса',
+            link: '#'
+          },
+          {
+            name: 'Финансирование ВЭД',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Бизнес-карты',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Дебетовая карта Visa Business Gold',
+            link: '#'
+          },
+          {
+            name: 'Премиальная карта Visa Platinum Business',
+            link: '#'
+          },
+          {
+            name: 'Моментальная карта Visa Business Momentum ',
+            link: '#'
+          },
+          {
+            name: 'Все карты',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Эквайринг',
+          link: '#'
+        },
+      },
+      {
+        head: {
+          name: 'Лизинг',
+        },
+        menu: [
+          {
+            name: 'Стандартный лизинг',
+            link: '#'
+          },
+          {
+            name: 'Лизинг-лайт',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Государственные программы',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Льготные программы кредитования',
+            link: '#'
+          },
+          {
+            name: 'Кредитование для застройщиков',
+            link: '#'
+          },
+          {
+            name: 'Застройщикам',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Стать партнером',
+          link: '#'
+        },
+      },
+      {
+        head: {
+          name: 'Гарантии',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Банковская гарантия',
+            link: '#'
+          },
+          {
+            name: 'Экспpесс гаpантии',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Депозиты',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Классический',
+            link: '#'
+          },
+          {
+            name: 'Пополняемый',
+            link: '#'
+          },
+          {
+            name: 'Оперативный',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Драгоценные металлы',
+          link: '#'
+        },
+        menu: [
+          {
+            name: 'Операции с драгоценными металлами',
+            link: '#'
+          },
+          {
+            name: 'Сотрудничество с недропользователями',
+            link: '#'
+          },
+        ]
+      },
+      {
+        head: {
+          name: 'Сервисы'
+        },
+        menu: [
+          {
+            name: 'Сервисы защиты бизнеса',
+            link: '#'
+          },
+          {
+            name: 'Зарплатный проект',
+            link: '#'
+          },
+          {
+            name: 'Бесплатная поддержка малого и среднего бизнеса в Москве',
+            link: '#'
+          },
+          {
+            name: 'Стать партнером',
+            link: '#'
+          },
+          {
+            name: 'Бесплатная онлайн-бухгалтерия для ИП на УСН 6%',
+            link: '#'
+          },
+        ]
+      },
+    ],
+  }
+
+-
+  let headerBurgerPhoneItems = [
+    {
+      href: 'tel:+78007758080',
+      text: '8-800-775-80-80',
+      desc: 'Бесплатный звонок по России',
+    },
+    {
+      href: 'tel:+74162222333',
+      text: '+7(4162) 222-333',
+      desc: 'Для звонков из-за рубежа',
+    },
+    {
+      href: 'tel:*3040',
+      text: '3040',
+      textModsDeskt: 'header__d-burger-tel--icons',
+      textModsMob: 'header__m-burger-tel--icons',
+      desc: 'Звонок с мобильного бесплатный',
+    },
+    {
+      href: 'tel:+78007758888',
+      text: '8-800-775-88-88',
+      desc: 'Частным клиентам',
+    },
+  ]
+
+header.header(class = isNewYear ? 'header--ny' : '')
+  .inner
+    a.header__logo(href='/')
+      if isNewYear
+        +icon('icon_logo-ny')
+      else
+        +icon('icon_logo').bvi-svg
+    .header__menu
+      .header__top
+        .header__top-left
+          .header__top-select Бизнесу
+          .header__top-menu
+            each item, index in headerMenu.top
+              a.header__top-link(href=item.link class=index==1 ? 'header__top-link--active' : '')=item.name
+        .header__tools
+          .header__tools-item.header__tools-item--city.js-open-geo
+            +icon('header--icon-geo')
+            | Москва
+          a.header__tools-item(href='/atms/') Отделения и банкоматы
+          .header__tools-item.header__call
+            +icon('header--icon-tel')
+            | Связаться с нами
+            .header__call-content(style='display: none;')
+              .header__call-block
+                .header__call-close
+                .header__call-top
+                  .header__call-item
+                    a(href='tel:+78007758080') 8-800-775-8080
+                    span Бесплатный звонок по России
+                  .header__call-item
+                    a(href='tel:+74162222333') +7(4162) 222 333
+                    span Для звонков из-за рубежа
+                  .header__call-item.header__call-item--icon
+                    a(href='tel:*3040') 3040
+                    span Звонок с мобильного бесплатный
+                  .header__call-item
+                    a(href='tel:+78007758888') 8-800-775-88-88
+                    span Частным лицам
+                .header__call-bot
+                  a.header__call-action(href='https://zingaya.com/widget/0020bc7ab6b4dee75eb1e26253a9e0d0') Позвонить через интернет
+          a.header__lk(href='https://my.atb.su')
+            +icon('header--icon-lk')
+          .header__lang RU
+            .header__lang-content(style='display: none;')
+              .header__lang-list
+                a.header__lang-item(href='http://www.eng.atb.su/') ENG
+                a.header__lang-item(href='http://chinese.atb.su/') 中文
+          a.header__bvi.bvi-open(href='#')
+          .header__search-open
+            +icon('header--icon-search')
+          .header__burger-icon
+            span.bvi-no-styles
+            span.bvi-no-styles
+            span.bvi-no-styles
+      .header__bot
+        .header__bot-menu.bvi-hide
+          each item in headerMenu.bottom
+            if item.link
+              .header__bot-item.header__bot-item--link
+                a.header__bot-btn(href=item.link)=item.name
+            else
+              .header__bot-item
+                .header__bot-btn=item.name
+                .header__bot-drop
+                  .header__bot-inner
+                    each col in item.inner.columns
+                      .header__bot-col
+                        if col.head
+                          if col.head.link
+                            a.header__bot-head.header__bot-head--link(href=col.head.link)=col.head.name
+                          else
+                            .header__bot-head=col.head.name
+                        each innerLink in col.body
+                          if innerLink.isTitle
+                            .header__bot-head=innerLink.name
+                          else
+                            .header__bot-link(class=innerLink.isAttention ? 'text-orange' : '')
+                              a(href=innerLink.link)=innerLink.name
+                              //- if innerLink.label
+                                if innerLink.labelLink
+                                  a.header__promo-label(href=innerLink.labelLink)=innerLink.label
+                                else
+                                  span.header__promo-label=innerLink.label
+                        if col.button
+                          +ui-button(col.button, '--empty')(href='#')
+                    if item.inner.ban
+                      a.header__ban(href=item.inner.ban.link)
+                        .header__ban-img
+                          img(src=`/img/${item.inner.ban.img}`, alt='')
+                        .header__ban-title !{item.inner.ban.title}
+                        +ui-button(item.inner.ban.btnTxt, '--empty')
+        .header__bot-right
+          a.header__bot-connect.header__bot-connect--bank(href='https://my.atb.su')
+            +icon('header--icon-lk')
+            span.header__bot-connect-txt Интернет -Банк
+    .header__search
+      .header__search-inner
+        form.header__search-form.bvi-no-styles(action='#')
+          button.header__search-btn
+            +icon('header--icon-search')
+          input#headerSearch.header__search-input.js-search-result(type='text' placeholder='Начните поиск, используя поле ввода' autocomplete='off')
+          .header__search-close
+            +icon('header--icon-close-search')
+      .header__search-results
+        .header__search-inner
+          ul
+            li
+              a(href='#')
+                span.highlight бизнес
+                |  идея
+            li
+              a(href='#')
+                span.highlight бизнес
+                |  аналитика
+            li
+              a(href='#') Все для
+                span.highlight  бизнес
+                | а
+    .header__burger
+      .header__d-burger
+        .header__d-burger-contacts
+          each item in headerBurgerPhoneItems
+            .header__d-burger-phone
+              a.header__d-burger-tel(class=item.textModsDeskt href=item.href)=item.text
+              .header__d-burger-desc !{item.desc}
+
+        each block, index in headerMenu.burger
+          if !block.isMobileLink
+            .header__d-burger-block
+              if block.head.link
+                a.header__d-burger-head(href=block.head.link)=block.head.name
+              else
+                .header__d-burger-head=block.head.name
+              if block.menu
+                each point in block.menu
+                  if point.link
+                    a.header__d-burger-link(href=point.link)=point.name
+                  else
+                    .header__d-burger-subtitle=point.name
+      .header__m-burger
+        .header__m-burger-top
+          a.header__m-burger-atms(href='/atms/') Отделения и банкоматы
+          .header__m-burger-city.js-open-geo Барнаул
+        .header__m-burger-menu
+          each block in headerMenu.burger
+            if block.menu
+              .header__m-burger-item(class=block.isLastOnModile ? 'header__m-burger-item--last' : '')
+                .header__m-burger-arrow=block.head.name
+                .header__m-burger-drop
+                  .header__m-burger-inner
+                    if block.sectionPageMobile
+                      .header__m-burger-line
+                        a.header__m-burger-link(href=block.sectionPageMobile.link)=block.sectionPageMobile.name
+                    if block.menu
+                      each point in block.menu
+                        .header__m-burger-line(class=point.isChildOnMobile ? 'header__m-burger-line--child' : '')
+                          a.header__m-burger-link(href=point.link)=point.name
+            else
+              a.header__m-burger-item(href=block.head.link class=block.head.mod)=block.head.name
+        form.header__m-burger-search
+          +ui-button('', '--search', true)
+          input#headerSearchMobile(type='text' placeholder='Поиск' autocomplete='off')
+        .header__m-burger-bot
+          each item in headerBurgerPhoneItems
+            .header__m-burger-phone
+              a.header__m-burger-tel(class=item.textModsMob href=item.href)=item.text
+              .header__m-burger-desc !{item.desc}
+          a.header__m-burger-call(href='https://zingaya.com/widget/0020bc7ab6b4dee75eb1e26253a9e0d0') Позвонить через интернет
+    .header__geo
+      .header__geo-inner
+        .header__geo-top
+          +icon('icon_logo').bvi-no-styles
+          form.header__geo-search(action='#')
+            .header__geo-input
+              input#headerGeoSearch.js-geo-result(type='text' autocomplete='off')
+              ul.header__geo-results
+                li
+                  a(href='#') Амурск
+                li
+                  a(href='#') Амурск
+            .header__geo-close
+        .header__geo-bot.header__geo-bot--all
+          .header__geo-right
+            .header__geo-current Москва
+            .header__geo-list
+              each point in headerMenu.geo
+                a.header__geo-item.js-header__geo-item(href='#')=point
+        .header__geo-bot.header__geo-bot--select.header__geo-bot--hidden
+          .header__geo-back Все регионы
+          .header__geo-right
+            .header__geo-region Магаданская область
+            .header__geo-list
+              a.header__geo-item(href='#') Магадан
+    .header__shadow

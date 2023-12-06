@@ -1,0 +1,326 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'cards'
+    const pageTitle ='Бизнес-карта UnionPay'
+
+    const benefitsItemsMain = [
+      {
+        icon: 'img/union-pay-benefits-1.svg',
+        title: 'Кэшбэк до&nbsp;15&nbsp;000&nbsp;₽ в&nbsp;месяц на&nbsp;все&nbsp;покупки',
+        titleModClass: 'benefits__title--size-l',
+        titleTooltip: `1% со всех операции, кроме:
+          <a class="text-orange"
+            onclick="window.openTabByLink('tab-cashback');
+              setTimeout(() => {window.openAccordion('#accordion-cashback-exceptions')}, 10);
+              return false;"
+            href="#">операций исключений
+          </a>`,
+      },
+      {
+        icon: 'img/union-pay-benefits-2.svg',
+        title: 'Бесплатный выпуск карты',
+        titleModClass: 'benefits__title--size-l',
+      },
+      {
+        icon: 'img/union-pay-benefits-3.svg',
+        title: 'До&nbsp;5&nbsp;млн&nbsp;рублей в&nbsp;месяц лимит на&nbsp;снятие наличных',
+        titleModClass: 'benefits__title--size-l',
+      },
+      {
+        icon: 'img/union-pay-benefits-4.svg',
+        title: 'Привязана к&nbsp;расчетному&nbsp;счету',
+        titleModClass: 'benefits__title--size-l',
+        titleTooltip: 'За исключением моментальных карт'
+      },
+      {
+        icon: 'img/union-pay-benefits-5.svg',
+        title: 'Карты для&nbsp;сотрудников с&nbsp;привязкой к&nbsp;одному счету',
+        titleModClass: 'benefits__title--size-l',
+      },
+      {
+        icon: 'img/union-pay-benefits-6.svg',
+        title: 'Индивидуальные лимиты для&nbsp;каждого сотрудника',
+        titleModClass: 'benefits__title--size-l',
+      },
+    ]
+
+    const tabsHeadItems = [
+      { text: 'О карте' },
+      { text: 'Сравнение карт' },
+      { text: 'Кэшбэк', dataTab: 'tab-cashback' },
+      { text: 'Вопросы и ответы' },
+      { text: 'Документы и тарифы' },
+    ]
+
+    const cardTermsData = {
+      img: 'img/cards-terms_union-pay.png',
+      terms: [
+        {
+          name: 'Платежная система',
+          descr: 'UnionPay'
+        },
+        {
+          name: 'Выпуск карты',
+          descr: '0&nbsp;₽ <br> до&nbsp;10&nbsp;дней'
+        },
+        {
+          name: 'Обслуживание',
+          descr: '4&nbsp;000&nbsp;₽ в&nbsp;год'
+        },
+        {
+          name: 'Лимит на&nbsp;снятие наличных',
+          descr: 'до&nbsp;5&nbsp;000&nbsp;000&nbsp;₽ в&nbsp;месяц <br> до&nbsp;500&nbsp;000&nbsp;₽ в&nbsp;день'
+        },
+        {
+          name: 'Комиссия за&nbspснятие наличных',
+          descr: '1,6%, <br> минимум 150&nbsp;₽'
+        },
+        {
+          name: 'Внесение наличных',
+          descr: '0,3%, <br> минимум 100&nbsp;₽'
+        },
+        {
+          name: 'Кэшбэк на&nbsp;расходы по&nbsp;бизнес-карте',
+          descr: '1%'
+        },
+      ],
+    }
+
+    const benefitsItemsCashback = [
+      {
+        icon: 'img/features-1.svg',
+        title: 'Вы&nbsp;можете подключить кэшбэк 1% на&nbsp;бизнес-расходы',
+      },
+      {
+        icon: 'img/features-2.svg',
+        title: 'Подключение карты к&nbsp;кэшбэку бесплатное',
+      },
+      {
+        icon: 'img/features-3.svg',
+        title: 'Вы&nbsp;можете вернуть за&nbsp;покупки до&nbsp;15&nbsp;000&nbsp;₽/мес',
+      },
+      {
+        icon: 'img/features-4.svg',
+        title: 'Минимальная сумма транзакций не&nbsp;менее 10&nbsp;000&nbsp;₽/мес',
+      },
+    ]
+
+    const howGetItems = [
+      { icon: 'img/icon_how_get_1.svg', title: 'Оставьте заявку <br>в&nbsp;форме ниже' },
+      { icon: 'img/icon_how_get_2.svg', title: 'Предоставьте <a class="text-orange" href="#">документы</a> для&nbsp;открытия расчетного счета' },
+      { icon: 'img/icon_how_get_3.svg', title: 'Дождитесь смс о&nbsp;готовности <br> и&nbsp;получите вашу бизнес-карту' },
+    ]
+
+    const dataTable = {
+      style: 'min-width: 600px;',
+      thead: [
+        {
+          th: [
+            { text: 'Валюта операции', mods: 'text-black' },
+            { text: 'Валюта расчетов UnionPay', textNowrap: 'с АТБ', textTooltip: 'курс UnionPay', mods: 'text-center text-grey80' },
+            { text: 'Курс конвертации в&nbsp;Банке на&nbsp;момент списания со&nbsp;счета', mods: 'text-center text-grey80' },
+            { text: 'Общий курс конвертации', textNowrap: 'за операцию', textTooltip: 'кол-во и&nbsp;тип конвертаций', mods: 'text-center text-grey80' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'Рубли на&nbsp;территории РФ' },
+            { text: 'Рубли', mods: 'text-center text-grey80' },
+            { text: 'Нет конвертации', mods: 'text-center text-grey80' },
+            { text: 'Нет конвертации', mods: 'text-center text-grey80' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Рубли за&nbsp;пределами РФ' },
+            { text: 'Юани', mods: 'text-center text-grey80' },
+            { text: 'Курс АТБ', mods: 'text-center text-grey80' },
+            { text: '2&nbsp;конвертации: <br>курс банка-эквайера +&nbsp;курс АТБ', mods: 'text-center text-grey80' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Юани на&nbsp;территории РФ' },
+            { text: 'Рубли', mods: 'text-center text-grey80' },
+            { text: 'Нет конвертации', mods: 'text-center text-grey80' },
+            { text: '1&nbsp;конвертация: <br>курс банка-эквайера', mods: 'text-center text-grey80' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Юани за&nbsp;пределами РФ' },
+            { text: 'Юани', mods: 'text-center text-grey80' },
+            { text: 'Курс АТБ', mods: 'text-center text-grey80' },
+            { text: '1&nbsp;конвертация: <br> курс АТБ', mods: 'text-center text-grey80' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Любая валюта за&nbsp;пределами РФ (кроме юаней)' },
+            { text: 'Юани', mods: 'text-center text-grey80' },
+            { text: 'Курс АТБ', mods: 'text-center text-grey80' },
+            { text: '2&nbsp;конвертации: <br>курс банка-эквайера +&nbsp;курс АТБ', mods: 'text-center text-grey80' },
+          ]
+        },
+      ]
+    }
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--card-union-pay')
+        +banner__wrapper('img/banner_card-union-pay.png', true)
+          +banner__h1('Бизнес-карта <br class="banner__br-no-mob">UnionPay', '--mob-size-l, --mob-mb-l')
+          +banner__text('Бесплатный выпуск и&nbsp;кэшбэк&nbsp;1% <span class="text-nowrap">на бизнес-расходы</span>')
+          +banner__foot('--buttons')
+            +ui-button('Оформить в офисе', 'banner, --m-size-l')(href='#')
+            +ui-button('Выпустить онлайн', 'banner, --m-size-l')(href='#form-section')
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItemsMain, '--icon-l, --title-normal')
+      +section
+        .inner
+          +tabs-head(tabsHeadItems, true, '--fw-light, --orange, --no-item-border')(data-tabs-group='about-cards')
+        +tabs-main(data-tabs-group='about-cards')
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +cards-terms(cardTermsData)
+            +section
+              .inner
+                +how-get('Как получить карту', howGetItems)
+          +tabs-main__item.js-auto-height-table
+            +section('--mt0')
+              .inner
+                +cards-table
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +section-head('--max-w900')
+                  +ui-h2('Как работает кэшбэк', 'section-head')
+                  +ui-p1('Получил карту и ...')
+                +cards-cashback
+                +section('--mt-s')
+                  +benefits(benefitsItemsCashback, '--column-mob-row, --icon-l, --title-normal')
+                +section('--mt-s')
+                  +accordion
+                    +accordion-item('Кэшбэк начисляется')
+                      +ui-p1('', '--light')
+                        p &mdash;&nbsp;на&nbsp;все совершенные безналичные операции в&nbsp;ТСП и&nbsp;сети Интернет (оплата товаров, работ, услуг) в&nbsp;месяц, кроме исключений
+                    +accordion-item('Кэшбэк не&nbsp;начисляется за')#accordion-cashback-exceptions
+                      +ui-p1('')
+                        p
+                          b Кэшбэк не&nbsp;начисляется за&nbsp;следующие категории
+                      +ui-p1('', '--light')
+                        +ui-ul('')
+                          li снятие/внесение наличных через банкоматы/платежные терминалы;
+                          li любые пополнения Карты;
+                          li получение денежных средств через банкоматы, терминалы, кассовые узлы и&nbsp;т.п.;
+                          li перевод денежных средств c&nbsp;Карты (в&nbsp;том числе, по&nbsp;банковским переводам, переводам по&nbsp;реквизитам карты другого банка и&nbsp;т.п.);
+                          li платежи и&nbsp;переводы по&nbsp;пополнению любых виртуальных и/или электронных кошельков или иных электронных денежных средств;
+                      br
+                      +ui-p1('')
+                        p
+                          b Операции с&nbsp;МСС:
+                      +ui-p1('', '--light')
+                        +ui-ul('')
+                          li 4812, 4813, 4814, 4815, 4816, 4821, 4829, 4899, 4900,
+                          li 5094, 5933, 5960, 5999,
+                          li 6010, 6011, 6012, 6050, 6051, 6211, 6300, 6513, 6529, 6530, 6531, 6532, 6533, 6534, 6535, 6536, 6537, 6538, 6540,
+                          li 7311, 7276, 7299, 7321, 7372, 7399, 7800, 7801, 7802, 7995,
+                          li 8999,
+                          li 9211, 9222, 9223, 9311, 9399, 9402, 9754.
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +section-head
+                  +ui-h2('Вопросы и ответы', 'section-head')
+                +tabs-head([ { text: 'О карте' }, { text: 'Уплата налогов' } ], true, '--simple')
+                +tabs-main
+                  +tabs-main__item(true)
+                    +accordion
+                      +accordion-item('Кто может оформить Бизнес карту АТБ?')
+                        +ui-p1('', '--light')
+                          | Бизнес-карту можно оформить на&nbsp;любого сотрудника Клиента, путем личного обращения Клиента в&nbsp;Банк, либо если Клиент уже обслуживается в&nbsp;АТБ, то&nbsp;заказать бизнес карту в&nbsp;Системе Интернет-банкинг или
+                          =' '
+                          a.text-orange(href='https://my.atb.su/getapp', target='_blank') Мобильном приложении
+                      +accordion-item('Как активировать карту и&nbsp;начать ею&nbsp;пользоваться?')
+                        +ui-p1('', '--light')
+                          | При получении бизнес карты в&nbsp;кассе установите пин-код, после чего ваша карта будет активна.
+                      +accordion-item('Что можно оплачивать Бизнес картой?')
+                        +ui-p1('', '--light')
+                          | Любые товары и&nbsp;услуги в&nbsp;интернете и&nbsp;в&nbsp;торгово-сервисных предприятиях по&nbsp;всему миру. По&nbsp;каждой карте есть возможность установить индивидуальные лимиты на&nbsp;снятие наличных и&nbsp;безналичную оплату.
+                      +accordion-item('Как перевыпустить или&nbsp;заказать вторую и&nbsp;последующие карты?')
+                        +ui-p1('', '--light')
+                          | Перевыпустить или заказать вторую и&nbsp;последующие карты можно в&nbsp;системе Интернет-банкинг или
+                          =' '
+                          a.text-orange(href='https://my.atb.su/getapp', target='_blank') Мобильном приложении
+                          | , путем личного обращения в&nbsp;Банк. Вы&nbsp;можете выпустить неограниченное количество карт к&nbsp;одному ККС.
+                      +accordion-item('В&nbsp;чём удобство использования бизнес-карты для&nbsp;бухгалтерии и&nbsp;какими документами подтверждаются операции по&nbsp;карте?')
+                        +ui-p1('', '--light')
+                          | С&nbsp;помощью карт осуществляется оплата представительских, хозяйственных, а&nbsp;также расходов на&nbsp;основную деятельность компании, выдача наличных. Подтверждением проведения операций и&nbsp;документом для&nbsp;первичной отчётности бухгалтерии является чек.
+                      +accordion-item('Как получить информацию об&nbsp;операциях по&nbsp;картам?')
+                        +ui-p1('', '--light')
+                          | О&nbsp;последних 10&nbsp;операциях и&nbsp;доступном остатке по&nbsp;карте вы&nbsp;можете узнать в&nbsp;банкоматах банка, историю операций можно увидеть в&nbsp;выписке, сформированной в&nbsp;системе Интернет-банкинг.
+                      +accordion-item('Можно&nbsp;ли оплачивать покупки в&nbsp;интернете бизнес-картой?')
+                        +ui-p1('', '--light')
+                          | Да, можно. Для&nbsp;оплаты в&nbsp;интернете понадобится номер карты, срок её&nbsp;действия, код безопасности (CVV2/CVC2)&nbsp;&mdash; три цифры на&nbsp;полосе для&nbsp;подписи на&nbsp;оборотной стороне карты.
+                      +accordion-item('Можно ли использовать бизнес-карту за рубежом?')
+                        +ui-p1('', '--light')
+                          | Да, сотрудники компании могут использовать бизнес-карту в&nbsp;зарубежных поездках для&nbsp;оплаты товаров и&nbsp;услуг либо для&nbsp;снятия наличных.
+                      +accordion-item('Сколько карт можно выпустить к&nbsp;одному ККС?')
+                        +ui-p1('', '--light')
+                          | Можно выпустить любое количество бизнес-карт, ограничений нет.
+                      +accordion-item('Существуют&nbsp;ли ограничения по&nbsp;выдаче наличных с&nbsp;бизнес-карты?')
+                        +ui-p1('', '--light')
+                          | Держатель бизнес-карты может получать наличные с&nbsp;ККС в&nbsp;пределах установленного лимита, но&nbsp;не&nbsp;более 499&nbsp;999 рублей в&nbsp;сутки и&nbsp;не&nbsp;более 5&nbsp;000&nbsp;000 рублей в&nbsp;течение календарного месяца.
+                      +accordion-item('Какой курс при&nbsp;конвертации валют?')
+                        +ui-p1('', '--light')
+                          span.text-bold Процесс конвертации зависит от&nbsp;валюты операции.
+                          br
+                          | Валюта вашего счета Рубли
+                        br
+                        +ui-table(dataTable, '--all-border, --bg-white, --mob-scroll, --th-fz18')
+                  +tabs-main__item
+                    +accordion
+                      +accordion-item('Уплата налогов, связанных с&nbsp;получением денежных призов')
+                        +ui-p1('Компании несут самостоятельно обязанности по&nbsp;исчислению и&nbsp;уплате налогов, связанных с&nbsp;получением кэшбэка, а&nbsp;также ответственность за&nbsp;неисполнение этой обязанности. В&nbsp;период ближайшей налоговой отчетности компании необходимо включить полученную сумму кэшбэка в&nbsp;состав своих доходов и&nbsp;уплатить налог в&nbsp;соответствии с&nbsp;установленным режимом налогообложения своей компании.', '--light')
+                      +accordion-item('У вас ЕНВД/Патент')
+                        +ui-p1('Сумма налога не&nbsp;связана с&nbsp;размером полученного дохода. Полученный кэшбэк не&nbsp;требует учета. (Дополнительно проконсультируйтесь со&nbsp;своей Налоговой службой).', '--light')
+                      +accordion-item('У вас УСН/ОСНО')
+                        +ui-p1('', '--light')
+                          p Отразите доход в&nbsp;текущем периоде как Прочие доходы:
+                          p ФАКТ Получение денежных средств на&nbsp;бизнес-карту
+                            br
+                            | ПРОВОДКА Дт&nbsp;сч.&nbsp;55&nbsp;ССБ Кт&nbsp;сч.&nbsp;91&nbsp;&laquo;Прочие доходы&raquo; в&nbsp;момент получения денег
+                          p ФАКТ Получение товаров, работ, услуг на&nbsp;сумму &laquo;накопленных баллов&raquo;
+                            br
+                            | ПРОВОДКА Дт&nbsp;сч. 10/20/25/97&nbsp;Кт сч.&nbsp;91&nbsp;&laquo;Прочие доходы&raquo; в&nbsp;момент получения товаров, работ, услуг в&nbsp;счет &laquo;накопленных баллов&raquo;.
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +accordion
+                  +accordion-item('Документы')
+                    +documents
+                    +tabs-head([ { text: 'Заявления' }, { text: 'Тарифы' } ], true, 'accordion-item')
+                    +tabs-main
+                      +tabs-main__item(true)
+                        +documents
+                      +tabs-main__item
+                        +documents
+      +section('--cards-open-acc')
+        .inner
+          +cards-open-acc

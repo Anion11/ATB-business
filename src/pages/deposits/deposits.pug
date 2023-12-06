@@ -1,0 +1,101 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'deposits'
+    const pageTitle ='Депозиты для бизнеса'
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_benefit1.svg', title: 'Открытие депозитов без наличия расчетного счета' },
+      { icon: 'img/icon_benefit2.svg', title: 'Подача заявки на размещение круглосуточно' },
+      { icon: 'img/icon_benefit3.svg', title: 'Средства застрахованы в&nbsp;соответствии с&nbsp;законодательством РФ' },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--deposits')
+        +banner__wrapper('img/banner_deposits.png', true)
+          +banner__h1('Депозиты <br class="banner__br-no-mob">для&nbsp;бизнеса', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('до ')
+            span.banner__subtitle-accent 10,2%
+            |  годовых
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#form-section')
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--title-normal')
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('Рассчитайте доходность депозита', 'section-head')
+          +calc-deposit
+            //- +calc-deposit__params
+            //-   +calc-deposit__params-line
+            //-     +ui-form-name('Валюта')
+            //-     +ui-select('', 'Рубли РФ', 'Доллары США', 'Евро', 'Китайские юани')
+            //-   +calc-deposit__params-line
+            //-     +ui-range('Сумма депозита', '  ₽')(data-min='500000' data-max='10000000')
+            //-   +calc-deposit__params-line
+            //-     +ui-range('Срок депозита в днях', '  дней')(data-min='1' data-max='1825')
+            //-   +calc-deposit__params-line
+            //-     +ui-form-name('Тариф')
+            //-     +ui-select('', 'Классический', 'Пополняемый', 'Оперативный')
+            //-   +calc-deposit__params-line
+            //-     +calc-deposit__params-options
+            //-       +ui-checkbox('calcDeposit1', 'Оформить в интернет-банке')
+            //-       +ui-checkbox('calcDeposit2', 'Выплата процентов ежемесячно')
+            //- +calc-deposit__result
+            //-   +calc-deposit__result-line
+            //-     +calc-deposit__result-item
+            //-       +calc-deposit__result-name('ЗА 365 ДНей Я НАКОПЛЮ')
+            //-       +calc-deposit__result-val('1 061 600 ₽', '--big').text-grey-blue
+            //-   +calc-deposit__result-line
+            //-     +calc-deposit__result-item
+            //-       +calc-deposit__result-name('доход')
+            //-       +calc-deposit__result-val('61 600 ₽')
+            //-     +calc-deposit__result-item
+            //-       +calc-deposit__result-name('ставка')
+            //-       +calc-deposit__result-val('6,16%')
+            //-         =' '
+            //-         +calc-deposit__result-descr('годовых')
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('Депозиты для бизнеса', 'section-head')
+          +deposits
+
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оформите заявку на консультацию', 'section-head')
+
+      +section
+        .inner
+          +accordion
+            +accordion-item('Уведомления')
+              +section-head().text-center
+                +ui-h4('Уважаемые клиенты!', 'section-head')
+                +ui-p1('')
+                  p Информируем Вас о введении в действие  с 21.04.2022 г. новой редакции
+                    =' '
+                    a.text-grey-blue(href='#') «Условий  размещения депозитов  юридическими лицами (за исключением кредитных организаций) и индивидуальными предпринимателями  в «Азиатско-Тихоокеанский Банк (АО)»
+                    |  и
+                    a.text-grey-blue(href='#') Генерального  соглашения от проведении  депозитных операций
+                    | .
+            +accordion-item('Документы')
+              +documents
+            +accordion-item('Архив')
+              +documents

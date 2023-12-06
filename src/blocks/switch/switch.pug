@@ -1,0 +1,48 @@
+mixin switch(text, firstBtn, secondBtn, group, mods)
+  -
+    const baseName = 'switch'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .switch(class=allMods data-switch-group=group)&attributes(attributes) !{text}
+    .switch-nav
+      .switch-nav__text.switch-nav__text--active !{firstBtn}
+      .switch-nav__text !{secondBtn}
+      .switch-nav__btn
+    block
+
+mixin switch-group(group, mods)
+  -
+    const baseName = 'switch-group'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .switch-group(class=allMods data-switch-group=group)&attributes(attributes)
+    block
+
+mixin switch-content(isActive, mods)
+  -
+    const baseName = 'switch-content'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .switch-content(class=(isActive === true ? 'switch-content--active' + allMods: allMods))&attributes(attributes)
+    block

@@ -1,0 +1,48 @@
+.ui-p1 {
+  font: 18px/1.4 $font;
+  @include media-tablet {
+    font-size: 16px;
+  }
+  + .ui-p1 {
+    margin-top: 15px;
+    @include media-tablet {
+      margin-top: 10px;
+    }
+  }
+  &--m-fz14 {
+    @include media-tablet {
+      font-size: 14px;
+    }
+  }
+}
+.ui-p2 {
+  font: 16px/1.4 $font;
+  @include media-laptop {
+    font-size: 14px;
+  }
+  &--l-fz-l {
+    @include media-laptop {
+      font-size: 16px;
+    }
+  }
+}
+.ui-p3 {
+  font: 14px/1.43 $font;
+  @include media-laptop {
+    font-size: 12px;
+  }
+}
+.ui-p4 {
+  font: 12px/1.5 $font;
+}
+[class*='ui-p'] {
+  &[class*='--light'] {
+    font-weight: 300;
+  }
+  &[class*='--bold'] {
+    font-weight: 700;
+  }
+  p:not(:last-child) {
+    margin-bottom: 1.2em;
+  }
+}

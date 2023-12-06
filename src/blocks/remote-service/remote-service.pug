@@ -1,0 +1,28 @@
+mixin remote-service(mods)
+  -
+    const baseName = 'remote-service'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const remoteServiceList =[
+      'Будьте в курсе всех операций и движения средств',
+      'Банк в кармане из любой точки мира ',
+      'Бесплатный сервис проверки контрагентов',
+    ]
+
+  .remote-service(class=allMods)&attributes(attributes)
+    .remote-service__title Удобное дистанционное обслуживание для вашего бизнеса
+    +ui-p1('', 'remote-service')
+      +ui-ul(remoteServiceList, 'remote-service')
+    +ui-button('войти', 'remote-service')(href='#')
+    .remote-service__img
+      img(src='img/remote_service.png' alt='')
+
+    block

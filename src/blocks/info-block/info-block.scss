@@ -1,0 +1,65 @@
+.info-block {
+  &__head {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    font: 20px/1.3 $font;
+    text-align: center;
+  }
+  &__box {
+    padding: 30px 50px;
+    background: $grey20;
+    font: 700 16px/1.4 $font;
+    color: $orange;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid $grey40;
+    border-radius: 8px;
+    @include media-tablet {
+      padding: 20px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 45px;
+    }
+  }
+  &__line {
+    font: 18px/1.4 $font;
+    @include media-tablet {
+      font-size: 16px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+  &__title {
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font: 24px/1.2 $font;
+    border-bottom: 1px solid $grey50;
+    a {
+      color: $blue;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  &__footnote {
+    padding-top: 15px;
+    font: 12px/1.2 $font;
+    border-top: 1px solid $grey50;
+  }
+  &__cards-link {
+    max-width: 325px;
+    max-height: 265px;
+    @include media-tablet {
+      max-width: 100%;
+    }
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+  .ui-ul {
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.cards-terms {
+  display: grid;
+  grid-template-columns: 61.4% 1fr;
+  gap: 20px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  &__img {
+    max-width: 450px;
+    margin: 0 auto;
+    @include media-laptop {
+      order: -1;
+    }
+    @include media-tablet {
+      max-width: 270px;
+    }
+  }
+  &__terms {
+    .terms {
+      &__td {
+        &:first-child {
+          width: 48%;
+          margin-right: 40px;
+          @include media-laptop {
+            width: 53.5%;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}

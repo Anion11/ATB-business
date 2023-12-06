@@ -1,0 +1,50 @@
+.payment-sticker {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(90deg, #f8f8f8 0%, #edf3f6 100%);
+  border-radius: 8px;
+  @include media-tablet {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  &__content {
+    max-width: 670px;
+    padding: 60px 135px 60px 80px;
+    @include media-laptop {
+      padding: 35px 100px 35px 45px;
+    }
+    @include media-tablet {
+      padding: 40px 20px 10px;
+      text-align: center;
+    }
+  }
+  &__ui-h3 {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+      @include media-tablet {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  &__ui-h5 {
+    &:not(:last-child) {
+      margin-bottom: 35px;
+      @include media-tablet {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  &__img {
+    max-width: 420px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    @include media-laptop {
+      max-width: 300px;
+    }
+    @include media-tablet {
+      max-width: 73.2%;
+      margin: 0 auto;
+    }
+  }
+}

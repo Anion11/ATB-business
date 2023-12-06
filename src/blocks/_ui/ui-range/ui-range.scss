@@ -1,0 +1,134 @@
+.ui-range {
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: 10px;
+    margin-bottom: 10px;
+    @include media-tablet {
+      margin-bottom: 15px;
+      align-items: flex-end;
+    }
+  }
+  &__title {
+    font: 300 16px/1.5 $font;
+  }
+  &__inp {
+    display: flex;
+    gap: 5px;
+    padding: 3px 15px;
+    max-width: 270px;
+    font: 32px/1.5 $font;
+    background: #fff;
+    border: 1px solid $grey40;
+    border-radius: 6px;
+    white-space: nowrap;
+    cursor: text;
+    @include media-tablet {
+      max-width: 160px;
+      font-size: 24px;
+    }
+    &-wrapp {
+      position: relative;
+      /* stylelint-disable-next-line unit-allowed-list */
+      min-width: 1ch;
+      text-align: right;
+      font: inherit;
+      overflow: hidden;
+    }
+    &-val {
+      opacity: 0;
+    }
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      font: inherit;
+      text-align: inherit;
+    }
+  }
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font: 14px/1.4 $font;
+    color: $grey50;
+    @include media-laptop {
+      font-size: 12px;
+    }
+  }
+  .noUi {
+    &-target {
+      height: 5px;
+      background: $grey40;
+      border: 0;
+      border-radius: 3px;
+      box-shadow: none;
+    }
+    &-connect {
+      background: $greyBlue;
+    }
+    &-handle {
+      top: -12px;
+      right: -12px;
+      width: 28px;
+      height: 28px;
+      background: $greyBlue;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 16px rgb(127 148 168 / 0.3);
+      &::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 0V10' stroke='white' stroke-width='1.6'/%3E%3Cpath d='M6 0V10' stroke='white' stroke-width='1.6'/%3E%3Cpath d='M11 0V10' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &[disabled] {
+    color: $grey50;
+    pointer-events: none;
+    .ui-range {
+      &__inp {
+        input {
+          color: inherit;
+        }
+      }
+    }
+    .noUi {
+      &-connect {
+        background: $grey50;
+      }
+      &-handle {
+        background: $grey50;
+      }
+    }
+  }
+}
+.bvi-body {
+  .ui-range {
+    .noUi {
+      &-connect {
+        background: var(--bvi-contrast-color);
+      }
+      &-handle {
+        background: var(--bvi-contrast-color);
+        box-shadow: none;
+      }
+      &-touch-area {
+        opacity: 0;
+      }
+    }
+  }
+}

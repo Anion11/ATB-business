@@ -1,0 +1,19 @@
+mixin bus-prot-options(data, mods)
+  -
+    const baseName = 'bus-prot-options'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .bus-prot-options(class=allMods)&attributes(attributes)
+    each item in data
+      .bus-prot-options__item
+        .bus-prot-options__name !{item.name}
+        if item.desc
+          .bus-prot-options__desc !{item.desc}
+    block

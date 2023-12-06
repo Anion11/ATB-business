@@ -1,0 +1,73 @@
+mixin bus-prot-steps(mods)
+  -
+    const baseName = 'bus-prot-steps'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        icon: 'img/bus-prot-steps_1.svg',
+        title: 'Звонок на линию.',
+        text: [
+          'Телефоны горячей линии юридической поддержки:',
+          'поддержки по номеру',
+          '<b>8 800 555 97 66</b>',
+        ]
+      },
+      {
+        icon: 'img/bus-prot-steps_2.svg',
+        title: 'Ваш запрос обрабатывается.',
+        text: [
+          'Вы получаете ответ на своё обращение:',
+          '- в течение <b>24 часов</b> при запросе устной консультации',
+          '- в течение <b>48 часов</b> при запросе письменной консультации',
+        ]
+      },
+      {
+        icon: 'img/bus-prot-steps_3.svg',
+        title: 'Звонок принимают юристы.',
+        text: [
+          'Ваше обращение принимают и готовят ответы на ваши запросы высококвалифицированные юристы со средним опытом работы более 10 лет.',
+        ]
+      },
+      {
+        icon: 'img/bus-prot-steps_4.svg',
+        title: 'Вы получаете устную или письменную юридическую консультацию.',
+        text: [
+          ' - письменную консультацию вы получаете через ',
+          '<a class="text-grey-blue" href="http://лк.юрист24.онлайн/" target="_blank">Личный кабинет ЕЮС</a>',
+          ' - устную консультацию вы получаете по телефону, с возможностью последующего многократного прослушивания записи в <a class="text-grey-blue" target="_blank" href="http://лк.юрист24.онлайн/">Личном кабинете</a> и Мобильном приложении. ',
+        ]
+      },
+    ]
+
+  .bus-prot-steps(class=allMods)&attributes(attributes)
+    .bus-prot-steps__container
+      each item in data
+        .bus-prot-steps__item
+          .bus-prot-steps__icon
+            img(src=item.icon, alt='')
+          .bus-prot-steps__info
+            .bus-prot-steps__title !{item.title}
+            .bus-prot-steps__text
+              each point in item.text
+                | !{point}
+                br
+    .bus-prot-steps__bottom
+      .bus-prot-steps__bot-txt
+        b Личный кабинет
+        |  на сайте
+        =' '
+        a.text-grey-blue(target='_blank' href='http://юрист24.онлайн') юрист24.онлайн
+      .bus-prot-steps__text
+        ul.ui-ul.ui-ul--grey-blue.bus-prot-steps__ui-ul
+          li Аудиозаписи устных консультаций
+          li Письменные консультации
+          li Документы
+    block

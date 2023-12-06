@@ -1,0 +1,45 @@
+.bus-prot-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  &__item {
+    padding: 25px 30px;
+    border-radius: 8px;
+    background-color: $grey20;
+    &:nth-child(1) {
+      .bus-prot-options__name {
+        color: $greyBlue;
+      }
+    }
+    &:nth-child(2) {
+      .bus-prot-options__name {
+        color: $green;
+      }
+    }
+    &:nth-child(3) {
+      .bus-prot-options__name {
+        color: $orange;
+      }
+    }
+  }
+  &__name {
+    font: 700 28px/1.4 $font;
+    @include media-laptop {
+      font-size: 26px;
+    }
+    @include media-tablet {
+      font-size: 22px;
+    }
+  }
+  &__desc {
+    font: 16px/1.4 $font;
+    color: $grey90;
+    @include media-tablet {
+      font-size: 14px;
+    }
+  }
+}

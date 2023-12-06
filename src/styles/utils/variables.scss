@@ -1,0 +1,32 @@
+// fonts
+$font: 'Circe', 'Arial', sans-serif;
+
+// colors
+$black: #373a36;
+$orange: #fe5000;
+$yellow: #fca92a;
+$darkBlue: #28505f;
+$blue: #3b8b94;
+$green: #449099;
+$grey20: #f8f8f8;
+$grey30: #f4f4f4;
+$grey40: #e3e3e3;
+$grey50: #c8c8c8;
+$grey60: #999;
+$grey80: #6e6e6e;
+$grey90: #666;
+$greyBlue: #7f94a8;
+$error: #fe1e00;
+$greenCurrency: #5cdb10;
+$orangeYellowGradient: linear-gradient(72.62deg, $orange 15.71%, $yellow 89.05%);
+$greyBlueGradient: linear-gradient(90deg, $grey20 0%, #edf3f7 100%);
+
+// shadow
+$smallShadow: 0 3px 15px rgb(135 151 155 / 0.25);
+$bigShadow: 0 3px 30px rgb(135 151 155 / 0.25);
+$lightBigShadow: 0 3px 30px rgb(135 151 155 / 0.15);
+
+// media
+$mediaWidthLaptop: 1259px;
+$mediaWidthTablet: 767px;
+$maxContent: 1920px;

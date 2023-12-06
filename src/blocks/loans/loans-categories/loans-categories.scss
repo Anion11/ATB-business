@@ -1,0 +1,75 @@
+.loans-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 40px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  &__item {
+    position: relative;
+    min-height: 240px;
+    background: $grey30;
+    border-radius: 8px;
+    color: inherit;
+    overflow: hidden;
+    @include media-tablet {
+      min-height: 175px;
+    }
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100%;
+    padding: 35px;
+    @include media-tablet {
+      padding: 20px 20px 25px;
+    }
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-height: 240px;
+    @include media-tablet {
+      max-height: 150px;
+    }
+    img {
+      max-width: none;
+      max-height: inherit;
+    }
+  }
+  &__ui-h4 {
+    max-width: 320px;
+    margin-bottom: 10px;
+    @include media-tablet {
+      max-width: 250px;
+      margin-bottom: 2px;
+    }
+  }
+  &__descr {
+    max-width: 320px;
+    font: 300 18px/1.44 $font;
+    @include media-tablet {
+      max-width: 180px;
+      margin-top: 2px;
+      font-weight: 400;
+      font-size: 12px;
+    }
+  }
+  &__btns {
+    margin-top: auto;
+  }
+}
+.bvi-body {
+  .loans-categories {
+    grid-template-columns: 1fr;
+    &__ui-h4,
+    &__descr {
+      max-width: unset;
+    }
+  }
+}

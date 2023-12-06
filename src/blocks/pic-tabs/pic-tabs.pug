@@ -1,0 +1,41 @@
+mixin pic-tabs(tabsHeadItems, mods)
+  -
+    const baseName = 'pic-tabs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .pic-tabs(class=allMods)&attributes(attributes)
+    .pic-tabs__head
+      each item, index in tabsHeadItems
+        .pic-tabs__btn(class=index===0 ? 'pic-tabs__btn--active' : '')
+          .pic-tabs__text !{item.text}
+          .pic-tabs__img
+            img(src=`img/pic_tabs_${item.img}.jpg`, alt='')
+    .pic-tabs__main
+      block
+
+mixin pic-tabs__item(tab, mods)
+  -
+    const baseName = 'pic-tabs__item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .pic-tabs__item(class=allMods)&attributes(attributes)
+    .pic-tabs__btn
+      .pic-tabs__text !{tab.text}
+      .pic-tabs__img
+        img(src=`img/pic_tabs_${tab.img}.jpg`, alt='')
+    .pic-tabs__content
+      block

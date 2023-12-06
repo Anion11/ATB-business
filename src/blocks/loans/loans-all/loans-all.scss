@@ -1,0 +1,160 @@
+.loans-all {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 40px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 280px;
+    padding: 35px 35px 30px;
+    box-shadow: $bigShadow;
+    border-radius: 8px;
+    color: inherit;
+    overflow: hidden;
+    @include media-laptop {
+      padding-right: 210px;
+    }
+    @include media-tablet {
+      min-height: unset;
+      padding: 155px 25px 25px;
+    }
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 3px;
+    }
+    &::before {
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: width 0s ease, background 0.6s ease;
+    }
+    &::after {
+      right: 0;
+      bottom: 0;
+      background: $orange;
+      transition: width 0.6s ease;
+    }
+    &:hover {
+      box-shadow: 0 3px 30px rgb(135 151 155 / 0.35);
+      text-decoration: none;
+      &::before {
+        width: 100%;
+        background: $orange;
+        transition: width 0.6s ease;
+      }
+      &::after {
+        width: 100%;
+        background: 0 0;
+        transition: all 0s ease;
+      }
+    }
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 23px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 200px;
+    height: 156px;
+    @include media-tablet {
+      top: 20px;
+      right: auto;
+      bottom: auto;
+      left: 25px;
+      display: block;
+      width: 160px;
+      height: 125px;
+    }
+    img {
+      max-height: 100%;
+    }
+  }
+  &__text {
+    margin-bottom: 22px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &__title,
+  &__descr,
+  &__features,
+  &__btns {
+    position: relative;
+    z-index: 2;
+  }
+  &__title {
+    max-width: 340px;
+    font: 700 24px/1.15 $font;
+    @include media-laptop {
+      max-width: unset;
+    }
+    @include media-tablet {
+      font-size: 20px;
+    }
+  }
+  &__descr {
+    max-width: 280px;
+    margin-top: 5px;
+    font: 14px/1.4 $font;
+    color: $grey90;
+    @include media-laptop {
+      max-width: unset;
+    }
+    @include media-tablet {
+      margin-top: 2px;
+      font-size: 12px;
+    }
+  }
+  &__features {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+    font: 18px/1.4 $font;
+    @include media-tablet {
+      font-size: 16px;
+    }
+    &-num {
+      font-size: 28px;
+      @include media-tablet {
+        font-size: 22px;
+      }
+    }
+  }
+  &__btns {
+    display: flex;
+    align-items: baseline;
+    gap: 25px;
+    margin-top: auto;
+    @include media-tablet {
+      gap: 15px;
+    }
+    .ui-button--link-next {
+      margin: 12px 0;
+      @include media-laptop {
+        margin: 0;
+      }
+    }
+  }
+}
+.bvi-body {
+  .loans-all {
+    grid-template-columns: 1fr;
+    &__title,
+    &__descr {
+      max-width: unset;
+    }
+  }
+}

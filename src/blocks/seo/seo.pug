@@ -1,0 +1,64 @@
+mixin seo(title, mods)
+  -
+    const baseName = 'seo'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .seo(class=allMods)&attributes(attributes)
+    .inner
+      h1.seo__title !{title}
+      .seo__inner
+        block
+
+mixin seo-accordion(mods)
+  -
+    const baseName = 'seo-accordion'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .seo-accordion(class=allMods)&attributes(attributes)
+      block
+
+mixin seo-accordion-item(title, mods)
+  -
+    const baseName = 'seo-accordion-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .seo-accordion-item(class=allMods)&attributes(attributes)
+    h2.seo-accordion-item__title !{title}
+    .seo-accordion-item__inner
+      block
+
+mixin seo-menu(mods)
+  -
+    const baseName = 'seo-menu'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  nav.seo-menu(class=allMods)&attributes(attributes)
+    block

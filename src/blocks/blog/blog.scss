@@ -1,0 +1,19 @@
+.blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @include media-laptop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media-tablet {
+    grid-template-columns: 1fr;
+  }
+  .blog-item {
+    &:nth-child(1) {
+      grid-column: span 2;
+      @include media-tablet {
+        grid-column: unset;
+      }
+    }
+  }
+}

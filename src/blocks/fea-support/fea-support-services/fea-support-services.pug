@@ -1,0 +1,83 @@
+mixin fea-support-services(mods)
+  -
+    const baseName = 'fea-support-services'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        icon: 'img/fea-support-services_1.svg',
+        title: 'Поиск зарубежных контрагентов или&nbsp;партнеров',
+        descr: 'Найдем для вас контрагентов в&nbsp;Китае по&nbsp;направлению бизнес-деятельности',
+        priceOld: '50 ₽',
+        priceNew: '25 ₽',
+      },
+      {
+        icon: 'img/fea-support-services_3.svg',
+        title: 'Бизнес справка о&nbsp;контрагенте',
+        list: [
+          'Основные сведения',
+          'Информация о&nbsp;годовом отчёте компании',
+          'Судебные уведомления',
+          'Сканирование корпоративных рисков',
+        ],
+        priceOld: '1500 ₽',
+        priceNew: '1000 ₽',
+      },
+      {
+        icon: 'img/fea-support-services_2.svg',
+        title: 'Мониторинг и&nbsp;проверка потенциальных контрагентов',
+        descr: `Разовая проверка или&nbsp;регулярный
+          <span class="text-nowrap">мониторинг<div class="ui-tooltip">
+              <div class="ui-tooltip__btn">
+                <svg class="svg-icon svg-icon--icon_tooltip">
+                  <use xlink:href="/img/sprite.svg#icon_tooltip"></use>
+                </svg>
+              </div>
+              <div class="ui-tooltip__content" style="display: none;">
+                с автоматическим отслеживанием статуса контрагента
+              </div>
+            </div>
+          </span>
+          юридических и&nbsp;физических лиц по&nbsp;международным базам данных:`,
+        list: [
+          'Cанкционные списки',
+          'Отчёты кредитных бюро',
+          'Отчёты комиссий по&nbsp;ценным бумагам',
+          'Биржи',
+        ],
+        priceOld: '1000₽',
+        priceNew: '400 ₽',
+      },
+    ]
+
+  .fea-support-services(class=allMods)&attributes(attributes)
+    .fea-support-services__container
+      .swiper-wrapper
+        each item in data
+          .fea-support-services__item.swiper-slide
+            .fea-support-services__icon
+              img(src=item.icon, alt='')
+            .fea-support-services__title !{item.title}
+            .fea-support-services__main
+              +ui-p2('', '--light')
+                if item.descr
+                  .fea-support-services__descr !{item.descr}
+                if item.list
+                  +ui-ul(item.list, '--li-mb10, --fz-inherit')
+            .fea-support-services__bot
+              .fea-support-services__price
+                .fea-support-services__price-old=item.priceOld
+                .fea-support-services__price-new=item.priceNew
+                  span.fea-support-services__price-descr для клиентов АТБ
+              +ui-p2('Стоимость 1 запроса', '--light')
+      +ui-swiper-button('--prev, fea-support-services')
+      +ui-swiper-button('--next, fea-support-services')
+    +ui-swiper-pagination('fea-support-services, --scaling')
+    block

@@ -1,0 +1,29 @@
+mixin refreshing-terms(mods)
+  -
+    const baseName = 'refreshing-terms'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const refreshingTerms =[
+      { name: 'Стоимость в месяц', descr: '0 ₽ <strike class="text-grey50">550 ₽</strike>' },
+      { name: 'Платежные поручения', descr: '6 шт / мес. без комиссий' },
+      { name: 'Переводы физлицам на&nbsp;счета АТБ', descr: 'до 150&nbsp;000 ₽ / мес. без&nbsp;комиссий' },
+      { name: 'Переводы физлицам в&nbsp;другие банки', descr: 'до 50&nbsp;000 ₽ / мес. без&nbsp;комиссий' },
+      { name: 'Прием наличных', descr: 'до 50&nbsp;000 ₽ / мес. без&nbsp;комиссий' },
+      { name: 'Комиссия по&nbsp;эквайрингу', descr: '1%' },
+      { name: 'Комиссия за&nbsp;перевод зарплат в&nbsp;рамках зарплатного проекта', descr: '0 ₽' },
+    ]
+
+  .refreshing-terms(class=allMods)&attributes(attributes)
+    .refreshing-terms__img
+      img(src='img/refreshing_terms_img.png', alt='')
+    +ui-h2('0₽ за 6 месяцев пакета «Освежающий»', 'refreshing-terms')
+    +terms(refreshingTerms, 'refreshing-terms')
+    block

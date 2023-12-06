@@ -1,0 +1,147 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'partners'
+    const pageTitle ='Присоединяйтесь к команде партнеров АТБ'
+
+    const tabsHeadItems = [
+      { text: 'РКО' },
+      { text: 'Гарантии и кредит на исполнение контракта' },
+      { text: 'Лизинг' },
+    ]
+
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте заявку ниже <br>и дождитесь ответа',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Подключайте клиентов <br> <a class="text-orange" href="#">в личном кабинете</a>',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получайте доход по&nbsp;партнерской программе',
+      },
+    ]
+
+    const aboutBlockInTabs = {
+      itemsSCS: {
+        title: 'Расчетно-кассовое обслуживание',
+        subtitle: 'Что мы предлагаем',
+        list2: [
+          '5 000 ₽ за клиента с первого счета',
+          'Скидки и бонусы',
+        ],
+        btn: {
+          text: 'Стать партнером',
+        }
+      },
+      guarantees: {
+        title: 'Гарантии в рамках 44-ФЗ, 223-ФЗ <span class="text-nowrap">и 185-ФЗ</span> и кредит на исполнение контракта',
+        subtitle: 'Что мы предлагаем',
+        list2: [
+          'От 35% агентское вознаграждение',
+        ],
+        btn: {
+          text: 'Стать партнером',
+        }
+      },
+      leasing: {
+        title: 'Лизинг',
+        subtitle: 'Что мы предлагаем',
+        list2: [
+          'Честные и понятные ставки агентского вознаграждения',
+        ],
+        btn: {
+          text: 'Стать партнером',
+        }
+      }
+    }
+
+block content
+  main
+    +banner
+      +banner__item('--partners')
+        +banner__wrapper('img/banner_partners.jpg')
+          +banner__h1('Присоединяйтесь к&nbsp;команде партнеров')
+          +banner__descr('Приводите клиентов и&nbsp;зарабатывайте', '--size-s').text-orange
+          +banner__foot
+            +ui-button('Стать партнером', 'banner')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +section-head
+            +ui-h2('Партнерская программа по продуктам', 'section-head')
+        +tabs-head(tabsHeadItems, '', '--round')
+        +tabs-main
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.itemsSCS, 'service-fea-offers')
+                    +accordion('service-fea-offers')
+                      +accordion-item('Документы')
+                        +documents
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__subtitle('Преимущества')
+                      +service-fea-list__point('Не ограничиваем доход')
+                      +service-fea-list__point('Дополнительные бонусы', 'за каждую продажу партнерского продукта')
+                      +service-fea-list__point('Индивидуальные тарифы', 'за качественных клиентов')
+
+                      +service-fea-list__subtitle('Партнерами могут стать компании:')
+                      +service-fea-list__point('Занимающиеся консалтингом, оказывающие бухгалтерские или юридические услуги')
+                      +service-fea-list__point('Работающие в сегменте В2В или имеющие базу контрагентов')
+                      +service-fea-list__point('Помогающие с регистрацией юридических лиц и ИП')
+
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.guarantees, 'service-fea-offers')
+                    +accordion('service-fea-offers')
+                      +accordion-item('Документы')
+                        +documents
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__subtitle('Преимущества')
+                      +service-fea-list__point('Автоматическое решение по заявкам до 3&nbsp;млн рублей')
+                      +service-fea-list__point('Без залога и поручительств')
+                      +service-fea-list__point('Минимальный пакет документов (по&nbsp;заявкам до 10&nbsp;млн рублей только паспорт)')
+
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +service-fea-offers
+                  +service-fea-offers__col('--no-pic')
+                    +service-fea-about(aboutBlockInTabs.leasing, 'service-fea-offers')
+                    +accordion('service-fea-offers')
+                      +accordion-item('Документы')
+                        +documents
+                  +service-fea-offers__col
+                    +service-fea-list
+                      +service-fea-list__subtitle('Кто может стать партнером АТБ&nbsp;ЛК')
+                      +service-fea-list__point('Компании, продающие транспорт, технику, оборудование')
+                      +service-fea-list__point('Профессиональные брокеры и консалтинговые компании')
+                      +service-fea-list__point('Компании, осуществляющие аутсорсинг бухгалтерских услуг')
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как стать партнером', howGetItems)
+
+      +section#form-section
+        .inner
+          +section-head.text-center
+            +ui-h2('Оформите заявку', 'section-head')

@@ -1,0 +1,68 @@
+.ui-radio {
+  input {
+    display: none;
+    &:checked ~ label {
+      &::before {
+        border-color: var(--bvi-contrast-color, $orange);
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+    &:disabled {
+      + label {
+        color: $grey60;
+        pointer-events: none;
+      }
+      &:checked {
+        + label {
+          &::before {
+            border-color: $grey50;
+          }
+          &::after {
+            background: $grey50;
+          }
+        }
+      }
+    }
+  }
+  label {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    padding-left: 35px;
+    font: 16px/1.5 $font;
+    cursor: pointer;
+    @include media-laptop {
+      font-size: 14px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--bvi-contrast-color, $greyBlue);
+      border-radius: 50%;
+      transition: border-color 0.2s ease-in;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 14px;
+      height: 14px;
+      background-color: var(--bvi-contrast-color, $orange);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+    &:hover {
+      &::before {
+        border-color: var(--bvi-contrast-color, $orange);
+      }
+    }
+  }
+}

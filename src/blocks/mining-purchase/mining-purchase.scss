@@ -1,0 +1,123 @@
+.mining-purchase {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  &__head {
+    width: 100%;
+    margin-bottom: 40px;
+    @include media-tablet {
+      order: 2;
+      margin-bottom: 25px;
+    }
+  }
+  &__title {
+    max-width: 670px;
+    font: 700 26px/1.3 $font;
+    @include media-laptop {
+      max-width: 510px;
+      font-size: 20px;
+    }
+    @include media-tablet {
+      max-width: none;
+      font-size: 18px;
+    }
+  }
+  &__list {
+    max-width: 555px;
+    margin-right: 35px;
+    padding: 0;
+    font: 400 18px/1.4 $font;
+    list-style-type: none;
+    @include media-laptop {
+      max-width: 405px;
+      font-size: 16px;
+    }
+    @include media-tablet {
+      max-width: none;
+      order: 3;
+      width: 100%;
+      margin: 0;
+    }
+    li {
+      position: relative;
+      padding-left: 50px;
+      @include media-laptop {
+        padding-left: 45px;
+      }
+      &:not(:last-child) {
+        margin-bottom: 40px;
+        @include media-laptop {
+          margin-bottom: 30px;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M27.3137 4.68625C24.2917 1.66431 20.2738 0 16 0C11.7262 0 7.70819 1.66431 4.68625 4.68625C1.66425 7.70825 0 11.7262 0 16C0 20.2738 1.66425 24.2917 4.68625 27.3137C7.70825 30.3357 11.7262 32 16 32C20.2738 32 24.2917 30.3357 27.3137 27.3137C30.3357 24.2917 32 20.2738 32 16C32 11.7262 30.3357 7.70831 27.3137 4.68625ZM16 30.125C8.21144 30.125 1.875 23.7886 1.875 16C1.875 8.21144 8.21144 1.875 16 1.875C23.7886 1.875 30.125 8.21144 30.125 16C30.125 23.7886 23.7886 30.125 16 30.125Z' fill='%237F94A8'/%3E%3Cpath d='M23.6441 10.8662C23.278 10.5002 22.6844 10.5002 22.3183 10.8663L14.0396 19.145L9.6817 14.787C9.31564 14.421 8.72202 14.421 8.35589 14.787C7.98977 15.1531 7.98977 15.7467 8.35589 16.1128L13.3767 21.1337C13.5598 21.3167 13.7997 21.4082 14.0396 21.4082C14.2795 21.4082 14.5195 21.3167 14.7025 21.1337L23.6441 12.192C24.0102 11.826 24.0102 11.2324 23.6441 10.8662Z' fill='%237F94A8'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-size: contain;
+        @include media-laptop {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+  }
+  &__notice {
+    width: 480px;
+    margin-left: auto;
+    padding: 50px 80px;
+    flex-shrink: 0;
+    background: #fff;
+    box-shadow: 0 3px 30px rgb(135 151 155 / 0.25);
+    border-radius: 8px;
+    @include media-laptop {
+      width: 300px;
+      padding: 35px 30px;
+    }
+    @include media-tablet {
+      order: 1;
+      width: 100%;
+      margin-bottom: 30px;
+      padding: 35px 45px;
+    }
+  }
+  &__top {
+    margin-bottom: 15px;
+    font: 700 32px/1.2 $font;
+    @include media-laptop {
+      font-size: 24px;
+    }
+    &-xl {
+      font-size: 64px;
+      @include media-laptop {
+        font-size: 50px;
+      }
+    }
+  }
+  &__text {
+    margin-bottom: 40px;
+    font: 400 18px/1.3 $font;
+    @include media-laptop {
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+  }
+}
+.bvi-body {
+  .mining-purchase {
+    display: block;
+    &__title,
+    &__list {
+      max-width: none;
+    }
+    &__notice {
+      width: auto;
+      margin-left: 0;
+    }
+  }
+}

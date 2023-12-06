@@ -1,0 +1,118 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'loan-revolving'
+  -const pageTitle ='Оборотный кредит'
+
+  -
+    const requirementsItems1 =[
+      { icon: 'img/requirement2_1.svg', text: 'Резидент РФ' },
+      { icon: 'img/requirement2_2.svg', text: 'Срок существования с момента государственной регистрации – не менее 12 месяцев' },
+      { icon: 'img/requirement2_3.svg', text: 'Годовая выручка не превышает 2 млрд ₽' },
+    ]
+
+  -
+    const requirementsItems2 =[
+      { icon: 'img/requirement2_1.svg', text: 'Анкета-заявка на получение кредита' },
+      { icon: 'img/requirement2_2.svg', text: 'Выписка по расчетным счетам из Интернет-Банка за 12 месяцев или карточка сч.51 из 1С' },
+      { icon: 'img/requirement2_3.svg', text: 'При кредите свыше 10 млн ₽ официальная бухгалтерская/налоговая отчетность' },
+    ]
+
+  -
+    const requirementsItems3 =[
+      { icon: 'img/requirement3_1.svg', text: 'Поручительство физического лица и/или юридических лиц' },
+      { icon: 'img/requirement3_2.svg', text: 'Залог имущества' },
+      { icon: 'img/requirement3_3.svg', text: 'Возможно предоставление кредита без обеспечения' },
+    ]
+
+  -
+    const termsItems =[
+      { name: 'Цель кредита', descr: 'пополнение оборотных средств (оплата контрагентам за товары, работы, услуги, выплата заработной платы и прочие расходы, связанные с текущей деятельностью компании)', },
+      { name: 'Сумма кредита', descr: 'до 10 000 000 рублей (₽)' },
+      { name: 'Валюта кредита', descr: 'рубли РФ (₽)' },
+      { name: 'Срок кредитования', descr: 'до 36 месяцев', },
+      { name: 'Процентная ставка', descr: 'от 16,1% годовых (определяется индивидуально)' },
+      { name: 'Комиссия за выдачу', descr: '1% от суммы кредита' },
+      { name: 'Форма кредитования', descr: 'кредит, невозобновляемая кредитная линия' },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a href="#" class="text-orange">заявку</a> или по телефону <span class="text-nowrap">8-800-775-80-80</span>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Предоставьте документы и&nbsp;дождитесь одобрения по кредиту',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите кредит <br>для вашего бизнеса',
+      },
+    ]
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_benefits1.svg', descr: 'Возможность получения кредита без обеспечения' },
+      { icon: 'img/icon_benefits2.svg', descr: 'Решение по 2-м документам' },
+      { icon: 'img/icon_benefits3.svg', descr: 'Удобная форма выдачи - кредит и&nbsp;невозобновляемая кредитная линия' },
+      { icon: 'img/icon_benefits4.svg', descr: 'Скидка при подключении пакета <span class="text-orange">«Все включено»</span>' },
+      { icon: 'img/icon_benefits5.svg', descr: 'Срок кредитования до 36 месяцев' },
+      { icon: 'img/icon_benefits6.svg', descr: 'Выбор типа платежей дифференцированный или аннуитетный' },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--loan-revolving')
+        +banner__wrapper('img/banner_loan_revolving.png', true)
+          +banner__h1('Бизнес-оборот', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('до ')
+            span.banner__subtitle-accent 30
+            |  млн рублей
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оставить Заявку', 'banner, --m-size-l')(href='#form-section')
+            +banner__slogan('На пополнение оборотных средств, оплату текущих расходов')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems)
+      +section
+        .inner
+          +section-head()
+            +ui-h2('Рассчитайте платеж по кредиту', 'section-head')
+          +calc-loan('loan-revolving')
+      +section
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Заявка на получение кредита', 'section-head')
+      +section
+        .inner
+          +accordion
+            +accordion-item('Условия')
+              +terms(termsItems)
+              +section-footnote('Процентная ставка от 16,1% годовых. Срок кредита от 6 до 36 месяцев.В случае неисполнения обязательств по своевременному погашению взимается 1% от суммы невыполненных обязательств за каждый день невыполнения условия.')
+            +accordion-item('Обеспечение')
+              +requirements(requirementsItems3)
+            +accordion-item('Документы')
+              +documents
+              +requirements(requirementsItems2)
+              +section-footnote('Банк оставляет за собой право запросить дополнительные документы, которые могут способствовать принятию решения о предоставлении кредита.')
+            +accordion-item('Требования')
+              +requirements(requirementsItems1)
+            +accordion-item('Архив')
+              +documents

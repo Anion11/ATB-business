@@ -1,0 +1,30 @@
+mixin online-accounting-steps(mods)
+  -
+    const baseName = 'online-accounting-steps'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        icon: 'img/online-accounting-steps_1.svg',
+        title: 'Загрузите одну или несколько выписок из любых банков в сервис',
+      },
+      {
+        icon: 'img/online-accounting-steps_2.svg',
+        title: 'Сервис сам рассчитает сумму налогов и взносов и сформирует платежки для их оплаты',
+      },
+    ]
+
+  .online-accounting-steps(class=allMods)&attributes(attributes)
+    each item in data
+      .online-accounting-steps__item
+        .online-accounting-steps__icon
+          img(src=item.icon, alt='')
+        .online-accounting-steps__title !{item.title}
+    block

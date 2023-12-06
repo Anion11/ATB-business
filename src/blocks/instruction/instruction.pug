@@ -1,0 +1,40 @@
+mixin instruction(data, mods)
+  -
+    const baseName = 'instruction'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .instruction(class=allMods)&attributes(attributes)
+    if data.title
+      +ui-h2(data.title, 'instruction')
+    .instruction__img
+      .instruction__slider
+        .swiper
+          .swiper-wrapper
+            each itemImg in data.img
+              .swiper-slide
+                img(src=`img/${itemImg.src}.png` alt='')
+      .instruction__nav
+        +ui-swiper-button('--prev, instruction')
+        +ui-swiper-button('--next, instruction')
+    .instruction__steps
+      each itemStep, indexStep in data.steps
+        .instruction__steps-item(class = (indexStep === 0) ? 'active' : '')
+          .instruction__steps-num
+            .instruction__steps-num-inn
+              span=(indexStep+1)
+          .instruction__steps-text
+            .instruction__steps-title
+              p !{itemStep.title}
+            if itemStep.p2
+              +ui-p2(itemStep.p2, 'instruction, --light')
+    if data.button
+      +ui-button(data.button, 'instruction')(href='#' target='_blank')
+    +ui-swiper-pagination('instruction')
+    block

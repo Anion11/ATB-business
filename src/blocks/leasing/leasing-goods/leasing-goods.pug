@@ -1,0 +1,79 @@
+mixin leasing-goods(mods)
+  -
+    const baseName = 'leasing-goods'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const leasingGoodsItems =[
+      {
+        name: 'Лизинг Лайт',
+        features: [
+          { num: 'до <span class="leasing-goods__features-num-big">20 млн ₽</span>', text: 'сумма' },
+          { num: 'от <span class="leasing-goods__features-num-big">0%</span>', text: 'аванс' },
+          { num: 'до <span class="leasing-goods__features-num-big">5 лет</span>', text: 'срок договора' },
+        ],
+        list: [
+          'минимальный пакет документов',
+          '1 день на решение',
+        ],
+        objects: [
+          { icon: 'products-1.svg', name: 'Легковые автомобили' },
+          { icon: 'products-2.svg', name: 'Легкий коммерческий транспорт' },
+          { icon: 'products-3.svg', name: 'Грузовой транспорт' },
+          { icon: 'products-4.svg', name: 'Спецтехника' },
+        ],
+      },
+      {
+        name: 'Стандартный лизинг',
+        features: [
+          { num: 'от <span class="leasing-goods__features-num-big">500 млн ₽</span>', text: 'сумма' },
+          { num: 'от <span class="leasing-goods__features-num-big">10%</span>', text: 'аванс' },
+          { num: 'до <span class="leasing-goods__features-num-big">5 лет</span>', text: 'срок договора' },
+        ],
+        list: [
+          'индивидуальный график лизинговых платежей',
+          'полное сопровождение сделки',
+        ],
+        objects: [
+          { icon: 'products-1.svg', name: 'Легковой транспорт' },
+          { icon: 'products-3.svg', name: 'Грузовой транспорт' },
+          { icon: 'products-4.svg', name: 'Спецтехника' },
+          { icon: 'products-5.svg', name: 'Оборудование' },
+          { icon: 'products-6.svg', name: 'Недвижимость' },
+          { icon: 'products-7.svg', name: 'Вертолеты' },
+          { icon: 'products-8.svg', name: 'Cуда' },
+          { icon: 'products-9.svg', name: 'Ж/д' },
+        ],
+      },
+    ]
+
+  .leasing-goods(class=allMods)&attributes(attributes)
+    each item in leasingGoodsItems
+      .leasing-goods__item
+        .leasing-goods__name !{item.name}
+        .leasing-goods__content
+          .leasing-goods__descr
+            +ui-p1('', '--light')
+              +ui-ul(item.list)
+            .leasing-goods__features
+              each itemFeatures in item.features
+                .leasing-goods__features-item
+                  .leasing-goods__features-text !{itemFeatures.text}
+                  .leasing-goods__features-num !{itemFeatures.num}
+          .leasing-goods__objects
+            .leasing-goods__objects-title Предметы лизинга:
+            .leasing-goods__objects-wrapper
+              each itemObjects in item.objects
+                .leasing-goods__objects-item
+                  .leasing-goods__objects-icon
+                    img(src=`img/${itemObjects.icon}`, alt='')
+                  .leasing-goods__objects-name !{itemObjects.name}
+          +ui-button('Оформить заявку', 'leasing-goods')(href='#')
+    block

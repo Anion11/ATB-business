@@ -1,0 +1,24 @@
+.acquiring__benefits {
+  @include media-tablet {
+    gap: 25px;
+  }
+  .ui-ul {
+    margin: 20px 0 0;
+    @include media-tablet {
+      margin-top: 0;
+    }
+  }
+  .ui-ul,
+  .benefits__item {
+    &:nth-child(2n+1) {
+      @include media-tablet {
+        order: 1;
+      }
+    }
+    &:nth-child(2n) {
+      @include media-tablet {
+        order: 2;
+      }
+    }
+  }
+}

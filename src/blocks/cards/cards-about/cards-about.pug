@@ -1,0 +1,30 @@
+mixin cards-about(data, mods)
+  -
+    const baseName = 'cards-about'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .cards-about(class=allMods)&attributes(attributes)
+    .cards-about__wrapper
+      .cards-about__top
+        .cards-about__img
+          img(src=data.img, alt='')
+        .cards-about__title !{data.title}
+      .cards-about__terms
+        each item in data.terms
+          .cards-about__term
+            .cards-about__num !{item.num}
+            .cards-about__desc !{item.desc}
+      .cards-about__bottom
+        .cards-about__btn
+          +ui-button(data.btn.txt, 'cards-about')(href=data.btn.link)
+        .cards-about__price
+          .cards-about__val !{data.price}
+          .cards-about__txt !{data.priceDesc}
+    block

@@ -1,0 +1,124 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'refreshing-package'
+  -const pageTitle ='Акция «Легкий старт»'
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_benefit1.svg',
+        title: 'Открытие расчетного счета под ключ',
+        titleModClass: 'benefits__title--normal benefits__title--size-l',
+        titleTooltip: 'Оформление карточки образцов подписей и&nbsp;оттиска печати, копии документов также бесплатно'
+      },
+      { icon: 'img/icon_benefit2.svg',
+        title: 'Обслуживание счета',
+        titleModClass: 'benefits__title--normal benefits__title--size-l',
+        descr: '6 месяцев по&nbsp;пакету «Освежающий»',
+      },
+      { icon: 'img/icon_benefit3.svg',
+        title: 'Предоставим терминал',
+        titleModClass: 'benefits__title--normal benefits__title--size-l',
+        descr: 'С комиссией 1% по&nbsp;эквайрингу'
+      },
+      { icon: 'img/icon_benefit4.svg',
+        title: 'Подключение ДБО',
+        titleModClass: 'benefits__title--normal benefits__title--size-l',
+        titleTooltip: `<p>Дистанционное банковское обслуживание:</p>
+          <ul>
+            <li>Интернет-банк</li>
+            <li>Мобильное приложение</li>
+          </ul>`
+      },
+      { icon: 'img/icon_benefit5.svg',
+        title: 'Корпоративная карта',
+        titleModClass: 'benefits__title--normal benefits__title--size-l',
+        descr: 'Выпуск и бесплатное обслуживание в&nbsp;течение 1&nbsp;года'
+      },
+      { icon: 'img/icon_benefit6.svg',
+        title: '<a class="text-orange" href="/pages/salary-project/salary-project.html">Зарплатный проект</a>',
+        titleModClass: 'benefits__title--normal benefits__title--size-l',
+        descr: 'Без комиссии за&nbsp;перевод зарплаты в&nbsp;рамках зарплатного проекта'
+      },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте заявку',
+        descr: 'на открытие счета с пакетом <br>«Освежающий»',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Получите номер счёта',
+        descr: 'и реквизиты',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Подпишите документы',
+        descr: 'на обслуживание расчетного счета до&nbsp;30&nbsp;июня 2023&nbsp;года',
+      }
+    ]
+
+  -
+    const termsBannerData ={
+      h3: 'Условия участия',
+      descr: `Откройте расчетный счет с&nbsp;пакетом &laquo;Освежающий&raquo; и&nbsp;получите 6&nbsp;месяцев бесплатного обслуживания, зарплатный проект, терминал и&nbsp;комиссию по&nbsp;эквайрингу&nbsp;1%`,
+      button: 'Участвовать',
+      fn: 'Акция проводится для клиентов, впервые открывающих расчетный счет в&nbsp;АТБ в&nbsp;Свердловской, Тюменской, Новосибирской и&nbsp;Омской областях.',
+      p1: 'с&nbsp;16&nbsp;января до&nbsp;30 июня 2023 года',
+      img: 'img/terms_banner.png',
+    }
+
+block content
+  main
+    +banner()
+      +banner__item('--refreshing-package')
+        +banner__wrapper('img/banner_refreshing_package.jpg')
+          +banner__h1('Акция <br>«Легкий старт»')
+          +banner__foot()
+            +ui-button('Участвовать в акции', 'banner')(href='#section-form')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +terms-banner(termsBannerData)
+
+      +section()
+        .inner
+          +section-head('--max-w')
+            +ui-h2('Бесплатно', 'section-head')
+            +ui-h4('при открытии счета с&nbsp;16&nbsp;января по&nbsp;30&nbsp;июня 2023 года с&nbsp;пакетом «Освежающий»', '--light')
+          +benefits(benefitsItems)
+
+      +section
+        .inner
+          +refreshing-terms
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как принять участие в акции', howGetItems)
+
+      +section#section-form
+        .inner
+          .form-container
+            +section-head('--max-w600, --center').text-center
+              +ui-h2('Заявка на открытие счета', 'section-head')
+              +ui-p1('Введите номер телефона и&nbsp;код из&nbsp;SMS, чтобы перейти к&nbsp;открытию счёта без визита в&nbsp;банк. Уже через 5&nbsp;минут вы&nbsp;сможете получать платежи.')
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('Документы', 'section-head')
+          +accordion
+            +accordion-item('Полные условия акции')
+              +documents

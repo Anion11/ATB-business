@@ -1,0 +1,70 @@
+.fea-float-btn {
+  position: absolute;
+  top: 20px;
+  right: 85px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  width: 230px;
+  padding: 13px 110px 13px 30px;
+  font: 16px/1.2 $font;
+  background: #fff;
+  color: $black;
+  box-shadow: 0 3px 30px rgb(135 151 155 / 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  @include media-laptop {
+    right: 30px;
+  }
+  @include media-tablet {
+    top: auto;
+    right: 10px;
+    bottom: 20px;
+    left: 10px;
+    width: auto;
+    display: block;
+    min-height: 65px;
+    padding: 20px 110px 20px 40px;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 90px;
+    height: 80px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &--fixed {
+    position: fixed;
+  }
+  &--packages {
+    top: -20px;
+    right: 10px;
+    @include media-tablet {
+      top: auto;
+    }
+    &.fea-float-btn--fixed {
+      top: 20px;
+      @include media-tablet {
+        top: auto;
+      }
+    }
+  }
+}
+.bvi-body {
+  .fea-float-btn {
+    position: relative;
+    top: unset;
+    right: unset;
+    width: fit-content;
+    min-height: 80px;
+  }
+}

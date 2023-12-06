@@ -1,0 +1,25 @@
+mixin construction-rate(mods)
+  -
+    const baseName = 'construction-rate'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .construction-rate(class=allMods)&attributes(attributes)
+    .construction-rate__text
+      +ui-h4('Средневзвешанная ставка в зависимости от суммы на счетах эскроу (в&nbsp;%&nbsp;от&nbsp;кредита)', 'construction-rate')
+      +ui-p1('', '--light, construction-rate')
+        p Процентная ставка по кредиту пересматривается ежемесячно в зависимости от объема средств участников долевого строительства на счетах эскроу.
+        p Средневзвешенная ставка снижается при росте продаж на инвестиционной фазе за счет наполнения счетов эскроу
+    .construction-rate__pic
+      .construction-rate__img.construction-rate__img--desktop
+        img.bvi-not-hide(src='img/construction-rate_table.svg', alt='')
+      .construction-rate__img.construction-rate__img--mobile
+        img.bvi-not-hide(src='img/construction-rate_table-small.svg', alt='')
+      .construction-rate__footnote * базовая процентная ставка при сумме кредита от 30 млн ₽
+    block

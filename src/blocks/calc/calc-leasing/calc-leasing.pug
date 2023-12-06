@@ -1,0 +1,60 @@
+mixin calc-leasing(mods)
+  -
+    const baseName = 'calc-leasing'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -const dataCalcName = `data-leasing`
+
+  .calc-leasing(class=allMods)&attributes(attributes)
+    .calc-leasing__params
+      .calc-leasing__line
+        +ui-form-name('Предмет лизинга')
+        +ui-select('calc-leasing', 'Легковые автомобили', 'Грузовой транспорт', 'Спецтехника')&attributes({[`${dataCalcName}-select-type`]: ''})
+      .calc-leasing__line
+        +ui-range('Сумма', '  ₽', '', '', 'calc-leasing, --long-input')(data-min='500000' data-max='300000000000')&attributes({[`${dataCalcName}-range-amount`]: ''})
+      .calc-leasing__line
+        +ui-range('Аванс', '  ₽', '0%', '49%', 'calc-leasing, --long-input')(data-min='0' data-max='147000000000')&attributes({[`${dataCalcName}-range-advance_pay`]: ''})
+      .calc-leasing__line
+        +ui-range('Срок договора', '  мес', '', '', 'calc-leasing')(data-min='13' data-max='60')&attributes({[`${dataCalcName}-range-term`]: ''})
+    .calc-leasing__result
+      .calc-leasing__result-main
+        .calc-leasing__result-line
+          .calc-leasing__result-item
+            .calc-leasing__result-name Ежемесячный платеж, включая НДС
+              +ui-tooltip('Настоящий расчет является предварительным и не является публичной офертой. Для формирования коммерческого предложения обратитесь к нашим специалистам.')
+            +calc-leasing__result-val('518 679 ₽', dataCalcName, 'monthly_pay', '--big').text-grey-blue
+        .calc-leasing__result-line
+          .calc-leasing__result-item
+            .calc-leasing__result-name Сумма договора лизинга
+              +ui-tooltip('Сумма договора лизинга состоит из суммы всех ежемесячных лизинговых платежей, аванса и выкупного платежа')
+            +calc-leasing__result-val('19 652 454 ₽', dataCalcName, 'contract_amount')
+          .calc-leasing__result-item
+            .calc-leasing__result-name Годовое удорожание
+            +calc-leasing__result-val('10,41%', dataCalcName, 'inflation')
+      .calc-leasing__result-btns
+        +ui-button('Оформить заявку', 'calc-leasing')(href='#')
+      .calc-leasing__result-foot
+        p Все расчеты приблизительные, для более точной информации обращайтесь в любое отделение банка АТБ по телефону 8-800-775-88-88
+    block
+
+mixin calc-leasing__result-val(val, dataCalcName, dataName, mods)
+  -
+    const baseName = 'calc-leasing__result-val'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .calc-leasing__result-val(class=allMods)&attributes(attributes, {[`${dataCalcName}-text-${dataName}`]: ''}) !{val}
+    block

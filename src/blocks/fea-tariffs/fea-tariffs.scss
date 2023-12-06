@@ -1,0 +1,141 @@
+.fea-tariffs {
+  &__item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 325px;
+    padding: 20px 60px 30px;
+    background: #fff;
+    box-shadow: 0 3px 30px rgb(135 151 155 / 0.15);
+    border-radius: 8px;
+    @include media-tablet {
+      padding: 20px 30px 30px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 25px;
+      @include media-tablet {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  &__head {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $grey20;
+  }
+  &__title {
+    font: 700 20px/1.3 $font;
+    @include media-tablet {
+      font-size: 18px;
+    }
+    &--price {
+      margin-left: 10px;
+      color: $greyBlue;
+      @include media-tablet {
+        margin-left: 5px;
+      }
+    }
+  }
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 65px;
+    margin-bottom: 25px;
+    @include media-tablet {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-bottom: 55px;
+    }
+  }
+  &__top {
+    font: 18px/1.4 $font;
+  }
+  &__bot {
+    font: 14px/1.3 $font;
+    color: $grey60;
+  }
+  &__ui-button {
+    margin-top: auto;
+  }
+  &__img {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    z-index: -1;
+    max-width: 145px;
+    @include media-tablet {
+      right: 10px;
+      max-width: 100px;
+    }
+  }
+  &--rows {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    @include media-laptop {
+      grid-template-columns: 1fr;
+    }
+    .fea-tariffs {
+      &__item {
+        padding: 30px 60px;
+        @include media-tablet {
+          padding: 30px 40px;
+        }
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
+      &__head {
+        @include media-tablet {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      &__title {
+        font-size: 28px;
+        @include media-laptop {
+          font-size: 26px;
+        }
+        @include media-tablet {
+          font-size: 24px;
+        }
+        &--price {
+          margin-left: 20px;
+          @include media-tablet {
+            margin-left: 0;
+          }
+        }
+      }
+      &__img {
+        right: 20px;
+        bottom: -20px;
+        max-width: 210px;
+        @include media-tablet {
+          right: 10px;
+          bottom: -10px;
+          max-width: 110px;
+        }
+      }
+    }
+  }
+}
+body {
+  .bvi-body {
+    .wrapper {
+      .fea-tariffs {
+        &__main {
+          align-items: flex-start;
+          background-color: transparent !important;
+        }
+        &--rows {
+          display: block;
+        }
+      }
+    }
+  }
+}

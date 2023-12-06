@@ -1,0 +1,31 @@
+mixin ui-range(title, inpDescr, loverDescr, upperDescr, mods)
+  -
+    const baseName = 'ui-range'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-range(class=allMods)
+    .ui-range__head
+      .ui-range__title !{title}
+        block
+      .ui-range__inp
+        .ui-range__inp-wrapp
+          span.ui-range__inp-val
+          input(type='text')&attributes(attributes)
+        span=inpDescr
+    .ui-range-body.bvi-no-styles
+    .ui-range__wrap
+      .ui-range-value-lower
+        span
+          if loverDescr
+            =loverDescr
+      .ui-range-value-upper
+        span
+          if upperDescr
+            =upperDescr

@@ -1,0 +1,19 @@
+mixin mir-discounts(mods)
+  -
+    const baseName = 'mir-discounts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .mir-discounts(class=allMods)&attributes(attributes)
+    .mir-discounts__container
+      .mir-discounts__img: img(src='img/mir-discounts.png' alt='')
+      .mir-discounts__text
+        h3.mir-discounts__title Получайте скидки от&nbsp;партнеров платежной системы «Мир»
+        +ui-button('Подробнее', 'mir-discounts')(href='/discounts-and-promotions/' target='_blank')
+    block

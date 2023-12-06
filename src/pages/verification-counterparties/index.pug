@@ -1,0 +1,139 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'verification-counterparties'
+  -const pageTitle ='Проверка контрагентов в интернет-банке'
+
+  -
+    const benefitsItems = [
+      { icon: 'img/benefits_icon_1.svg', title: 'Проверенное решение о&nbsp;сотрудничестве' },
+      { icon: 'img/benefits_icon_2.svg', title: 'Нужен только ИНН' },
+      { icon: 'img/benefits_icon_3.svg', title: 'Снижение риска доначисления НДС' },
+      { icon: 'img/benefits_icon_4.svg', title: 'Сохранение отчета в&nbsp;формате PDF' },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Введите ИНН контрагента <a class="text-nowrap text-orange" href="#">в Интернет-банке</a>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Светофор за секунды собирает информацию',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Вы получаете отчет и&nbsp;можете принять решение',
+      },
+    ]
+
+  -
+    const instruction = {
+      title: 'Инструкция по работе с&nbsp;сервисом Светофор',
+      img: [
+        { src: 'instruction_1' },
+        { src: 'instruction_2' },
+        { src: 'instruction_3' },
+        { src: 'instruction_4' },
+        { src: 'instruction_5' },
+      ],
+      steps: [
+        { title: 'Войдите в Интернет-банк и нажмите «Проверка контрагента»' },
+        { title: 'Введите ИНН контрагента' },
+        { title: 'После ввода ИНН появятся цветовые индикаторы' },
+        { title: 'Наведите на сигнал, чтобы узнать, что он означает' },
+        { title: 'Для получения расширенного экспресс-отчета нажмите кнопку «Скачать полный отчет»' },
+      ]
+    }
+
+  -
+    const tableData = {
+      names: [
+        'Основные сведения',
+        'Результаты проверки',
+        'Рекомендации',
+        'Судебные иски',
+        'Бухгалтерская отчетность',
+        'Лизинг',
+        'Госзакупки',
+        'Экспорт в формате PDF',
+      ],
+      columns: [
+        {
+          name: 'Базовый',
+          img: 'img/comparison_img_1.png',
+          rows: [
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'no' },
+            { icon: 'no' },
+            { icon: 'no' },
+            { icon: 'no' },
+            { icon: 'yes' },
+          ],
+        },
+        {
+          name: 'Расширенный',
+          img: 'img/comparison_img_2.png',
+          headMods: 'paid',
+          rows: [
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+            { icon: 'yes' },
+          ],
+        },
+      ]
+    }
+
+block content
+  main
+    +banner
+      +banner__item('--verification-counterparties')
+        +banner__wrapper('img/banner_verification_counterparties.jpg')
+          +banner__h1('Проверка контрагентов <br>в интернет-банке')
+          +banner__descr('Ведите бизнес безопасно с&nbsp;сервисом «Светофор»', '--size-s').text-orange
+          +banner__foot('--mob-row')
+            +ui-button('Открыть счет', 'banner')(href='#')
+            +banner__descr('', '--size-xs').text-link-underline.text-orange
+              a(href='#') Войти
+
+    .page-content.page-content--pt0
+      +section
+        .inner
+          +benefits(benefitsItems, '--items2, --title-normal')
+
+      +section()
+        .inner
+          +how-get('Как работает Светофор', howGetItems)
+
+      +section('--bg-grey')
+        .inner
+          +section-head('--max-w900')
+            +ui-h2('При вводе ИНН вы сразу узнаете главное в&nbsp;формате сигналов Светофора')
+          +traffic-signals
+
+      +section
+        .inner
+          +section-head()
+            +ui-h2('Сервис стал лучше', 'section-head, --bold')
+            +ui-h4('Вместо <span class="text-bold">Базового отчета</span> теперь доступен <span class="text-bold">Расширенный отчет</span> для детального анализа контрагентов. <br>Рассказываем, что появилось в отчете:', '--light')
+          +comparison(tableData)
+
+      +section
+        .inner
+          +instruction(instruction)

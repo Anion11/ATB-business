@@ -1,0 +1,19 @@
+mixin callback(text, phone, request, mods)
+  -
+    const baseName = 'callback'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .callback(class=allMods)&attributes(attributes)
+    .callback__text !{text}
+    .callback__links
+      a.callback__phone(href=`tel:${phone}`)=phone
+      if request
+        a.callback__request(href='#') заказать звонок
+    block

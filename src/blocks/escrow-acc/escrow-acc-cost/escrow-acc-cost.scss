@@ -1,0 +1,50 @@
+.escrow-acc-cost {
+  position: relative;
+  padding: 30px 440px 40px 70px;
+  background: $grey20;
+  border-radius: 8px;
+  @include media-laptop {
+    padding: 30px 260px 40px 40px;
+  }
+  @include media-tablet {
+    padding: 30px 123px 30px 20px;
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+  &__title {
+    margin-bottom: 20px;
+    font: 700 40px/50px $font;
+    @include media-laptop {
+      font-size: 30px;
+      line-height: 40px;
+    }
+    @include media-tablet {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+  &__img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+    @include media-laptop {
+      width: 240px;
+    }
+    @include media-tablet {
+      width: 148px;
+      height: 145px;
+    }
+    img {
+      @include media-tablet {
+        width: 215px;
+        max-width: none;
+        transform: translateX(15px);
+      }
+    }
+  }
+}

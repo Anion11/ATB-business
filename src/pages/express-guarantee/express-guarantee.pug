@@ -1,0 +1,97 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  //- link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  //- -const fileName = 'express-guarantee'
+  -const pageTitle ='Экспресс-гарантии онлайн'
+
+  -
+    const benefitsItems = [
+      { icon: 'img/icon_fingerprint.svg', title: 'Подписание документов с&nbsp;помощью ЭЦП' },
+      { icon: 'img/icon_file.svg', title: 'Моментальное решение по&nbsp;заявке' },
+      { icon: 'img/icon_business.svg', title: 'Низкие тарифы' },
+      { icon: 'img/icon_screen.svg', title: 'Без визита в банк, открытия счета и залога' },
+    ]
+
+  -
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте заявку ниже',
+        descr: 'или напишите на почту <a class="text-orange" href="mailto:bg@atb.su">bg@atb.su</a>',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Дождитесь одобрения',
+        descr: 'Ответ отправим вам на email после обработки заявки',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Подпишите документы',
+        descr: 'с помощью ЭПЦ и получите гарантию в&nbsp;личном кабинете',
+      },
+    ]
+
+  -
+    const termsItems =[
+      { name: 'Сумма лимита', descr: 'до 50&nbsp;млн рублей' },
+      { name: 'Валюта кредита', descr: 'рубли РФ' },
+      { name: 'Срок', descr: '36 месяцев', },
+      { name: 'Комиссия', descr: 'от 1,7%' },
+      { name: 'Соответствие требованиям', descr: '44-ФЗ, 223-ФЗ, 185-ФЗ, 615-ПП и 505-ПП' },
+    ]
+
+  -
+    const requirementsItems1 =[
+      { icon: 'img/requirement1.svg', text: 'Резидент РФ' },
+      { icon: 'img/requirement2.svg', text: 'Срок существования с момента государственной регистрации – не менее 3 месяцев' },
+      { icon: 'img/requirement3.svg', text: 'Допускается отсутствие опыта исполнения государственных и муниципальных контрактов' },
+    ]
+
+block content
+  main
+    +banner
+      +banner__item('--express-guarantee')
+        +banner__wrapper('img/banner_express_guarantee.jpg')
+          +banner__h1('Экспресс-гарантии онлайн')
+          +banner__descr('Быстрое решение для заключения и&nbsp;исполнения контракта', '--size-s').text-orange
+          +banner__foot
+            +ui-button('Получить гарантию', 'banner')
+
+    .page-content.page-content--pt0
+      +section
+        .inner
+          +benefits(benefitsItems, '--items2, --title-normal')
+
+      +section
+        .inner
+          +small-banner('', 'partner-team')
+
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems, 'Оставить заявку')
+
+      +section
+        .inner
+          +section-head()
+            +ui-h2('Документы', 'section-head')
+          +accordion
+            +accordion-item('Документы')
+              +documents
+            +accordion-item('Условия')
+              +terms(termsItems)
+            +accordion-item('Требования')
+              +requirements(requirementsItems1)
+            +accordion-item('Архив')
+              +accordion('--inner')
+                +accordion-item('До 20.08.2020 г.')
+                  +documents
+                +accordion-item('До 17.02.2020 г.')
+                  +documents

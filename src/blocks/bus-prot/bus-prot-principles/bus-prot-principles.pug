@@ -1,0 +1,28 @@
+mixin bus-prot-principles(mods)
+  -
+    const baseName = 'bus-prot-principles'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      'Круглосуточная помощь юриста &laquo;здесь и&nbsp;сейчас&raquo;',
+      'Оперативность',
+      'Клиентоориентированность',
+      'Компетентность',
+      'Доступность'
+    ]
+
+  .bus-prot-principles(class=allMods)&attributes(attributes)
+    .bus-prot-principles__title Принципы
+    .bus-prot-principles__container
+      each item in data
+        .bus-prot-principles__item !{item}
+    .bus-prot-principles__img
+      img(src='img/principles.png', alt='')
+    block

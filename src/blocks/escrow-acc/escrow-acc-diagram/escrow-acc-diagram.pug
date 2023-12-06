@@ -1,0 +1,31 @@
+mixin escrow-acc-diagram(mods)
+  -
+    const baseName = 'escrow-acc-diagram'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const escrowAccDiagram =[
+      { img: '', name: 'Дольщик', descr: 'Размещение средств <br>на счете эскроу' },
+      { img: '', name: 'Банк', descr: 'Контроль целевого использования' },
+      { img: '', name: 'Застройщик', descr: 'Сдача готового жилья в срок, раскрытие счета эскроу' },
+      { img: '', name: 'Собственники жилья' },
+    ]
+
+  .escrow-acc-diagram(class=allMods)&attributes(attributes)
+    each item, index in escrowAccDiagram
+      .escrow-acc-diagram__item
+        .escrow-acc-diagram__img
+          img(src=`img/escrow_acc_diagram_${index}.svg`, alt='')
+          .escrow-acc-diagram__name=item.name
+        if item.descr
+          .escrow-acc-diagram__text
+            .escrow-acc-diagram__count=(index+1)
+            .escrow-acc-diagram__descr !{item.descr}
+    block

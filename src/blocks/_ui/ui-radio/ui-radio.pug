@@ -1,0 +1,16 @@
+mixin ui-radio(id, text, mods)
+  -
+    const baseName = 'ui-radio'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-radio(class=allMods)
+    input(id=id type='radio')&attributes(attributes)
+    label(for=id) !{text}
+      block

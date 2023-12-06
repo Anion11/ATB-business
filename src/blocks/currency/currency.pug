@@ -1,0 +1,124 @@
+mixin currency(mods)
+  -
+    const baseName = 'currency'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const currencyTable1 = {
+      head: [
+        { txt: 'валюта' },
+        { txt: 'USD' },
+        { txt: 'EUR' },
+        { txt: 'CNY' },
+        { txt: 'GBP' },
+        { txt: 'CHF' },
+      ],
+      main: [
+        {
+          nameTr: 'покупка',
+          td: [
+            { txt: '63.28', classTd: 'up' },
+            { txt: '63.28', classTd: 'down' },
+            { txt: '63.28', classTd: 'down' },
+            { txt: '63.28', classTd: 'down' },
+            { txt: '63.28', classTd: 'down' },
+          ]
+        },
+        {
+          nameTr: 'продажа',
+          td: [
+            { txt: '63.28', classTd: 'down' },
+            { txt: '63.28', classTd: 'up' },
+            { txt: '63.28', classTd: 'down' },
+            { txt: '63.28', classTd: 'down' },
+            { txt: '63.28', classTd: 'down' },
+          ]
+        },
+      ]
+    }
+  -
+    const currencyTableMetals = {
+      head: [
+        { txt: 'металл' },
+        { txt: 'золото' },
+        { txt: 'серебро' },
+        { txt: 'платина' },
+        { txt: 'палладий' },
+      ],
+      main: [
+        {
+          nameTr: 'покупка',
+          td: [
+            { txt: '3385.28', classTd: 'up' },
+            { txt: '3283.28', classTd: 'down' },
+            { txt: 'индивидуально' },
+            { txt: 'индивидуально' },
+          ]
+        },
+        {
+          nameTr: 'продажа',
+          td: [
+            { txt: '3283.28', classTd: 'down' },
+            { txt: '3283.28', classTd: 'up' },
+            { txt: '&nbsp;' },
+            { txt: '&nbsp;' },
+          ]
+        },
+      ]
+    }
+
+  .currency(class=allMods)&attributes(attributes)
+    .currency-main
+      +switch('', 'Курсы валют', 'драгметаллы', 'currency', 'currency')
+      +switch-group('currency')
+        +switch-content(true)
+          +ui-select('currency')
+            option(value='currencyTab1') в отделениях АТБ
+            option(value='currencyTab2') для платежных карт АТБ
+            option(value='currencyTab3') курс ЦБ РФ
+          .currency-tabs
+            #currencyTab1.currency-tabs__item.currency-tabs__item--active
+              +currency-table(currencyTable1)
+            #currencyTab2.currency-tabs__item
+              +currency-table(currencyTable1)
+            #currencyTab3.currency-tabs__item
+              +currency-table(currencyTable1)
+        +switch-content()
+          +currency-table(currencyTableMetals, '--metals')
+    .currency-foot  Актуально на 14:45, 15 марта 2022 г.  <br>Внимание! Курсы валют могут меняться в течение дня в зависимости от ситуации на валютном рынке
+    block
+
+mixin currency-table(currencyTable, mods)
+  -
+    const baseName = 'currency-table'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .currency-table(class=allMods)&attributes(attributes)
+    .currency-table__tr
+      each itemTh, index in currencyTable.head
+        .currency-table__td(class = (index === 0) ? 'currency-table__td--td-name' : 'currency-table__td--tr-name')=itemTh.txt
+    each itemTr, indexTr in currencyTable.main
+      .currency-table__tr
+        .currency-table__td.currency-table__td--td-name=itemTr.nameTr
+        each itemTd, indexTd in itemTr.td
+          .currency-table__td
+            if itemTd.classTd === 'down'
+              span.currency-table__arrow-down=itemTd.txt
+            else if itemTd.classTd === 'up'
+              span.currency-table__arrow-up=itemTd.txt
+            else
+              | !{itemTd.txt}

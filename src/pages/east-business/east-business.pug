@@ -1,0 +1,133 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  //- link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    //- const fileName = 'east-business'
+    const pageTitle ='Акция «Бизнес на Восток»'
+
+    const benefitsItems = [
+      { icon: 'img/benefit_1.svg', title: 'Льготные условия кредита на&nbsp;весь период действия акции' },
+      { icon: 'img/benefit_2.svg', title: 'Преференции по&nbsp;%&nbsp;при переводе валютных контрактов в&nbsp;Банк' },
+      { icon: 'img/benefit_3.svg', title: 'Участие в <a href="#" class="text-orange">Акции ВЭД «Курс на&nbsp;ВОСТОК»</a>' },
+      { icon: 'img/benefit_4.svg', title: 'Без залога (при сумме кредита до&nbsp;10&nbsp;млн руб.)' },
+      { icon: 'img/benefit_5.svg', title: 'До&nbsp;100% от&nbsp;суммы валютного контракта' },
+      { icon: 'img/benefit_6.svg', title: 'Упрощенная процедура принятия решения' },
+      { icon: 'img/benefit_7.svg', title: 'Минимальный перечень документов для рассмотрения заявки', modClass: 'benefits__item--col100' },
+    ]
+
+    const termBanItems = {
+      list: [
+        {
+          title: 'до <span class="terms-ban__title-big">20</span> млн ₽',
+          desc: 'Cумма кредита - эквивалент в ¥ <br> на&nbsp;дату выдачи',
+        },
+        {
+          title: 'от <span class="terms-ban__title-big">7,6</span> % годовых',
+          desc: 'Ставка по кредиту',
+        },
+        {
+          title: 'до <span class="terms-ban__title-big">36</span> месяцев',
+          desc: 'Срок кредитования',
+        },
+      ]
+    }
+
+    const howGetItems = [
+      {
+        icon: 'img/how_get-1.svg',
+        title: 'Оставьте <a href="#" class="text-orange">заявку</a>',
+      },
+      {
+        icon: 'img/how_get-2.svg',
+        title: 'Заполните анкету и&nbsp;предоставьте документы',
+      },
+      {
+        icon: 'img/how_get-3.svg',
+        title: 'Узнайте решение в&nbsp;течение дня',
+      },
+      {
+        icon: 'img/how_get-4.svg',
+        title: 'Получите кредит',
+      },
+      {
+        icon: 'img/how_get-5.svg',
+        title: 'Отправляйте контрагентам',
+      },
+    ]
+
+    const termsItems = [
+      {
+        name: 'Сумма',
+        list: [
+          'пополнение оборотных средств (оплата контрагентам за товары, работы и услуги)',
+          'инвестиционные цели (приобретение у иностранных поставщиков транспортных средств, оборудования и прочих основных средств, используемых для бизнеса)',
+        ]
+      },
+      { name: 'Сумма кредита', descr: 'до 20 млн. рублей (эквивалент в ¥)' },
+      { name: 'Валюта кредита', descr: '¥ (китайский юань)' },
+      { name: 'Срок кредитования', descr: 'до 36 месяцев' },
+      { name: 'Процентная ставка', descr: 'от 7,6% годовых' },
+      { name: 'Отсрочка в погашении основного долга', descr: 'до 6 месяцев (по инвестиционным целям)' },
+      { name: 'Комиссия за выдачу', descr: '1% от суммы кредита' },
+      { name: 'Форма кредитования', descr: 'кредит, невозобновляемая кредитная линия' },
+      { name: 'Период проведения акции', descr: 'с 04.05.2022 по 31.12.2022 (включительно)' },
+      { name: 'Акция проводится в следующих субъектах РФ:', descr: 'Амурская область, Алтайский край, Бурятия, Свердловская область (Екатеринбург), Иркутская область, Камчатский край, Красноярский край, Читинская область, Хабаровский край' },
+    ]
+
+    const requirementsList1 =[
+      { icon: 'img/requirement-1.svg', text: 'Поручительство физического лица и/или юридических лиц' },
+      { icon: 'img/requirement-2.svg', text: 'Залог имущества' },
+      { icon: 'img/requirement-3.svg', text: 'Также возможно предоставление кредита без обеспечения' },
+    ]
+
+    const requirementsList2 =[
+      { icon: 'img/requirement-4.svg', text: 'Резидент РФ' },
+      { icon: 'img/requirement-5.svg', text: 'Срок бизнеса – не менее 12 месяцев' },
+      { icon: 'img/requirement-6.svg', text: 'Опыт в ВЭД' },
+    ]
+
+block content
+  main
+    +banner
+      +banner__item('--east-business')
+        +banner__wrapper('img/banner_east-business.jpg')
+          +banner__h1('Акция «Бизнес <br> на Восток»')
+          +banner__descr('Не ставьте бизнес на паузу, открывайте новые возможности!', '--size-s').text-orange
+          +banner__foot
+            +ui-button('оставить заявку', 'banner')(href='#form-section')
+            +banner__descr('Кредит от 7,6%', '--size-xs').text-orange.banner__mob-none
+        +banner__mobile.text-orange
+          p Кредит от 7,6%
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--title-normal')
+      +section
+        .inner
+          +section-head
+            +ui-h2('Условия', 'section-head')
+          +terms-ban(termBanItems, '--uppercase-desc')
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems, '', '--only-title, --5items')
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оставить заявку', 'section-head')
+      +section
+        .inner
+          +accordion
+            +accordion-item('Условия')
+              +terms(termsItems)
+            +accordion-item('Обеспечение')
+              +requirements(requirementsList1)
+            +accordion-item('Требования к заемщику')
+              +requirements(requirementsList2)

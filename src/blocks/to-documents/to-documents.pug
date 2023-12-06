@@ -1,0 +1,19 @@
+mixin to-documents(mods)
+  -
+    const baseName = 'to-documents'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .to-documents(class=allMods)&attributes(attributes)
+    .to-documents__content
+      .to-documents__title Документы и тарифы
+      +ui-button('подробнее', 'to-documents, --link-next').text-orange
+      .to-documents__img
+        img(src='img/to_documents.png' alt='')
+    block

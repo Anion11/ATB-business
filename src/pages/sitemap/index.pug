@@ -1,0 +1,31 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -const fileName = 'sitemap'
+  -const pageTitle ='Карта сайта'
+
+block content
+  main
+    +breadcrumbs
+      +breadcrumbs-item('Главная', '/')
+      +breadcrumbs-item(pageTitle)
+    +banner()
+      +banner__item('--text-old')
+        +banner__wrapper('/img/banner_gradient.jpg')
+          +banner__h1('Карта сайта')
+    //- +banner
+      +banner-item('--text-old')
+        +banner-wrapper('/img/banner_gradient.jpg')
+          +banner-h1('Карта сайта')
+    .page-content
+      .inner
+        +section('--mt0')
+          .inner
+            +sitemap

@@ -1,0 +1,20 @@
+mixin cards-open-acc(mods)
+  -
+    const baseName = 'cards-open-acc'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .cards-open-acc(class=allMods)&attributes(attributes)
+    .cards-open-acc__form
+      .cards-open-acc__title Заявка на&nbsp;открытие <br> счета и&nbsp;карты для бизнеса
+    .cards-open-acc__notice
+      .cards-open-acc__subtitle Закажите карту в&nbsp;интернет-банке АТБ
+      +ui-ul( ['Быстрое оформление, за&nbsp;пару&nbsp;минут', 'Не выходя из дома'], 'cards-open-acc' )
+      +ui-button('Выпустить онлайн', 'cards-open-acc')
+    block

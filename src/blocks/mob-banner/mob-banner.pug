@@ -1,0 +1,27 @@
+mixin mob-banner(mods)
+  -
+    const baseName = 'mob-banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .mob-banner(class=allMods)&attributes(attributes)
+    .mob-banner__wrapper
+      .mob-banner__text
+        .mob-banner__title Мобильное приложение АТБ&nbsp;Бизнес
+        .mob-banner__descr Управляйте финансами компании со смартфона. <br> Удобно, быстро, безопасно.
+        .mob-banner__links
+          a.mob-banner__app-item.mob-banner__app-item--app-link(href='#' target='_blank')
+            img.bvi-not-hide(src=`/img/svgs/icon_app_store_white.svg`, alt='')
+          a.mob-banner__app-item.mob-banner__app-item--app-link(href='#' target='_blank')
+            img.bvi-not-hide(src=`/img/svgs/icon_google_play_white.svg`, alt='')
+          .mob-banner__app-item.mob-banner__app-item--qr-code
+            img.bvi-not-hide(src='/img/qr-code_mob-app.jpg', alt='')
+      .mob-banner__img
+        img(src='/img/mob-banner.png', alt='')
+    block

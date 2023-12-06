@@ -1,0 +1,129 @@
+.accordion {
+  &-item {
+    background: $grey20;
+    border-radius: 8px;
+    overflow: hidden;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+      @include media-tablet {
+        margin-bottom: 10px;
+      }
+    }
+    &__head {
+      position: relative;
+      padding: 17px 90px 17px 40px;
+      font: 400 18px/1.4 $font;
+      cursor: pointer;
+      @include media-tablet {
+        position: relative;
+        padding: 14px 60px 14px 20px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 45%;
+        right: 25px;
+        transform: translateY(-50%) rotate(-45deg) skew(5deg, 5deg);
+        width: 11px;
+        height: 11px;
+        border: solid;
+        border-width: 0 0 3px 3px;
+        transition: 0.3s;
+        @include media-tablet {
+          width: 9px;
+          height: 9px;
+          border-width: 0 0 2px 2px;
+        }
+      }
+      &--active {
+        font-weight: 700;
+        &::after {
+          transform: translateY(-50%) rotate(135deg) skew(5deg, 5deg);
+        }
+      }
+      &--link {
+        cursor: default;
+        &::after {
+          content: none;
+        }
+        &.accordion-item__head--active {
+          font-weight: 400;
+        }
+      }
+    }
+    &__main {
+      display: none;
+      padding: 10px 40px 30px;
+      font: 400 18px/1.4 $font;
+      @include media-tablet {
+        padding: 10px 20px 20px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+    &__tabs-head {
+      .tabs-head {
+        &__item {
+          padding-bottom: 5px;
+          font: 400 18px/1.3 $font;
+          &--active {
+            color: $black;
+          }
+        }
+      }
+    }
+    &--white {
+      background: #fff;
+    }
+    &--mob-green {
+      background: none;
+      .accordion-item {
+        &__head {
+          position: relative;
+          padding: 10px 60px 10px 10px;
+          font-size: 20px;
+          line-height: 30px;
+          color: #fff;
+          background: $blue;
+          &::after {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='13' viewBox='0 0 20 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 2L10 10L19 2' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E%0A");
+          }
+          &--active {
+            font-weight: 400;
+          }
+        }
+        &__main {
+          padding: 10px 0 30px;
+        }
+      }
+    }
+    &--transparent-main {
+      background: transparent;
+      border-radius: 0;
+      > .accordion-item {
+        &__head {
+          background: $grey20;
+          border-radius: 8px;
+        }
+        &__main {
+          padding: 30px 0;
+          @include media-tablet {
+            padding: 20px 0;
+          }
+        }
+      }
+    }
+  }
+  &--inner {
+    .accordion-item {
+      &__head {
+        padding: 0;
+      }
+      &__main {
+        padding: 20px 0;
+      }
+    }
+  }
+}

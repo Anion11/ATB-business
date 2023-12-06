@@ -1,0 +1,155 @@
+mixin business-acc-rko(mods)
+  -
+    const baseName = 'business-acc-rko'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const packages = [
+      {
+        mod: 'green',
+        title: 'Сочный',
+        price: '0 ₽/мес',
+        content: [
+          {
+            name: '3 платежа',
+            desc: 'контрагентам в другой банк'
+          },
+          {
+            name: 'до 200 тыс ₽/мес',
+            desc: 'переводы ФЛ внутри банка',
+            tooltip: 'до 1 млн. в мес.– 1,2%'
+          },
+          {
+            name: 'Бизнес-карта',
+            desc: '+ведение первый год'
+          },
+        ],
+        btn: {
+          txt: 'Открыть счет',
+          link: '#form-section'
+        }
+      },
+      {
+        mod: 'yellow',
+        title: 'Освежающий',
+        price: '550 ₽',
+        priceNew: '0 ₽/мес*',
+        descr: '*при первом открытии расчетного счета в АТБ',
+        content: [
+          {
+            name: '5 платежей',
+            desc: 'онтрагентам в другой банк'
+          },
+          {
+            name: 'до 50 тыс ₽/мес',
+            desc: 'прием наличных'
+          },
+          {
+            name: 'до 200 тыс ₽/мес',
+            desc: 'переводы ФЛ внутри банка ',
+            tooltip: 'до  <span class="text-nowrap">150 тыс. ₽</span> со счета ИП внутрибанк <br> до <span class="text-nowrap">50 тыс. ₽</span> со счета ИП межбанк'
+          },
+          {
+            name: 'Бизнес-карта',
+            desc: '*обслуживание первый год'
+          },
+        ],
+        btn: {
+          txt: 'Открыть счет',
+          link: '#form-section'
+        }
+      },
+      {
+        mod: 'red',
+        title: 'Бодрящий',
+        price: '1200 ₽/мес',
+        content: [
+          {
+            name: '15 платежей',
+            desc: 'контрагентам в другой банк'
+          },
+          {
+            name: 'до 100 тыс ₽/меc',
+            desc: 'прием наличных'
+          },
+          {
+            name: 'до 300 тыс ₽/мес',
+            desc: 'переводы в пользу ФЛ ',
+            tooltip: 'до  <span class="text-nowrap">150 тыс. ₽</span> со счета ИП внутрибанк <br> до <span class="text-nowrap">150 тыс. ₽</span> со счета ИП межбанк'
+          },
+          {
+            name: 'Бизнес-карта',
+            desc: '*обслуживание первый год'
+          },
+          {
+            name: 'СМС-инфо по счету',
+            desc: 'бесплатно'
+          },
+        ],
+        btn: {
+          txt: 'Открыть счет',
+          link: '#form-section'
+        }
+      },
+      {
+        mod: 'orange',
+        title: 'Полезный',
+        price: '2500 ₽/мес',
+        content: [
+          {
+            name: '50 платежей',
+            desc: 'контрагентам в другой банк'
+          },
+          {
+            name: 'без ограничений',
+            desc: 'прием наличных'
+          },
+          {
+            name: 'до 300 тыс ₽/мес',
+            desc: 'переводы в пользу ФЛ ',
+            tooltip: 'до  <span class="text-nowrap">150 тыс. ₽</span> со счета ИП внутрибанк <br> до <span class="text-nowrap">150 тыс. ₽</span> со счета ИП межбанк'
+          },
+          {
+            name: 'Бизнес-карта',
+            desc: '*обслуживание первый год'
+          },
+          {
+            name: 'СМС-инфо по счету',
+            desc: 'бесплатно'
+          },
+        ],
+        btn: {
+          txt: 'Открыть счет',
+          link: '#form-section'
+        }
+      },
+    ]
+
+  .business-acc-rko(class=allMods)&attributes(attributes)
+    .business-acc-rko__container
+      each item in packages
+        .business-acc-rko__item(class=`business-acc-rko__item--${item.mod}`)
+          .business-acc-rko__head
+            .business-acc-rko__title !{item.title}
+              =' '
+              span.business-acc-rko__price(class=item.priceNew ? 'business-acc-rko__price--old' : '') !{item.price}
+              =' '
+              if item.priceNew
+                span.business-acc-rko__price.business-acc-rko__price--new !{item.priceNew}
+            if item.descr
+              .business-acc-rko__descr !{item.descr}
+          .business-acc-rko__content
+            each term in item.content
+              .business-acc-rko__term
+                .business-acc-rko__top !{term.name}
+                .business-acc-rko__bot !{term.desc}
+                  if term.tooltip
+                    +ui-tooltip(term.tooltip)
+          +ui-button(item.btn.txt, 'business-acc-rko')(href=item.btn.link)
+    block

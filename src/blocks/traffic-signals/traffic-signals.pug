@@ -1,0 +1,47 @@
+mixin traffic-signals(mods)
+  -
+    const baseName = 'traffic-signals'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const trafficSignalsItems =[
+      { icon: 'icon_carefully.svg',
+        h4: 'Осторожно',
+        h4Mods: 'text-carefully',
+        h5: 'У компании есть признаки банкротства или&nbsp;ликвидации',
+        p2: 'Работа с контрагентом сопряжена с&nbsp;рисками'
+      },
+      { icon: 'icon_attention.svg',
+        h4: 'Внимание',
+        h4Mods: 'text-yellow',
+        h5: 'Потенциально негативная информация',
+        p2: 'Например, недавняя смена руководителя, исполнительные производства по&nbsp;зарплате, значительная исковая сумма  в&nbsp;арбитражных делах в&nbsp;качестве ответчика'
+      },
+      { icon: 'icon_success.svg',
+        h4: 'Все хорошо',
+        h4Mods: 'text-green-currency',
+        h5: 'Есть признаки реального ведения деятельности',
+        p2: 'Например, компания выигрывала госконтракты, получала лицензии в&nbsp;последние 12&nbsp;месяцев'
+      },
+    ]
+
+  .traffic-signals(class=allMods)&attributes(attributes)
+    .traffic-signals__content
+      each item in trafficSignalsItems
+        .traffic-signals__item
+          .traffic-signals__icon
+            img(src=`img/${item.icon}`, alt='')
+          .traffic-signals__text
+            +ui-h4(item.h4, 'traffic-signals, --bold')(class=item.h4Mods)
+            +ui-h5(item.h5, 'traffic-signals')
+            +ui-p2(item.p2).text-grey60
+    .traffic-signals__img
+      img(src='img/traffic_signals_img.png', alt='')
+    block

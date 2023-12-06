@@ -1,0 +1,22 @@
+mixin news(mods)
+  -
+    const baseName = 'news'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .news(class=allMods)&attributes(attributes)
+    .news-head
+      +ui-h2('Новости', 'news-head')
+      +ui-button('все новости', 'news-head, --link-next')(href='#')
+    .news-wrapper
+      -for (newsItems = 0; newsItems < 3; newsItems++)
+        a.news-item(href='#')
+          .news-item__date 10 марта
+          .news-item__desc АТБ запускает акцию для компаний, осуществляющих внешнеэкономическую деятельность
+    block

@@ -1,0 +1,43 @@
+.ui-tooltip {
+  flex-shrink: 0;
+  display: inline-flex;
+  vertical-align: sub;
+  margin-left: 5px;
+  &__btn {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  &--va-top {
+    vertical-align: top;
+  }
+  &--va-bottom {
+    vertical-align: bottom;
+  }
+}
+.tippy-box[data-theme~='ui-tooltip'] {
+  max-height: 70vh;
+  font: 14px/1.4 $font;
+  color: $black;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: $bigShadow;
+  overflow-y: auto;
+  .tippy {
+    &-content {
+      max-width: 260px;
+      padding: 12px 20px;
+    }
+  }
+}
+.bvi-body {
+  .tippy-box[data-theme~='ui-tooltip'] {
+    border: 1px solid;
+    overflow: hidden;
+    .tippy {
+      &-content {
+        max-width: 680px;
+      }
+    }
+  }
+}

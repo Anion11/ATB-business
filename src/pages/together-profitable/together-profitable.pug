@@ -1,0 +1,42 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'together-profitable'
+  -const pageTitle ='Бесплатное обслуживание расчетного счета при участии в акции Вместе выгоднее в банке АТБ'
+
+block content
+  main
+    +banner()
+      +banner__item('--together-profitable')
+        +banner__wrapper('img/banner_together_profitable.jpg')
+          +banner__h1('Акция <br>«Вместе выгоднее»')
+          +banner__descr('<b>для Юридических лиц и ИП</b>', '--size-xs').banner__mob-none
+          +banner__foot()
+            +ui-button('Оставить Заявку', 'banner')(href='#')
+            +banner__descr('Дарим подарки для вас и&nbsp;ваших друзей!', '--size-xs').banner__mob-none.text-orange
+        +banner__mobile()
+          p
+            b для Юридических лиц и ИП
+          p.text-orange Дарим подарки для вас и&nbsp;ваших друзей!
+    .page-content
+      +section('--mt0')
+        .inner
+          +section-head('--max-w')
+            +ui-h2('Станьте участником Акции и получите бесплатное обслуживание в Банке до 12 месяцев!', 'section-head')
+          +together-offer
+
+      +section
+        .inner
+          +section-head
+            +ui-h2('Тарифы в рамках Акции', 'section-head')
+          +together-tariffs
+          +section-box
+            +documents-item('Условия Акции')

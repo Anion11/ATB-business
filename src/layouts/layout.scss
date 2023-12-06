@@ -1,0 +1,206 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+html {
+  box-sizing: border-box;
+  line-height: 1;
+  scroll-behavior: smooth;
+  &.no-scroll {
+    position: relative;
+    overflow: hidden;
+    body {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+  &.with-fancybox {
+    @include media-tablet {
+      overflow: hidden;
+    }
+    body {
+      @include media-tablet {
+        overflow: hidden;
+      }
+    }
+  }
+}
+body {
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: ease 0.3s;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+span,
+ul,
+li,
+tr,
+td,
+th,
+table,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+ol {
+  margin: 0;
+}
+p,
+.ui-ul,
+.ui-ol {
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+
+// defaults
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-family: $font;
+  color: $black;
+  .inner {
+    width: 100%;
+    max-width: 1220px;
+    min-width: 320px;
+    margin: 0 auto;
+    @include media-laptop {
+      max-width: 980px;
+      padding: 0 10px;
+    }
+    @include media-tablet {
+      max-width: 100%;
+    }
+    &--size-xl {
+      max-width: 1920px;
+    }
+  }
+  .page-content {
+    padding: 60px 0 100px;
+    @include media-tablet {
+      padding: 40px 0 80px;
+    }
+    &--pt0 {
+      padding-top: 0;
+    }
+    &--pd0 {
+      padding: 0;
+    }
+  }
+  .form-container {
+    padding: 40px 20px 50px;
+    background: $grey20;
+    border-radius: 8px;
+  }
+  .text {
+    &-laptop-none {
+      @include media-laptop {
+        display: none;
+      }
+    }
+    &-inline {
+      display: inline;
+    }
+    &-underline {
+      text-decoration: underline;
+    }
+    &-link-underline {
+      display: inline;
+      text-decoration: underline;
+    }
+    &-normal {
+      font-weight: 400;
+    }
+    &-bold {
+      font-weight: 700;
+    }
+    &-nowrap {
+      white-space: nowrap;
+    }
+    &-center {
+      text-align: center;
+      &--mob-left {
+        @include media-tablet {
+          text-align: left;
+        }
+      }
+    }
+    &-black {
+      color: $black;
+    }
+    &-orange {
+      color: $orange;
+    }
+    &-green {
+      color: $green;
+    }
+    &-white {
+      color: #fff;
+    }
+    &-grey50 {
+      color: $grey50;
+    }
+    &-grey60 {
+      color: $grey60;
+    }
+    &-grey80 {
+      color: $grey80;
+    }
+    &-grey-blue {
+      color: $greyBlue;
+    }
+    &-yellow {
+      color: $yellow;
+    }
+    &-carefully {
+      color: #ff5842;
+    }
+    &-green-currency {
+      color: $greenCurrency;
+    }
+    &-pointer {
+      cursor: pointer;
+    }
+  }
+  main {
+    flex: 1 0;
+  }
+  &.no-scroll {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+img[src*='px.adhigh.net'] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}

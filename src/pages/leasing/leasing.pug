@@ -1,0 +1,109 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'leasing'
+    const pageTitle ='Лизинг'
+
+    const bannerList =[
+      'Минимальный пакет документов',
+      '1 день на решение',
+    ]
+
+    const benefitsItems = [
+      { icon: 'img/benefit-1.svg', title: 'Все платежи по лизингу относят на себестоимость' },
+      { icon: 'img/benefit-2.svg', title: 'НДС применяется к&nbsp;возмещению со всей суммы договора' },
+      { icon: 'img/benefit-3.svg', title: 'Ускоренная амортизация с&nbsp;коэффициентом до 3-х' },
+      { icon: 'img/benefit-4.svg', title: 'Индивидуальный график платежей' },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--leasing-light')
+        +banner__wrapper('img/banner_leasing-light.png', true)
+          +banner__h1('Лизинг лайт', '--mob-size-l, --mob-mb-l')
+          +banner__text('Решение за&nbsp;1&nbsp;день ')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оформить заявку', 'banner, --m-size-l')(href='#form-section')
+      +banner__item('--leasing-standart')
+        +banner__wrapper('img/banner_leasing-standart.png', true)
+          +banner__h1('Лизинг стандарт', '--mob-size-l, --mob-mb-l', false)
+          +banner__text('650&nbsp;млн&nbsp;₽ на&nbsp;любой предмет лизинга')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оформить заявку', 'banner, --m-size-l')(href='#form-section')
+    .page-content
+      +section('--mt0')
+        .inner
+          +section-head
+            +ui-h2('Преимущества лизинга по сравнению с кредитом', 'section-head')
+          +benefits(benefitsItems, '--items4, --title-normal')
+      +section
+        .inner
+          +section-head
+            +ui-h2('Продукты')
+          +leasing-goods
+      +section
+        .inner
+          +section-head
+            +ui-h2('Калькулятор лизинга')
+          +calc-leasing
+      +section
+        .inner
+          .form-container
+            +section-head('--max-w600, --center').text-center
+              +ui-h2('Оформите заявку на лизинг', 'section-head')
+      +section
+        .inner
+          +section-head
+            +ui-h2('Присоединяйтесь к команде партнеров АТБ ЛК')
+          +leasing-joun
+      +section
+        .inner
+          +section-head
+            +ui-h2('Партнеры')
+          +partners
+      +section
+        .inner
+          +section-head
+            +ui-h2('О компании')
+          +accordion
+            +accordion-item('Справочная информация')
+              +leasing-reference
+            +accordion-item('Внутренние документы')
+              +documents
+  +seo('Лизинг')
+    p На этой странице Вы можете заполнить и подать заявку на лизинг – долгосрочную аренду имущества с его последующим выкупом.
+      nobr  Азиатско-Тихоокеанский
+      |  Банк оказывает услугу в сотрудничестве с компанией
+      nobr ООО «АТБ ЛК»
+      | , которая является участником Объединенной лизинговой ассоциации. Благодаря партнерским отношениям крупных структур наши клиенты заключают договора на выгодных условиях.
+    p Преимущества обращения
+      nobr  в  Азиатско-Тихоокеанский
+      |  Банк:
+    ul
+      li возможность подать заявку на лизинг онлайн;
+      li быстрое одобрение сделки;
+      li составление индивидуального графика платежей;
+      li скидки от партнеров
+        nobr  Азиатско-Тихоокеанского
+        |  Банка – поставщиков и страховых компаний;
+      li аванс клиента – от 10%.
+    p Заявку на лизинг можно отправить онлайн в любое время суток, а также заполнить в офисе АТБ в рабочие часы. Потенциальный клиент должен быть юридическим лицом или индивидуальным предпринимателем со стажем деятельности – от года. Предметом сделки становятся различные транспортные средства, спецтехника, суда и другие объекты. Ассортимент поставщиков техники большой, возможны специальные условия поставок.
+    +seo-accordion
+      +seo-accordion-item('Оформление')
+        p Вначале Вам потребуется подать заявку на лизинг, оставив актуальную контактную информацию. Вскоре с Вами свяжется менеджер, который проведет консультацию и расскажет о дальнейшем алгоритме действий. При обращении через офис консультация производится на месте.
+        p После согласования деталей и предоставления клиентом документов происходит одобрение сделки. Составляется график лизинговых платежей, который может быть аннуитетным, убывающим, а также индивидуальным (например, для сезонного бизнеса). Сделка завершается подписанием договора и передачей имущества в пользование.
+        p Онлайн-заявка на лизинг, отлаженность процедуры оформления упрощают процесс предоставления услуги, а наше сотрудничество с
+          nobr  ООО «АТБ ЛК»
+          |  позволяет оптимизировать ее условия.
+  +popup__wrapper('--autowidth')#p-leasing-partner
+    +p-leasing-partner

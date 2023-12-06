@@ -1,0 +1,396 @@
+.small-banner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 180px;
+  padding: 30px 665px 25px 100px;
+  background: #d6f5f9;
+  border-radius: 8px;
+  overflow: hidden;
+  @include media-laptop {
+    padding: 30px 420px 20px 40px;
+  }
+  @include media-tablet {
+    padding: 30px 165px 25px 20px;
+  }
+  &__head {
+    margin-bottom: 15px;
+    @include media-tablet {
+      margin-bottom: 30px;
+    }
+  }
+  &__title {
+    font: 700 32px/1.4 $font;
+    @include media-laptop {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    @include media-tablet {
+      font-size: 24px;
+    }
+  }
+  &__descr {
+    font: 400 18px/1.4 $font;
+    @include media-tablet {
+      display: none;
+    }
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: auto;
+    margin-right: 30px;
+    @include media-laptop {
+      gap: 20px;
+    }
+  }
+  &__img {
+    position: absolute;
+    z-index: -1;
+    @include media-laptop {
+      right: -170px;
+    }
+    @include media-tablet {
+      right: 0;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &--desktop {
+      @include media-tablet {
+        display: none;
+      }
+    }
+    &--mobile {
+      display: none;
+      @include media-tablet {
+        display: block;
+      }
+    }
+  }
+  &--packages-fea {
+    padding: 30px 580px 25px 100px;
+    @include media-laptop {
+      padding: 30px 330px 25px 55px;
+    }
+    @include media-tablet {
+      padding: 30px 20px 25px;
+    }
+    .small-banner {
+      &__title {
+        @include media-laptop {
+          font-size: 24px;
+        }
+        @include media-tablet {
+          max-width: 160px;
+        }
+      }
+      &__img {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        &::before {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(360deg, #fff 0%, rgb(255 255 255 / 0) 78.5%);
+          opacity: 0.3;
+          pointer-events: none;
+          @include media-laptop {
+            content: '';
+          }
+          @include media-tablet {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+  &--to-east {
+    background: #d1deee;
+    .small-banner {
+      &__img {
+        top: 0;
+        right: 0;
+        max-width: 860px;
+        height: 100%;
+        @include media-laptop {
+          right: -170px;
+        }
+        @include media-tablet {
+          right: 0;
+        }
+      }
+    }
+  }
+  &--fea-discount {
+    padding: 25px 35px 35px 530px;
+    background: linear-gradient(90deg, #ffe8aa 0%, #fff4d7 29.69%, #ffe8aa 62.88%, #ffe8aa 100%);
+    @include media-laptop {
+      min-height: 260px;
+      padding: 25px 25px 35px 375px;
+    }
+    @include media-tablet {
+      padding: 25px 25px 35px;
+      background: linear-gradient(90deg, #ffe8aa 0%, #fff4d7 100%);
+    }
+    .small-banner {
+      &__head {
+        margin-bottom: 15px;
+      }
+      &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+        @include media-laptop {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+        @include media-tablet {
+          padding-right: 145px;
+        }
+      }
+      &__top {
+        font: 700 28px/1.2 $font;
+        color: $orange;
+      }
+      &__bot {
+        font: 400 18px/1.5 $font;
+        color: $grey90;
+      }
+      &__img {
+        top: 0;
+        left: 0;
+        max-width: 420px;
+        @include media-laptop {
+          top: auto;
+          bottom: 45px;
+          left: -40px;
+          max-width: 330px;
+        }
+        @include media-tablet {
+          right: -50px;
+          bottom: 18px;
+          left: auto;
+        }
+      }
+    }
+  }
+  &--partner-team {
+    min-height: 215px;
+    padding: 35px 480px 35px 100px;
+    background: linear-gradient(90deg, #fff4ec 0%, #fae8d8 100%);
+    @include media-laptop {
+      padding: 30px 460px 20px 40px;
+    }
+    @include media-tablet {
+      min-height: 235px;
+      padding: 30px 20px;
+    }
+    .small-banner {
+      &__head {
+        margin-bottom: 20px;
+        @include media-tablet {
+          max-width: 200px;
+        }
+      }
+      &__title {
+        margin-bottom: 5px;
+        @include media-tablet {
+          font-size: 20px;
+        }
+      }
+      &__descr {
+        display: block;
+        @include media-tablet {
+          font-size: 16px;
+        }
+      }
+      &__img {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        img {
+          @include media-laptop {
+            object-position: 0;
+          }
+          @include media-tablet {
+            object-position: 24%;
+          }
+        }
+      }
+    }
+  }
+  &--online-accounting {
+    padding: 60px 42% 60px 80px;
+    background: $grey20;
+    @include media-laptop {
+      padding: 40px 20px 60px;
+    }
+    .small-banner {
+      &__head {
+        margin-bottom: 40px;
+        @include media-laptop {
+          margin-bottom: 25px;
+        }
+      }
+      &__title {
+        @include media-tablet {
+          font-size: 22px;
+        }
+      }
+      &__img {
+        right: 0;
+        bottom: 0;
+        max-width: 42%;
+        @include media-laptop {
+          right: -30px;
+          max-width: 210px;
+        }
+      }
+    }
+  }
+  &--loan-goskontract {
+    display: block;
+    min-height: 350px;
+    padding: 40px 340px 50px 70px;
+    background: linear-gradient(90deg, #f2f3f5 59.92%, #e2e6e7 100%);
+    @include media-laptop {
+      padding: 30px 205px 30px 40px;
+    }
+    @include media-tablet {
+      min-height: unset;
+      padding: 25px 20px 30px;
+    }
+    .small-banner {
+      &__head {
+        margin-bottom: 30px;
+        @include media-tablet {
+          margin-bottom: 20px;
+        }
+      }
+      &__title {
+        margin-bottom: 15px;
+        font-size: 36px;
+        line-height: 1.22;
+        @include media-laptop {
+          font-size: 30px;
+        }
+        @include media-tablet {
+          max-width: 145px;
+          min-height: 55px;
+          font-size: 22px;
+        }
+      }
+      &__descr {
+        max-width: 690px;
+        font-size: 20px;
+        line-height: 1.3;
+        @include media-tablet {
+          display: block;
+          font-size: 18px;
+        }
+      }
+      &__img {
+        top: 0;
+        right: 0;
+        max-width: 330px;
+        @include media-laptop {
+          max-width: 205px;
+        }
+        @include media-tablet {
+          top: -60px;
+          max-width: 160px;
+        }
+      }
+    }
+  }
+  &--problems {
+    background: $greyBlueGradient;
+    @include media-tablet {
+      padding-right: 80px;
+    }
+    .small-banner {
+      &__head {
+        @include media-tablet {
+          margin-bottom: 14px;
+        }
+      }
+      &__title {
+        @include media-tablet {
+          margin-bottom: 4px;
+        }
+      }
+      &__descr {
+        @include media-tablet {
+          display: block;
+          font-size: 16px;
+        }
+      }
+      &__img {
+        right: 190px;
+        bottom: 0;
+        max-width: 317px;
+        @include media-laptop {
+          right: 80px;
+          max-width: 290px;
+        }
+        @include media-tablet {
+          right: 0;
+          max-width: 160px;
+        }
+      }
+    }
+  }
+  &--business-turnover {
+    padding: 35px 515px 40px 80px;
+    background: $grey20;
+    @include media-laptop {
+      padding: 30px 325px 40px 35px;
+    }
+    @include media-tablet {
+      padding: 30px 20px 120px;
+    }
+    .small-banner {
+      &__head {
+        @include media-tablet {
+          margin-bottom: 15px;
+        }
+      }
+      &__descr {
+        font-size: 20px;
+        line-height: 1.3;
+        color: $orange;
+        &-l {
+          font-size: 32px;
+        }
+      }
+      &__ui-p2 {
+        @include media-tablet {
+          max-width: 230px;
+        }
+      }
+      &__img {
+        right: 100px;
+        bottom: 0;
+        max-width: 416px;
+        @include media-laptop {
+          right: 10px;
+          max-width: 325px;
+        }
+        @include media-tablet {
+          right: -18px;
+          max-width: 270px;
+        }
+      }
+    }
+  }
+}

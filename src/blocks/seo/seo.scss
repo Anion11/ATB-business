@@ -1,0 +1,134 @@
+.seo {
+  padding: 20px 0;
+  border-top: 1px solid $grey40;
+  &__title {
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+    font: 400 16px/1.2 $font;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-85%) rotate(-45deg);
+      width: 7px;
+      height: 7px;
+      border: 1px solid;
+      border-top-width: 0;
+      border-right-width: 0;
+      transition: transform 0.3s;
+      content: '';
+    }
+    &--active {
+      &::after {
+        transform: translateY(-50%) rotate(135deg);
+      }
+    }
+  }
+  &__inner {
+    display: none;
+    padding: 30px 0 10px;
+    font: 14px/1.4 $font;
+    color: $grey80;
+    ol {
+      padding-left: 25px;
+    }
+    ul {
+      padding-left: 10px;
+      li {
+        position: relative;
+        padding-left: 15px;
+        &::before {
+          content: '';
+          position: absolute;
+          counter-increment: none;
+          top: calc((1.4em - 5px) / 2);
+          left: 0;
+          width: 4px;
+          height: 4px;
+          background: var(--bvi-contrast-color, $grey80);
+          border-radius: 50%;
+        }
+      }
+    }
+    table {
+      border-collapse: collapse;
+      td {
+        padding: 2px;
+      }
+    }
+    p,
+    ul,
+    ol {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  &-accordion {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      &__title {
+        font: inherit;
+        color: $green;
+        cursor: pointer;
+      }
+      &__inner {
+        display: none;
+        padding-top: 10px;
+      }
+    }
+  }
+  &-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px 40px;
+    justify-items: start;
+    background: $grey20;
+    border-radius: 8px;
+    @include media-laptop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media-tablet {
+      padding: 20px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    a {
+      font: 700 18px/1.3 $font;
+      @include media-tablet {
+        font-size: 14px;
+      }
+    }
+  }
+  &__seo-menu {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    gap: 10px 20px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    a {
+      font: 400 14px/1.3 $font;
+      color: $green;
+    }
+  }
+  a {
+    color: $green;
+  }
+}
+.bvi-body {
+  .seo {
+    a {
+      text-decoration: underline;
+    }
+  }
+}

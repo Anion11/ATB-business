@@ -1,0 +1,18 @@
+mixin salary-project-advice(mods)
+  -
+    const baseName = 'salary-project-advice'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .salary-project-advice(class=allMods)&attributes(attributes)
+    .salary-project-advice__title Совет
+    .salary-project-advice__txt Зарплатный проект – это выгодные возможности для вашего бизнеса и ваших сотрудников.
+      br
+      | Оставьте заявку на подключение зарплатного проекта и получите специальные условия, разработанные именно для вашей компании.
+    block

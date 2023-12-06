@@ -1,0 +1,12 @@
+.blog-others {
+  .swiper {
+    @include media-laptop {
+      overflow: visible;
+    }
+    &-slide {
+      @include media-laptop {
+        width: 350px;
+      }
+    }
+  }
+}

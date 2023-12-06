@@ -1,0 +1,47 @@
+mixin sitemap(mods)
+  -
+    const baseName = 'sitemap'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .sitemap(class=allMods)&attributes(attributes)
+    ul.sitemap__list
+      li
+        a(href='#') Бизнесу
+        ul.sitemap__list.sitemap__list--depth-2
+          li
+            a(href='#') Корпоративные карты
+            ul.sitemap__list.sitemap__list--depth-3
+              li
+                a(href='#') Кредитные карты
+                ul.sitemap__list.sitemap__list--depth-4
+                  li
+                    a(href='#') Visa Business Momentum
+                  li
+                    a(href='#') Visa Platinum Business
+                  li
+                    a(href='#') Visa Business Gold
+              li
+                a(href='#') Кредиты для бизнеса
+                ul.sitemap__list.sitemap__list--depth-4
+                  li
+                    a(href='#') Микро лайт для бизнеса
+                  li
+                    a(href='#') Деньги для бизнеса
+                    ul.sitemap__list.sitemap__list--depth-5
+                      li
+                        a(href='#') Как погасить кредит наличными
+                      li
+                        a(href='#') Как погасить кредит наличными 2
+                        ul.sitemap__list.sitemap__list--depth-6
+                          li
+                            a(href='#') Ссылка
+                          li
+                            a(href='#') Ссылка 2
+    block

@@ -1,0 +1,97 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'concessional-lending-inner'
+  -const pageTitle ='Кредитование МСП | Кредитование предприятий АПК'
+
+  -
+    const tabsHeadItems = [
+      { text: 'Льготный краткосрочный кредит', dataBannerImg: 'short-term' },
+      { text: 'Льготный инвестиционный кредит', dataBannerImg: 'investment' },
+    ]
+
+  -
+    const bannerImgsData =[
+      { mods: 'active',
+        src: 'img/banner_lending_agribusiness_enterprises.jpg',
+        data: 'short-term',
+      },
+      { src: 'img/banner_lending_agribusiness_enterprises2.jpg',
+        data: 'investment',
+      },
+    ]
+
+  -
+    const termsItems1 =[
+      { name: 'Сумма', descr: 'от&nbsp;5&nbsp;до&nbsp;600 млн руб.*' },
+      { name: 'Срок', descr: 'до&nbsp;1&nbsp;года' },
+      { name: 'Ставка', descr: 'от&nbsp;1 до&nbsp;5% годовых' },
+      { trMods: 'terms__tr--mob-block',
+        name: 'Цель кредитования',
+        list: [
+          'Развитие с/х отраслей: &laquo;Растениеводство&raquo;, &laquo;Животноводство&raquo;, &laquo;Молочное/Мясное скотоводство&raquo;, &laquo;Переработка продукции растениеводства и&nbsp;животноводства&raquo;',
+          'Иные цели в&nbsp;соответствии с&nbsp;актуальным перечнем направлений целевого использования**, утвержденным Министерством сельского хозяйства Российской Федерации',
+        ],
+        sections: [
+          { descr: `*максимальный размер льготного краткосрочного кредита зависит от&nbsp;региона, в&nbsp;котором зарегистрирован заемщик
+            <br>**согласно Приказу Минсельхоза России от&nbsp;04.05.2022&nbsp;N 274`
+          }
+        ]
+      },
+    ]
+
+  -
+    const termsItems2 =[
+      { name: 'Сумма', descr: 'до&nbsp;5 млн руб' },
+      { name: 'Срок', descr: 'от&nbsp;2 до&nbsp;15&nbsp;лет' },
+      { name: 'Ставка', descr: 'от&nbsp;1 до&nbsp;5% годовых' },
+      { trMods: 'terms__tr--mob-block',
+        name: 'Цель кредитования',
+        list: [
+          'Строительство/модернизация/реконструкция предприятий, осуществляющих производство, первичную и&nbsp;(или)&nbsp;последующую (промышленную) переработку <span class="text-nowrap">с/х продукции</span>',
+          'Приобретение с/х техники, оборудования, средств автоматизации'
+        ],
+      },
+    ]
+
+block content
+  main
+    +banner()
+      +banner__item('--lending-agribusiness-enterprises')
+        +banner__wrapper('', '', bannerImgsData)
+          +banner__h1('Кредитование предприятий АПК', '--mob-size-s')
+          +banner__descr('совместно с&nbsp;МСХ&nbsp;РФ в&nbsp;рамках Постановления Правительства&nbsp;РФ №&nbsp;1528 от&nbsp;29.12.2016',
+            '--size-s').text-orange
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +about-programm('img/about_lending_agribusiness_enterprises.png',
+            'Программа предусматривает льготное кредитование сельскохозяйственных товаропроизводителей, а&nbsp;также организаций и&nbsp;индивидуальных предпринимателей, осуществляющих производство и&nbsp;(или)&nbsp;переработку сельскохозяйственной продукции.',
+            '--lending-agribusiness-enterprises')
+
+      +section()
+        +tabs-head(tabsHeadItems, '', '--grey')
+        +tabs-main
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +terms(termsItems1)
+          +tabs-main__item()
+            +section('--mt0')
+              .inner
+                +terms(termsItems2)
+
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Заявка на получение кредита', 'section-head, --normal')

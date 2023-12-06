@@ -1,0 +1,265 @@
+.footer {
+  &__top {
+    padding: 40px 0 25px;
+    background: $grey20;
+    @include media-tablet {
+      padding: 30px 0 35px;
+    }
+  }
+  &__line {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $grey40;
+    @include media-tablet {
+      flex-direction: column;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+    }
+    &:nth-child(1) {
+      @include media-laptop {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+      }
+      @include media-tablet {
+        flex-direction: column-reverse;
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border: 0;
+    }
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    width: 72%;
+    @include media-laptop {
+      width: 53%;
+    }
+    @include media-tablet {
+      width: 100%;
+    }
+  }
+  &__menu {
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 30px;
+    font: 400 16px/1.1 $font;
+    @include media-laptop {
+      margin-bottom: 35px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px 20px;
+      font-size: 14px;
+    }
+  }
+  &__app {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 15px;
+    margin-top: auto;
+    &-item {
+      display: block;
+      width: 115px;
+      @include media-tablet {
+        width: calc((100% - 20px) / 2);
+        max-width: 150px;
+      }
+      &:hover {
+        box-shadow: 0 8px 20px rgb(135 151 155 / 0.4);
+      }
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+    @include media-laptop {
+      width: calc(45% - 30px);
+    }
+    @include media-tablet {
+      width: 100%;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid $grey40;
+    }
+  }
+  &__phones {
+    margin-bottom: 20px;
+    &-item {
+      margin-bottom: 20px;
+      @include media-laptop {
+        margin-bottom: 30px;
+      }
+      @include media-tablet {
+        margin-bottom: 20px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &-txt {
+      margin-bottom: 5px;
+      font: 400 12px/1.2 $font;
+      color: $grey80;
+      @include media-tablet {
+        margin-bottom: 10px;
+      }
+    }
+    &-num {
+      font: 400 22px/1 $font;
+      @include media-tablet {
+        font-size: 28px;
+      }
+    }
+  }
+  &__social {
+    display: flex;
+    margin-top: auto;
+    &-item {
+      width: 22px;
+      height: 22px;
+      margin-right: 18px;
+      @include media-laptop {
+        margin-right: 15px;
+      }
+      @include media-tablet {
+        width: 24px;
+        height: 24px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        box-shadow: 0 4px 10px rgb(135 151 155 / 0.6);
+      }
+      svg {
+        display: block;
+      }
+    }
+  }
+  &__info {
+    width: calc(50% - 50px);
+    margin-right: 50px;
+    @include media-laptop {
+      width: calc(45% - 30px);
+    }
+    @include media-tablet {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    &-item {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        font: 400 12px/1.3 $font;
+        color: $black;
+      }
+    }
+  }
+  &__other {
+    width: 50%;
+    @include media-laptop {
+      width: 55%;
+    }
+    @include media-tablet {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+    }
+    &-links {
+      display: flex;
+      margin-bottom: 15px;
+      @include media-tablet {
+        display: block;
+        margin-bottom: 0;
+        margin-top: 20px;
+      }
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      margin-right: 50px;
+      font: 400 12px/1.2 $font;
+      color: $grey80;
+      @include media-laptop {
+        margin-right: 25px;
+      }
+      @include media-tablet {
+        margin: 0 0 15px;
+        font-size: 14px;
+      }
+      &:last-child {
+        margin: 0;
+      }
+    }
+    &-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-right: 8px;
+    }
+  }
+  &__cookie {
+    font: 400 12px/1.5 $font;
+    p {
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
+    }
+    br {
+      @include media-laptop {
+        display: none;
+      }
+    }
+  }
+  &__copyright {
+    font: 400 12px/1.5 $font;
+    @include media-tablet {
+      line-height: 16px;
+    }
+  }
+  &__madein {
+    font: 400 14px/1 $font;
+    @include media-tablet {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+  &__bot {
+    padding: 10px 0;
+    background: $black;
+    color: $grey40;
+    &-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include media-tablet {
+        display: block;
+      }
+    }
+  }
+  &--ny {
+    .footer__top {
+      padding-bottom: 250px;
+      background: url('../img/footer_bg-ny.jpg') 50% 100% / auto 220px repeat-x;
+      @include media-tablet {
+        padding-bottom: 200px;
+        background-size: auto 180px;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.cookies-banner {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1220px;
+  transform: translateX(-50%);
+  padding: 25px 40px;
+  background: #fff;
+  box-shadow: $smallShadow;
+  @include media-laptop {
+    display: block;
+    padding: 25px 10px;
+  }
+  &__text {
+    margin-right: 35px;
+    font: 14px/1.5 $font;
+    color: $grey90;
+    @include media-laptop {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+}

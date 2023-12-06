@@ -1,0 +1,18 @@
+mixin blog(mods)
+  -
+    const baseName = 'blog'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .blog(class=allMods)&attributes(attributes)
+    -for (blogItems = 0; blogItems < 4; blogItems++)
+      +blog-item('1', '--white')
+      +blog-item('1', '--short-img')
+      +blog-item('2')
+    block

@@ -1,0 +1,16 @@
+mixin p-leasing-partner(mods)
+  -
+    const baseName = 'p-leasing-partner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .p-leasing-partner(class=allMods)&attributes(attributes)
+    +section-head.text-center
+      +ui-h2('Стать партнером АТБ ЛК')
+    block

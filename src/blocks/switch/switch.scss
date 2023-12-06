@@ -1,0 +1,75 @@
+.switch {
+  font: 700 36px/1.2 $font;
+  @include media-laptop {
+    font-size: 30px;
+  }
+  @include media-tablet {
+    font-size: 26px;
+  }
+  &-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    &__text {
+      color: $grey50;
+      transition: 0.3s;
+      cursor: pointer;
+      &:nth-child(1) {
+        order: 1;
+      }
+      &:nth-child(2) {
+        order: 3;
+      }
+      &--active {
+        color: $black;
+      }
+    }
+    &__btn {
+      position: relative;
+      flex-shrink: 0;
+      width: 42px;
+      height: 22px;
+      margin: 0 15px;
+      border: 1px solid $grey50;
+      border-radius: 15px;
+      cursor: pointer;
+      order: 2;
+      @include media-tablet {
+        width: 30px;
+        height: 16px;
+        margin: 0 10px;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 3px;
+        width: 16px;
+        height: 16px;
+        background: currentcolor;
+        border-radius: 50%;
+        transition: 0.3s;
+        @include media-tablet {
+          top: 1px;
+          left: 2px;
+          width: 12px;
+          height: 12px;
+        }
+      }
+      &--active {
+        &::before {
+          left: 20px;
+          @include media-tablet {
+            left: 14px;
+          }
+        }
+      }
+    }
+  }
+  &-content {
+    display: none;
+    &--active {
+      display: block;
+    }
+  }
+}

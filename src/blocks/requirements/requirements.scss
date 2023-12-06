@@ -1,0 +1,32 @@
+.requirements {
+  &__item {
+    display: flex;
+    margin-bottom: 25px;
+    font: 400 18px/1.55 $font;
+    @include media-tablet {
+      font-size: 16px;
+      line-height: 1.375;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__icon {
+    align-self: flex-start;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-right: 20px;
+    @include media-laptop {
+      margin-right: 15px;
+    }
+    @include media-tablet {
+      width: 34px;
+      height: 34px;
+      margin-right: 20px;
+    }
+  }
+  &__text {
+    align-self: center;
+  }
+}

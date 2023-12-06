@@ -1,0 +1,229 @@
+extends layouts/layout
+
+block styles
+  link(rel='stylesheet' href='styles/style.min.css')
+
+block scripts
+  script(src='js/index.js')
+
+block variables
+  -const pageTitle ='Index'
+
+block content
+  main
+    .page-content
+      .inner
+        +ui-h1(pageTitle)
+        br
+        a(href='pages/blocks/blocks.html') Repository blocks
+        br
+        br
+        a(href='pages/main/main.html') Главная
+        br
+        br
+        br
+        b Рассчетный счет
+        br
+        br
+        a(href='pages/business-account/business-account.html') Счет для бизнеса бесплатно и навсегда
+        br
+        br
+        a(href='pages/internet-bank/internet-bank.html') Интернет-банк / Дистанционное обслуживание
+        br
+        br
+        a(href='pages/mobile/mobile.html') Мобильное приложение АТБ Бизнес
+        br
+        br
+        a(href='pages/verification-counterparties/') Проверка контрагентов в интернет-банке
+        br
+        br
+        a(href='pages/service-fea/service-fea.html') Обслуживание ВЭД
+        br
+        br
+        a(href='pages/fea-packages/fea-packages.html') Пакеты ВЭД
+        br
+        br
+        a(href='pages/financing-fea/financing-fea.html') Финансирование ВЭД
+        br
+        br
+        a(href='pages/fea-support/fea-support.html') Эффективные решения для участников ВЭД
+        br
+        br
+        a(href='pages/together-profitable/together-profitable.html') Акция «Вместе выгоднее»
+        br
+        br
+        a(href='pages/refreshing-package/') Откройте счет в АТБ за 0 рублей (с пакетом «Освежающий)
+        br
+        br
+        br
+        b
+          a(href='pages/loans/loans.html') Кредиты
+        br
+        br
+        a(href='pages/loans-level-2/') loans-level-2
+        br
+        br
+        a(href='pages/concessional-lending/concessional-lending.html') Льготные программы кредитования
+        br
+        br
+        a(href='pages/concessional-lending-inner/program-sme-atb.html') — Программа стимулирования кредитования субъектов МСП
+        br
+        br
+        a(href='pages/concessional-lending-inner/program-supported-cb.html') — Льготная программа кредитования субъектов МСП при поддержке ЦБ РФ
+        br
+        br
+        a(href='pages/concessional-lending-inner/program-sme-moscow.html') — Льготная программа кредитования субъектов МСП, зарегистрированных на территории г. Москвы
+        br
+        br
+        a(href='pages/concessional-lending-inner/program-asez-fpv.html') — Льготная программа кредитования резидентов ТОР и СПВ
+        br
+        br
+        a(href='pages/concessional-lending-inner/program-sme.html') — Кредитование МСП
+        br
+        br
+        a(href='pages/concessional-lending-inner/lending-importers.html') — Кредитование импортеров
+        br
+        br
+        a(href='pages/concessional-lending-inner/lending-agribusiness-enterprises.html') — Кредитование предприятий АПК
+        br
+        br
+        a(href='pages/concessional-lending-inner/program-investment.html') — Льготная программа инвестиционного кредитования
+        br
+        br
+        a(href='pages/microlite/microlite.html') Кредиты для собственников бизнеса
+        br
+        br
+        a(href='pages/loan-goskontract/loan-goskontract.html') Кредит на исполнение Госконтракта
+        br
+        br
+        a(href='pages/overdraft-simple/overdraft-simple.html') Овердрафт
+        br
+        br
+        a(href='pages/overdraft/overdraft.html') Овердрафт для бизнеса
+        br
+        br
+        a(href='pages/loan-revolving/loan-revolving.html') Оборотный кредит
+        br
+        br
+        a(href='pages/loan-revolving-new/loan-revolving-new.html') Оборотный кредит New
+        br
+        br
+        a(href='pages/loan-investment/loan-investment.html') Инвестиционный кредит (Кредит «Бизнес-Актив»)
+        br
+        br
+        a(href='pages/loan-subsoil-users/loan-subsoil-users.html') Кредитование недропользователей
+        br
+        br
+        a(href='pages/loan-agricultural-producers/') Кредит для сельхозпроизводителей
+        br
+        br
+        a(href='pages/east-business/east-business.html') Акция «Бизнес на Восток»
+        br
+        br
+        a(href='pages/promotion-support-business/promotion-support-business.html') Акция «Поддержим бизнес»
+        br
+        br
+        br
+        a(href='pages/cards/cards.html')
+          b Бизнес-карта к расчётному счёту
+        br
+        br
+        a(href='pages/cards/card-platinum.html') Бизнес-карта Visa Platinum
+        br
+        br
+        a(href='pages/cards/card-gold.html') Бизнес-карта Visa Gold
+        br
+        br
+        a(href='pages/cards/card-mir.html') Бизнес-карта Мир
+        br
+        br
+        a(href='pages/cards/card-union-pay.html') Бизнес-карта UnionPay
+        br
+        br
+        br
+        a(href='pages/leasing/leasing.html') Лизинг
+        br
+        br
+        a(href='pages/bank-guarantee/bank-guarantee.html') Банковская гарантия
+        br
+        br
+        a(href='pages/express-guarantee/express-guarantee.html') Экспpесс гаpантии
+        br
+        br
+        a(href='pages/express-loan/express-loan.html') Экспресс-кредит для бизнеса
+        br
+        br
+        a(href='pages/deposits/deposits.html') Депозиты для бизнеса
+        br
+        br
+        br
+        a(href='pages/acquiring/acquiring.html') Торговый эквайринг
+        br
+        br
+        br
+        b Сервисы
+        br
+        br
+        a(href='pages/business-protection/business-protection.html') Сервисы защиты бизнеса
+        br
+        br
+        a(href='pages/salary-project/salary-project.html') Зарплатный проект
+        br
+        br
+        a(href='pages/business-support/business-support.html') Бесплатная поддержка малого и среднего бизнеса в Москве
+        br
+        br
+        a(href='pages/partners/partners.html') Присоединяйтесь к команде партнеров АТБ
+        br
+        br
+        a(href='pages/online-accounting/online-accounting.html') Онлайн-бухгалтерия для ИП на УСН
+        br
+        br
+        br
+        a(href='pages/builder-acc/builder-acc.html') Специальный счет застройщика
+        br
+        br
+        a(href='pages/escrow-acc/escrow-acc.html') Счет эскроу
+        br
+        br
+        a(href='pages/construction/construction.html') Кредит для застройщиков
+        br
+        br
+        a(href='pages/factoring/') Факторинг
+        br
+        br
+        br
+        b Драгоценные металлы
+        br
+        br
+        a(href='pages/metals/metals.html') Операции с драгоценными металлами
+        br
+        br
+        a(href='pages/mining/mining.html') Сотрудничество с недропользо­вателями
+        br
+        br
+        br
+        a(href='pages/restructuring-info/restructuring-info.html') Реструктуризация кредитов
+        br
+        br
+        br
+        a(href='pages/blog/blog.html') Блог
+        br
+        br
+        a(href='pages/blog-inner/blog-inner.html') Блог деталка
+        br
+        br
+        a(href='pages/blog-inner/blog-inner-amp.html') Блог деталка <b>AMP</b>
+        br
+        br
+        br
+        a(href='pages/text-page/') Текстовая страница
+        br
+        br
+        a(href='pages/documents-tariffs/') Документы и тарифы для бизнеса
+        br
+        br
+        a(href='pages/ssi/ssi.html') Информация по текущей ситуации
+        br
+        br
+        a(href='pages/sitemap/') Карта сайта

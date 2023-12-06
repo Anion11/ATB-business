@@ -1,0 +1,27 @@
+mixin acquiring-list(mods)
+  -
+    const baseName = 'acquiring-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .acquiring-list(class=allMods)&attributes(attributes)
+    .acquiring-list__col
+      +ui-ul('')
+        li Установка и обслуживание оборудования.
+        li Обучение кассиров и менеджеров.
+        li Индивидуальная настройка зачислений на расчетный счет для любой компании, торговой точки (терминалу) или единой суммой.
+    .acquiring-list__col
+      +ui-ul('')
+        li Круглосуточная клиентская поддержка.
+        li Мониторинг операций для снижения финансовых потерь.
+        li Работа с ведущими платежными системами: МИР, Visa, Master Card и UnionPay.
+          img.acquiring-list__logo.bvi-not-hide(src='img/logo_mir.svg', alt='')
+          img.acquiring-list__logo.bvi-not-hide(src='img/logo_visa.svg', alt='')
+          img.acquiring-list__logo.bvi-not-hide(src='img/logo_master_card.svg', alt='')
+          img.acquiring-list__logo.bvi-not-hide(src='img/logo_union_pay.svg', alt='')

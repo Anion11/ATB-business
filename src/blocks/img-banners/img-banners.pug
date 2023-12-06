@@ -1,0 +1,17 @@
+mixin img-banners(imgBanners, mods)
+  -
+    const baseName = 'img-banners'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .img-banners(class=allMods)&attributes(attributes)
+    each item in imgBanners
+      a.img-banners__item(href=item.link target='_blank')
+        img.bvi-not-hide(src=item.src, alt='')
+    block

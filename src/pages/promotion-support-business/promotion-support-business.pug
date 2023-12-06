@@ -1,0 +1,123 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'promotion-support-business'
+    const pageTitle ='Акция «Поддержим бизнес»'
+
+    const benefitsItems = [
+      { icon: 'img/icon_benefits1.svg', title: 'Без залога' },
+      { icon: 'img/icon_benefits2.svg', title: 'Решение <span class="text-nowrap">по 2-м</span> документам ' },
+      { icon: 'img/icon_benefits3.svg', title: '<a class="text-orange" href="#section-form">Подача заявки</a> онлайн' },
+    ]
+
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a class="text-orange" href="#section-form">заявку</a>',
+        descr: 'на&nbsp;сайте',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Предоставьте документы',
+        descr: 'и дождитесь одобрения',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите деньги на&nbsp;счет в&nbsp;АТБ',
+        descr: 'после подписания договора',
+      },
+    ]
+
+    const termsItems = [
+      { name: 'Цель кредита', descr: 'Пополнение оборотных средств' },
+      { name: 'Сумма кредита', descr: 'до&nbsp;30&nbsp;000&nbsp;000&nbsp;₽' },
+      { name: 'Валюта кредита', descr: 'рубли&nbsp;РФ (₽)' },
+      { name: 'Срок кредитования', descr: 'до&nbsp;36&nbsp;месяцев' },
+      { name: 'Процентная ставка', descr: 'от 6% годовых' },
+      { name: 'Комиссия за выдачу', descr: 'Отсутствует' },
+      { name: 'Форма кредитования', descr: 'Кредит, невозобновляемая кредитная линия' },
+    ]
+
+    const requirementsItems1 =[
+      { icon: 'img/requirement1.svg', text: 'Поручительство физического лица и/или юридических лиц' },
+      { icon: 'img/requirement4.svg', text: 'Залог имущества' },
+    ]
+
+    const requirementsItems2 =[
+      { icon: 'img/requirement3.svg', text: 'Анкета-заявка на&nbsp;получение кредита' },
+      { icon: 'img/requirement5.svg', text: 'Выписка по расчетным счетам из Интернет-Банка за&nbsp;12&nbsp;месяцев или&nbsp;карточка сч.51 из&nbsp;1С' },
+      { icon: 'img/requirement8.svg', text: 'При кредите свыше 10&nbsp;млн&nbsp;₽ официальная бухгалтерская/налоговая отчетность' },
+    ]
+
+    const requirementsItems3 =[
+      { icon: 'img/requirement7.svg', text: 'Резидент РФ' },
+      { icon: 'img/requirement2.svg', text: 'Срок существования с&nbsp;момента государственной регистрации – не&nbsp;менее 12&nbsp;месяцев' },
+      { icon: 'img/requirement3.svg', text: 'Компания включена в&nbsp;Единый реестр субъектов малого и&nbsp;среднего предпринимательства, согласно 209-ФЗ' },
+      { icon: 'img/requirement9.svg', text: 'Осуществляет деятельность в&nbsp;одной или&nbsp;нескольких приоритетных отраслях' },
+      { icon: 'img/requirement6.svg', text: 'Отсутствуют действующие кредитные договоры, заключенные после 01&nbsp;мая 2021&nbsp;года в&nbsp;рамках Программы субсидирования в&nbsp;иных банках' },
+    ]
+
+    const termsBannerData ={
+      h3: 'Условия участия',
+      descr: `Оставьте заявку и&nbsp;предоставьте
+        <a href="#" class="text-orange">документы</a> до&nbsp;23&nbsp;июня 2023&nbsp;года,
+        и&nbsp;получите кредит по&nbsp;льготной ставке от&nbsp;8%&nbsp;годовых`,
+      button: 'Участвовать',
+      fn: 'В&nbsp;акции участвуют кредиты до&nbsp;30&nbsp;млн рублей со&nbsp;сроком кредитования',
+      fnNowrapTooltip: 'до&nbsp;3&nbsp;лет',
+      fnTooltip: 'text',
+      img: 'img/terms_banner.png',
+    }
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--promotion-support-business')
+        +banner__wrapper('img/banner_promotion_support_business.png', true)
+          +banner__h1('Акция <br>«Поддержим бизнес»', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('Льготный кредит от')
+            span.banner__subtitle-accent &nbsp;8%
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#section-form')
+            +banner__slogan('Для пополнения оборотных средств')
+    .page-content
+      +section('--mt0')
+        .inner
+          +benefits(benefitsItems, '--title-normal')
+
+      +section
+        .inner
+          +terms-banner(termsBannerData, '--support-business')
+
+      +section
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section('--bg-grey')#section-form
+        .inner
+          +section-head.text-center
+            +ui-h2('Заявка на&nbsp;получение кредита', 'section-head')
+          p тут форма
+
+      +section
+        .inner
+          +accordion
+            +accordion-item('Условия')
+              +terms(termsItems)
+            +accordion-item('Обеспечение')
+              +requirements(requirementsItems1)
+            +accordion-item('Документы')
+              +requirements(requirementsItems2)
+              +section-footnote
+                p Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию положительного решения о&nbsp;предоставлении кредита
+            +accordion-item('Требования')
+              +requirements(requirementsItems3)

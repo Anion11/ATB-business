@@ -1,0 +1,118 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'acquiring'
+    const pageTitle ='Торговый эквайринг'
+
+  -
+    const stepsItems1 = [
+      { icon: 'img/step_icon_doc.svg', title: 'Заключите договор' },
+      { icon: 'img/step_icon_terminal.svg', title: 'Получите терминал' },
+      { icon: 'img/step_icon_money.svg', title: 'Начинайте принимать платежи' },
+    ]
+
+  -
+    const stepsItems2 = [
+      { icon: 'img/step_icon_bank.svg', title: 'Откройте счёт в банке и оставьте заявку на подключение интернет эквайринга.' },
+      { icon: 'img/step_icon_doc.svg', title: 'Заключите договор эквайринга.' },
+      { icon: 'img/step_icon_interface.svg', title: 'Подготовка интерфейса и параметров технического взаимодействия.' },
+    ]
+
+  -
+    const benefitsItems1 = [
+      { icon: 'img/features_icon_stopwatch.svg', descr: 'Увеличьте скорость обслуживания.' },
+      { icon: 'img/features_icon_chart.svg', descr: 'Обеспечьте рост объема продаж' },
+      { icon: 'img/features_icon_shield.svg', descr: 'Снизьте риски по операциям (риск мошенничества, фальшивых банкнот).' },
+      { icon: 'img/features_icon_business.svg', descr: 'Сократите расходы на хранение, инкассацию наличных.' },
+      { icon: 'img/features_icon_briefcase.svg', descr: 'Создайте положительный имидж компании.' },
+      { icon: 'img/features_icon_card.svg', descr: 'Возможность бесконтактной оплаты товаров и услуг*. Оплата товаров и услуг картой или смартфоном в одно касание.' },
+    ]
+
+  -
+    const tabsHeadItems =[
+      { text: 'Торговый эквайринг' },
+      { text: 'Интернет эквайринг' },
+    ]
+
+block content
+  main
+    +breadcrumbs
+      +breadcrumbs-item('Главная', '/')
+      +breadcrumbs-item('Бизнесу', '#')
+      +breadcrumbs-item('Сервисы', '#')
+      +breadcrumbs-item('Подключить эквайринг')
+    +banner('--m-vertically')
+      +banner__item('--acquiring')
+        +banner__wrapper('img/banner_acquiring.png', true)
+          +banner__h1('Торговый <br class="banner__br-no-mob">эквайринг', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('Принимайте деньги удобным способом')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оставить заявку', 'banner, --m-size-l')(href='#form-section')
+    .page-content
+      +section('--mt0')
+        .inner
+          +acquiring-sbp
+      +section
+        .inner
+          +section-head.text-center
+            +ui-h2('Торговый эквайринг', 'section-head')
+        +tabs-head(tabsHeadItems)
+        +tabs-main
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +benefits(benefitsItems1, '--items2')
+            +section
+              .inner
+                +acquiring-list
+            +section
+              .inner
+                +section-footnote('* Eсли планируемый оборот по картам ниже 300 000 руб., вы можете самостоятельно приобрести POS-терминалы у аккредитованного нами производителя. Мы подключим ваш терминал к нашей системе эквайринга с обслуживанием на выгодных условиях.')
+
+          +tabs-main__item()
+            +section('--mt0')
+              .inner
+                +acquiring__benefits()
+            +section('--bg-grey')
+              .inner
+                +section-head.text-center
+                  +ui-h3('Как начать пользоваться?', 'section-head')
+                +steps(stepsItems2)
+
+      +section
+        .inner
+          +callback('Более подробную информацию вы можете получить, позвонив на телефон технической поддержки:', '8 (800) 775-80-80')
+
+      +section('--bg-grey')
+        .inner
+          +section-head.text-center
+            +ui-h2('Как начать пользоваться?', 'section-head')
+          +steps(stepsItems1)
+
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Оставить заявку', 'section-head')
+
+      +section#documnets-section
+        .inner
+          +section-head.text-center
+            +ui-h2('Документы для скачивания', 'section-head')
+          +accordion
+            +accordion-item('Документы')
+              +documents
+            +accordion-item('Тарифы')
+              +documents
+            +accordion-item('Архив документов')
+              +documents
+            +accordion-item('Архив тарифов')
+              +documents

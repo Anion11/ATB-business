@@ -1,0 +1,142 @@
+.services {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 20px;
+  @include media-laptop {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    padding: 40px;
+    text-decoration: none;
+    background: #fff;
+    color: inherit;
+    box-shadow: $bigShadow;
+    border-radius: 8px;
+    @include media-laptop {
+      padding: 30px 100px 40px 20px;
+    }
+    @include media-tablet {
+      padding: 30px 50px 35px 20px;
+    }
+    &:hover {
+      text-decoration: none;
+      box-shadow: 0 3px 30px rgb(135 151 155 / 0.35);
+      .ui-button::after {
+        transform: translateY(-50%) translateX(2px) rotate(45deg);
+      }
+    }
+    &--picture {
+      padding-right: 250px;
+      background: $greyBlueGradient;
+      box-shadow: none;
+      @include media-laptop {
+        display: flex;
+        min-height: 225px;
+      }
+      @include media-tablet {
+        padding-right: 150px;
+      }
+      .services {
+        &__picture {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          width: 250px;
+          height: 100%;
+          @include media-tablet {
+            width: 140px;
+          }
+          img {
+            max-height: 100%;
+          }
+        }
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    margin-right: 24px;
+    @include media-laptop {
+      position: absolute;
+      right: 25px;
+      bottom: 20px;
+      margin: 0;
+    }
+    @include media-tablet {
+      right: 20px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+    }
+  }
+  &__title {
+    width: 100%;
+    margin-bottom: 15px;
+    font: 700 24px/1.2 $font;
+    @include media-laptop {
+      margin-bottom: 10px;
+    }
+    @include media-tablet {
+      font-size: 20px;
+    }
+  }
+  &__descr {
+    width: 100%;
+    margin-bottom: 20px;
+    font: 400 18px/1.33 $font;
+    @include media-tablet {
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+  }
+  &__logo {
+    display: flex;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid $grey50;
+    @include media-tablet {
+      margin-bottom: 20px;
+      margin-left: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+    &-item {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
+      img,
+      .svg-icon {
+        max-height: 23px;
+      }
+    }
+  }
+  &__foot {
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    @include media-tablet {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+}
+.bvi-body {
+  .services {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,24 @@
+.leasing-reference {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  font: 300 18px/1.4 $font;
+  @include media-tablet {
+    grid-template-columns: 1fr;
+    font-size: 16px;
+  }
+  &__block {
+    margin-bottom: 20px;
+    @include media-tablet {
+      margin-bottom: 25px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__subtitle {
+    max-width: 500px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+}

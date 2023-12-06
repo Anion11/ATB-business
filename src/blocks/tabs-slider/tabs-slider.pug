@@ -1,0 +1,57 @@
+mixin tabs-slider(title, data, mods)
+  -
+    const baseName = 'tabs-slider'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs-slider(class=allMods)&attributes(attributes)
+    .tabs-slider__wrapper
+      .tabs-slider__content
+        +ui-h2(title, 'tabs-slider')
+        .tabs-slider__top
+          .tabs-slider__nav
+            .tabs-slider__nav-slider
+              .swiper-wrapper
+                each item, index in data
+                  .tabs-slider__link.swiper-slide(class=index===0 ? 'tabs-slider__link--active' : '') !{item.navTitle}
+        .tabs-slider__txt
+          .swiper-container
+            .swiper-wrapper
+              each item in data
+                .tabs-slider__item.swiper-slide
+                  if item.h2
+                    .tabs-slider__h2 !{item.h2}
+                  each text in item.text
+                    if text.h3
+                      .tabs-slider__h3 !{text.h3}
+                    if text.h5
+                      .tabs-slider__h5 !{text.h5}
+                    if text.p1
+                      .tabs-slider__p1 !{text.p1}
+                    if text.desc
+                      .tabs-slider__descr !{text.desc}
+                    if text.list
+                      +ui-ul(text.list, 'tabs-slider')
+        .tabs-slider__btns
+          .tabs-slider__btn.tabs-slider__btn--prev
+          .tabs-slider__btn.tabs-slider__btn--next
+      .tabs-slider__images
+        .swiper-container
+          .swiper-wrapper
+            each item in data
+              .tabs-slider__img.swiper-slide(class=`tabs-slider__img--${item.images.mod}`)
+                .tabs-slider__screen.bvi-no-styles
+                  img(src=item.images.screen, alt='')
+                .tabs-slider__decor
+                  img(src=item.images.decor, alt='')
+                .tabs-slider__anim
+                  each animItem in item.images.anim
+                    .tabs-slider__anim-item(class=`tabs-slider__anim-item--${animItem.mod}`)
+                      img(src=animItem.src, alt='')
+    block

@@ -1,0 +1,68 @@
+mixin calc-deposit(mods)
+  -
+    const baseName = 'calc-deposit'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -const dataCalcName = `data-deposit`
+
+  .calc-deposit(class=allMods)&attributes(attributes)
+    .calc-deposit__params
+      .calc-deposit__params-line
+        +ui-form-name('Валюта')
+        +ui-select('', 'Рубли РФ', 'Доллары США', 'Евро', 'Китайские юани')&attributes({[`${dataCalcName}-select-currency`]: ''})
+      .calc-deposit__params-line
+        +ui-range('Сумма депозита', '  ₽')(data-min='500000' data-max='10000000')&attributes({[`${dataCalcName}-range-amount`]: ''})
+      .calc-deposit__params-line
+        +ui-range('Срок депозита в днях', '  дней')(data-min='1' data-max='1825')&attributes({[`${dataCalcName}-range-term`]: ''})
+      .calc-deposit__params-line
+        +ui-form-name('Тариф')
+        +ui-select('', 'Классический', 'Пополняемый', 'Оперативный')&attributes({[`${dataCalcName}-select-tarif`]: ''})
+      .calc-deposit__params-line
+        .calc-deposit__params-options
+          +ui-checkbox('calcDeposit1', 'Оформить в интернет-банке')&attributes({[`${dataCalcName}-checkbox-internet_bank`]: ''})
+          +ui-checkbox('calcDeposit2', 'Выплата процентов ежемесячно')&attributes({[`${dataCalcName}-checkbox-interest_monthly`]: ''})
+
+    .calc-deposit__result
+      .calc-deposit__result-main
+        .calc-deposit__result-line
+          .calc-deposit__result-item
+            .calc-deposit__result-name ЗА 365 ДНей Я НАКОПЛЮ
+            +calc-deposit__result-val('1 061 600 ₽', dataCalcName, 'result', '--big').text-grey-blue
+        .calc-deposit__result-line
+          .calc-deposit__result-item
+            .calc-deposit__result-name доход
+            +calc-deposit__result-val('380 000 000 ₽', dataCalcName, 'income').text-nowrap
+          .calc-deposit__result-item
+            .calc-deposit__result-name ставка
+            +calc-deposit__result-val('6,16%', dataCalcName, 'rate')
+              =' '
+              span.calc-deposit__result-descr годовых
+      .calc-deposit__result-btns
+        +ui-button('Оформить депозит')(href='#')
+      .calc-deposit__result-foot
+        p Все расчеты приблизительные, для более точной информации обращайтесь в любое отделение банка АТБ по телефону
+          span.text-nowrap  8-800-775-88-88
+
+    block
+
+mixin calc-deposit__result-val(value, mods)
+  -
+    const baseName = 'calc-deposit__result-val'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .calc-deposit__result-val(class=allMods)&attributes(attributes, {[`${dataCalcName}-text-${dataName}`]: ''}) !{value}
+    block

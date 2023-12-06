@@ -1,0 +1,54 @@
+block variables
+include ../blocks/mixins
+
+doctype html
+html(amp lang='ru')
+  block head
+    head
+      meta(charset='utf-8')
+      title=pageTitle
+      meta(content='width=device-width, initial-scale=1' name='viewport')
+      meta(content='ie=edge' http-equiv='x-ua-compatible')
+      link(href='.' rel='icon' type='image/x-icon')
+      block styles
+
+      if isAMP === true
+        script(async src='https://cdn.ampproject.org/v0.js')
+        script(async custom-element='amp-script' src='https://cdn.ampproject.org/v0/amp-script-0.1.js')
+
+        style(amp-boilerplate)
+          include ./style-amp-boilerplate.scss
+
+        noscript
+          style(amp-boilerplate).
+            body {
+              -webkit-animation: none;
+              -moz-animation: none;
+              -ms-animation: none;
+              animation: none;
+            }
+
+        style(amp-custom)
+          include ../styles/utils/fonts-amp.scss
+
+        // в bitrix добавить стили в <style amp-custom> со страницы *page-name*-amp.min.css
+        // в <style amp-custom> в шрифтах и src в amp-script заменить https://atb-b.dev.dterra.eu/
+
+  body
+    if isAMP === true
+      amp-script(src=ampScriptLink layout='container')
+        .wrapper
+          block header
+            include ../blocks/header/header-amp
+          block content
+          block footer
+            include ../blocks/footer/footer
+    else
+      .wrapper
+        block header
+          include ../blocks/header/header
+        block content
+        block footer
+          include ../blocks/footer/footer
+
+    block scripts

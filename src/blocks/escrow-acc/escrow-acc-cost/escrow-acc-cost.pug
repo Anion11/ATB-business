@@ -1,0 +1,27 @@
+mixin escrow-acc-cost(mods)
+  -
+    const baseName = 'escrow-acc-cost'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const uiList =[
+      'Открытие и обслуживание счета – бесплатно',
+      'Проценты на денежные средства, размещенные на счетах эскроу, не начисляются'
+    ]
+
+  .escrow-acc-cost(class=allMods)&attributes(attributes)
+    .escrow-acc-cost__content
+      .escrow-acc-cost__title Сколько это стоит?
+      +ui-p1()
+        +ui-ul(uiList)
+    .escrow-acc-cost__img
+      img(src='img/escrow_acc_cost.png' alt='')
+
+    block

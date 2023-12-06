@@ -1,0 +1,53 @@
+mixin construction-scheme(mods)
+  -
+    const baseName = 'construction-scheme'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const icons = [
+      'construction-scheme_icon-1',
+      'construction-scheme_icon-2',
+      'construction-scheme_icon-3',
+      'construction-scheme_icon-4',
+    ]
+
+    const points = [
+      {
+        text: 'Дольщики открывают счет эскроу в банке',
+        num: '1',
+        mod: 'construction-scheme__point--small'
+      },
+      {
+        text: 'Денежные средства дольщиков перечисляются на счета эскроу и используются для фондирования кредита',
+        num: '2',
+      },
+      {
+        text: 'Банк финансирует расходы по согласованному бюджету проекта за вычетом собственных средств',
+        num: '3',
+      },
+      {
+        text: 'Перечисление денежных средств со счетов эскроу застройщику после ввода в эксплуатацию',
+        num: '4',
+      },
+    ]
+
+  .construction-scheme(class=allMods)&attributes(attributes)
+    .construction-scheme__circle
+      .construction-scheme__title Как работает проектное финансирование
+      .construction-scheme__desc Средства участников долевого строительства, депонируемые на счетах эскроу, будут использованы для фондирования кредитной линии.
+    .construction-scheme__icons
+      each icon in icons
+        .construction-scheme__icon
+          img(src=`img/${icon}.svg`, alt='')
+    .construction-scheme__points
+      each point in points
+        .construction-scheme__point(class=`construction-scheme__point--${point.num}` class=point.mod)
+          .construction-scheme__txt !{point.text}
+          .construction-scheme__num !{point.num}
+    block

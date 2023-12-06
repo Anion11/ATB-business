@@ -1,0 +1,67 @@
+mixin together-tariffs(mods)
+  -
+    const baseName = 'together-tariffs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const togetherTariffs =[
+      {
+        headMods: 'green',
+        name: 'Для действующих Клиентов',
+        main: [
+          {
+            top: 'При обслуживании на базовых тарифах:',
+            list: [
+              'Ведение счета – 2 месяца бесплатно',
+            ]
+          },
+          {
+            top: 'При обслуживании на Пакетах РКО «Освежающий», «Бодрящий», «Полезный»:',
+            list: [
+              'Стоимость обслуживания - бесплатно 2 месяца',
+            ]
+          },
+          {
+            top: 'При обслуживании на Пакете РКО «Сочный ноль»:',
+            list: [
+              'Подключение к Пакету РКО «Освежающий» и бесплатное обслуживание 2 месяца',
+            ]
+          },
+        ]
+      },
+      {
+        headMods: 'yellow',
+        name: 'Для новых Клиентов',
+        main: [
+          {
+            top: 'Бесплатное подключение на 2 месяца к Пакетам РКО:',
+            list: [
+              '«Освежающий»',
+              '«Бодрящий»',
+              '«Полезный»',
+            ]
+          }
+        ]
+      }
+    ]
+
+  .together-tariffs(class=allMods)&attributes(attributes)
+    each itemBox in togetherTariffs
+      .together-tariffs__box
+        .together-tariffs__head(class=`together-tariffs__head--${itemBox.headMods}`)
+          .together-tariffs__name !{itemBox.name}
+        .together-tariffs__main
+          each itemMain in itemBox.main
+            .together-tariffs__descr
+              +ui-p1()
+                p
+                  b !{itemMain.top}
+                +ui-ul(itemMain.list)
+    block

@@ -1,0 +1,29 @@
+mixin ui-swiper-pagination(mods)
+  -
+    const baseName = 'ui-swiper-pagination'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-swiper-pagination(class=allMods)&attributes(attributes)
+    block
+
+mixin ui-swiper-button(mods)
+  -
+    const baseName = 'ui-swiper-button'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-swiper-button(class=allMods)&attributes(attributes)
+    block

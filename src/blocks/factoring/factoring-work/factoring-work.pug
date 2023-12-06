@@ -1,0 +1,31 @@
+mixin factoring-work(mods)
+  -
+    const baseName = 'factoring-work'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const factoringWorkSteps =[
+      { text: 'Поставка товара' },
+      { text: 'Уступка денежного требования' },
+      { text: 'Финансирование поставщика' },
+      { text: 'Оплата товара' },
+      { text: 'Оплата комиссии' },
+    ]
+
+  .factoring-work(class=allMods)&attributes(attributes)
+    .factoring-work__scheme
+      img(src='img/factoring_work_scheme.svg', alt='')
+    .factoring-work__steps
+      each item, index in factoringWorkSteps
+        .factoring-work__step
+          .factoring-work__count=(index+1)
+          .factoring-work__text=item.text
+
+    block

@@ -1,0 +1,30 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'blog-inner'
+  -const pageTitle ='ATB'
+
+block content
+  main
+    +breadcrumbs
+      +breadcrumbs-item('Главная', '/')
+      +breadcrumbs-item('Статьи про бизнес', '#')
+      +breadcrumbs-item('Статья')
+    .page-content
+      +section('--mt0')
+        .inner
+          +blog-inner
+
+      +section('--ov-hidden')
+        .inner
+          +section-head()
+            +ui-h2('Еще по этой теме', 'section-head')
+          +blog-others

@@ -1,0 +1,54 @@
+.mir-discounts {
+  padding-top: 60px;
+  @include media-laptop {
+    padding-top: 0;
+  }
+  &__container {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 0 60px 0 40px;
+    background: $greyBlueGradient;
+    border-radius: 8px;
+    @include media-laptop {
+      flex-direction: column-reverse;
+      gap: 0;
+      padding: 0 60px;
+    }
+    @include media-tablet {
+      padding: 0;
+    }
+  }
+  &__img {
+    max-width: 530px;
+    margin-top: -60px;
+    flex-shrink: 0;
+    @include media-laptop {
+      margin: 0 auto;
+    }
+  }
+  &__text {
+    padding: 55px 0;
+    @include media-laptop {
+      text-align: center;
+    }
+    @include media-tablet {
+      padding: 40px 20px 30px;
+    }
+  }
+  &__title {
+    font: 700 40px/1.2 $font;
+    @include media-laptop {
+      font-size: 32px;
+    }
+    @include media-tablet {
+      font-size: 24px;
+    }
+  }
+  &__ui-button {
+    margin-top: 35px;
+    @include media-tablet {
+      margin-top: 20px;
+    }
+  }
+}

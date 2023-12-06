@@ -1,0 +1,12 @@
+.metals-merit {
+  padding: 30px 70px;
+  background: #fff;
+  box-shadow: 0 3px 30px rgb(135 151 155 / 0.25);
+  border-radius: 8px;
+  @include media-laptop {
+    padding: 30px;
+  }
+  @include media-tablet {
+    padding: 25px 20px 30px;
+  }
+}

@@ -1,0 +1,28 @@
+mixin ui-pagination(mods)
+  -
+    const baseName = 'ui-pagination'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-pagination(class=allMods)&attributes(attributes)
+    a.ui-pagination__link.ui-pagination__link--prev.ui-pagination__link--disabled(href='#')
+      svg(width='18' height='18' viewbox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg')
+        path(d='M7 12L10 9L7 6' stroke='currentColor')
+      | Назад
+    ul.ui-pagination__list
+      each item, index in [1, 2, 3]
+          li.ui-pagination__item(class=(index === 0 ? 'ui-pagination__item--active' : ''))
+            a.ui-pagination__link(href='#')=item
+      li.ui-pagination__item
+        a.ui-pagination__link(href='#') ...
+      li.ui-pagination__item
+        a.ui-pagination__link(href='#') 25
+    a.ui-pagination__link.ui-pagination__link--next(href='#') Далее
+      svg(width='18' height='18' viewbox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg')
+        path(d='M7 12L10 9L7 6' stroke='currentColor')

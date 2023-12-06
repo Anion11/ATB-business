@@ -1,0 +1,116 @@
+-
+  let footerAppItem =[
+    { icon: 'icon_app_store_black' },
+    { icon: 'icon_google_play_black' },
+    { icon: 'icon_app_gallery_black' },
+  ]
+
+-
+  let footerMenuItem =[
+    { txt: 'Реквизиты' },
+    { txt: 'Тендеры' },
+    { txt: 'Новости' },
+    { txt: 'Лицензии' },
+    { txt: 'Страхование вкладов' },
+    { txt: 'Инсайдерам' },
+    { txt: 'Вакансии' },
+    { txt: 'Реализация имущества' },
+    { txt: 'Акционерам и инвесторам' },
+    { txt: 'Документы и тарифы' },
+    { txt: 'Наша рассылка' },
+    { txt: 'Пресс-центр' },
+    { txt: 'Orange Life. Онлайн-журнал' },
+  ]
+
+-
+  let footerTopOtherLink =[
+    { icon: 'map', text: 'Карта сайта', },
+    { icon: 'question', text: 'Вопросы и ответы', },
+    { icon: 'mail', text: 'Оставить отзыв' },
+  ]
+
+-
+  let footerPhonesItem =[
+    { txt: 'Бесплатный звонок по России', linkTxt: '8-800-775-80-80', linkHref: '88007758080' },
+    { txt: 'Для звонков из-за рубежа', linkTxt: '+7 (4162) 222-333', linkHref: '+74162222333' },
+    { txt: 'Звонок с мобильного бесплатный', linkTxt: '* 3040', linkHref: '*3040' },
+    { txt: 'Частным лицам', linkTxt: '8-800-775-88-88', linkHref: '88007758888' },
+  ]
+
+-
+  let footerSocialItem =[
+    { icon: 'odnoklassniki' },
+    { icon: 'vk' },
+    { icon: 'telegram' },
+    { icon: 'youtube' },
+    { icon: 'zen-yandex' },
+    { icon: 'rutube' },
+  ]
+
+-
+  let footerTopInfoItem =[
+    { txt: 'Раскрытие информации' },
+    { txt: 'Комплаенс' },
+    { txt: 'Информация о процентных ставках по договорам банковского вклада с физическими лицами' },
+  ]
+
+footer.footer(class = isNewYear ? 'footer--ny' : '')
+  .footer__top
+    .inner
+      .footer__line
+        .footer__links
+          ul.footer__menu
+            each item in footerMenuItem
+              li.footer__menu-item
+                a(href='#')=item.txt
+          .footer__app
+            each item in footerAppItem
+              a.footer__app-item(href='#')
+                img(src='/img/svgs/'+item.icon+'.svg', alt='')
+
+        .footer__contacts
+          .footer__phones
+            each item in footerPhonesItem
+              .footer__phones-item
+                .footer__phones-txt=item.txt
+                .footer__phones-num
+                  a(href='tel:'+item.linkHref)=item.linkTxt
+
+          .footer__social
+            each item in footerSocialItem
+              a.footer__social-item(href='#')
+                +icon('icon_'+item.icon)
+
+      .footer__line
+        .footer__info
+          each item in footerTopInfoItem
+            .footer__info-item(class=item.class)
+              a(href='#')=item.txt
+
+        .footer__other
+          .footer__other-links
+            each item in footerTopOtherLink
+              a.footer__other-item(href='#')
+                .footer__other-icon
+                  +icon('icon_footer_'+item.icon)
+                .footer__other-text=item.text
+
+          .footer__cookie
+            p Продолжая посещение сайта, вы соглашаетесь на
+              =' '
+              a.text-orange(href='#') использование файлов cookie
+              |.
+              br
+              |  Если вы не хотите использовать файлы cookie, измените настройки браузера.
+            p
+              a.text-orange(href='#') Раскрытие информации в соответствии с №3921-У от 28.12.2015
+
+  .footer__bot
+    .inner
+      .footer__bot-wrap
+        .footer__copyright Универсальная лицензия ЦБ РФ №1810.
+          br
+          | © Азиатско-Тихоокеанский Банк (АО), 2007 - 2022
+        .footer__madein Разработано в
+          =' '
+          a(href='http://dterra.eu/') D'Terra

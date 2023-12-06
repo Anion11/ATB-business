@@ -1,0 +1,14 @@
+mixin ui-h5(text, mods)
+  -
+    const baseName = 'ui-h5'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  h5.ui-h5(class=allMods)&attributes(attributes) !{text}
+    block

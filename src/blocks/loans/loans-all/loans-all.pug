@@ -1,0 +1,29 @@
+mixin loans-all(loansAll, mods)
+  -
+    const baseName = 'loans-all'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .loans-all(class=allMods)&attributes(attributes)
+    each item in loansAll
+      .loans-all__item
+        a.loans-all__text(href='#')
+          .loans-all__title !{item.title}
+          .loans-all__descr !{item.descr}
+          .loans-all__features
+            each itemFeatures in item.features
+              .loans-all__features-item !{itemFeatures}
+        .loans-all__btns
+          if item.btnAppl !== false
+            +ui-button('Оставить заявку', '--empty, --ph-s, --m-py-l')(href='#')
+          if item.btnNext !== false
+            +ui-button('подробнее', '--link-next')(href='#')
+        a.loans-all__img(href='#')
+          img(src=`img/loans_all_${item.img}.png` alt='')
+    block

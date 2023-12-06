@@ -1,0 +1,128 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  //- link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  //- -const fileName = 'builder-acc'
+  -const pageTitle ='Специальный счет застройщика'
+
+  -
+    const tableItems1 ={
+      thead: [
+        {
+          th: [
+            { text: 'Наименование услуги', mods: 'ui-table__tr-title' },
+            { text: 'Стандартные тарифы', mods: 'ui-table__tr-title' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'Открытие первого расчетного счета' },
+            { text: '1600 ₽ - 1900 ₽ *' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Открытие второго и последующего расчетного счета' },
+            { text: '800 ₽' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Комиссия за ведение специального банковского счета Застройщика' },
+            { text: '2500 ₽/мес' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Подключение к системе «Интернет-Банк» или разблокировка доступа в систему' },
+            { text: '350 ₽' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Присвоение цифрового ключа / дополнительного цифрового ключа' },
+            { text: '1950 ₽' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Абонентская плата за систему «Интернет-Банк»' },
+            { text: '600 ₽/мес' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Перевод денежных средств со специального счета застройщика в валюте РФ (банковское сопровождение) и иные услуги' },
+            { text: 'Согласно стандартных <a class="text-orange" href="#"> тарифов Банка</a>' },
+          ]
+        },
+      ]
+    }
+
+  -
+    const benefitsItems = [
+      { icon: 'img/benefit_1.svg', title: 'Все под контролем', descr: 'Контроль целевого использования средств в соответствии с законодательством' },
+      { icon: 'img/benefit_2.svg', title: 'Доступность в любое время', descr: 'Круглосуточные внутрибанковские платежи' },
+      { icon: 'img/benefit_3.svg', title: 'Быстро и просто', descr: 'Дистанционное проведение платежей в современном интерфейсе' },
+    ]
+
+  -
+    const stepsItems = [
+      { icon: 'img/step_1.svg', descr: 'Заполните заявление на открытие счёта и принесите в ближайшее отделение банка вместе с комплектом документов' },
+      { icon: 'img/step_2.svg', descr: 'Подключитесь к системе Дистанционного банковского обслуживания Банка' },
+      { icon: 'img/step_3.svg', descr: 'Сформируйте в Интернет-Банке платежное поручение и направьте в адрес Банка подтверждающие документы' },
+      { icon: 'img/step_4.svg', descr: 'Сотрудник Банка акцептует операцию после проверки подтверждающих документов' },
+    ]
+
+block content
+  main
+    +banner()
+      +banner__item('--builder-acc')
+        +banner__wrapper('img/banner_builder_acc.jpg')
+          +banner__h1('Специальный счет застройщика')
+    .page-content
+      +section('--mt0')
+        .inner
+          +about-programm('img/about_programm.png',
+                          'Азиатско – Тихоокеанский Банк осуществляет открытие расчетных счетов для субъектов долевого строительства и контроль целевого расходования денежных средств по расчетным счетам в области долевого строительства в соответствии с требованиями Федерального закона от 30.12.2004 года №214-ФЗ «Об участии в долевом строительстве многоквартирных домов и иных объектов недвижимости и о внесении изменений в некоторые законодательные акты Российской Федерации».',
+                          '--builder-acc')
+
+      +section
+        .inner
+          +section-head().text-center
+            +ui-h2('Преимущества обслуживания в АТБ', 'section-head')
+          +benefits(benefitsItems, '--ai-start')
+
+      +section('--bg-grey')
+        .inner
+          +section-head.text-center
+            +ui-h2('Как это работает', 'section-head')
+          +steps(stepsItems, '--items4')
+
+      +section
+        .inner
+          +section-head().text-center
+            +ui-h2('Сколько это стоит?', 'section-head')
+          +ui-table(tableItems1)
+          +section-footnote('* Тариф зависит от региона обслуживания')
+
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Оставить заявку', 'section-head')
+
+      +section
+        .inner
+          +accordion
+            +accordion-item('Документы и тарифы')
+              +documents

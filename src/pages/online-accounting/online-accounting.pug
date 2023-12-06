@@ -1,0 +1,74 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'online-accounting'
+    const pageTitle ='Онлайн-бухгалтерия для ИП на УСН'
+
+    const featuresItems = [
+      {
+        icon: 'img/feature_1.svg',
+        title: 'Выставлять счета, акты, накладные и&nbsp;УПД в&nbsp;удобном интерфейсе',
+      },
+      {
+        icon: 'img/feature_2.svg',
+        title: 'Указывать, какие платежи и&nbsp;суммы поступлений учитывать при расчете налога',
+      },
+      {
+        icon: 'img/feature_3.svg',
+        title: 'Отслеживать задолженность перед государством',
+      },
+      {
+        icon: 'img/feature_4.svg',
+        title: 'Формировать и&nbsp;отправлять отчёты в&nbsp;налоговую и&nbsp;фонды',
+      },
+      {
+        icon: 'img/feature_5.svg',
+        title: 'Задать любой вопрос бухгалтеру или юристу и&nbsp;получить консультацию',
+      },
+    ]
+
+    const smallBannerData = {
+      title: 'Зарегистрироваться в&nbsp;сервисе <br> и&nbsp;сделать расчет',
+      btn: 'подробнее',
+      img: 'img/smallBanner.png'
+    }
+
+block content
+  main
+    +banner
+      +banner__item('--online-accounting')
+        +banner__wrapper('img/banner_online-accounting.jpg')
+          +banner__h1(' Онлайн-бухгалтерия для ИП на УСН')
+          +banner__foot
+            +ui-button('Произвести расчет', 'banner')(href='#')
+    .page-content
+      +section('--mt0')
+        .inner
+          +section-box
+            +online-accounting-questions
+          +section-box
+            +section-head
+              +ui-h3('Как это работает?', 'section-head')
+            +online-accounting-steps
+      +section('--bg-grey')
+        .inner
+          +section-head.text-center
+            +ui-h2('Функционал и преимущества', 'section-head')
+          +features(featuresItems, '--5items')
+      +section
+        .inner
+          +small-banner(smallBannerData, '--online-accounting')
+      +section
+        .inner
+          +accordion
+            +accordion-item('Документы')
+              +documents

@@ -1,0 +1,22 @@
+mixin blog-others(mods)
+  -
+    const baseName = 'blog-others'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .blog-others(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        -for (blogItems = 0; blogItems < 3; blogItems++)
+          .swiper-slide
+            +blog-item('1', '--white')
+          .swiper-slide
+            +blog-item('1', '--short-img')
+          .swiper-slide
+            +blog-item('2')

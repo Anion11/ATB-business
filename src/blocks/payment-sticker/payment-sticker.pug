@@ -1,0 +1,19 @@
+mixin payment-sticker(mods)
+  -
+    const baseName = 'payment-sticker'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .payment-sticker(class=allMods)&attributes(attributes)
+    .payment-sticker__content
+      +ui-h3('Платежный стикер <span class="text-nowrap">к бизнес-карте</span> Мир', 'payment-sticker, --xl')
+      +ui-h5('Платите в&nbsp;одно касание –&nbsp;пользуйтесь, как&nbsp;обычной картой и&nbsp;получайте кэшбэк&nbsp;1%', 'payment-sticker, --light')
+      +ui-button('оставить заявку', 'payment-sticker')(href='#')
+    .payment-sticker__img: img(src='img/payment-sticker.png' alt='')
+    block

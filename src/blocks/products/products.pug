@@ -1,0 +1,41 @@
+mixin products(productsData, mods)
+  -
+    const baseName = 'products'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .products(class=allMods)&attributes(attributes)
+    each item in productsData
+      .products__item
+        if item.label
+          .products__label !{item.label}
+        .products__img
+          img(src=item.img, alt)
+        .products__content
+          .products__head
+            .products__title !{item.title}
+            if item.p2
+              +ui-p2(item.p2, 'products')
+                if item.p2Tooltip
+                  +ui-tooltip(item.p2Tooltip)
+          .products__features
+            each feature in item.features
+              .products__feature
+                .products__name !{feature.name}
+                .products__val !{feature.txt}
+                  if feature.txtTooltip
+                    +ui-tooltip(feature.txtTooltip)
+                if feature.descr
+                  .products__descr !{feature.descr}
+          .products__btns
+            if item.btn
+              +ui-button(item.btn.txt, 'products, --empty')(href=item.btn.href)
+            if item.link
+              +ui-button(item.link.txt, 'products, --link-next')(class=(item.link.class ? item.link.class : '') href=item.link.href)
+    block

@@ -1,0 +1,22 @@
+mixin blog-aside(mods)
+  -
+    const baseName = 'blog-aside'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .blog-aside(class=allMods)&attributes(attributes)
+    .blog-aside__title Оглавление
+    ul.blog-aside__nav
+      li.blog-aside__item
+        a(href='#nav1') Первый заголовок H2
+      li.blog-aside__item
+        a(href='#nav2') Второй заголовок H2
+      li.blog-aside__item
+        a(href='#nav3') Третий заголовок H2
+    block

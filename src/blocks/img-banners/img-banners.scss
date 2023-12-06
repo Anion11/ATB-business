@@ -1,0 +1,20 @@
+.img-banners {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  @include media-tablet {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  &__item {
+    display: block;
+    box-shadow: $bigShadow;
+    border-radius: 8px;
+    overflow: hidden;
+    @include media-tablet {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+}
+

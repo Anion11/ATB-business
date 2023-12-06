@@ -1,0 +1,95 @@
+.popup {
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    @include media-laptop {
+      max-width: 700px;
+    }
+    @include media-tablet {
+      width: 100%;
+      max-width: 95vw;
+      padding: 30px;
+    }
+    &--mw-s {
+      max-width: 960px;
+      @include media-laptop {
+        max-width: 700px;
+      }
+      @include media-tablet {
+        max-width: 95vw;
+      }
+    }
+    &--autowidth {
+      width: auto;
+      @include media-tablet {
+        width: 100%;
+      }
+    }
+    &--mob-full {
+      @include media-tablet {
+        min-height: 100vh;
+        max-width: 100%;
+        padding: 25px 10px 30px;
+        flex-shrink: 0;
+        border-radius: 0;
+      }
+    }
+    &--mob-ph-s {
+      @include media-tablet {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    }
+  }
+  *:focus {
+    outline: none !important;
+  }
+  .fancybox {
+    &__slide {
+      padding: 0;
+    }
+    &__backdrop {
+      background: rgb(0 0 0 / 0.2);
+      opacity: 1;
+    }
+  }
+  .carousel__button.is-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.7856 4.28571L15.7147 5.21536L5.21519 15.7143L4.28613 14.7853L14.7856 4.28571Z' fill='%23373A36'/%3E%3Cpath d='M5.21519 4.28571L15.7147 14.7846L14.7856 15.7143L4.28613 5.21536L5.21519 4.28571Z' fill='%23373A36'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    svg {
+      display: none;
+    }
+  }
+}
+.bvi-body {
+  .fancybox {
+    &__container {
+      top: var(--bvi-panel-height);
+    }
+  }
+  .popup {
+    &__wrapper {
+      width: 100%;
+      max-width: 1220px;
+      border: 1px solid;
+      .carousel__button.is-close {
+        background-image: none;
+        svg {
+          display: block;
+        }
+      }
+    }
+  }
+}

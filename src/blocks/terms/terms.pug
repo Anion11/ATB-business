@@ -1,0 +1,36 @@
+mixin terms(termsItems, mods)
+  -
+    const baseName = 'terms'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .terms(class=allMods)&attributes(attributes)
+    each item in termsItems
+      .terms__tr(class = item.trMods)
+        .terms__td !{item.name}
+        .terms__td
+          if item.descr
+            | !{item.descr}
+            if item.descrNowrap
+              =' '
+              span.text-nowrap !{item.descrNowrap}
+                if item.descrTooltip
+                  +ui-tooltip(item.descrTooltip)
+          if item.list
+            +ui-ul(item.list)
+          if item.sections
+            each itemSection in item.sections
+              .terms__section
+                if itemSection.title
+                  .terms__section-title !{itemSection.title}
+                if itemSection.descr
+                  .terms__section-descr !{itemSection.descr}
+          if item.footnote
+            .terms__fn !{item.footnote}
+    block

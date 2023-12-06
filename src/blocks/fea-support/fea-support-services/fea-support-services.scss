@@ -1,0 +1,132 @@
+.fea-support-services {
+  .swiper-wrapper {
+    box-sizing: border-box;
+  }
+  &__container {
+    position: relative;
+    @include media-custom(1400px) {
+      padding: 0 60px;
+    }
+    @include media-tablet {
+      padding: 0;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: auto;
+    padding: 30px 30px 35px;
+    background: #eef0f5;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    @include media-tablet {
+      width: 310px;
+      padding: 20px 20px 25px;
+    }
+    &.swiper-slide-visible {
+      opacity: 1;
+    }
+  }
+  &__icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 15px;
+    @include media-tablet {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 10px;
+    }
+  }
+  &__title {
+    margin-bottom: 10px;
+    font: 700 20px/1.3 $font;
+    @include media-tablet {
+      font-size: 18px;
+    }
+  }
+  &__main {
+    margin-bottom: 30px;
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__descr {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__ui {
+    &-swiper {
+      &-pagination {
+        margin-top: 20px;
+      }
+      &-button {
+        &.ui-swiper-button {
+          @include media-tablet {
+            display: none;
+          }
+          &--next {
+            @include media-custom(1400px) {
+              right: 0;
+            }
+          }
+          &--prev {
+            @include media-custom(1400px) {
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__bot {
+    margin-top: auto;
+  }
+  &__price {
+    display: flex;
+    gap: 12px;
+    font: 700 28px/1.29 $font;
+    @include media-laptop {
+      font-size: 24px;
+    }
+    @include media-tablet {
+      gap: 10px;
+      font-size: 22px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+    &-old {
+      font-weight: 400;
+      text-decoration: line-through;
+      color: $grey60;
+    }
+    &-new {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      color: $orange;
+    }
+    &-descr {
+      font-size: 16px;
+      @include media-tablet {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.bvi-body {
+  .fea-support-services {
+    &__item {
+      padding: 10px;
+    }
+    &__price {
+      flex-wrap: wrap;
+      &-new {
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

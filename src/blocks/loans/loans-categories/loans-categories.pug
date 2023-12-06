@@ -1,0 +1,23 @@
+mixin loans-categories(loansCategories, mods)
+  -
+    const baseName = 'loans-categories'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .loans-categories(class=allMods)&attributes(attributes)
+    each item in loansCategories
+      .loans-categories__item
+        .loans-categories__content
+          +ui-h4(item.h4, 'loans-categories, --bold')
+          .loans-categories__descr !{item.descr}
+          .loans-all__btns
+            +ui-button('подробнее', '--link-next').text-orange(href='#')
+        .loans-categories__img
+          img(src=`img/loans-categories-${item.img}.png` alt='')
+    block

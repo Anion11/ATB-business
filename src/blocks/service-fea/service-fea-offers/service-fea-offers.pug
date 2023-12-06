@@ -1,0 +1,54 @@
+mixin service-fea-offers(mods)
+  -
+    const baseName = 'service-fea-offers'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .service-fea-offers(class=allMods)&attributes(attributes)
+    block
+
+mixin service-fea-offers__col(mods)
+  -
+    const baseName = 'service-fea-offers__col'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .service-fea-offers__col(class=allMods)&attributes(attributes)
+    block
+
+mixin service-fea-offers__pic(mods)
+  -
+    const baseName = 'service-fea-offers__pic'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .service-fea-offers__pic(class=allMods)&attributes(attributes)
+    .service-fea-offers__pic-static
+      img(src='img/ved-offers-pic-static.png', alt='')
+    .service-fea-offers__pic-anim.service-fea-offers__pic-anim--coin-1
+      img(src='img/coin-1.png', alt='')
+    .service-fea-offers__pic-anim.service-fea-offers__pic-anim--coin-2
+      img(src='img/coin-2.png', alt='')
+    .service-fea-offers__pic-anim.service-fea-offers__pic-anim--currency
+      img(src='img/currency.png', alt='')
+    .service-fea-offers__pic-anim.service-fea-offers__pic-anim--arrows
+      img(src='img/arrows.png', alt='')
+    block

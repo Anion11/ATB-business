@@ -1,0 +1,24 @@
+mixin blog-quote(mods)
+  -
+    const baseName = 'blog-quote'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .blog-quote(class=allMods)&attributes(attributes)
+    .blog-quote__text Равным образом постоянный количественный рост и сфера нашей активности позволяет оценить значение направлений прогрессивного развития. Задача организации, в особенности же дальнейшее развитие различных форм деятельности способствует подготовки и реализации направлений прогрессивного развития.
+    .blog-quote__author
+      .blog-quote__avatar
+        if isAMP === true
+          amp-img(src='img/quotes_author.png' alt='' layout='responsive' width='100' height='100')
+        else
+          img(src='img/quotes_author.png' alt='')
+      .blog-quote__info
+        .blog-quote__name Жарикова Н. В.
+        .blog-quote__post региональный директор АТБ
+    block

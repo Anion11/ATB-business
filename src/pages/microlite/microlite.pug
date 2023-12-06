@@ -1,0 +1,111 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  //- script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'microlite'
+  -const pageTitle ='Кредит собственнику бизнеса без залога и поручителей «Микро-лайт» в АТБ'
+
+  -
+    const featuresItems = [
+      { icon: 'img/feature_1.svg', title: 'Выдача кредита собственнику бизнеса' },
+      { icon: 'img/feature_2.svg', title: 'Решение от 2-х дней <span class="text-nowrap">по 3-м</span> документам' },
+      { icon: 'img/feature_3.svg', title: 'Возможность досрочного погашения' },
+      { icon: 'img/feature_4.svg', title: 'Скидки при предоставлении поручительства или при положительной кредитной истории' },
+    ]
+
+  -
+    const loansList =[
+      {
+        head: 'Микро-лайт',
+        headClass: 'text-orange',
+        features: [
+          { top: '<span class="loans-list__feature-xs">до </span>10<span class="loans-list__feature-s"> млн ₽</span>', bot: 'На любые цели' },
+          { top: '<span class="loans-list__feature-xs">до </span>5<span class="loans-list__feature-s"> млн ₽</span>', bot: 'Без залога' },
+          { top: '<span class="loans-list__feature-xs">до </span>5<span class="loans-list__feature-s"> лет</span>', bot: 'срок кредита' },
+        ]
+      },
+      {
+        head: 'Бизнес ипотека',
+        headClass: 'text-green',
+        features: [
+          { top: '<span class="loans-list__feature-xs">до </span>20<span class="loans-list__feature-s"> млн ₽</span>', bot: 'любые цели под залог недвижимости' },
+          { top: '<span class="loans-list__feature-xs">до </span>10<span class="loans-list__feature-s"> лет</span>', bot: 'срок кредита' },
+          { top: '<span class="loans-list__feature-xs">от </span>10<span class="loans-list__feature-s">%</span>', bot: 'Первоначальный взнос' },
+        ]
+      },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--microlite')
+        +banner__wrapper('img/banner_microlite.png', true)
+          +banner__h1('Кредиты для собственников бизнеса', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('до ')
+            span.banner__subtitle-accent 20
+            | млн ₽
+          +banner__foot('--laptop-flex1')
+            +ui-button('Оставить Заявку', 'banner, --m-size-l')(href='#form-section')
+            +banner__slogan('Легкие условия для&nbsp;вашего бизнеса')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +loans-list(loansList)
+      +section
+        .inner
+          +features(featuresItems)
+      +section
+        .inner
+          +section-head()
+            +ui-h2('Рассчитайте платеж по кредиту', 'section-head')
+          +calc-loan('microlite')
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Заявка на получение кредита', 'section-head')
+      +section
+        .inner
+          +section-head().text-center
+            +ui-h2('Блок служебной информации', 'section-head')
+          +accordion
+            +accordion-item('Полезная информация')
+              +documents
+            +accordion-item('Документы')
+              +documents
+            +accordion-item('Условия предоставления кредита')
+              +documents
+            +accordion-item('Архив')
+              +documents
+          +section-footnote('675004, Россия, Амурская область, г. Благовещенск, ул. Амурская, д. 225')
+
+  +seo('Преимущества кредита для владельцев бизнеса в АТБ')
+    p Азиатско-Тихоокеанский банк предлагает владельцам бизнеса оформить кредиты на гибких условиях. Предприниматели могут использовать заемные деньги для следующих нужд:
+    p
+    ul
+      li Осуществление любых целей собственника бизнеса.
+      li Приобретение имущества для личных целей или целей бизнеса.
+      li Покрытие текущих расходов и пополнение оборотных средств.
+      li Развитие нового дела и модернизация производства.
+    p
+    p Подтверждать целевое использование денежных стредств не требуется. К числу других преимуществ работы с банком относятся:
+    p
+    ul
+      li Возможность получения заемных средств до 5 млн рублей без залога и поручителей.
+      li Опция досрочного погашения кредита.
+      li Ссуда до 20 млн рублей под залог недвижимости.
+      li Одобрение за 2 дня по минимальному пакету документов.
+      li Погашение удобным способом: в интернет-банке, мобильном приложении или в банковском отделении.
+    p
+    p Для получения кредита в Азиатско-Тихоокеанском банке собственнику бизнеса необходимо определиться с целью кредитования, суммой, сроком и выбрать лучшее предложение из представленных.
+      =' '
+      a(href='#form-section') Заполните онлайн-заявку
+      |  на сайте АТБ и дождитесь обратного звонка менеджера.

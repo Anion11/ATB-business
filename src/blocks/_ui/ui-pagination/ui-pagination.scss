@@ -1,0 +1,72 @@
+.ui-pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  @include media-tablet {
+    margin-top: 45px;
+  }
+  &__link {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 30px;
+    font: 14px/30px $font;
+    text-align: center;
+    color: $black;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    &:hover {
+      color: $orange;
+      text-decoration: none;
+    }
+    &--prev,
+    &--next {
+      display: flex;
+      align-items: center;
+      width: auto;
+      height: auto;
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+    &--prev {
+      margin-right: 10px;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    &--next {
+      margin-left: 10px;
+    }
+    &--disabled {
+      display: none;
+    }
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &--active {
+      .ui-pagination__link {
+        color: $orange;
+        border-color: $orange;
+        cursor: default;
+      }
+    }
+  }
+}
+.bvi-body {
+  .ui-pagination {
+    &__link {
+      width: auto;
+      height: auto;
+      line-height: 2;
+    }
+  }
+}

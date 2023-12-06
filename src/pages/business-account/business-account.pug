@@ -1,0 +1,429 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -
+    const fileName = 'business-account'
+    const pageTitle ='Счет для бизнеса бесплатно и навсегда'
+
+    const bannerSapid = [
+      {
+        img: 'img/star.gif',
+        txt: 'Акции',
+         content: [
+          {
+            img: 'img/icon_rko.svg',
+            txt: 'Акция «Легкий старт»',
+            link: '/pages/refreshing-package/',
+          },
+        ]
+      }
+    ]
+
+    const featuresItems = [
+      { icon: 'img/feature_1.svg', title: 'Бесплатные платежи внутри банка 24/7' },
+      { icon: 'img/feature_2.svg', title: 'Внешние платежи по ДБО 19/5' },
+      { icon: 'img/feature_3.svg', title: 'Бесплатная проверка контрагентов' },
+      { icon: 'img/feature_4.svg', title: 'Удобная карта для бизнеса в подарок' },
+    ]
+
+    const tabsHeadItems = [
+      { text: 'Документы' },
+      { text: 'Бизнес-карта' },
+      { text: 'Интернет и Мобильный Банк' },
+      { text: 'Эквайринг' },
+      { text: 'Онлайн-касса' },
+      { text: 'Полезные сервисы' },
+    ]
+
+    const bidTabs = [
+      {
+        title: 'Карта для бизнеса — <br> распоряжайтесь деньгами компании 24/7',
+        list: [
+          'Кэшбэк на бизнес-расходы 1%',
+          'Круглосуточный доступ к деньгам на счете',
+          'Платите без комиссии',
+          'Снимайте наличные',
+          'Пользуйтесь специальными предложениями',
+        ],
+        img: 'img/tabs-card.png',
+      },
+      {
+        title: 'Удобное дистанционное обслуживание для вашего бизнеса',
+        list: [
+          'Все компании в одном окне',
+          'Отправка СМС или e-mail контрагенту по факту отправки платежа',
+          'Бесплатная проверка контрагентов',
+          'Валютный контроль',
+          'Депозиты онлайн',
+        ],
+        img: 'img/tabs-apple.png',
+      },
+      {
+        title: 'Оплата товаров и услуг через банковские карты или мобильные устройства',
+        list: [
+          'Быстрое зачисление денег',
+          'Клиентская поддержка 24/7',
+          'Обучение персонала',
+          'Мониторинг операций для снижения финансовых потерь',
+        ],
+        img: 'img/tabs_terminal.png',
+      },
+      {
+        title: 'Всё что нужно для работы по 54-ФЗ',
+        list: [
+          'Компактность, простота и удобство работы',
+          'Более 380 сервисов для бизнеса',
+          'Поддержка в режиме 24/7',
+          'Доставка по всей России',
+        ],
+        img: 'img/tabs-kassa.png',
+      },
+    ]
+
+    const stepsItems = [
+      { icon: 'img/feature-step_1.svg', title: 'Оставьте заявку на&nbsp;сайте банка' },
+      { icon: 'img/feature-step_2.svg', title: 'Получите номер счёта и&nbsp;реквизиты' },
+      { icon: 'img/feature-step_3.svg', title: 'Подпишите документы на обслуживание расчетного счета (РКО)' },
+    ]
+
+    const popupTariffsData = {
+      heading: [
+        {
+          title: 'Счет',
+          items: [
+            'Открытие и ведение первого расчетного счета в валюте РФ',
+            'Оформление карточки с образцами подписей,  изготовление (заверение) копий учредительных документов',
+            'Подключение к системе ДБО',
+            'Присвоение цифрового ключа',
+            'СМС-инфо по счету'
+          ]
+        },
+        {
+          title: 'Платежи',
+          items: [
+            'Платежи контрагентам межбанк, в мес.',
+            'Переводы в пользу ФЛ внутрибанк, в мес.',
+            'Переводы в пользу ФЛ межбанк, в мес.'
+          ]
+        },
+        {
+          title: 'Наличные',
+          items: [
+            'Прием наличных, в мес.',
+            'Выдача наличных в кассе и по карте, в мес.'
+
+          ]
+        },
+        {
+          title: 'Карта',
+          items: [
+            'Выпуск карты категории VISA BUSINESS GOLD',
+            'Годовое обслуживание бизнес-карты'
+          ]
+        }
+      ],
+      conditions: [
+        {
+          title: 'Сочный ноль',
+          price: '0 ₽/мес',
+          mod: 'green',
+          infoList: [
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '3 платежа',
+            },
+            {
+              top: '200 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '0,5%',
+            },
+            {
+              top: 'до 600 тыс. ₽ -  1,9%',
+            },
+            {
+              top: '1 карта',
+            },
+            {
+              top: '0 ₽',
+              bottom: 'первый год'
+            }
+          ],
+          btn: {
+            text: 'Подключить',
+            link: '#form-section'
+          }
+        },
+        {
+          title: 'Освежающий',
+          price: '450 ₽/мес',
+          tooltip: 'при оплате авансом 12 мес.',
+          mod: 'yellow',
+          infoList: [
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '5 платежей',
+            },
+            {
+              top: '150 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: '50 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: '50 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: 'до 600 тыс. ₽ -  1,5%',
+            },
+            {
+              top: '1 карта',
+            },
+            {
+              top: '0 ₽',
+              bottom: 'первый год'
+            }
+          ],
+          btn: {
+            text: 'Подключить',
+            link: '#form-section'
+          }
+        },
+        {
+          title: 'Бодрящий',
+          subtitle: 'Абсолютный хит',
+          price: '1 080 ₽/мес',
+          tooltip: 'при оплате авансом 12 мес.',
+          mod: 'red',
+          infoList: [
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '15 платежей',
+            },
+            {
+              top: '150 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: '150 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: '100 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: 'до 600 тыс. ₽ -  1,4%',
+            },
+            {
+              top: '1 карта',
+            },
+            {
+              top: '0 ₽',
+              bottom: 'первый год'
+            }
+          ],
+          btn: {
+            text: 'Подключить',
+            link: '#form-section'
+          }
+        },
+        {
+          title: 'Полезный',
+          price: '2 125 ₽/мес ' ,
+          tooltip: 'при оплате авансом 12 мес.',
+          mod: 'orange',
+          infoList: [
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '0 ₽',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '-',
+            },
+            {
+              top: '50 платежей',
+            },
+            {
+              top: '150 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: '150 тыс. ₽',
+              bottom: 'бесплатно'
+            },
+            {
+              top: 'без ограничений',
+              bottom: 'бесплатно'
+            },
+            {
+              top: 'до 600 тыс. ₽ -  1,3%',
+              bottom: ''
+            },
+            {
+              top: '1 карта',
+            },
+            {
+              top: '0 ₽',
+              bottom: 'первый год'
+            }
+          ],
+          btn: {
+            text: 'Подключить',
+            link: '#form-section'
+          }
+        }
+      ]
+    }
+
+    const smallBannerPackagesFea ={
+      title: 'Пакеты услуг для ВЭД',
+      btn: 'Подключить',
+      link: 'подробнее',
+      img: 'img/business-acc-pack.jpg',
+    }
+
+block content
+  main
+    .banner.banner--m-vertically
+      .swiper
+        .swiper-wrapper
+          //- не удалять banner_account_business.png, вернут после нг
+          +banner__item('--v-inner-pt-xxl, --account-business')
+            +banner__wrapper('img/banner_account_business_ny.png', true)
+              +banner__h1('Счет для&nbsp;бизнеса', '--mob-size-l, --mob-mb-l')
+              +banner__subtitle('от ')
+                span.banner__subtitle-accent 0
+                |  ₽/мес.
+              +banner__foot('--laptop-flex1')
+                +ui-button('Открыть счет', 'banner, --m-size-l')(href='#')
+      +banner-sapid(bannerSapid)
+    .page-content
+      +section('--mt0')
+        .inner
+          +features(featuresItems)
+      +section('--bg-grey, --float-btn')
+        .inner
+          +section-head
+            +ui-h2('Пакеты РКО для любого бизнеса', 'section-head')
+          +business-acc-rko
+          +fea-float-btn('Подробнее о тарифах', 'img/fruit_btn.png').js-popup-open(href='#rko-tarifs')
+      +section
+        .inner
+          +small-banner(smallBannerPackagesFea, '--packages-fea')
+      +section
+        +tabs-head(tabsHeadItems)
+        +tabs-main
+          +tabs-main__item(true)
+            +section('--mt0')
+              .inner
+                +accordion
+                  +accordion-item('Документы и тарифы')
+                    +documents
+                  +accordion-item('Архив')
+                    +documents
+          each item in bidTabs
+            +tabs-main__item
+              +section('--mt0, --mob-ov-hidden')
+                .inner
+                  +business-acc-offer(item)
+          +tabs-main__item
+            +section('--mt0')
+              .inner
+                +business-acc-serv
+      +section('--bg-grey')
+        .inner
+          +section-head.text-center
+            +ui-h2('Как открыть расчетный счет: три простых шага', 'section-head')
+          +steps(stepsItems)
+      +section
+        .inner
+          +business-acc-tips
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оставить заявку', 'section-head')
+  +popup__wrapper('--mob-full')#rko-tarifs
+    +p-tariffs(popupTariffsData)
+  +seo('Особенности и преимущества расчетного счета в банке АТБ')
+    p Открыть расчетный счет в Азиатско-Тихоокеанском банке может официально зарегистрированное юридическое лицо или ИП. АТБ предлагает клиентам на выбор несколько видов выгодных пакетов с разными тарифами, в том числе и бесплатным. Стоимость обслуживания зависит от предусмотренных опций услуги. Оформляя расчетный счет в АТБ, организация получает следующие выгоды:
+    ul
+      li Бизнес-карта с круглосуточным доступом к денежным средствам компании.
+      li Интернет- и мобильный банк.
+      li Онлайн-касса с возможностью получения поддержки 24/7.
+      li Эквайринг на выгодных условиях (оплата товаров и услуг через банковские карты и мобильные устройства).
+      li Обмен электронными данными с банком и контрагентами.
+      li Полезные сервисы для бизнеса.
+    p Открыть расчетный счет в АТБ индивидуальному предпринимателю или малому бизнесу легко и быстро. Для этого нужно совершить четыре шага в следующем порядке:
+    ul
+      li Выбрать тариф на РКО.
+      li Подать заявление с заполненной анкетой онлайн или в отделении банка.
+      li Предоставить необходимый перечень документов.
+      li Заключить договор на РКО и совершать банковские операции.
+    p Подключите расчетно-кассовое обслуживание от АТБ и управляйте бизнесом дистанционно, экономя время. Осуществление ведения расчетных счетов организации возьмет на себя банк.

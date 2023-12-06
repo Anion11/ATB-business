@@ -1,0 +1,52 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=`${fileName}.js`)
+
+block variables
+  -
+    const fileName = 'fea-support'
+    const pageTitle ='Комплексная поддержка ВЭД'
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--v-inner-pt-xxl, --fea-support')
+        +banner__wrapper('img/banner_fea-support.png', true)
+          +banner__h1('Эффективные решения для&nbsp;участников ВЭД', '--mob-size-l, --mob-mb-l')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Зарегистрироваться', 'banner, --m-size-l')(href='#form-section')
+    .page-content
+      +section('--mt0, --ov-hidden')
+        .inner
+          +fea-support-services
+
+      +section
+        .inner
+          +attis
+
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Оставить заявку', 'section-head')
+
+    +popup__wrapper('--mw-s, --mob-ph-s')#attis-terms
+      +ui-h3('Особые условия предоставления сервисов АТТИС корпоративным клиентам АТБ:')
+      br
+      +ui-p1('', '--light')
+        +ui-ul('')
+          li Начисление каждому корпоративному клиенту АТБ 3000 приветственных баллов для оплаты услуг оператора сервисов АТТИС.
+          li Предоставление корпоративным клиентам АТБ услуг сервиса АТТИС по&nbsp;сниженным тарифам, относительно стандартных тарифов оператора сервисов АТТИС.
+        p Порядок предоставления особых условий корпоративным клиентам АТБ, доводится до&nbsp;пользователей сервисов оператором сервисов АТТИС
+          =' '
+          a.text-orange(href='https://www.attis-trade.ru/' target='_blank') на&nbsp;своем официальном сайте
+          | .
+        +ui-ul('')
+          li Срок действия приветственных баллов составляет 3&nbsp;месяца с&nbsp;даты начисления, в&nbsp;случае их не&nbsp;использования клиентом в&nbsp;указанный период, приветственные баллы аннулируются.
+          li При утрате пользователем статуса &laquo;Корпоративный клиент банка&raquo;, к&nbsp;нему применяются стандартные тарифы сервисов АТТИС.

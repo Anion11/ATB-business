@@ -1,0 +1,9 @@
+.ui-h1 {
+  font: 700 48px/1.2 $font;
+  @include media-laptop {
+    font-size: 36px;
+  }
+  @include media-tablet {
+    font-size: 26px;
+  }
+}

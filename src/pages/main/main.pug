@@ -1,0 +1,230 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+  script(src=fileName + '.js')
+
+block variables
+  -const fileName = 'main'
+  -const pageTitle ='Main'
+
+  -
+    const servicesItems =[
+      { icon: 'img/icon_credit_card.svg', title: 'Зарплатный проект', descr: 'Бесплатное зачисление заработной платы и&nbsp;других выплат (командировочных, премий) на&nbsp;карты сотрудников.' },
+      { icon: 'img/icon_pos.svg', title: 'Эквайринг', descr: 'Оплата товаров и&nbsp;услуг через банковские карты или мобильные устройства.' },
+      { icon: 'img/icon_ved.svg', title: 'Обслуживание ВЭД', descr: 'Всё для&nbsp;работы с&nbsp;иностранными партнерами' },
+      { icon: 'img/ic_safe_box.svg', title: 'Операции с драгоценными металлами', descr: 'Надёжный способ сохранить свои денежные средства от&nbsp;инфляции.' },
+    ]
+
+    const usefulGoods =[
+      {
+        title: 'Акция «Бизнес на&nbsp;Восток»',
+        btn: 'Получить кредит',
+        img: 'usf7.png',
+        imgMob: 'usf7_mob.png',
+        list: [
+          { title: 'Кредит до 20 млн. ₽ ', descr: '(эквивалент в ¥)' },
+          { title: 'До 36 месяцев' },
+          { title: 'Кредит до 10 млн. ₽ ', descr: '(в ¥) без залога' },
+        ]
+      },
+      {
+        title: 'Счет для бизнеса',
+        btn: 'Открыть счет',
+        img: 'usf1.jpg',
+        imgMob: 'usf1_mob.jpg',
+        list: [
+          { title: 'Бесплатные внутрибанковские платежи 24/7' },
+          { title: 'Внешние платежи 19/5' },
+          { title: 'Прозрачные тарифы для&nbsp;бизнеса' },
+        ]
+      },
+      {
+        title: 'Корпоративная карта',
+        btn: 'Открыть карту',
+        img: 'usf3.png',
+        imgMob: 'usf3_mob.jpg',
+        list: [
+          { title: 'Можно снимать до&nbsp;500&nbsp;000&nbsp;₽  в&nbsp;сутки' },
+          { title: 'Карта бесплатно  при&nbsp;открытии счета' },
+          { title: 'Кэшбек до 1% до 15&nbsp;000&nbsp;₽ в&nbsp;месяц' },
+        ]
+      },
+      {
+        title: 'Кредиты для бизнеса',
+        btn: 'Получить кредит',
+        img: 'usf2.jpg',
+        imgMob: 'usf2_mob.jpg',
+        list: [
+          { title: 'От 19,1%' },
+          { title: 'На любые цели' },
+          { title: 'Без залога' },
+        ]
+      },
+      {
+        title: 'Овердрафт для бизнеса',
+        btn: 'Подробнее',
+        img: 'overd.png',
+        imgMob: 'overd_mob.png',
+        list: [
+          { title: 'От 17,3% годовых' },
+          { title: 'Срок кредитования<br> 12 месяцев' },
+          { title: 'Специальные условия<br> до 1 млн. рублей' },
+        ]
+      },
+      {
+        title: 'Депозиты',
+        btn: 'Подробнее',
+        img: 'usf4.png',
+        imgMob: 'usf4_mob.jpg',
+        list: [
+          { title: 'От 1 дня' },
+          { title: 'Минимальная сумма не&nbsp;ограничена' },
+          { title: 'Возможность пополнения и&nbsp;частичного изъятия' },
+        ]
+      },
+      {
+        title: 'ВЭД',
+        btn: 'Подробнее',
+        img: 'usf5.png',
+        imgMob: 'usf5_mob.jpg',
+        list: [
+          { title: 'Все для ВЭД с Китаем и другими странами Азии' },
+          { title: 'Лучшие котировки валют онлайн' },
+          { title: 'Персональный эксперт ВЭД бесплатно' },
+        ]
+      },
+      {
+        title: 'Льготные программы кредитования',
+        btn: 'Подробнее',
+        img: 'usf6.jpg',
+        imgMob: 'usf6_mob.jpg',
+        list: [
+          { title: 'Ставка от 7,7%' },
+          { title: 'Оборотные и инвестиционные цели' },
+          { title: 'Рефинансирование инвестиционных кредитов' },
+        ]
+      },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      //- +banner__item('--fea')
+        +banner__wrapper('img/banner_fea.jpg')
+          +banner__h1('ВЭД: <br>Курс на Восток!', '', false)
+          +banner__descr('Все услуги для легкого ведения ВЭД', '--fw400').text-orange
+          +banner__foot
+            +ui-button('Подробнее', 'banner')(href='#')
+      // не удалять banner_account_business.png, вернут после нг
+      +banner__item('--v-inner-pt-xxl, --account-business')
+        +banner__wrapper('img/banner_account_business_ny.png', true)
+          +banner__h1('Счет для&nbsp;бизнеса', '--mob-size-l, --mob-mb-l', false)
+          +banner__subtitle('от ')
+            span.banner__subtitle-accent 0
+            |  ₽/мес.
+          +banner__foot('--laptop-flex1')
+            +ui-button('Открыть счет', 'banner, --m-size-l')(href='#')
+      +banner__item('--loans')
+        +banner__wrapper('img/banner_loans.png', true)
+          +banner__h1('Кредиты <br class="banner__br-no-mob"> для&nbsp;бизнеса <br class="banner__br-no-mob"> на&nbsp;любые цели', '--mob-size-l, --mob-mb-l')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Подробнее', 'banner, --m-size-l')(href='#')
+      +banner__item('--express-loan')
+        +banner__wrapper('img/banner_express-loan.png', true)
+          +banner__h1('Бизнес-экспресс', '--mob-size-l, --mob-mb-l', false)
+          +banner__subtitle('Без залога за ')
+            span.banner__subtitle-accent 15
+            |  минут
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#')
+      +banner__item('--mobile-app')
+        +banner__wrapper('img/banner_mobile_app.png', true)
+          +banner__h1('Мобильное приложение АТБ Бизнес', '--mob-size-l, --mob-mb-l', false)
+          +banner__text('Онлайн управление финансами организации')
+          +banner__foot('--laptop-flex1')
+            +ui-button('Подробнее', 'banner, --m-size-l')(href='#')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +attention
+      +section('--ov-hidden')
+        .inner
+          +section-head
+            +ui-h2('Продукты банка для малого и среднего бизнеса')
+          +useful-goods(usefulGoods)
+      +section('--remote-service')
+        .inner
+          +remote-service
+      +section
+        .inner
+          +section-head
+            +ui-h2('Сервисы')
+          +services(servicesItems)
+      +section
+        .inner
+          .form-container
+            +section-head('--max-w600, --center').text-center
+              +ui-h2('Заявка на открытие счета', 'section-head')
+              +ui-p1('Введите номер телефона и&nbsp;код из&nbsp;SMS, чтобы перейти к&nbsp;открытию счёта без визита в&nbsp;банк. Уже через 5&nbsp;минут вы&nbsp;сможете получать платежи.')
+      +section('--ov-hidden')
+        .inner
+          +section-head('--with-all')
+            +ui-h2('Блог')
+            +ui-button('все статьи', '--link-next')(href='#')
+          +blog-others
+      +section
+        .inner
+          +main-info
+      +section
+        .inner
+          +to-documents
+      +section
+        .inner
+          +section-head
+            +ui-h2('Партнеры')
+          +partners
+      +section
+        .inner
+          +news
+
+  +seo('Банк для юридических лиц')
+    p АТБ предлагает банковские продукты, услуги и сервисы для малого, среднего и крупного бизнеса. Они призваны помочь юридическим лицам (ЮЛ) и ИП дать старт своему делу и обслуживать его долгие годы. В Азиатско-Тихоокеанском банке предприниматели могут:
+    ul
+      li открыть счет для ЮЛ или ИП;
+      li получить кредит;
+      li подключить эквайринг;
+      li оформить корпоративную карту;
+      li подключить зарплатный проект для работы;
+      li узнать о мерах господдержки малого и среднего бизнеса;
+      li разместить средства на депозите в банке.
+    p Большую часть услуг предприниматели могут получить онлайн. Оставьте заявку на интересующий вас проект или обратитесь к менеджеру банка за персональной консультацией. На сайте можно ознакомиться с тарифами, адресами филиалов банка и документами, необходимыми для заключения соглашения на обслуживание.
+    +seo-accordion
+      +seo-accordion-item('Выгодные дополнения для корпоративных потребителей')
+        p 1. Неформатная программа содействия в получении кредитных средств для субъектов предпринимательства предусматривает создание благоприятных условий выдачи инвестиционных кредитов, среди которых:
+        ul
+          li выгодная ставка;
+          li расширенные временные рамки погашения;
+          li уменьшение ежемесячного платежа и возможность получения дополнительного займа на условиях рефинансирования.
+        p 2. Реализация возможности проведения финансовых процедур посредством онлайн-банка для юр. лиц. Функционал этой программы разрабатывается и прописывается индивидуально под каждую компанию и может включать в себя выдачу бесплатных пластиковых карт сотрудникам фирмы-клиента, сниженную комиссионную плату за перевод заработной платы, более выгодные условия кредитования.
+        p 3. Продажа специальных продуктов корпоративным клиентам банка, в частности кредитной программы «Микро-лайт», на оптимальных условиях:
+        ul
+          li требуется минимум документов;
+          li срок погашения до семи лет с возможность досрочной выплаты;
+          li выдача ссуды в размере до 10 миллионов рублей наличными или на банковский счет.
+      +seo-accordion-item('Банк онлайн — корпоративным клиентам')
+        p Пользователи интернет-банкинга могут:
+        ul
+          li получать информацию о поступлении и передаче средств в режиме 24/7;
+          li подавать заявки на проекты и получать квалифицированную информационную поддержку без личного присутствия в отделении банка.
+        p Система онлайн-банка для юр. лиц представляет собой полезную современную концепцию использования удаленного обслуживания.
+        p Дистанционное получение услуг коммерческих банков для юридических лиц доступно при быстром и простом подключении к системе онлайн-банкинга в сети интернет — достаточно заполнить форму.
+    +seo-menu('seo')
+      a(href='#') Расчетно-кассовое обслуживание
+
+  +cookies-banner

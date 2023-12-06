@@ -1,0 +1,76 @@
+mixin fea-tariffs( mods)
+  -
+    const baseName = 'fea-tariffs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      {
+        title: 'ВЭД. Тонизирующий',
+        price: '3 000 ₽ / мес',
+        terms: [
+          {
+            top: '0 ₽',
+            bot: 'открытие и&nbsp;ведение счета в&nbsp;иностранной валюте',
+          },
+          {
+            top: '0 ₽',
+            bot: 'переводы в&nbsp;иностранной валюте до&nbsp;1&nbsp;млн. руб.',
+          },
+          {
+            top: '%',
+            bot: 'льготная комиссия за&nbsp;валютный контроль',
+          },
+        ],
+        img: 'img/ved-tariff_pineapple.png',
+        btn: {
+          text: 'Подключить',
+          link: '#form-section'
+        }
+      },
+      {
+        title: 'ВЭД. Тонизирующий+',
+        price: '6900 ₽ / мес',
+        terms: [
+          {
+            top: '0 ₽',
+            bot: 'открытие и&nbsp;ведение счета в&nbsp;иностранной валюте',
+          },
+          {
+            top: '0 ₽',
+            bot: 'переводы в&nbsp;иностранной валюте до&nbsp;3&nbsp;млн. руб.',
+          },
+          {
+            top: '0 ₽',
+            bot: 'валютный контроль до&nbsp;3&nbsp;млн. руб.',
+          },
+        ],
+        img: 'img/ved-tariff_kiwi.png',
+        btn: {
+          text: 'Подключить',
+          link: '#form-section'
+        }
+      },
+    ]
+
+  .fea-tariffs(class=allMods)&attributes(attributes)
+    each tariff in data
+      .fea-tariffs__item
+        .fea-tariffs__head
+          .fea-tariffs__title !{tariff.title}
+          .fea-tariffs__title.fea-tariffs__title--price !{tariff.price}
+        .fea-tariffs__main
+          each item in tariff.terms
+            .fea-tariffs__term
+              .fea-tariffs__top !{item.top}
+              .fea-tariffs__bot !{item.bot}
+        +ui-button(tariff.btn.text, 'service-fea-tariff')(href=tariff.btn.link)
+        .fea-tariffs__img
+          img(src=tariff.img, alt='')
+    block

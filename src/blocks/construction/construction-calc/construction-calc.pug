@@ -1,0 +1,23 @@
+mixin construction-calc(mods)
+  -
+    const baseName = 'construction-calc'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .construction-calc(class=allMods)&attributes(attributes)
+    .construction-calc__params
+      .construction-calc__line
+        +ui-range('Сумма кредита', '  ₽', '', '', 'construction-calc')(data-min='20000000' data-max='100000000')
+      .construction-calc__line
+        +ui-range('Размер средств на&nbsp;счетах эскроу', '  ₽', '', '', 'construction-calc')(data-min='0' data-max='100000000')
+    .construction-calc__result
+      .construction-calc__result-title Ставка по кредиту
+      .construction-calc__result-num 10,8%
+      .construction-calc__result-foot Процентная ставка определяется индивидуально после рассмотрения заявки. Н&nbsp;является офертой.
+    block

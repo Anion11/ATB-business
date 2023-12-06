@@ -1,0 +1,74 @@
+mixin p-tariffs(data, mods)
+  -
+    const baseName = 'p-tariffs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .p-tariffs(class=allMods)&attributes(attributes)
+    .p-tariffs__title Подробнее о тарифах
+    .p-tariffs__wrapper.p-tariffs__wrapper--desk
+      .p-tariffs__names
+        .p-tariffs__names-head Услуги в пакете
+        .p-tariffs__names-main
+          each section in data.heading
+            .p-tariffs__section
+              .p-tariffs__section-head
+                span.p-tariffs__section-name=section.title
+                span.p-tariffs__braces
+                  span.p-tariffs__braces-top
+                  span.p-tariffs__braces-bot
+              .p-tariffs__section-content
+                each item in section.items
+                  .p-tariffs__name !{item}
+        a.p-tariffs__foot(href='#') Смотреть тарифы в деталях
+      .p-tariffs__columns
+        each column in data.conditions
+          .p-tariffs__col
+            .p-tariffs__col-head(class=`p-tariffs__col-head--${column.mod}`)
+              .p-tariffs__col-title !{column.title}
+              .p-tariffs__col-price !{column.price}
+                if column.tooltip
+                  +ui-tooltip(column.tooltip)
+              if column.subtitle
+                .p-tariffs__col-subtitle !{column.subtitle}
+            .p-tariffs__col-main
+              each item in column.infoList
+                .p-tariffs__ceil !{item.top}
+                  if item.bottom
+                    .p-tariffs__ceil-desc !{item.bottom}
+            a.p-tariffs__btn.js-close-popup(href=column.btn.link) !{column.btn.text}
+    .p-tariffs__wrapper.p-tariffs__wrapper--mobile
+      each item, index in data.conditions
+        .p-tariffs__col
+          .p-tariffs__col-head(class=`p-tariffs__col-head--${item.mod}` class=index===0 ? 'p-tariffs__col-head--active' : '')
+            .p-tariffs__col-title !{item.title}
+            .p-tariffs__col-price !{item.price}
+              if item.tooltip
+                  +ui-tooltip(item.tooltip)
+            if item.subtitle
+              .p-tariffs__col-subtitle !{item.subtitle}
+          .p-tariffs__col-main
+            -let ceilIndex = 0
+            each section in data.heading
+              .p-tariffs__section
+                .p-tariffs__section-head
+                  span.p-tariffs__section-name=section.title
+                  span.p-tariffs__braces
+                    span.p-tariffs__braces-top
+                    span.p-tariffs__braces-bot
+                .p-tariffs__section-content
+                  each name in section.items
+                    .p-tariffs__line
+                      .p-tariffs__name !{name}
+                      .p-tariffs__ceil !{item.infoList[ceilIndex].top}
+                        if item.infoList[ceilIndex].bottom
+                          .p-tariffs__ceil-desc !{item.infoList[ceilIndex].bottom}
+                      -ceilIndex+=1
+            a.p-tariffs__btn.js-close-popup(href=item.btn.link) !{item.btn.text}
+    block

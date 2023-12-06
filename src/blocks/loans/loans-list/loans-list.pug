@@ -1,0 +1,23 @@
+mixin loans-list(loansList, mods)
+  -
+    const baseName = 'loans-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .loans-list(class=allMods)&attributes(attributes)
+    each item in loansList
+      .loans-list__box
+        .loans-list__head(class=item.headClass) !{item.head}
+        .loans-list__features
+          each itemFeature in item.features
+            .loans-list__feature
+              .loans-list__feature-top !{itemFeature.top}
+              .loans-list__feature-bot !{itemFeature.bot}
+        +ui-button('Подать заявку', 'loans-list')(href='#form-section')
+    block

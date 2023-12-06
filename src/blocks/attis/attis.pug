@@ -1,0 +1,22 @@
+mixin attis(mods)
+  -
+    const baseName = 'attis'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .attis(class=allMods)&attributes(attributes)
+    .attis__content
+      h4.attis__h4 Зарегистрируйтесь в&nbsp;системе АТТИС на&nbsp;специальных условиях для клиентов АТБ
+      .attis__descr И&nbsp;получите 3000 приветственных баллов для оплаты услуг АТТИС и&nbsp;специальные тарифы на&nbsp;услуги сервиса АТТИС.
+      .attis__actions
+        +ui-button('Зарегистрироваться')(href='https://www.attis-trade.ru/#/app/sign-in' target='_blank')
+        +ui-button('Об условиях', '--link-next').text-orange.js-popup-open(href='#attis-terms')
+    .attis__logo
+      img.bvi-img-bg(src='img/attis_logo.svg', alt='')
+    block

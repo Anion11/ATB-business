@@ -1,0 +1,25 @@
+.internet-bank-benefits {
+  display: flex;
+  max-width: 880px;
+  margin: 0 auto;
+  @include media-tablet {
+    flex-direction: column;
+  }
+  &__img {
+    display: flex;
+    justify-content: center;
+    width: 285px;
+    margin-right: 45px;
+    flex-shrink: 0;
+    @include media-laptop {
+      width: 250px;
+    }
+    @include media-tablet {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  &__ui-ul {
+    font-size: 16px;
+  }
+}

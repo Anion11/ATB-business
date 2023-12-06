@@ -1,0 +1,99 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  //- link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    //- const fileName = 'loan-goskontract'
+    const pageTitle =' Кредит на исполнение Госконтракта'
+
+  -
+    const featuresItems = [
+      { icon: 'img/feature_1.svg', title: 'Варианты без залога или с залогом' },
+      { icon: 'img/feature_2.svg', title: 'Возможно отсутствие опыта исполнения государственных и муниципальных контрактов у клиента' },
+      { icon: 'img/feature_3.svg', title: 'Подача заявки онлайн' },
+    ]
+
+  -
+    const requirementsItems1 =[
+      { icon: 'img/requirement1_1.svg', text: 'Залог прав требований по договору банковского счета (залоговый счет)' },
+      { icon: 'img/requirement1_2.svg', text: 'Залог прав выручки по финансируемому ГК' },
+      { icon: 'img/requirement1_3.svg', text: 'Залог имущества' },
+      { icon: 'img/requirement1_4.svg', text: 'Также возможно предоставление кредита без обеспечения' },
+    ]
+
+  -
+    const requirementsItems2 =[
+      { icon: 'img/requirement2_1.svg', text: 'Резидент РФ' },
+      { icon: 'img/requirement2_2.svg', text: 'Срок работы компании с момента государственной регистрации – не менее 12 месяцев' },
+      { icon: 'img/requirement2_3.svg', text: 'Отсутствие опыта исполнения государственных и муниципальных контрактов допускается' },
+    ]
+
+  -
+    const benefitsItems =[
+      {
+        nums:
+          `<span class="text-grey-blue">
+            до <span class="benefits__nums-xl">40</span>
+          </span>
+          <span class="benefits__nums-l">млн ₽</span>`,
+        subtitle: 'Сумма кредита'
+      },
+      {
+        nums:
+          `<span class="text-grey-blue">
+            до <span class="benefits__nums-xl">790</span>
+          </span>
+          <span class="benefits__nums-l">дней</span>`,
+        subtitle: 'Срок кредитования'
+      },
+      { icon: 'img/icon_document.svg', nums: 'Кредит, невозобновляемая кредитная линия', subtitle: 'Форма кредитования' },
+    ]
+
+block content
+  main
+    +banner
+      +banner__item('--loan-goskontract')
+        +banner__wrapper('img/banner_loan_goskontract.jpg')
+          +banner__h1(' Кредит на <br>исполнение <br>Госконтракта')
+          +banner__foot
+            +ui-button('Подать заявку', 'banner')(href='#form-section')
+            +banner__descr('Кредиты для <br>участников госзакупок', '--size-xs').text-orange.banner__mob-none
+        +banner__mobile.text-orange
+          p Кредиты для участников госзакупок
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +small-banner('', '--loan-goskontract')
+
+      +section
+        .inner
+          +benefits(benefitsItems)
+
+      +section
+        .inner
+          +features(featuresItems, '--3items')
+
+      +section()#form-section
+        .inner
+          .form-container
+            +section-head().text-center
+              +ui-h2('Заявка на получение кредита', 'section-head')
+
+      +section
+        .inner
+          +section-head.text-center
+            +ui-h2('Блок служебной информации', 'section-head')
+          +accordion
+            +accordion-item('Обеспечение')
+              +ui-p1('В зависимости от условий кредитования:')
+              br
+              +requirements(requirementsItems1)
+            +accordion-item('Требования к заемщику')
+              +requirements(requirementsItems2)

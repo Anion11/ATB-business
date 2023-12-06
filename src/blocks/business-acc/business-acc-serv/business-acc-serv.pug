@@ -1,0 +1,48 @@
+mixin business-acc-serv(mods)
+  -
+    const baseName = 'business-acc-serv'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const servItems = [
+      {
+        title: 'АТБ-клуб',
+        list: [
+          'Более 400 партнёров',
+          'Скидки до 30%',
+        ],
+        btn: {
+          txt: 'Узнать подробнее',
+          link: '#'
+        },
+        img: 'img/business-acc-serv_1.png',
+      },
+      {
+        title: 'Партнеры VISA',
+        txt: 'Специальные предложения по картам Visa',
+        btn: {
+          txt: 'Узнать подробнее',
+          link: '#'
+        },
+        img: 'img/business-acc-serv_2.png',
+      },
+    ]
+
+  .business-acc-serv(class=allMods)&attributes(attributes)
+    each item in servItems
+      .business-acc-serv__item
+        .business-acc-serv__title !{item.title}
+        if item.list
+          +ui-ul(item.list, 'business-acc-serv')
+        if item.txt
+          .business-acc-serv__txt !{item.txt}
+        +ui-button(item.btn.txt, 'business-acc-serv, --outline')(href=item.btn.link)
+        .business-acc-serv__img
+          img(src=item.img, alt='')
+    block

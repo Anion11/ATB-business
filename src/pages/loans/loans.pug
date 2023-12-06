@@ -1,0 +1,81 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'loans'
+    const pageTitle ='Кредиты для бизнеса юридическим лицам и индивидуальным предпринимателям'
+
+  -
+    const loansCategories =[
+      { h4: 'Экспресс-кредиты',
+        descr: 'Минимальный пакет документов и&nbsp;быстрое принятие решения. <br>Сумма до&nbsp;50&nbsp;млн рублей',
+        img: 'express'
+      },
+      { h4: 'Классические кредиты', descr: 'Кредитные продукты без&nbsp;ограничения суммы кредита', img: 'classic' },
+      { h4: 'Кредиты с&nbsp;господдержкой', descr: 'Льготные ставки и&nbsp;сумма <br>до&nbsp;1&nbsp;млрд рублей', img: 'state-support' },
+      { h4: 'Спецпрограммы', descr: 'Для&nbsp;застройщиков и&nbsp;недропользователей', img: 'special-programs' },
+    ]
+
+  -
+    const loansAll =[
+      { img: 'express', title: '«Бизнес-Экспресс»', descr: 'Быстрый кредит на&nbsp;любые <span class="text-nowrap">бизнес-цели</span>',
+        features: [
+          'до <span class="loans-all__features-num">5</span> млн ₽',
+          'до <span class="loans-all__features-num">3</span> лет',
+        ],
+        btnNext: false,
+      },
+      { img: 'bussines', title: '«Бизнес-оборот»', descr: 'На пополнение оборотных средств',
+        features: [
+          'до <span class="loans-all__features-num">30</span> млн ₽',
+          'до <span class="loans-all__features-num">3</span> лет',
+        ],
+        btnNext: false,
+      },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--loans')
+        +banner__wrapper('img/banner_loans.png', true)
+          +banner__h1('Кредиты <br class="banner__br-no-mob"> для&nbsp;бизнеса <br class="banner__br-no-mob"> на&nbsp;любые цели', '--mob-size-l, --mob-mb-l')
+    .page-content
+      +section('--mt0')
+        .inner
+          +loans-categories(loansCategories)
+      +section
+        .inner
+          +loans-all(loansAll)
+  +seo('Кредиты бизнесу в&nbsp;АТБ')
+    p Азиатско-Тихоокеанский банк предлагает кредиты для открытия и развития бизнеса. Мы работаем с юридическими лицами и индивидуальными предпринимателями.
+    p Кредит можно взять на следующие цели:
+    p
+    ul
+      li осуществление текущих расходов фирмы;
+      li пополнение оборотных средств;
+      li закрытие кассового разрыва;
+      li модернизацию производства;
+      li приобретение транспорта и недвижимости для хоздеятельности и т. д.
+    p
+    p АТБ предлагает для развития вашего предприятия: овердрафт, финансирование ВЭД, льготные программы кредитования и др.
+    p Выбирая кредит для бизнеса в Азиатско-Тихоокеанском банке, вы получаете:
+    p
+    ul
+      li Процентную ставку и другие условия четко зафиксированные в договоре.
+      li Возможность получения ссуды под залог и беззалоговой.
+      li Зачисление денег в день подписания договора.
+      li Погашение в интернет-банке, мобильном приложении или отделении банка.
+      li Кредиты для организаций малого и среднего бизнеса разных форм собственности (ООО, АО, ЗАО) и ИП.
+    p
+    p Подайте заявку онлайн на официальном сайте АТБ или через интернет-банк, указав данные о компании и контакты, и получите информацию о принятом решении в тот же день. Менеджеры ответят на все интересующие вопросы по телефону
+      =' '
+      a.text-nowrap(href='tel:88007758080') 8 800 775 80 80
+      | .

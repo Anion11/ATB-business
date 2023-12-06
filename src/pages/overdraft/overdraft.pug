@@ -1,0 +1,111 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'overdraft'
+    const pageTitle ='Овердрафт для бизнеса от АТБ - оформите заявку на овердрафтное кредитование'
+
+    const benefitsItems = [
+      { icon: 'img/benefit_6.svg', title: 'Сумма лимита до&nbsp;30&nbsp;млн рублей' },
+      { icon: 'img/benefit_5.svg', title: 'Без залога при сумме лимита до&nbsp;20&nbsp;млн рублей' },
+      { icon: 'img/benefit_4.svg', title: 'Возможность получения овердрафта без поручительства' },
+      { icon: 'img/benefit_3.svg', title: 'Проценты только за&nbsp;время фактического пользования средствами' },
+      { icon: 'img/benefit_2.svg', title: 'Срок лимита до&nbsp;12&nbsp;месяцев: подключите один раз и&nbsp;пользуйтесь в&nbsp;течение года' },
+      { icon: 'img/benefit_1.svg', title: 'Возможность получения овердрафта без срока транша и&nbsp;обязательного обнуления' },
+    ]
+
+    const howGetItems = [
+      {
+        icon: 'img/how-get_1.svg',
+        title: 'Оставьте заявку',
+        descr: '<a href="#" class="text-orange">на сайте</a> или по&nbsp;телефону <br> <span class="text-nowrap">8-800-775-80-80</span>',
+      },
+      {
+        icon: 'img/how-get_2.svg',
+        title: 'Предоставьте документы',
+        descr: 'и дождитесь одобрения по заявке',
+      },
+      {
+        icon: 'img/how-get_3.svg',
+        title: 'Подпишите договор',
+        descr: 'и получите овердрафт <br> для вашего бизнеса',
+      },
+    ]
+
+    const requirementsItems1 =[
+      { icon: 'img/requirement1_1.svg', text: 'Резидент РФ' },
+      { icon: 'img/requirement1_2.svg', text: 'Срок существования с момента государственной регистрации – не менее 12 месяцев' },
+      { icon: 'img/requirement1_3.svg', text: 'Годовая выручка не превышает 2 млрд ₽' },
+    ]
+
+    const requirementsItems2 =[
+      { icon: 'img/requirement2_1.svg', text: 'Анкета-заявка на получение кредита' },
+      { icon: 'img/requirement2_2.svg', text: 'Выписка по расчетным счетам из Интернет-Банка за 12 месяцев или карточка сч.51 из 1С' },
+    ]
+
+    const requirementsItems3 =[
+      { icon: 'img/requirement3_1.svg', text: 'Поручительство физического лица и/или юридических лиц' },
+      { icon: 'img/requirement3_2.svg', text: 'Залог имущества' },
+      { icon: 'img/requirement3_3.svg', text: 'Возможно предоставление овердрафта без залога и поручительства' },
+    ]
+
+    const termsItems =[
+      { name: 'Сумма лимита', descr: 'до 30&nbsp;000&nbsp;000 рублей&nbsp;(₽)' },
+      { name: 'Валюта кредита', descr: 'рубли РФ (₽)' },
+      { name: 'Срок кредитования', descr: '12 месяцев' },
+      { name: 'Процентная ставка', descr: 'от 9,3% годовых' },
+      { name: 'Комиссия за выдачу', descr: '1% от суммы лимита овердрафта' },
+      { name: 'Порядок погашения:', descr: 'безакцептное списание' },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item('--overdraft')
+        +banner__wrapper('img/banner_overdraft.png', true)
+          +banner__h1('Бизнес-овердрафт', '--mob-size-l, --mob-mb-l')
+          +banner__subtitle('от ')
+            span.banner__subtitle-accent 6,5%
+            |  годовых
+          +banner__foot('--laptop-flex1')
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#form-section')
+            +banner__slogan('Денежный запас для&nbsp;бизнеса')
+
+    .page-content
+      +section('--mt0')
+        .inner
+          +section-head.text-center
+            +ui-h2('Преимущества овердрафта', 'section-head')
+          +benefits(benefitsItems, '--title-normal')
+      +section
+        .inner
+          +how-get('Как получить овердрафт', howGetItems)
+      +section#form-section
+        .inner
+          .form-container
+            +section-head.text-center
+              +ui-h2('Заявка на получение кредита', 'section-head')
+      +section
+        .inner
+          +section-head.text-center
+            +ui-h2('Блок служебной информации', 'section-head')
+          +accordion
+            +accordion-item('Условия')
+              +terms(termsItems)
+            +accordion-item('Обеспечение')
+              +requirements(requirementsItems3)
+            +accordion-item('Документы')
+              +documents
+              +requirements(requirementsItems2)
+              +section-footnote('Банк оставляет за собой право запросить дополнительные документы, которые могут способствовать принятию решения о предоставлении кредита.')
+            +accordion-item('Требования')
+              +requirements(requirementsItems1)
+            +accordion-item('Архив')
+              +documents

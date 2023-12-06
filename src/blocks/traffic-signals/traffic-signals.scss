@@ -1,0 +1,64 @@
+.traffic-signals {
+  display: grid;
+  grid-template-columns: 48.5% 1fr;
+  gap: 40px;
+  @include media-laptop {
+    grid-template-columns: 60% 1fr;
+    gap: 15px;
+  }
+  @include media-tablet {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  &__item {
+    display: flex;
+    padding: 30px 50px 35px 30px;
+    background: #fff;
+    box-shadow: 0 3px 30px rgb(135 151 155 / 0.15);
+    border-radius: 8px;
+    @include media-laptop {
+      padding: 25px 20px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 18px;
+      @include media-laptop {
+        margin-bottom: 15px;
+      }
+    }
+  }
+  &__icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    @include media-laptop {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+  }
+  &__content {
+    padding-top: 5px;
+    @include media-laptop {
+      padding-top: 1px;
+    }
+  }
+  &__ui-h4 {
+    margin-bottom: 10px;
+    @include media-laptop {
+      margin-bottom: 8px;
+    }
+  }
+  &__ui-h5 {
+    margin-bottom: 10px;
+    @include media-laptop {
+      margin-bottom: 8px;
+    }
+  }
+  &__img {
+    @include media-tablet {
+      max-width: 355px;
+      margin: 0 auto;
+    }
+  }
+}

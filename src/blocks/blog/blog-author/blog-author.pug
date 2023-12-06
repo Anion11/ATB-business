@@ -1,0 +1,22 @@
+mixin blog-author(mods)
+  -
+    const baseName = 'blog-author'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .blog-author(class=allMods)&attributes(attributes)
+    .blog-author__img
+      if isAMP === true
+        amp-img(src='img/news_author.png' alt='' layout='responsive' width='75' height='75')
+      else
+        img(src='img/news_author.png', alt='')
+    .blog-author__text
+      .blog-author__name Константин Константинопольский
+      .blog-author__post вице-президент по клиентскому опыту
+    block

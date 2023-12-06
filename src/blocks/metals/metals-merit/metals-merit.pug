@@ -1,0 +1,15 @@
+mixin metals-merit(mods)
+  -
+    const baseName = 'metals-merit'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .metals-merit(class=allMods)&attributes(attributes)
+    +ui-h4('АТБ является одним из лидеров среди банков по закупкам золота у российских золотодобывающих предприятий.')
+    block
