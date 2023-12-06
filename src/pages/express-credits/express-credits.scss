@@ -1,0 +1,9 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/media';
+@import '../../styles/utils/fonts';
+@import '../../blocks/request/request';
+
+.express__form-container {
+    max-width: 700px;
+    margin: 0 auto;
+}

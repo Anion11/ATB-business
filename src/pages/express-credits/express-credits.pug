@@ -1,0 +1,102 @@
+extends ../../layouts/layout
+
+block styles
+  link(rel='stylesheet' href='../../styles/style.min.css')
+  link(rel='stylesheet' href=fileName + '.min.css')
+
+block scripts
+  script(src='../../js/index.js')
+
+block variables
+  -
+    const fileName = 'express-credits'
+
+    const howGetItems = [
+      {
+        icon: 'img/icon_how_get1.svg',
+        title: 'Оставьте <a class="text-orange" href="#section-form">заявку</a>',
+        descr: 'на&nbsp;сайте',
+      },
+      {
+        icon: 'img/icon_how_get2.svg',
+        title: 'Дождитесь одобрения банком',
+        descr: 'Мы сообщим о&nbsp;принятом решении',
+      },
+      {
+        icon: 'img/icon_how_get3.svg',
+        title: 'Получите деньги на&nbsp;счет в&nbsp;АТБ',
+        descr: 'после подписания договора',
+      },
+    ]
+
+    const requirementsItems1 =[
+      { icon: 'img/requirement1.svg', text: 'Поручительство физического лица' },
+    ]
+
+    const requirementsItems2 =[
+      { icon: 'img/requirement3.svg', text: 'Анкета-заявка на&nbsp;получение кредита' },
+    ]
+
+    const requestData = {
+        inputs: [
+            { text: 'ФИО', id: 'name', type: "text" },
+            { text: 'Мобильный номер телефона', id: 'phone', type: "phone" }
+        ],
+        checkboxes: [
+            { id: 'personalDataRequestCheckBox', text: 'Я выражаю свое согласие на', link: '#', linkText: 'обработку и передачу моих персональных данных' },
+            { id: 'offersBankRequestCheckBox', text: 'Я выражаю свое согласие на получение', link: '#', linkText: 'предложений от Банка' }
+        ],
+        selects: [
+            { text: 'ФИО', id: 'name', type: "text" },
+            { text: 'Мобильный номер телефона', id: 'phone', type: "phone" }
+        ],
+        bottomText: 'После нажатия на кнопку "Подтвердить" на Ваш телефон будет направлен 4-значный код. Вводя код из СМС, я подтверждаю, что согласен с условиями обработки персональных данных и оформления услуг, а также получение предложений от Банка (при проставлении соответствующей отметки выше)',
+        buttonText: 'подтвердить'
+    }
+
+    const requirementsItems3 =[
+      { icon: 'img/requirement2.svg', text: 'Срок регистрации бизнеса — не&nbsp;менее 12&nbsp;месяцев' },
+      { icon: 'img/requirement3.svg', text: 'Организационно-правовая форма: ИП, ООО' },
+      { icon: 'img/requirement4.svg', text: 'В&nbsp;составе учредителей юридического лица нет другого юридического лица' },
+      { icon: 'img/requirement5.svg', text: 'Процедура банкротства отсутствует' },
+      { icon: 'img/requirement6.svg', text: 'Годовая выручка не&nbsp;превышает 2&nbsp;млрд рублей' },
+      { icon: 'img/requirement7.svg', text: 'Резидент РФ' },
+    ]
+
+block content
+  main
+    +banner('--m-vertically')
+      +banner__item()
+        +banner__wrapper('img/banner_express-credits.png', true)
+          +banner__h1('Льготные экспресс-кредиты для бизнеса', '--mw-l, --mb-l, --mob-mb-l')
+          +banner__text('до 50 млн рублей по программе Минэкономразвития', '--mw-l')
+          +banner__foot()
+            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#')
+    .page-content
+      +section('--bg-grey')
+        .inner
+          +how-get('Как получить кредит', howGetItems)
+
+      +section#section-form
+        .inner
+          .express__form-container
+            +section-head.text-center
+              +ui-h2('Заявка на&nbsp;получение кредита', 'section-head')
+            +request(requestData)
+
+      +section
+        .inner
+          +accordion
+            +accordion-item('Обеспечение')
+              +requirements(requirementsItems1)
+            +accordion-item('Документы')#questionnaire
+              +ui-p2
+                a.text-grey-blue(href='#') Общие условия кредитования по&nbsp;продукту «Бизнес-экспресс»
+                br
+                a.text-grey-blue(href='#') Общие условия договора поручительства
+              br
+              +requirements(requirementsItems2)
+              +section-footnote
+                p Банк оставляет за&nbsp;собой право запросить дополнительные документы, которые могут способствовать принятию положительного решения о&nbsp;предоставлении кредита
+            +accordion-item('Требования')
+              +requirements(requirementsItems3)

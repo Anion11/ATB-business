@@ -72,6 +72,12 @@
         margin-bottom: 15px;
       }
     }
+    &--mb-l {
+      margin-bottom: 25px;
+    }
+    &--mw-l {
+      max-width: 550px;
+    }
   }
   &__descr {
     width: fit-content;
@@ -165,6 +171,9 @@
     }
     &:not(:last-child) {
       margin-bottom: 28px;
+    }
+    &--mw-l {
+      max-width: 400px;
     }
   }
   &__slogan {
