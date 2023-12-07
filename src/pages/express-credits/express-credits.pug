@@ -19,28 +19,35 @@ block variables
         buttonText: 'оставить заявку'
       }
     ]
+
     const cardItems = [
       {
         image: 'img/card1.png',
-        text: 'Ставка по кредиту ниже ключевой ставки ЦБ',
+        alt: 'card1',
+        text: 'Ставка по кредиту ниже ключевой ставки ЦБ'
       },
       {
         image: 'img/card2.png',
-        text: 'Без залога до 20 млн рублей',
+        alt: 'card2',
+        text: 'Без залога до 20 млн рублей'
       },
       {
         image: 'img/card3.png',
-        text: 'Без скрытых комиссий выдачу и сопровождение',
+        alt: 'card3',
+        text: 'Без скрытых комиссий выдачу и сопровождение'
       },
       {
         image: 'img/card4.png',
-        text: 'Онлайн оформление заявки на кредит',
+        alt: 'card4',
+        text: 'Онлайн оформление заявки на кредит'
       },
       {
         image: 'img/card5.png',
-        text: 'Решение по 2 документам',
+        alt: 'card5',
+        text: 'Решение по 2 документам'
       }
     ]
+
     const howGetItems = [
       {
         icon: 'img/icon_how_get1.svg',
@@ -105,7 +112,10 @@ block content
     .page-content
       +section
         .inner
-          
+          +card-express("express-credits")
+            each card in cardItems
+              +card-express-item(card, "--bg-grey")
+            
       +section('--bg-grey')
         .inner
           +how-get('Как получить кредит', howGetItems)

@@ -1,0 +1,33 @@
+mixin card-express(mods)
+  -
+    const baseName = 'card-express'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .card-express(class=allMods)&attributes(attributes)
+    block
+
+mixin card-express-item(data, mods)
+  -
+    const baseName = 'card-express-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .card-express-item(class=allMods)&attributes(attributes)
+    .card-express-item__text
+      +ui-p1(data.text)
+    .card-express-item__image 
+      img(src=data.image, alt=data.alt)
+    block
