@@ -198,6 +198,13 @@
       }
     }
   }
+  &--inconsiderable {
+    .select2 {
+      &-selection {
+        opacity: 0.5;
+      }
+    }
+  }
 }
 .bvi-body {
   .ui-select {

@@ -11,14 +11,15 @@ mixin request(data, mods)
     }
 
   .request(class=allMods)&attributes(attributes)
-    .request__form
+    form.request__form(action='/' method='post')
       each input in data.inputs
-        +ui-input(input.text, input.id, '', input.type)
-      +ui-select('', '', 'Option 1', 'Option 2', 'Option 3', 'Option 4')(data-placeholder='Регион ведения бизнеса')
-      +ui-select('request', '', 'Option 1', 'Option 2', 'Option 3', 'Option 4')(data-placeholder='Дополнительный офис банка')
+        +ui-input(input.id, input.text, 'request', input.type)
+      each select in data.selects
+        +ui-select(select.mods, '', ...select.options)(data-placeholder=select.placeholder)
       each checkBox in data.checkboxes
-        +ui-checkbox(checkBox.id, checkBox.text, 'request')
-          a(href=checkBox.link) !{checkBox.linkText}
-      +ui-p3(data.bottomText, "request")
+        +ui-checkbox(checkBox.id, checkBox.text) 
+          a.request__link(href=checkBox.link) !{checkBox.linkText}
+      if data.bottomText
+        +ui-p3(data.bottomText)
       +ui-button(data.buttonText, "request")
     block

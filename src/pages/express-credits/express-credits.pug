@@ -6,11 +6,19 @@ block styles
 
 block scripts
   script(src='../../js/index.js')
+  script(src=fileName + '.js')
 
 block variables
   -
     const fileName = 'express-credits'
-
+    const bannerItems = [
+      {
+        image: 'img/banner_express-credits.png',
+        h1: 'Льготные экспресс-кредиты для бизнеса',
+        text: 'до 50 млн рублей по программе Минэкономразвития',
+        buttonText: 'оставить заявку'
+      }
+    ]
     const howGetItems = [
       {
         icon: 'img/icon_how_get1.svg',
@@ -29,32 +37,31 @@ block variables
       },
     ]
 
-    const requirementsItems1 =[
-      { icon: 'img/requirement1.svg', text: 'Поручительство физического лица' },
-    ]
-
-    const requirementsItems2 =[
-      { icon: 'img/requirement3.svg', text: 'Анкета-заявка на&nbsp;получение кредита' },
-    ]
-
     const requestData = {
         inputs: [
             { text: 'ФИО', id: 'name', type: "text" },
             { text: 'Мобильный номер телефона', id: 'phone', type: "phone" }
         ],
         checkboxes: [
-            { id: 'personalDataRequestCheckBox', text: 'Я выражаю свое согласие на', link: '#', linkText: 'обработку и передачу моих персональных данных' },
-            { id: 'offersBankRequestCheckBox', text: 'Я выражаю свое согласие на получение', link: '#', linkText: 'предложений от Банка' }
+            { id: 'personalDataRequestCheckBox', text: 'Я выражаю свое согласие на ', link: '#', linkText: 'обработку и передачу моих персональных данных' },
+            { id: 'offersBankRequestCheckBox', text: 'Я выражаю свое согласие на получение ', link: '#', linkText: 'предложений от Банка' }
         ],
         selects: [
-            { text: 'ФИО', id: 'name', type: "text" },
-            { text: 'Мобильный номер телефона', id: 'phone', type: "phone" }
+            { placeholder: 'Регион ведения бизнеса', mods: '', options: [ "option1", "option2", "option3", "option4" ] },
+            { placeholder: 'Дополнительный офис банка', mods: '--inconsiderable', options: [ "option1", "option2", "option3", "option4" ] }
         ],
-        bottomText: 'После нажатия на кнопку "Подтвердить" на Ваш телефон будет направлен 4-значный код. Вводя код из СМС, я подтверждаю, что согласен с условиями обработки персональных данных и оформления услуг, а также получение предложений от Банка (при проставлении соответствующей отметки выше)',
+        bottomText: 'После нажатия на кнопку "Подтвердить" на Ваш телефон будет направлен 4-значный код. Вводя код из СМС, я подтверждаю, что согласен <a href ="#" class="request__link">с условиями обработки персональных данных и оформления услуг, а также получение предложений от Банка (при проставлении соответствующей отметки выше)</a>',
         buttonText: 'подтвердить'
     }
+    const requirementsItems1 = [
+      { icon: 'img/requirement1.svg', text: 'Поручительство физического лица' },
+    ]
 
-    const requirementsItems3 =[
+    const requirementsItems2 = [
+      { icon: 'img/requirement3.svg', text: 'Анкета-заявка на&nbsp;получение кредита' },
+    ]
+
+    const requirementsItems3 = [
       { icon: 'img/requirement2.svg', text: 'Срок регистрации бизнеса — не&nbsp;менее 12&nbsp;месяцев' },
       { icon: 'img/requirement3.svg', text: 'Организационно-правовая форма: ИП, ООО' },
       { icon: 'img/requirement4.svg', text: 'В&nbsp;составе учредителей юридического лица нет другого юридического лица' },
@@ -66,12 +73,13 @@ block variables
 block content
   main
     +banner('--m-vertically')
-      +banner__item()
-        +banner__wrapper('img/banner_express-credits.png', true)
-          +banner__h1('Льготные экспресс-кредиты для бизнеса', '--mw-l, --mb-l, --mob-mb-l')
-          +banner__text('до 50 млн рублей по программе Минэкономразвития', '--mw-l')
-          +banner__foot()
-            +ui-button('оставить заявку', 'banner, --m-size-l')(href='#')
+      each bannerItem in bannerItems
+        +banner__item()
+          +banner__wrapper(bannerItem.image, true)
+            +banner__h1(bannerItem.h1, '--mw-l, --mb-l, --mob-mb-l')
+            +banner__text(bannerItem.text, '--mw-l')
+            +banner__foot()
+              +ui-button(bannerItem.buttonText, 'banner, --m-size-l')(href='#')
     .page-content
       +section('--bg-grey')
         .inner
@@ -79,10 +87,10 @@ block content
 
       +section#section-form
         .inner
+          +section-head.text-center
+            +ui-h2('Заявка на получение кредита', 'section-head')
           .express__form-container
-            +section-head.text-center
-              +ui-h2('Заявка на&nbsp;получение кредита', 'section-head')
-            +request(requestData)
+            +request(requestData, '--grey90')
 
       +section
         .inner

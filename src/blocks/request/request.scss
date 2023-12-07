@@ -1,40 +1,55 @@
 .request {
-  position: relative;
   &__form {
     display: grid;
     gap: 30px;
   }
   &__ui-button {
     width: 100%;
+    background: #fff;
     border: 1px solid $orange;
     color: $orange;
-    background: #fff;
     @include media-tablet {
       padding-top: 15px;
       padding-bottom: 15px;
     }
   }
-  &__ui-p3 {
-    color: $grey90;
-  }
-  &__ui-checkbox {
-    a {
-      text-decoration: underline;
+  &__ui-input {
+    input {
+      padding-left: 15px;
     }
-  }
-  .ui-select {
-    .select2 {
-      &-selection{
-        &__arrow {
-          color: $grey90 !important;
-        }
+    input:focus,
+    .filled {
+      ~ label {
+        display: none;
       }
     }
+    label {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+    }
   }
-  &__ui-select {
-    .select2 {
-      &-selection{
-        opacity: .7;
+  &__link {
+    text-decoration: underline;
+  }
+  &--grey90 {
+    color: $grey90;
+    .request__ui-input {
+      input {
+        color: $grey90;
+      }
+      label {
+        color: $grey90;
+      }
+    }
+    .ui-select {
+      .select2 {
+        &-selection {
+          &__arrow {
+            color: $grey90 !important;
+          }
+        }
       }
     }
   }
