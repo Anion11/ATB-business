@@ -13,7 +13,7 @@ mixin request(data, mods)
   .request(class=allMods)&attributes(attributes)
     form.request__form(action='/' method='post')
       each input in data.inputs
-        +ui-input(input.id, input.text, 'request', input.type)
+        +ui-input(input.id, '', 'request', input.type)(placeholder=input.placeholder)
       each select in data.selects
         +ui-select(select.mods, '', ...select.options)(data-placeholder=select.placeholder)
       each checkBox in data.checkboxes

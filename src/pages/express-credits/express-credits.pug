@@ -19,6 +19,28 @@ block variables
         buttonText: 'оставить заявку'
       }
     ]
+    const cardItems = [
+      {
+        image: 'img/card1.png',
+        text: 'Ставка по кредиту ниже ключевой ставки ЦБ',
+      },
+      {
+        image: 'img/card2.png',
+        text: 'Без залога до 20 млн рублей',
+      },
+      {
+        image: 'img/card3.png',
+        text: 'Без скрытых комиссий выдачу и сопровождение',
+      },
+      {
+        image: 'img/card4.png',
+        text: 'Онлайн оформление заявки на кредит',
+      },
+      {
+        image: 'img/card5.png',
+        text: 'Решение по 2 документам',
+      }
+    ]
     const howGetItems = [
       {
         icon: 'img/icon_how_get1.svg',
@@ -39,8 +61,8 @@ block variables
 
     const requestData = {
         inputs: [
-            { text: 'ФИО', id: 'name', type: "text" },
-            { text: 'Мобильный номер телефона', id: 'phone', type: "phone" }
+            { placeholder: 'ФИО', id: 'name', type: "text" },
+            { placeholder: 'Мобильный номер телефона', id: 'phone', type: "phone" }
         ],
         checkboxes: [
             { id: 'personalDataRequestCheckBox', text: 'Я выражаю свое согласие на ', link: '#', linkText: 'обработку и передачу моих персональных данных' },
@@ -81,6 +103,9 @@ block content
             +banner__foot()
               +ui-button(bannerItem.buttonText, 'banner, --m-size-l')(href='#')
     .page-content
+      +section
+        .inner
+          
       +section('--bg-grey')
         .inner
           +how-get('Как получить кредит', howGetItems)

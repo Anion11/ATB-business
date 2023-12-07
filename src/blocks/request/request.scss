@@ -17,18 +17,6 @@
     input {
       padding-left: 15px;
     }
-    input:focus,
-    .filled {
-      ~ label {
-        display: none;
-      }
-    }
-    label {
-      position: absolute;
-      top: 50%;
-      left: 15px;
-      transform: translateY(-50%);
-    }
   }
   &__link {
     text-decoration: underline;
@@ -46,6 +34,9 @@
     .ui-select {
       .select2 {
         &-selection {
+          &__placeholder {
+            color: $grey90;
+          }
           &__arrow {
             color: $grey90 !important;
           }

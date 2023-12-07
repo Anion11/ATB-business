@@ -11,12 +11,7 @@ mixin ui-input(id, text, mods, type)
     }
 
   .ui-input(class=allMods)
-    if allMods === "request__ui-input"
-      input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text'))&attributes(attributes)
-      if text
-        label(for=id)=text
-    else
-      if text
-        label(for=id)=text
-      input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text'))&attributes(attributes)
+    if text
+      label(for=id)=text
+    input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text'))&attributes(attributes)
     block
