@@ -75,9 +75,6 @@
     &--mb-l {
       margin-bottom: 25px;
     }
-    &--mw-l {
-      max-width: 550px;
-    }
   }
   &__descr {
     width: fit-content;
@@ -1160,6 +1157,23 @@
           max-width: 515px;
           @include media-laptop {
             max-width: 320px;
+          }
+        }
+      }
+    }
+    &--express-credits {
+      .banner {
+        &__h1 {
+          max-width: 550px;
+          @include media-laptop {
+            max-width: 355px;
+          }
+        }
+        &__img {
+          img {
+            @include media-tablet {
+              margin: 0 auto;
+            }
           }
         }
       }

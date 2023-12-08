@@ -103,12 +103,12 @@ block content
   main
     +banner('--m-vertically')
       each bannerItem in bannerItems
-        +banner__item()
+        +banner__item('--express-credits')
           +banner__wrapper(bannerItem.image, true)
-            +banner__h1(bannerItem.h1, '--mw-l, --mb-l, --mob-mb-l')
+            +banner__h1(bannerItem.h1, '--mb-l, --mob-mb-l')
             +banner__text(bannerItem.text, '--mw-l')
             +banner__foot()
-              +ui-button(bannerItem.buttonText, 'banner, --m-size-l')(href='#')
+              +ui-button(bannerItem.buttonText, '--m-w100, --m-size-l')(href='#')
     .page-content
       +section
         .inner
