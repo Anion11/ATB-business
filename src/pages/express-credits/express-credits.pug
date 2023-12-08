@@ -48,6 +48,40 @@ block variables
       }
     ]
 
+    const compareData = [
+      { 
+        head: { title: 'До <span class="ui-h3 ui-h3--xl">10</span> млн рублей', img: 'img/express-table-second.png', buttonText: 'Оставить заявку' },
+        body: [
+          { text: 'Пополнение оборотных средств'},
+          { text: 'до 12 месяцев' },
+          { text: 'от 12% годовых' },
+          { text: 'рубли РФ (₽)' },
+          { text: 'Отсутствует' },
+          { text: 'Кредит, невозобновляемая кредитная линия' }
+        ]
+      },
+      { 
+        head: { title: 'До <span class="ui-h3 ui-h3--xl">50</span> млн рублей', img: 'img/express-table-first.png', buttonText: 'Оставить заявку' },
+        body: [
+          { text: 'Развитие предпринимательских целей'},
+          { text: 'до 36 месяцев' },
+          { text: 'от 12% годовых' },
+          { text: 'рубли РФ (₽)' },
+          { text: 'Отсутствует' },
+          { text: 'Кредит, невозобновляемая кредитная линия' }
+        ] 
+      },
+    ]
+
+    const compareLeft = [
+      { text: 'Цель' },
+      { text: 'Срок кредитования' },
+      { text: 'Процентная ставка' },
+      { text: 'Валюта кредита' },
+      { text: 'Комиссия за выдачу' },
+      { text: 'Форма кредитования' }
+    ]
+
     const howGetItems = [
       {
         icon: 'img/icon_how_get1.svg',
@@ -115,6 +149,12 @@ block content
           +card-express("express-credits")
             each card in cardItems
               +card-express-item(card, "--bg-grey")
+      +section
+        .inner
+          +compare-express()
+            +compare-express-item('', compareLeft, true)
+            each compareItem in compareData
+              +compare-express-item(compareItem.head, compareItem.body)
             
       +section('--bg-grey')
         .inner
