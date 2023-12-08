@@ -1,23 +1,23 @@
 .compare-express {
   display: grid;
   grid-template-columns: auto 1fr 1fr;
+  background: #fff;
   border-radius: 8px;
-  background: #FFF;
-  box-shadow: 0px 3px 30px 0px rgba(135, 151, 155, 0.15);
+  box-shadow: 0 3px 30px 0 rgb(135 151 155 / 0.15);
   @include media-tablet {
     display: grid;
     grid-template-columns: auto;
+    gap: 20px;
+    background: transparent;
     border-radius: 0;
     box-shadow: none;
-    background: transparent;
-    gap: 20px;
   }
   &-item {
     display: grid;
     grid-template-rows: 1fr auto;
     @include media-tablet {
-      background: #FFF;
-      box-shadow: 0px 3px 30px 0px rgba(135, 151, 155, 0.15);
+      background: #fff;
+      box-shadow: 0 3px 30 0 rgba(135 151 155 / 0.15);
     }
   }
   &-head {
@@ -25,9 +25,9 @@
     padding: 25px;
     border-left: 1px solid $grey40;
     @include media-tablet {
-      border: none;
       grid-column: span 2;
       padding: 20px;
+      border: none;
       cursor: pointer;
     }
     &__item {
@@ -49,12 +49,12 @@
         max-height: 85px;
       }
     }
-     &::after {
+    &::after {
       @include media-tablet {
         content: '';
         position: absolute;
-        right: 20px;
         top: 31px;
+        right: 20px;
         transform: rotate(-45deg) skew(5deg, 5deg);
         width: 9px;
         height: 9px;
