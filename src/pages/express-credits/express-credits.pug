@@ -49,7 +49,7 @@ block variables
     ]
 
     const compareData = [
-      { 
+      {
         head: { title: 'До <span class="ui-h3 ui-h3--xl">10</span> млн рублей', img: 'img/express-table-second.png', buttonText: 'Оставить заявку' },
         body: [
           { text: 'Пополнение оборотных средств'},
@@ -60,7 +60,7 @@ block variables
           { text: 'Кредит, невозобновляемая кредитная линия' }
         ]
       },
-      { 
+      {
         head: { title: 'До <span class="ui-h3 ui-h3--xl">50</span> млн рублей', img: 'img/express-table-first.png', buttonText: 'Оставить заявку' },
         body: [
           { text: 'Развитие предпринимательских целей'},
@@ -69,7 +69,7 @@ block variables
           { text: 'рубли РФ (₽)' },
           { text: 'Отсутствует' },
           { text: 'Кредит, невозобновляемая кредитная линия' }
-        ] 
+        ]
       },
     ]
 
@@ -144,7 +144,7 @@ block content
             +banner__foot()
               +ui-button(bannerItem.buttonText, '--m-w100, --m-size-l')(href='#')
     .page-content
-      +section
+      +section('--mt0')
         .inner
           +card-express("express-credits")
             each card in cardItems
@@ -155,7 +155,7 @@ block content
             +compare-express-item('', compareLeft, true)
             each compareItem in compareData
               +compare-express-item(compareItem.head, compareItem.body)
-            
+
       +section('--bg-grey')
         .inner
           +how-get('Как получить кредит', howGetItems)

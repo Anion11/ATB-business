@@ -17,7 +17,12 @@
     grid-template-rows: 1fr auto;
     @include media-tablet {
       background: #fff;
-      box-shadow: 0 3px 30 0 rgba(135 151 155 / 0.15);
+      box-shadow: 0 3px 30px 0 rgba(135 151 155 / 0.15);
+    }
+    &:first-child {
+      @include media-tablet {
+        display: none;
+      }
     }
   }
   &-head {
@@ -80,6 +85,9 @@
       border-right: 1px solid $grey40;
       &:last-child {
         padding-bottom: 25px;
+      }
+      @include media-tablet {
+        border-right: none;
       }
     }
   }

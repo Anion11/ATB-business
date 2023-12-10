@@ -13,7 +13,7 @@ mixin compare-express(mods)
   .compare-express(class=allMods)&attributes(attributes)
     block
 
-mixin compare-express-item(head, body, mods)
+mixin compare-express-item(head, body, isLeft, mods)
   -
     const baseName = 'compare-express-item'
     let allMods = ''
@@ -26,9 +26,8 @@ mixin compare-express-item(head, body, mods)
     }
 
   .compare-express-item(class=allMods)&attributes(attributes)
-    if head
-      +compare-express-head(head)
-    +compare-express-body(body, )
+    +compare-express-head(head)
+    +compare-express-body(body, isLeft)
     block
 
 mixin compare-express-head(headItem, mods)
@@ -44,12 +43,13 @@ mixin compare-express-head(headItem, mods)
     }
 
   .compare-express-head(class=allMods)&attributes(attributes)
-    .compare-express-head__item
-      .compare-express-head__text
-        +ui-p1(headItem.title, '--bold')
-        +ui-button(headItem.buttonText, 'compare-express, --outline, --ph-s')
-      .compare-express-head__image 
-        img(src=headItem.img alt='')
+    if headItem
+      .compare-express-head__item
+        .compare-express-head__text
+          +ui-p1(headItem.title, '--bold')
+          +ui-button(headItem.buttonText, 'compare-express, --outline, --ph-s')
+        .compare-express-head__image
+          img(src=headItem.img alt='')
     block
 
 mixin compare-express-body(body, isLeft, mods)
@@ -69,7 +69,7 @@ mixin compare-express-body(body, isLeft, mods)
       if isLeft
         .compare-express-body__item
           +ui-p1(bodyItem.text, '--bold')
-      else 
+      else
         .compare-express-body__item
           +ui-p1(bodyItem.text)
     block
