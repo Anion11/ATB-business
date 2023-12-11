@@ -83,11 +83,17 @@
       padding: 20px;
       border-top: 1px solid $grey40;
       border-right: 1px solid $grey40;
+      @include media-tablet {
+        border-right: none;
+      }
       &:last-child {
         padding-bottom: 25px;
       }
+    }
+    &--isLeft {
+      display: none;
       @include media-tablet {
-        border-right: none;
+        display: grid;
       }
     }
   }

@@ -13,7 +13,7 @@ mixin compare-express(mods)
   .compare-express(class=allMods)&attributes(attributes)
     block
 
-mixin compare-express-item(head, body, isLeft, mods)
+mixin compare-express-item(head, body, bodyLeft, mods)
   -
     const baseName = 'compare-express-item'
     let allMods = ''
@@ -27,7 +27,12 @@ mixin compare-express-item(head, body, isLeft, mods)
 
   .compare-express-item(class=allMods)&attributes(attributes)
     +compare-express-head(head)
-    +compare-express-body(body, isLeft)
+    if body
+      +compare-express-body(bodyLeft, true, '--isLeft')
+      +compare-express-body(body, false)
+    else
+      +compare-express-body(bodyLeft, true)
+      
     block
 
 mixin compare-express-head(headItem, mods)

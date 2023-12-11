@@ -152,9 +152,9 @@ block content
       +section
         .inner
           +compare-express()
-            +compare-express-item('', compareLeft, true)
+            +compare-express-item('', '', compareLeft)
             each compareItem in compareData
-              +compare-express-item(compareItem.head, compareItem.body)
+              +compare-express-item(compareItem.head, compareItem.body, compareLeft)
 
       +section('--bg-grey')
         .inner
