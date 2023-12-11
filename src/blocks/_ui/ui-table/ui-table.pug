@@ -35,6 +35,35 @@ mixin ui-table(tableItems, mods, type, additionSetting)
                     .ui-table__td-val !{row.td[index].text}
                       if row.td[index].ul
                         +ui-ul(row.td[index].ul, row.td[index].ulMods)
+  case type
+    when 'headBanner'
+      .ui-table.ui-table--headBanner.js-table(class=allMods)&attributes(attributes)
+        .ui-table__column.js-column
+          .ui-table__th.js-ceil(class=tableItems.thead[0].th[0].mods) !{tableItems.thead[0].th[0].text}
+          .ui-table__main
+            each row in tableItems.tbody
+              .ui-table__td.js-ceil(class=row.td[0].mods) !{row.td[0].text}
+                if row.td[0].textTooltip
+                  +ui-tooltip(row.td[0].textTooltip)
+        each column, index in tableItems.thead[0].th
+          if index!==0
+            .ui-table__column.js-column
+              .ui-table__th.js-ceil 
+                .ui-table__th-text(class=column.mods) !{column.text}
+                if column.img
+                  .ui-table__th-image
+                    img(src=column.img alt='')
+                if column.textTooltip
+                  +ui-tooltip(column.textTooltip)
+              .ui-table__main
+                if additionSetting && !additionSetting.notNameInMain
+                  .ui-table__name !{tableItems.thead[0].th[0].text}
+                each row, rowIndex in tableItems.tbody
+                  .ui-table__td.js-ceil(class=row.td[index].mods)
+                    .ui-table__td-name(class=row.td[0].mods) !{row.td[0].text}
+                    .ui-table__td-val !{row.td[index].text}
+                      if row.td[index].ul
+                        +ui-ul(row.td[index].ul, row.td[index].ulMods)
 
     default
       .ui-table(class=allMods)&attributes(attributes)

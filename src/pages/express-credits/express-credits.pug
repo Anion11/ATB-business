@@ -19,68 +19,89 @@ block variables
         buttonText: 'оставить заявку'
       }
     ]
-
-    const cardItems = [
-      {
-        image: 'img/card1.png',
-        alt: 'card1',
-        text: 'Ставка по кредиту ниже ключевой ставки ЦБ'
+    
+    const collateralItems = [
+      { mods: 'collateral__item--colspan2',
+        descr: 'Ставка по кредиту ниже ключевой ставки ЦБ',
+        img: 'img/card1.png'
       },
-      {
-        image: 'img/card2.png',
-        alt: 'card2',
-        text: 'Без залога до 20 млн рублей'
+      { mods: 'collateral__item--colspan2',
+        descr: 'Без залога до 20 млн рублей',
+        img: 'img/card2.png'
       },
-      {
-        image: 'img/card3.png',
-        alt: 'card3',
-        text: 'Без скрытых комиссий за выдачу и сопровождение'
+      { mods: 'collateral__item--colspan2',
+        descr: 'Без скрытых комиссий за выдачу и сопровождение',
+        img: 'img/card3.png',
       },
-      {
-        image: 'img/card4.png',
-        alt: 'card4',
-        text: 'Онлайн оформление заявки на кредит'
+      { mods: 'collateral__item--colspan3',
+        descr: 'Онлайн оформление заявки на кредит',
+        img: 'img/card4.png',
       },
-      {
-        image: 'img/card5.png',
-        alt: 'card5',
-        text: 'Решение по 2 документам'
-      }
-    ]
-
-    const compareData = [
-      {
-        head: { title: 'До <span class="ui-h3 ui-h3--xl">10</span> млн рублей', img: 'img/express-table-second.png', buttonText: 'Оставить заявку' },
-        body: [
-          { text: 'Пополнение оборотных средств'},
-          { text: 'до 12 месяцев' },
-          { text: 'от 12% годовых' },
-          { text: 'рубли РФ (₽)' },
-          { text: 'Отсутствует' },
-          { text: 'Кредит, невозобновляемая кредитная линия' }
-        ]
-      },
-      {
-        head: { title: 'До <span class="ui-h3 ui-h3--xl">50</span> млн рублей', img: 'img/express-table-first.png', buttonText: 'Оставить заявку' },
-        body: [
-          { text: 'Развитие предпринимательских целей'},
-          { text: 'до 36 месяцев' },
-          { text: 'от 12% годовых' },
-          { text: 'рубли РФ (₽)' },
-          { text: 'Отсутствует' },
-          { text: 'Кредит, невозобновляемая кредитная линия' }
-        ]
+      { mods: 'collateral__item--colspan3',
+        descr: 'Решение по 2 документам',
+        img: 'img/card5.png',
       },
     ]
 
-    const compareLeft = [
-      { text: 'Цель' },
-      { text: 'Срок кредитования' },
-      { text: 'Процентная ставка' },
-      { text: 'Валюта кредита' },
-      { text: 'Комиссия за выдачу' },
-      { text: 'Форма кредитования' }
-    ]
+    const tableItems ={
+      thead: [
+        {
+          th: [
+            { text: '', width: '20%' },
+            { text: '<p>До <span class="ui-h3 ui-h3--xl">50</span> млн рублей</p><div class="ui-button ui-button--outline ui-button--empty ui-button--ph-s">Оставить заявку</div>', img: 'img/express-table-first.png', mods: 'text-bold text-black' },
+            { text: '<p>До <span class="ui-h3 ui-h3--xl">10</span> млн рублей</p><div class="ui-button ui-button--outline ui-button--ph-s">Оставить заявку</div>', img: 'img/express-table-second.png', mods: 'text-bold text-black' },
+          ]
+        }
+      ],
+      tbody: [
+        {
+          td: [
+            { text: 'Цель', mods: 'text-bold' },
+            { text: 'Пополнение оборотных средств', mods: 'text-center text-center--mob-left' },
+            { text: 'Развитие предприни&shy;мательских целей', mods: 'text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Срок кредитования', mods: 'text-bold' },
+            { text: 'до 12 месяцев', mods: 'text-center text-center--mob-left' },
+            { text: 'до 36 месяцев', mods: 'text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Процентная ставка', mods: 'text-bold' },
+            { text: 'от 12% годовых', mods: 'ui-table__td--span2 text-center text-center--mob-left' },
+            { text: 'от 12% годовых', mods: 'ui-table__td--m-block text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Валюта кредита', mods: 'text-bold' },
+            { text: 'рубли РФ (₽)',
+              mods: 'ui-table__td--span2 text-center text-center--mob-left'
+            },
+            { text: 'рубли РФ (₽)',
+              mods: 'ui-table__td--m-block text-center text-center--mob-left'
+            }
+          ]
+        },
+        {
+          td: [
+            { text: 'Комиссия за выдачу', mods: 'text-bold' },
+            { text: 'Отсутствует', mods: 'ui-table__td--span2 text-center text-center--mob-left' },
+            { text: 'Отсутствует', mods: 'ui-table__td--m-block text-center text-center--mob-left' },
+          ]
+        },
+        {
+          td: [
+            { text: 'Форма кредитования', mods: 'text-bold' },
+            { text: 'Кредит, невозоб&shy;новляемая кредитная линия', mods: 'ui-table__td--span2 text-center text-center--mob-left' },
+            { text: 'Кредит, невозоб&shy;новляемая кредитная линия', mods: 'ui-table__td--m-block text-center text-center--mob-left' },
+          ]
+        },
+      ]
+    }
 
     const howGetItems = [
       {
@@ -146,15 +167,11 @@ block content
     .page-content
       +section('--mt0')
         .inner
-          +card-express("express-credits")
-            each card in cardItems
-              +card-express-item(card, "--bg-grey")
+          +collateral(collateralItems)
+
       +section
         .inner
-          +compare-express()
-            +compare-express-item('', '', compareLeft)
-            each compareItem in compareData
-              +compare-express-item(compareItem.head, compareItem.body, compareLeft)
+          +ui-table(tableItems, '--1col-w25, --m-td-1col-50, --th-fz18, --nfc-grey80, --th-bdrs0, --bg-white', 'headBanner', { notNameInMain: true })(data-media='767')
 
       +section('--bg-grey')
         .inner
