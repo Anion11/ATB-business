@@ -15,7 +15,7 @@ mixin request(data, mods)
       each input in data.inputs
         +ui-input(input.id, '', 'request', input.type)(placeholder=input.placeholder)
       each select in data.selects
-        +ui-select(select.mods, '', ...select.options)(data-placeholder=select.placeholder)
+        +ui-select(select.mods, '', ...select.options)(data-placeholder=select.placeholder, disabled=select.disabled)
       each checkBox in data.checkboxes
         +ui-checkbox(checkBox.id, checkBox.text) 
           a.request__link(href=checkBox.link) !{checkBox.linkText}

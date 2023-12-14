@@ -21,11 +21,11 @@ block variables
     ]
     
     const collateralItems = [
-      { mods: 'collateral__item--colspan2',
+      { mods: 'collateral__item--colspan3',
         descr: 'Ставка по кредиту ниже ключевой ставки ЦБ',
         img: 'img/card1.png'
       },
-      { mods: 'collateral__item--colspan2',
+      { mods: 'collateral__item--colspan3',
         descr: 'Без залога до 20 млн рублей',
         img: 'img/card2.png'
       },
@@ -33,11 +33,11 @@ block variables
         descr: 'Без скрытых комиссий за выдачу и сопровождение',
         img: 'img/card3.png',
       },
-      { mods: 'collateral__item--colspan3',
+      { mods: 'collateral__item--colspan2',
         descr: 'Онлайн оформление заявки на кредит',
         img: 'img/card4.png',
       },
-      { mods: 'collateral__item--colspan3',
+      { mods: 'collateral__item--colspan2',
         descr: 'Решение по 2 документам',
         img: 'img/card5.png',
       },
@@ -131,8 +131,8 @@ block variables
             { id: 'offersBankRequestCheckBox', text: 'Я выражаю свое согласие на получение ', link: '#', linkText: 'предложений от Банка' }
         ],
         selects: [
-            { placeholder: 'Регион ведения бизнеса', mods: '', options: [ "option1", "option2", "option3", "option4" ] },
-            { placeholder: 'Дополнительный офис банка', mods: '--inconsiderable', options: [ "option1", "option2", "option3", "option4" ] }
+            { placeholder: 'Регион ведения бизнеса', mods: '', options: [ "option1", "option2", "option3", "option4" ], disabled: false },
+            { placeholder: 'Дополнительный офис банка', mods: '', options: [ "option1", "option2", "option3", "option4" ], disabled: true }
         ],
         bottomText: 'После нажатия на кнопку "Подтвердить" на Ваш телефон будет направлен 4-значный код. Вводя код из СМС, я подтверждаю, что согласен <a href ="#" class="request__link">с условиями обработки персональных данных и оформления услуг, а также получение предложений от Банка (при проставлении соответствующей отметки выше)</a>',
         buttonText: 'подтвердить'

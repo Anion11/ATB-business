@@ -4,6 +4,7 @@ import bvi from 'bvi'
 import uiRange from '../blocks/_ui/ui-range/ui-range'
 import uiSelects from '../blocks/_ui/ui-select/ui-select'
 import uiTooltip from '../blocks/_ui/ui-tooltip/ui-tooltip'
+import uiInput from '../blocks/_ui/ui-input/ui-input'
 import accordion from '../blocks/accordion/accordion'
 import banner from '../blocks/banner/banner'
 import cookiesBanner from '../blocks/cookies-banner/cookies-banner'
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
   uiRange()
   uiSelects()
   uiTooltip()
+  uiInput()
   accordion()
   banner()
   cookiesBanner()
